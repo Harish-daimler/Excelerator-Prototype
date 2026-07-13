@@ -333,49 +333,11 @@
     }
   }
 
-  // Public API for options page
+  // Public API for options landing (content lives in js/options-story.js)
   window.ExNoticePlacement = {
     STORAGE_KEY: STORAGE_KEY,
     get: getPlacement,
     set: setPlacement,
-    OPTIONS: [
-      {
-        id: "1a",
-        label: "Option 1",
-        name: "Top strip, above the header",
-        desc: "Full-width notice above site chrome — highest visibility on every page.",
-      },
-      {
-        id: "1b",
-        label: "Option 2",
-        name: "Banner below the nav bar",
-        desc: "In-page banner under navigation; supports stacking multiple messages.",
-      },
-      {
-        id: "1c",
-        label: "Option 3",
-        name: "Floating toast, corner-anchored",
-        desc: "Non-blocking corner card that stays visible without shifting layout.",
-      },
-      {
-        id: "1d",
-        label: "Option 4",
-        name: "Header alert icon + dropdown center",
-        desc: "Persistent header bell with a panel of active notices and timestamps.",
-      },
-      {
-        id: "1e",
-        label: "Option 5",
-        name: "Interstitial modal on entry",
-        desc: "Blocking acknowledgment dialog shown once per session for critical updates.",
-      },
-      {
-        id: "1f",
-        label: "Option 6",
-        name: "Bottom status ticker",
-        desc: "Persistent footer ticker that expands for full detail without covering the hero.",
-      },
-    ],
   };
 
   // Auto-apply on homepage templates (not on options landing)

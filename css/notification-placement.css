@@ -473,6 +473,22 @@ body[data-notice-placement="1c"] .ex-back-to-options {
   background: #f3faff;
 }
 
+.opts-card__media {
+  display: block;
+  margin: -0.15rem -0.2rem 0.85rem;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #eef1f2;
+  aspect-ratio: 16 / 9;
+}
+
+.opts-card__media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .opts-card__label {
   font-size: 12px;
   font-weight: 500;

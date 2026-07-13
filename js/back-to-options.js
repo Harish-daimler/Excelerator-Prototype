@@ -7,7 +7,7 @@
   function mount() {
     if (document.querySelector(".ex-back-to-options")) return;
     var link = document.createElement("a");
-    link.href = "options.html";
+    link.href = "index.html";
     link.className = "ex-back-to-options";
     link.innerHTML =
       '<i class="fas fa-th-large" aria-hidden="true"></i><span>Back to Options</span>';
