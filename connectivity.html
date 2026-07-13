@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Connected Fleet Services With Detroit Connect® | Excelerator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,400;0,500;0,600;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="css/excelerator.css" />
+    <link rel="stylesheet" href="css/product-header.css" />
+    <link rel="stylesheet" href="css/connectivity.css" />
+    <link rel="stylesheet" href="css/notification-placement.css" />
+  </head>
+  <body data-auth="logged-out" data-lob="connectivity">
+    <header class="product-header">
+      <div class="ph-logged-in-top auth-logged-in">
+        <div class="ph-brand-col">
+          <a class="ex-header__logo" href="index.html" aria-label="Excelerator home">
+            <img src="assets/images/excelerator-logo.png" alt="Excelerator" />
+          </a>
+          <button type="button" class="ph-shop-vehicle">
+            <i class="fas fa-truck" aria-hidden="true"></i>
+            Shop by Vehicle
+            <i class="fas fa-plus" aria-hidden="true"></i>
+          </button>
+        </div>
+        <form class="ph-search" role="search" action="#" onsubmit="return false;">
+          <button type="button" class="ph-search__filter" aria-label="Search filters">
+            <i class="fas fa-caret-down" aria-hidden="true"></i>
+          </button>
+          <input
+            class="ph-search__input"
+            type="search"
+            placeholder="Search by part name, number, VMRS, or cross reference"
+            aria-label="Search"
+          />
+          <button type="submit" class="ph-search__submit" aria-label="Search">
+            <i class="fas fa-search" aria-hidden="true"></i>
+          </button>
+        </form>
+        <div class="ph-user-col">
+          <div class="ph-user-row">
+            <div class="ex-account-menu">
+              <button
+                type="button"
+                class="ph-user-btn ex-account-menu__toggle"
+                aria-expanded="false"
+                aria-haspopup="true"
+                aria-controls="conn-account-in"
+              >
+                <i class="fas fa-user" aria-hidden="true"></i>
+                <span>ADXCustomer3</span>
+                <span class="ph-badge">3</span>
+                <i class="fas fa-chevron-down" aria-hidden="true"></i>
+              </button>
+              <ul id="conn-account-in" class="ex-account-menu__dropdown" role="menu" hidden>
+                <li role="none">
+                  <button type="button" role="menuitem" data-set-auth="logged-out">
+                    View logged out
+                  </button>
+                </li>
+              </ul>
+            </div>
+            <button type="button" class="ph-user-btn" aria-label="Region and language">
+              <img
+                class="ex-header__flag ex-header__flag--site"
+                src="assets/images/site-selector-icon-dtna.png"
+                alt="United States / Canada"
+              />
+              <i class="fas fa-chevron-down" aria-hidden="true"></i>
+            </button>
+          </div>
+          <div class="ph-dealer">
+            <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+            <div>
+              <div class="ph-dealer__name">Houston Freightliner</div>
+              <div class="ph-dealer__meta">50311111 | $USD</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ph-logged-out-top auth-logged-out">
+        <a class="ex-header__logo" href="index.html" aria-label="Excelerator home">
+          <img src="assets/images/excelerator-logo.png" alt="Excelerator" />
+        </a>
+        <div class="ph-logged-out-actions">
+          <div class="ex-account-menu">
+            <button
+              type="button"
+              class="ex-header__util-btn ex-account-menu__toggle"
+              aria-expanded="false"
+              aria-haspopup="true"
+              aria-controls="conn-account-out"
+            >
+              <span>Sign In</span>
+            </button>
+            <ul id="conn-account-out" class="ex-account-menu__dropdown" role="menu" hidden>
+              <li role="none">
+                <button type="button" role="menuitem" data-set-auth="logged-in">
+                  View ADXCustomer3
+                </button>
+              </li>
+            </ul>
+          </div>
+          <button type="button" class="ex-header__util-btn" aria-label="Region and language">
+            <img
+              class="ex-header__flag ex-header__flag--site"
+              src="assets/images/site-selector-icon-dtna.png"
+              alt="United States / Canada"
+            />
+            <i class="fas fa-chevron-down" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+
+      <nav class="ph-nav" aria-label="Primary">
+        <div class="ph-nav__lob-wrap ex-account-menu">
+          <button
+            type="button"
+            class="ph-nav__lob ex-account-menu__toggle"
+            aria-expanded="false"
+            aria-haspopup="true"
+            aria-controls="conn-lob-menu"
+          >
+            <i class="fas fa-project-diagram" aria-hidden="true"></i>
+            <span>Connectivity Services</span>
+            <i class="fas fa-chevron-down" aria-hidden="true"></i>
+          </button>
+          <ul id="conn-lob-menu" class="ph-lob-dropdown ex-account-menu__dropdown" role="menu" hidden>
+            <li role="none"><a role="menuitem" href="index.html">Home</a></li>
+            <li role="none"><a role="menuitem" href="parts.html">Parts &amp; PartsProX</a></li>
+            <li role="none"><a role="menuitem" href="coverage.html">Extended Coverage</a></li>
+            <li role="none"><a role="menuitem" href="connectivity.html">Connectivity Services</a></li>
+          </ul>
+        </div>
+        <div class="ph-nav__divider" aria-hidden="true"></div>
+        <ul class="ph-nav__links auth-logged-in">
+          <li><a href="#">Dashboard</a></li>
+          <li><a href="#">Orders/Quotes</a></li>
+          <li><a href="#">My Garage</a></li>
+        </ul>
+        <ul class="ph-nav__links auth-logged-out">
+          <li><a href="index.html">Home</a></li>
+        </ul>
+        <div class="ph-nav__utils auth-logged-in">
+          <button type="button" aria-label="Quick actions"><i class="fas fa-bolt"></i></button>
+          <button type="button" aria-label="Favorites"><i class="far fa-star"></i></button>
+          <span class="ph-nav__cart"><i class="fas fa-shopping-cart"></i> (0 Items) $0.00</span>
+        </div>
+      </nav>
+
+      <div class="ph-subnav">
+        <span class="ph-subnav__title">Connectivity Services</span>
+        <span class="ph-subnav__divider" aria-hidden="true"></span>
+        <a href="#">Overview</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="conn-hero">
+        <div class="conn-hero__inner">
+          <div>
+            <div class="conn-hero__logos">
+              <img src="assets/images/connectivity/logo-freightliner.jpg" alt="Freightliner" />
+              <img src="assets/images/connectivity/logo-westernstar.jpg" alt="Western Star" />
+              <img src="assets/images/connectivity/logo-detroit.jpg" alt="Detroit" />
+            </div>
+            <p class="conn-hero__copy">
+              Please sign in with DTNA Portal ID to view Connectivity Services or
+              contact your <a href="#">local dealership</a>.
+            </p>
+            <a class="ex-btn-primary" href="#" data-set-auth="logged-in">
+              Sign In
+              <i class="fas fa-chevron-right" aria-hidden="true"></i>
+            </a>
+          </div>
+          <div class="conn-hero__media">
+            <img
+              src="assets/images/connectivity/hero.png"
+              alt="Connected Freightliner truck with Detroit Assurance visualization"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section class="conn-intro">
+        <div class="conn-intro__inner">
+          <div>
+            <h1>Stay Connected. Stay in Control.</h1>
+            <p>
+              From essential connectivity to advanced digital tools, Detroit
+              Connected Services deliver the insights and access you need to make
+              smarter decisions, enhance safety, and keep operations running
+              smoothly—wherever the road takes you.
+            </p>
+          </div>
+          <img
+            class="conn-intro__logo"
+            src="assets/images/connectivity/detroit-connect-logo.png"
+            alt="Detroit Connect"
+          />
+        </div>
+      </section>
+
+      <section class="conn-services" aria-label="Detroit Connect services">
+        <div class="conn-services__inner">
+          <div class="conn-tabs" role="tablist">
+            <button type="button" class="is-active" data-conn-tab="health">
+              <i class="fas fa-wifi" aria-hidden="true"></i> Vehicle Health
+            </button>
+            <button type="button" data-conn-tab="safety">
+              <i class="fas fa-wifi" aria-hidden="true"></i> Connected Safety
+            </button>
+            <button type="button" data-conn-tab="fleet">
+              <i class="fas fa-wifi" aria-hidden="true"></i> Fleet Optimization
+            </button>
+            <button type="button" data-conn-tab="updates">
+              <i class="fas fa-wifi" aria-hidden="true"></i> Remote Updates
+            </button>
+            <button type="button" data-conn-tab="ecosystem">
+              <i class="fas fa-wifi" aria-hidden="true"></i> Ecosystem Integrations
+            </button>
+          </div>
+
+          <div class="conn-services__panel">
+            <a class="ex-btn-primary conn-services__signin" href="#" data-set-auth="logged-in">
+              Sign In
+              <i class="fas fa-chevron-right" aria-hidden="true"></i>
+            </a>
+            <h2>Vehicle Health</h2>
+            <h3>Real-Time Support, On and Off the Road</h3>
+            <p>
+              Take the guesswork out of your operation and make informed decisions
+              with Detroit Connect® Vehicle Insights, a complete set of tools that
+              give you the data you need to help improve the performance of your
+              fleet.
+            </p>
+            <div class="conn-cards">
+              <article class="conn-card">
+                <img
+                  class="conn-card__img"
+                  src="assets/images/connectivity/virtual-technician.png"
+                  alt=""
+                />
+                <div class="conn-card__body">
+                  <h4>Virtual Technician</h4>
+                  <p>
+                    Remote diagnostics delivers real-time powertrain fault data,
+                    service recommendations, and nearby locations with the right
+                    parts—directly in the Detroit Connect Portal.
+                  </p>
+                  <span class="conn-card__note">*included in Connect Core</span>
+                </div>
+              </article>
+              <article class="conn-card">
+                <img
+                  class="conn-card__img"
+                  src="assets/images/connectivity/maintenance.png"
+                  alt=""
+                />
+                <div class="conn-card__body">
+                  <h4>Maintenance System</h4>
+                  <p>
+                    Uses real-time vehicle data to predict when engine,
+                    transmission, or axle fluid service is needed—helping you avoid
+                    unnecessary maintenance costs.
+                  </p>
+                  <span class="conn-card__note">*included in Connect Core</span>
+                </div>
+              </article>
+              <article class="conn-card">
+                <img
+                  class="conn-card__img"
+                  src="assets/images/connectivity/ddec-reports.png"
+                  alt=""
+                />
+                <div class="conn-card__body">
+                  <h4>Detroit Diesel Engine Control Reports</h4>
+                  <p>
+                    Downloadable reports delivering fleets with detailed vehicle
+                    performance data, including trip summaries, fuel economy, idle
+                    time, speed profiles, engine load, and diagnostic history.
+                  </p>
+                  <span class="conn-card__note">*included in Connect Core</span>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="conn-portal">
+        <h2>Unlock the Power of a Connected Fleet with Detroit Connect Portal</h2>
+        <p>
+          Detroit Connect® is a comprehensive suite of connected vehicle services
+          designed to help fleets operate smarter and more efficiently. It provides
+          real-time data, remote diagnostics, safety insights, and maintenance
+          tools—all accessible through a centralized portal. With Detroit Connect,
+          fleet managers can make informed decisions, reduce downtime, and optimize
+          performance across their operations.
+        </p>
+        <img
+          class="conn-portal__img"
+          src="assets/images/connectivity/portal-laptop.png"
+          alt="Detroit Connect Portal Safety Health dashboard on a laptop"
+        />
+      </section>
+
+      <section class="conn-split" aria-labelledby="smarter-heading">
+        <div>
+          <h2 id="smarter-heading">Smarter Operations Start with Connectivity</h2>
+          <p>
+            Our suite of Detroit Connect services turn vehicle data and signals into
+            actionable insights to help your fleet operate smarter, safer, and more
+            efficiently. From optimizing fleet service and maintenance schedules to
+            managing vehicles remotely to improving driver behavior and performance,
+            our connected solutions give you the tools and confidence to make
+            informed decisions that keep your trucks performing at their best.
+          </p>
+        </div>
+        <img
+          src="assets/images/connectivity/smarter-ops.png"
+          alt="Connect Core renewals"
+        />
+      </section>
+
+      <section class="conn-split" aria-labelledby="results-heading" style="padding-top: 0">
+        <img
+          src="assets/images/connectivity/results.png"
+          alt="Safety Plus connected services"
+        />
+        <div>
+          <h2 id="results-heading">Designed to Drive Relevant Results</h2>
+          <ul>
+            <li>
+              Improve fleet visibility and operation control with real-time tracking
+              and remote locking capabilities.
+            </li>
+            <li>
+              Optimize service planning and minimize downtime through continuous
+              vehicle health monitoring and over-the-air updates.
+            </li>
+            <li>
+              Enhance driver performance and coaching with connected insights into
+              driving behavior and safety events.
+            </li>
+            <li>
+              Stay ahead of unplanned downtime with remote fault severity analysis
+              and remote vehicle access.
+            </li>
+          </ul>
+          <a class="ex-btn-primary" href="#" data-set-auth="logged-in">
+            Sign In
+            <i class="fas fa-chevron-right" aria-hidden="true"></i>
+          </a>
+        </div>
+      </section>
+
+      <section class="conn-faq" aria-labelledby="conn-faq-heading">
+        <div class="conn-faq__inner">
+          <h2 id="conn-faq-heading">Frequently Asked Questions</h2>
+          <details>
+            <summary>What are connected vehicle services?</summary>
+            <p>Connected vehicle services use vehicle data and remote connectivity to deliver diagnostics, safety insights, and fleet management tools.</p>
+          </details>
+          <details>
+            <summary>Why should I invest in connected services for my fleet?</summary>
+            <p>They help reduce downtime, improve safety, and give fleet managers actionable insights to operate more efficiently.</p>
+          </details>
+          <details>
+            <summary>What vehicles are eligible for Detroit Connect services?</summary>
+            <p>Eligibility depends on vehicle configuration and subscription. Sign in or contact your dealer to confirm coverage for your fleet.</p>
+          </details>
+          <details>
+            <summary>How do I access and use Detroit Connect services?</summary>
+            <p>Sign in with your DTNA Portal ID to access the Detroit Connect Portal and available connected services.</p>
+          </details>
+          <details>
+            <summary>Can I manage multiple vehicles or fleets from one account?</summary>
+            <p>Yes — the portal is designed to support fleet-level visibility and management across eligible vehicles.</p>
+          </details>
+          <details>
+            <summary>How is my vehicle data protected?</summary>
+            <p>Detroit Connect follows DTNA data protection practices to help keep fleet and vehicle information secure.</p>
+          </details>
+          <details>
+            <summary>How long are service terms?</summary>
+            <p>Service terms vary by subscription package. Check your account or dealer for plan-specific details.</p>
+          </details>
+          <details>
+            <summary>Where can I purchase/renew subscriptions?</summary>
+            <p>Subscriptions and renewals are available through your dealer and eligible online account flows.</p>
+          </details>
+          <details>
+            <summary>What happens if/when my subscription expires?</summary>
+            <p>Access to connected features may end when a subscription expires until it is renewed.</p>
+          </details>
+          <details>
+            <summary>Where can I find more information about Detroit Connect services?</summary>
+            <p>Sign in for full service details, or contact your local dealership for guidance.</p>
+          </details>
+          <details>
+            <summary>Who can I contact for technical issues/troubleshooting?</summary>
+            <p>Contact customer support through the portal or your local dealership for technical assistance.</p>
+          </details>
+          <details>
+            <summary>How do I cancel my connectivity services?</summary>
+            <p>Cancellation options depend on your subscription terms. Contact your dealer or account support to proceed.</p>
+          </details>
+        </div>
+      </section>
+    </main>
+
+    <footer class="ex-footer">
+      <div class="ex-footer__cols">
+        <div class="ex-footer__col">
+          <h3 class="ex-footer__col-title">About Us</h3>
+          <ul>
+            <li><a href="#">About Excelerator</a></li>
+            <li><a href="#">DTNA Parts</a></li>
+            <li><a href="#">Inner Circle Rewards</a></li>
+          </ul>
+        </div>
+        <div class="ex-footer__col">
+          <h3 class="ex-footer__col-title">Product Resources</h3>
+          <ul>
+            <li><a href="#">Allison Transmission</a></li>
+            <li><a href="#">Caterpillar</a></li>
+            <li><a href="#">Cummins</a></li>
+            <li><a href="#">Fuller Transmission</a></li>
+            <li><a href="#">Meritor</a></li>
+            <li><a href="#">Thomas Built Bus</a></li>
+          </ul>
+        </div>
+        <div class="ex-footer__col">
+          <h3 class="ex-footer__col-title">Support</h3>
+          <ul>
+            <li><a href="#">Training Videos</a></li>
+            <li><a href="#">PartsProX Quick Ref</a></li>
+          </ul>
+        </div>
+        <div class="ex-footer__col">
+          <h3 class="ex-footer__col-title">Account</h3>
+          <ul>
+            <li class="auth-logged-out"><a href="#">Sign In</a></li>
+            <li class="auth-logged-in"><a href="#">Sign Out</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="ex-footer__brand">
+        <img class="ex-footer__brand-logo" src="assets/images/excelerator-logo.png" alt="Excelerator" />
+        <img class="ex-footer__banner" src="assets/images/footer-banner.png" alt="" />
+        <p class="ex-footer__tagline">Search • Find • Buy • Deliver</p>
+      </div>
+      <div class="ex-footer__bottom">
+        <div class="ex-footer__social">
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-square"></i></a>
+        </div>
+        <div class="ex-footer__legal">
+          <a href="#">Privacy Statement</a>
+          <span class="sep" aria-hidden="true">|</span>
+          <a href="#">Terms &amp; Conditions</a>
+          <span class="sep" aria-hidden="true">|</span>
+          <a href="#">Accessibility</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/auth-toggle.js"></script>
+    <script src="js/notification-placement.js"></script>
+    <script src="js/back-to-options.js"></script>
+    <script>
+      document.querySelectorAll("[data-conn-tab]").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          document.querySelectorAll("[data-conn-tab]").forEach(function (b) {
+            b.classList.toggle("is-active", b === btn);
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

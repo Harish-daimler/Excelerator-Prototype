@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Excelerator Parts - DTNA | Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,400;0,500;0,600;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="css/excelerator.css" />
+    <link rel="stylesheet" href="css/product-header.css" />
+    <link rel="stylesheet" href="css/parts.css" />
+    <link rel="stylesheet" href="css/notification-placement.css" />
+  </head>
+  <body data-auth="logged-out" data-lob="parts">
+    <header class="product-header">
+      <!-- Logged-in: Figma Customer View -->
+      <div class="ph-logged-in-top auth-logged-in">
+        <div class="ph-brand-col">
+          <a class="ex-header__logo" href="index.html" aria-label="Excelerator home">
+            <img src="assets/images/excelerator-logo.png" alt="Excelerator" />
+          </a>
+          <button type="button" class="ph-shop-vehicle">
+            <i class="fas fa-truck" aria-hidden="true"></i>
+            Shop by Vehicle
+            <i class="fas fa-plus" aria-hidden="true"></i>
+          </button>
+        </div>
+        <form class="ph-search" role="search" action="#" onsubmit="return false;">
+          <button type="button" class="ph-search__filter" aria-label="Search filters">
+            <i class="fas fa-caret-down" aria-hidden="true"></i>
+          </button>
+          <input
+            class="ph-search__input"
+            type="search"
+            placeholder="Search by part name, number, VMRS, or cross reference"
+            aria-label="Search"
+          />
+          <button type="submit" class="ph-search__submit" aria-label="Search">
+            <i class="fas fa-search" aria-hidden="true"></i>
+          </button>
+        </form>
+        <div class="ph-user-col">
+          <div class="ph-user-row">
+            <div class="ex-account-menu">
+              <button
+                type="button"
+                class="ph-user-btn ex-account-menu__toggle"
+                aria-expanded="false"
+                aria-haspopup="true"
+                aria-controls="parts-account-in"
+              >
+                <i class="fas fa-user" aria-hidden="true"></i>
+                <span>ADXCustomer3</span>
+                <span class="ph-badge">3</span>
+                <i class="fas fa-chevron-down" aria-hidden="true"></i>
+              </button>
+              <ul id="parts-account-in" class="ex-account-menu__dropdown" role="menu" hidden>
+                <li role="none">
+                  <button type="button" role="menuitem" data-set-auth="logged-out">
+                    View logged out
+                  </button>
+                </li>
+              </ul>
+            </div>
+            <button type="button" class="ph-user-btn" aria-label="Region and language">
+              <img
+                class="ex-header__flag ex-header__flag--site"
+                src="assets/images/site-selector-icon-dtna.png"
+                alt="United States / Canada"
+              />
+              <i class="fas fa-chevron-down" aria-hidden="true"></i>
+            </button>
+          </div>
+          <div class="ph-dealer">
+            <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+            <div>
+              <div class="ph-dealer__name">Houston Freightliner</div>
+              <div class="ph-dealer__meta">50311111 | $USD</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Logged-out: live Parts header -->
+      <div class="auth-logged-out">
+        <div class="ph-logged-out-top">
+          <a class="ex-header__logo" href="index.html" aria-label="Excelerator home">
+            <img src="assets/images/excelerator-logo.png" alt="Excelerator" />
+          </a>
+          <div class="ph-logged-out-actions">
+            <div class="ex-account-menu">
+              <button
+                type="button"
+                class="ex-header__util-btn ex-account-menu__toggle"
+                aria-expanded="false"
+                aria-haspopup="true"
+                aria-controls="parts-account-out"
+              >
+                <span>Sign in</span>
+              </button>
+              <ul id="parts-account-out" class="ex-account-menu__dropdown" role="menu" hidden>
+                <li role="none">
+                  <button type="button" role="menuitem" data-set-auth="logged-in">
+                    View ADXCustomer3
+                  </button>
+                </li>
+              </ul>
+            </div>
+            <button type="button" class="ex-header__util-btn" aria-label="Region and language">
+              <img
+                class="ex-header__flag ex-header__flag--site"
+                src="assets/images/site-selector-icon-dtna.png"
+                alt="United States / Canada"
+              />
+              <i class="fas fa-chevron-down" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+        <div class="parts-header__search-row">
+          <form class="parts-search" role="search" action="#" onsubmit="return false;">
+            <button type="button" class="parts-search__filter" aria-label="Search filters">
+              <i class="fas fa-caret-down" aria-hidden="true"></i>
+            </button>
+            <input
+              type="search"
+              class="parts-search__input"
+              placeholder="Search by part name, number, VMRS, or cross reference"
+              aria-label="Search parts"
+            />
+            <button type="submit" class="parts-search__submit" aria-label="Search">
+              <i class="fas fa-search" aria-hidden="true"></i>
+            </button>
+          </form>
+          <a class="parts-dealer" href="#">
+            <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+            <span>Find My Dealer</span>
+          </a>
+        </div>
+      </div>
+
+      <nav class="ph-nav" aria-label="Primary">
+        <div class="ph-nav__lob-wrap ex-account-menu">
+          <button
+            type="button"
+            class="ph-nav__lob ex-account-menu__toggle"
+            aria-expanded="false"
+            aria-haspopup="true"
+            aria-controls="parts-lob-menu"
+          >
+            <i class="fas fa-cogs" aria-hidden="true"></i>
+            <span>Parts &amp; PartsProX</span>
+            <i class="fas fa-chevron-down" aria-hidden="true"></i>
+          </button>
+          <ul id="parts-lob-menu" class="ph-lob-dropdown ex-account-menu__dropdown" role="menu" hidden>
+            <li role="none"><a role="menuitem" href="index.html">Home</a></li>
+            <li role="none"><a role="menuitem" href="parts.html">Parts &amp; PartsProX</a></li>
+            <li role="none"><a role="menuitem" href="coverage.html">Extended Coverage</a></li>
+            <li role="none"><a role="menuitem" href="connectivity.html">Connectivity Services</a></li>
+          </ul>
+        </div>
+        <div class="ph-nav__divider" aria-hidden="true"></div>
+        <ul class="ph-nav__links auth-logged-in">
+          <li><a href="#">Dashboard</a></li>
+          <li><a href="#">Orders/Quotes</a></li>
+          <li><a href="#">My Garage</a></li>
+        </ul>
+        <div class="ph-nav__utils auth-logged-in">
+          <button type="button" aria-label="Quick actions"><i class="fas fa-bolt"></i></button>
+          <button type="button" aria-label="Favorites"><i class="far fa-star"></i></button>
+          <span class="ph-nav__cart"><i class="fas fa-shopping-cart"></i> (0 Items) $0.00</span>
+        </div>
+      </nav>
+
+      <div class="ph-subnav">
+        <span class="ph-subnav__title">Parts &amp; PartsProX</span>
+        <span class="ph-subnav__divider" aria-hidden="true"></span>
+        <a href="#">Product Categories</a>
+      </div>
+    </header>
+
+    <main>
+      <!-- Hero carousel -->
+      <section class="parts-hero" aria-label="Promotions">
+        <div id="partsHeroCarousel" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#partsHeroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#partsHeroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#partsHeroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#partsHeroCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="assets/images/parts/hero-carousel-1.png" class="d-block w-100" alt="DTNA Parts Operation Safe Driver Week Coming Soon" />
+            </div>
+            <div class="carousel-item">
+              <img src="assets/images/parts/hero-carousel-2.png" class="d-block w-100" alt="Clutch product spotlight" />
+            </div>
+            <div class="carousel-item">
+              <img src="assets/images/parts/hero-carousel-3.png" class="d-block w-100" alt="Overhaul kits promotion" />
+            </div>
+            <div class="carousel-item">
+              <img src="assets/images/parts/hero-carousel-4.png" class="d-block w-100" alt="School bus calipers promotion" />
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#partsHeroCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#partsHeroCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- Promo banners -->
+      <section class="parts-promos" aria-label="Featured promotions">
+        <div class="container-xl">
+          <div class="row g-3">
+            <div class="col-6 col-lg-3">
+              <a href="#" class="parts-promo-tile">
+                <img src="assets/images/parts/promo-detroit-reman.png" alt="Detroit Reman — Fit &amp; Perform" />
+              </a>
+            </div>
+            <div class="col-6 col-lg-3">
+              <a href="#" class="parts-promo-tile">
+                <img src="assets/images/parts/promo-landing-gear.png" alt="DTNA Parts Trailer — Landing gear" />
+              </a>
+            </div>
+            <div class="col-6 col-lg-3">
+              <a href="#" class="parts-promo-tile">
+                <img src="assets/images/parts/promo-improvements.png" alt="New improvements — better shopping experience" />
+              </a>
+            </div>
+            <div class="col-6 col-lg-3">
+              <a href="#" class="parts-promo-tile">
+                <img src="assets/images/parts/promo-alliance.png" alt="Alliance Parts — smartest choice for value" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Shop By -->
+      <section class="parts-shopby" aria-labelledby="shop-by-heading">
+        <div class="container-xl">
+          <h1 id="shop-by-heading" class="parts-shopby__title">SHOP BY</h1>
+          <div class="row g-4">
+            <div class="col-12 col-md-4">
+              <article class="parts-shop-card">
+                <img
+                  src="assets/images/parts/shop-product-categories.png"
+                  alt=""
+                  class="parts-shop-card__img"
+                />
+                <div class="parts-shop-card__body">
+                  <h2>Product Categories</h2>
+                  <ul>
+                    <li>Narrow your search and shop by product category</li>
+                    <li>
+                      Categories include, but not limited to accessories, brakes,
+                      engine and suspension
+                    </li>
+                    <li>
+                      With sub-categories and extensive filters, searching for
+                      parts has never been easier
+                    </li>
+                  </ul>
+                  <a class="ex-btn-primary" href="#">Shop by Product Category</a>
+                </div>
+              </article>
+            </div>
+            <div class="col-12 col-md-4">
+              <article class="parts-shop-card">
+                <img
+                  src="assets/images/parts/shop-alliance.png"
+                  alt=""
+                  class="parts-shop-card__img"
+                />
+                <div class="parts-shop-card__body">
+                  <h2>Alliance Parts</h2>
+                  <ul>
+                    <li>
+                      DTNA’s proprietary line of parts engineered for excellent
+                      performance and greater cost efficiency
+                    </li>
+                    <li>Parts available for all makes and models</li>
+                    <li>
+                      Built to deliver dependable service without compromising on
+                      quality
+                    </li>
+                  </ul>
+                  <a class="ex-btn-primary" href="#">Shop Alliance Parts</a>
+                </div>
+              </article>
+            </div>
+            <div class="col-12 col-md-4">
+              <article class="parts-shop-card">
+                <img
+                  src="assets/images/parts/shop-cross-reference.jpg"
+                  alt=""
+                  class="parts-shop-card__img"
+                />
+                <div class="parts-shop-card__body">
+                  <h2>Cross Reference</h2>
+                  <ul>
+                    <li>
+                      Find the right part faster with the fully integrated Cross
+                      Reference Search
+                    </li>
+                    <li>View all cross references in one easy to use screen</li>
+                    <li>
+                      Toggle between search results and cross references to find
+                      the right part you need
+                    </li>
+                  </ul>
+                  <a class="ex-btn-primary" href="#">Shop by Cross Reference</a>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Testimonials -->
+      <section class="parts-testimonials" aria-label="Customer testimonials">
+        <div id="partsTestimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img
+                src="assets/images/parts/testimonial.png"
+                class="d-block w-100"
+                alt="Easily one of the best online parts lookup services out there! — Customer Mark C."
+              />
+            </div>
+          </div>
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#partsTestimonialCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" aria-label="Slide 2" disabled></button>
+            <button type="button" aria-label="Slide 3" disabled></button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="ex-footer">
+      <div class="ex-footer__cols">
+        <div class="ex-footer__col">
+          <h3 class="ex-footer__col-title">About Us</h3>
+          <ul>
+            <li><a href="#">About Excelerator</a></li>
+            <li><a href="#">DTNA Parts</a></li>
+            <li><a href="#">Inner Circle Rewards</a></li>
+          </ul>
+        </div>
+        <div class="ex-footer__col">
+          <h3 class="ex-footer__col-title">Product Resources</h3>
+          <ul>
+            <li><a href="#">Allison Transmission</a></li>
+            <li><a href="#">Caterpillar</a></li>
+            <li><a href="#">Cummins</a></li>
+            <li><a href="#">Fuller Transmission</a></li>
+            <li><a href="#">Meritor</a></li>
+            <li><a href="#">Thomas Built Bus</a></li>
+          </ul>
+        </div>
+        <div class="ex-footer__col">
+          <h3 class="ex-footer__col-title">Support</h3>
+          <ul>
+            <li><a href="#">Feedback</a></li>
+            <li><a href="#">Find My Dealer</a></li>
+            <li><a href="#">Parts Cap</a></li>
+            <li><a href="#">PartsProX Quick Reference</a></li>
+          </ul>
+        </div>
+        <div class="ex-footer__col">
+          <h3 class="ex-footer__col-title">Account</h3>
+          <ul>
+            <li class="auth-logged-out"><a href="#">Sign In</a></li>
+            <li class="auth-logged-in"><a href="#">Sign Out</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="ex-footer__brand">
+        <img
+          class="ex-footer__brand-logo"
+          src="assets/images/excelerator-logo.png"
+          alt="Excelerator"
+        />
+        <img
+          class="ex-footer__banner"
+          src="assets/images/parts/footer-skyline.png"
+          alt="Search, find, buy, deliver cityscape illustration"
+        />
+        <p class="ex-footer__tagline">Search • Find • Buy • Deliver</p>
+      </div>
+
+      <div class="ex-footer__bottom">
+        <div class="ex-footer__social">
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-square"></i></a>
+        </div>
+        <div class="ex-footer__legal">
+          <a href="#">Privacy Statement</a>
+          <span class="sep" aria-hidden="true">|</span>
+          <a href="#">Terms &amp; Conditions</a>
+          <span class="sep" aria-hidden="true">|</span>
+          <a href="#">Accessibility</a>
+        </div>
+      </div>
+    </footer>
+
+    <a href="#" class="parts-help-tab" aria-label="Get Help">
+      <i class="far fa-comment-alt" aria-hidden="true"></i>
+      <span>Get Help</span>
+    </a>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/auth-toggle.js"></script>
+    <script src="js/notification-placement.js"></script>
+    <script src="js/back-to-options.js"></script>
+  </body>
+</html>

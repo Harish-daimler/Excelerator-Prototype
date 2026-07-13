@@ -1,0 +1,568 @@
+﻿1
+
+System notification â€” 6 placement concepts
+
+  
+All use one consistent visual language (dark slate bar, amber accent, no severity tiers) since only one urgency level is needed. Each shows how it sits across public/login/logged-in home. Session-dismissible unless noted.
+
+  
+
+    
+
+    
+
+      
+
+1a
+Top strip, above the header
+
+      
+Sits above the black header on every page, full width, always the first thing on screen. Widest reach; guaranteed visible before any nav.
+
+      
+
+        
+
+          
+
+            
+!
+
+            
+Mainframe connectivity issues may delay order processing. 
+Learn more
+
+            
+âœ•
+
+          
+
+          
+
+            
+EX
+C
+ELERATOR
+
+            
+ðŸ‘¤ ADXCustomer3 âŒ„
+
+          
+
+          
+
+Home
+
+Dashboard
+
+My Garage
+
+Orders
+
+          
+HERO IMAGE
+
+          
+
+Driving Solutions for Every Mile
+
+Explore our comprehensive products and technologies...
+
+        
+
+      
+
+      
+
+        
+Impossible to miss, seen before brand chrome even loads
+
+        
+One spot to maintain across public + logged-in layouts
+
+        
+Pushes all page content down; feels "official/IT" rather than branded
+
+      
+
+    
+
+    
+
+    
+
+      
+
+1b
+Banner below the nav bar
+
+      
+Integrated into the page body, right above the hero. Reads as part of the site rather than a system chrome bar. Supports a stack of 2+ messages.
+
+      
+
+        
+
+          
+
+            
+EX
+C
+ELERATOR
+
+            
+ðŸ‘¤ ADXCustomer3 âŒ„
+
+          
+
+          
+
+Home
+
+Dashboard
+
+My Garage
+
+Orders
+
+          
+
+            
+
+              
+!
+
+              
+Scheduled mainframe maintenance tonight, 8â€“10pm ET. 
+Learn more
+
+              
+âœ•
+
+            
+
+            
+
+              
+i
+
+              
+Order status delays possible through Friday.
+
+              
+âœ•
+
+            
+
+          
+
+          
+HERO IMAGE
+
+          
+
+Driving Solutions for Every Mile
+
+Explore our comprehensive products and technologies...
+
+        
+
+      
+
+      
+
+        
+Naturally supports a stack â€” each message its own row
+
+        
+Feels like site content, less alarming for routine notices
+
+        
+Below the fold on a slow-loading page; easier to miss than 1a
+
+      
+
+    
+
+    
+
+    
+
+      
+
+1c
+Floating toast, corner-anchored
+
+      
+Non-blocking card that slides in and stays pinned to a corner. Collapsed to one line, expands in place for full detail; badges when more than one is queued.
+
+      
+
+        
+
+          
+
+            
+EX
+C
+ELERATOR
+
+            
+ðŸ‘¤ ADXCustomer3 âŒ„
+
+          
+
+          
+
+Home
+
+Dashboard
+
+My Garage
+
+Orders
+
+          
+HERO IMAGE
+
+          
+
+Driving Solutions for Every Mile
+
+Explore our comprehensive products and technologies...
+
+        
+
+        
+
+          
+
+            
+!
+
+            
+SYSTEM STATUS
+
+            
+2
+
+            
+âœ•
+
+          
+
+          
+Mainframe issues may cause order delays. 
+View details â–¾
+
+        
+
+      
+
+      
+
+        
+Doesn't disturb layout or push content down
+
+        
+Compact badge naturally signals "more than one" at a glance
+
+        
+Corner placement is skippable; weaker fit for a truly critical outage
+
+      
+
+    
+
+    
+
+    
+
+      
+
+1d
+Header alert icon + dropdown center
+
+      
+A persistent bell/alert icon lives in the header at all times (public and logged-in), badge-counted. Clicking opens a panel listing every active notice with full detail and timestamps â€” a durable home for detail without cluttering the page.
+
+      
+
+        
+
+          
+
+            
+EX
+C
+ELERATOR
+
+            
+
+              
+
+                
+ðŸ””
+
+                
+2
+
+              
+
+              
+ðŸ‘¤ ADXCustomer3 âŒ„
+
+            
+
+            
+
+              
+SYSTEM NOTICES
+
+              
+
+                
+!
+
+                
+Mainframe connectivity issues â€” updated 2h ago. 
+Details
+
+              
+
+              
+
+                
+i
+
+                
+Planned maintenance Sat 8â€“10pm ET.
+
+              
+
+            
+
+          
+
+          
+
+Home
+
+Dashboard
+
+My Garage
+
+Orders
+
+          
+HERO IMAGE
+
+          
+
+Driving Solutions for Every Mile
+
+Explore our comprehensive products and technologies...
+
+        
+
+      
+
+      
+
+        
+One durable, always-there entry point â€” scales to any number of notices
+
+        
+Keeps homepage clean; detail lives one click away, never lost
+
+        
+Passive by default â€” needs pairing with 1a/1b for anything truly critical
+
+      
+
+    
+
+    
+
+    
+
+      
+
+1e
+Interstitial modal on entry
+
+      
+For the most critical class of message, an on-load dialog blocks the page until acknowledged â€” full room for detailed explanation, affected systems, and next steps. Suppressed for the session after "I understand."
+
+      
+
+        
+
+          
+
+            
+EX
+C
+ELERATOR
+
+            
+ðŸ‘¤ ADXCustomer3 âŒ„
+
+          
+
+          
+
+Home
+
+Dashboard
+
+My Garage
+
+Orders
+
+          
+HERO IMAGE
+
+          
+
+Driving Solutions for Every Mile
+
+Explore our comprehensive products and technologies...
+
+          
+
+            
+
+              
+
+                
+!
+
+                
+SYSTEM STATUS ALERT
+
+              
+
+              
+We're experiencing intermittent mainframe connectivity issues affecting order placement and account lookups. Our team is actively working on a resolution. Expected impact through end of day.
+
+              
+Last updated: Jul 10, 9:42am ET
+
+              
+I UNDERSTAND
+
+            
+
+          
+
+        
+
+      
+
+      
+
+        
+Guarantees the message is read â€” can't be missed or scrolled past
+
+        
+Most room for full explanation, timestamps, and an explicit acknowledgment
+
+        
+Blocking/interruptive â€” reserve for genuinely critical, low-frequency events
+
+      
+
+    
+
+    
+
+    
+
+      
+
+1f
+Sticky footer status bar
+
+      
+A slim bar pinned to the bottom of the viewport on every page, expandable upward into a detail panel. Doesn't compete with header/hero real estate at all.
+
+      
+
+        
+
+          
+
+            
+EX
+C
+ELERATOR
+
+            
+ðŸ‘¤ ADXCustomer3 âŒ„
+
+          
+
+          
+
+Home
+
+Dashboard
+
+My Garage
+
+Orders
+
+          
+HERO IMAGE
+
+          
+
+Driving Solutions for Every Mile
+
+Explore our comprehensive products and technologies...
+
+          
+
+            
+!
+
+            
+1 active system notice â€” mainframe connectivity
+
+            
+Expand â–´
+
+          
+
+        
+
+      
+
+      
+
+        
+Always present without disturbing the page above the fold
+
+        
+Feels like a status ticker â€” reads as ongoing IT communication, not alarm
+
+        
+Least visually prominent of the six; risks being ignored on first visit
+
+      
+
+    
+
+  
+
+  
+Try next: "combine 
+1d
+ notification center with 
+1a
+ top strip for critical ones" Â· "show 
+1e
+ modal copy in friendlier tone" Â· "make 
+1b
+ the pick, refine spacing"

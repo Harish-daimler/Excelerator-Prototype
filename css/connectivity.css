@@ -1,0 +1,330 @@
+/* Connectivity Services homepage */
+
+.conn-hero {
+  background: var(--ex-white);
+  padding: 2.5rem 1.5rem 2.5rem;
+}
+
+.conn-hero__inner {
+  max-width: 1140px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.conn-hero__logos {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.conn-hero__logos img {
+  height: 36px;
+  width: auto;
+  object-fit: contain;
+}
+
+.conn-hero__copy {
+  margin: 0 0 1.5rem;
+  color: var(--ex-body-text);
+  font-size: 1rem;
+  line-height: 1.55;
+  max-width: 34rem;
+}
+
+.conn-hero__copy a {
+  color: var(--ex-primary);
+  text-decoration: underline;
+}
+
+.conn-hero__media img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+}
+
+.conn-intro {
+  background: var(--ex-white);
+  padding: 1rem 1.5rem 2rem;
+}
+
+.conn-intro__inner {
+  max-width: 1140px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.conn-intro h1 {
+  font-size: 2rem;
+  font-weight: 500;
+  color: var(--ex-body-text);
+  margin: 0 0 0.85rem;
+}
+
+.conn-intro p {
+  margin: 0;
+  max-width: 40rem;
+  color: var(--ex-body-text);
+  line-height: 1.55;
+}
+
+.conn-intro__logo {
+  height: 48px;
+  width: auto;
+  flex-shrink: 0;
+}
+
+.conn-services {
+  background: var(--ex-white);
+  padding: 0 1.5rem 2.5rem;
+}
+
+.conn-services__inner {
+  max-width: 1140px;
+  margin: 0 auto;
+  background: #16182f;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.conn-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.15rem;
+  padding: 0 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.conn-tabs button {
+  background: transparent;
+  border: 0;
+  color: rgba(255, 255, 255, 0.75);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 1rem 0.85rem 0.85rem;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  white-space: nowrap;
+}
+
+.conn-tabs button.is-active {
+  color: #fff;
+  border-bottom-color: #fff;
+}
+
+.conn-services__panel {
+  background: var(--ex-white);
+  margin: 1rem;
+  border-radius: 10px;
+  padding: 1.5rem 1.5rem 1.75rem;
+}
+
+.conn-services__signin {
+  margin: 0 0 1.25rem;
+}
+
+.conn-services__panel h2 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin: 0 0 0.35rem;
+  color: var(--ex-body-text);
+}
+
+.conn-services__panel h3 {
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin: 0 0 0.75rem;
+  color: var(--ex-body-text);
+}
+
+.conn-services__panel > p {
+  margin: 0 0 1.5rem;
+  color: var(--ex-body-text);
+  max-width: 52rem;
+}
+
+.conn-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.conn-card {
+  border: 1px solid var(--ex-border);
+  border-radius: var(--ex-radius);
+  overflow: hidden;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.conn-card__img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  background: #e8f4fb;
+}
+
+.conn-card__body {
+  padding: 1rem 1.1rem 1.15rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.conn-card__body h4 {
+  font-size: 1.05rem;
+  font-weight: 500;
+  margin: 0 0 0.5rem;
+  color: var(--ex-body-text);
+}
+
+.conn-card__body p {
+  margin: 0 0 0.75rem;
+  font-size: 0.95rem;
+  color: var(--ex-body-text);
+  flex: 1;
+}
+
+.conn-card__note {
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--ex-body-text-secondary);
+}
+
+.conn-portal {
+  background: var(--ex-white);
+  padding: 3rem 1.5rem;
+  text-align: center;
+}
+
+.conn-portal h2 {
+  font-size: 1.75rem;
+  font-weight: 500;
+  margin: 0 auto 1rem;
+  max-width: 40rem;
+  color: var(--ex-body-text);
+}
+
+.conn-portal > p {
+  margin: 0 auto 2rem;
+  max-width: 46rem;
+  color: var(--ex-body-text);
+  line-height: 1.55;
+}
+
+.conn-portal__img {
+  max-width: 920px;
+  width: 100%;
+  margin: 0 auto;
+  display: block;
+}
+
+.conn-split {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.conn-split h2 {
+  font-size: 1.75rem;
+  font-weight: 500;
+  margin: 0 0 1rem;
+  color: var(--ex-body-text);
+}
+
+.conn-split p,
+.conn-split li {
+  color: var(--ex-body-text);
+  line-height: 1.55;
+}
+
+.conn-split ul {
+  margin: 0 0 1.25rem;
+  padding-left: 1.15rem;
+}
+
+.conn-split li {
+  margin-bottom: 0.55rem;
+}
+
+.conn-split img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.conn-faq {
+  background: var(--ex-bg-page);
+  padding: 3rem 1.5rem;
+}
+
+.conn-faq__inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.conn-faq h2 {
+  font-size: 1.75rem;
+  font-weight: 500;
+  margin: 0 0 1.25rem;
+  color: var(--ex-body-text);
+}
+
+.conn-faq details {
+  background: #fff;
+  border: 1px solid var(--ex-border);
+  border-radius: var(--ex-radius);
+  padding: 0.85rem 1rem;
+  margin-bottom: 0.65rem;
+}
+
+.conn-faq summary {
+  cursor: pointer;
+  font-weight: 500;
+  color: var(--ex-body-text);
+}
+
+.conn-faq details p {
+  margin: 0.75rem 0 0;
+  color: var(--ex-body-text-secondary);
+  font-size: 0.95rem;
+}
+
+@media (max-width: 991.98px) {
+  .conn-hero__inner,
+  .conn-intro__inner,
+  .conn-cards,
+  .conn-split {
+    grid-template-columns: 1fr;
+  }
+
+  .conn-intro__inner {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .conn-intro h1 {
+    font-size: 1.5rem;
+  }
+
+  .conn-tabs {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+  }
+}

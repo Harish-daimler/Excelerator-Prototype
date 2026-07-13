@@ -1,0 +1,372 @@
+/* Parts homepage — layout matching excelerator.com/truck-parts */
+
+.parts-header__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 1.5rem 0.5rem;
+}
+
+.parts-header__actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: var(--ex-white);
+  font-size: 14px;
+}
+
+.parts-header__search-row {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 0.5rem 1.5rem 1rem;
+}
+
+.parts-search {
+  display: flex;
+  flex: 1;
+  max-width: 720px;
+  margin: 0 auto;
+  height: 40px;
+  border-radius: var(--ex-radius);
+  overflow: hidden;
+  background: var(--ex-white);
+}
+
+.parts-search__filter {
+  width: 40px;
+  border: 0;
+  background: var(--ex-primary);
+  color: var(--ex-white);
+  cursor: default;
+}
+
+.parts-search__input {
+  flex: 1;
+  border: 0;
+  padding: 0 0.85rem;
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--ex-body-text);
+  outline: none;
+  min-width: 0;
+}
+
+.parts-search__input::placeholder {
+  color: #adb5bd;
+}
+
+.parts-search__submit {
+  width: 44px;
+  border: 0;
+  background: var(--ex-primary);
+  color: var(--ex-white);
+  cursor: default;
+}
+
+.parts-dealer {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--ex-white);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.parts-dealer:hover {
+  color: var(--ex-white);
+  text-decoration: underline;
+}
+
+.parts-dealer--info {
+  text-align: left;
+  line-height: 1.3;
+}
+
+.parts-dealer__name {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.parts-dealer__meta {
+  font-size: 12px;
+  opacity: 0.95;
+}
+
+.parts-nav {
+  min-height: 48px;
+}
+
+.parts-nav__lob .fa-cogs {
+  font-size: 14px;
+}
+
+.parts-lob-menu {
+  margin: 0.5rem 0.75rem 0.5rem 0.25rem;
+}
+
+.parts-lob-menu .ex-nav__home {
+  margin: 0;
+}
+
+.parts-lob-menu__dropdown {
+  left: 0;
+  right: auto;
+  min-width: 220px;
+}
+
+.parts-lob-menu__dropdown a {
+  display: block;
+  width: 100%;
+  color: var(--ex-body-text);
+  font-size: 14px;
+  text-decoration: none;
+  padding: 0.55rem 1rem;
+}
+
+.parts-lob-menu__dropdown a:hover {
+  background: var(--ex-gray-100);
+  color: var(--ex-body-text);
+  text-decoration: none;
+}
+
+.parts-subnav {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: var(--ex-gray-200);
+  padding: 0.65rem 1.5rem;
+  font-size: 14px;
+}
+
+.parts-subnav a {
+  color: var(--ex-body-text);
+  text-decoration: none;
+  font-weight: 400;
+}
+
+.parts-subnav a.is-active {
+  font-weight: 500;
+}
+
+.parts-subnav a:hover {
+  text-decoration: underline;
+  color: var(--ex-body-text);
+}
+
+.parts-subnav__divider {
+  width: 1px;
+  height: 1rem;
+  background: #adb5bd;
+}
+
+.parts-hero {
+  background: #000;
+}
+
+.parts-hero .carousel-item img {
+  max-height: 384px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.parts-hero .carousel-control-prev,
+.parts-hero .carousel-control-next {
+  width: 6%;
+}
+
+.parts-hero .carousel-control-prev-icon,
+.parts-hero .carousel-control-next-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: rgba(255, 255, 255, 0.35);
+  border-radius: 50%;
+  background-size: 50% 50%;
+}
+
+.parts-hero .carousel-indicators [data-bs-target] {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 0;
+  background-color: rgba(255, 255, 255, 0.55);
+}
+
+.parts-hero .carousel-indicators .active {
+  background-color: #fff;
+}
+
+.parts-promos {
+  background: var(--ex-bg-page);
+  padding: 1.25rem 0 0.5rem;
+}
+
+.parts-promo-tile {
+  display: block;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 2px;
+  background: var(--ex-white);
+  box-shadow: var(--ex-shadow-sm);
+}
+
+.parts-promo-tile img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.parts-shopby {
+  background: var(--ex-bg-page);
+  padding: 2rem 0 2.5rem;
+}
+
+.parts-shopby__title {
+  text-align: center;
+  font-size: 1.75rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--ex-body-text);
+  margin: 0 0 1.75rem;
+}
+
+.parts-shop-card {
+  background: var(--ex-white);
+  border-radius: var(--ex-radius);
+  box-shadow: var(--ex-shadow-sm);
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.parts-shop-card__img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  background: var(--ex-gray-100);
+}
+
+.parts-shop-card__body {
+  padding: 1.25rem 1.35rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.parts-shop-card__body h2 {
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin: 0 0 0.85rem;
+  color: var(--ex-body-text);
+}
+
+.parts-shop-card__body ul {
+  margin: 0 0 1.25rem;
+  padding-left: 1.15rem;
+  color: var(--ex-body-text);
+  flex: 1;
+}
+
+.parts-shop-card__body li {
+  margin-bottom: 0.45rem;
+  font-size: 0.95rem;
+}
+
+.parts-testimonials {
+  background: var(--ex-white);
+}
+
+.parts-testimonials .carousel-item img {
+  max-height: 220px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.parts-testimonials .carousel-indicators {
+  margin-bottom: 0.75rem;
+}
+
+.parts-testimonials .carousel-indicators [data-bs-target],
+.parts-testimonials .carousel-indicators button {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 0;
+  background-color: #ced4da;
+}
+
+.parts-testimonials .carousel-indicators .active {
+  background-color: #6c757d;
+}
+
+.parts-help-tab {
+  position: fixed;
+  right: 0;
+  top: 45%;
+  z-index: 1040;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--ex-primary);
+  color: var(--ex-white);
+  text-decoration: none;
+  padding: 0.85rem 0.45rem;
+  border-radius: 6px 0 0 6px;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  font-size: 13px;
+  font-weight: 500;
+  box-shadow: var(--ex-shadow-sm);
+}
+
+.parts-help-tab i {
+  transform: rotate(180deg);
+  font-size: 14px;
+}
+
+.parts-help-tab:hover {
+  color: var(--ex-white);
+  background: var(--ex-primary-hover);
+  text-decoration: none;
+}
+
+@media (max-width: 991.98px) {
+  .parts-header__search-row {
+    flex-wrap: wrap;
+  }
+
+  .parts-search {
+    max-width: none;
+    order: 2;
+    flex: 1 1 100%;
+  }
+
+  .parts-promo-tile img {
+    height: 180px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .parts-header__top,
+  .parts-header__search-row,
+  .parts-subnav {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .parts-promo-tile img {
+    height: 140px;
+  }
+
+  .parts-help-tab {
+    display: none;
+  }
+}

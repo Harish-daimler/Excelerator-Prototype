@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Protect Your Truck with Coverage Plans | Excelerator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,400;0,500;0,600;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="css/excelerator.css" />
+    <link rel="stylesheet" href="css/product-header.css" />
+    <link rel="stylesheet" href="css/coverage.css" />
+    <link rel="stylesheet" href="css/notification-placement.css" />
+  </head>
+  <body data-auth="logged-out" data-lob="coverage">
+    <header class="product-header">
+      <!-- Logged-in: Figma Customer View -->
+      <div class="ph-logged-in-top auth-logged-in">
+        <div class="ph-brand-col">
+          <a class="ex-header__logo" href="index.html" aria-label="Excelerator home">
+            <img src="assets/images/excelerator-logo.png" alt="Excelerator" />
+          </a>
+          <button type="button" class="ph-shop-vehicle">
+            <i class="fas fa-truck" aria-hidden="true"></i>
+            Shop by Vehicle
+            <i class="fas fa-plus" aria-hidden="true"></i>
+          </button>
+        </div>
+
+        <form class="ph-search" role="search" action="#" onsubmit="return false;">
+          <button type="button" class="ph-search__filter" aria-label="Search filters">
+            <i class="fas fa-caret-down" aria-hidden="true"></i>
+          </button>
+          <input
+            class="ph-search__input"
+            type="search"
+            placeholder="Search by part name, number, VMRS, or cross reference"
+            aria-label="Search"
+          />
+          <button type="submit" class="ph-search__submit" aria-label="Search">
+            <i class="fas fa-search" aria-hidden="true"></i>
+          </button>
+        </form>
+
+        <div class="ph-user-col">
+          <div class="ph-user-row">
+            <div class="ex-account-menu">
+              <button
+                type="button"
+                class="ph-user-btn ex-account-menu__toggle"
+                aria-expanded="false"
+                aria-haspopup="true"
+                aria-controls="cov-account-in"
+              >
+                <i class="fas fa-user" aria-hidden="true"></i>
+                <span>ADXCustomer3</span>
+                <span class="ph-badge">3</span>
+                <i class="fas fa-chevron-down" aria-hidden="true"></i>
+              </button>
+              <ul id="cov-account-in" class="ex-account-menu__dropdown" role="menu" hidden>
+                <li role="none">
+                  <button type="button" role="menuitem" data-set-auth="logged-out">
+                    View logged out
+                  </button>
+                </li>
+              </ul>
+            </div>
+            <button type="button" class="ph-user-btn" aria-label="Region and language">
+              <img
+                class="ex-header__flag ex-header__flag--site"
+                src="assets/images/site-selector-icon-dtna.png"
+                alt="United States / Canada"
+              />
+              <i class="fas fa-chevron-down" aria-hidden="true"></i>
+            </button>
+          </div>
+          <div class="ph-dealer">
+            <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+            <div>
+              <div class="ph-dealer__name">Houston Freightliner</div>
+              <div class="ph-dealer__meta">50311111 | $USD</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Logged-out top -->
+      <div class="ph-logged-out-top auth-logged-out">
+        <a class="ex-header__logo" href="index.html" aria-label="Excelerator home">
+          <img src="assets/images/excelerator-logo.png" alt="Excelerator" />
+        </a>
+        <div class="ph-logged-out-actions">
+          <div class="ex-account-menu">
+            <button
+              type="button"
+              class="ex-header__util-btn ex-account-menu__toggle"
+              aria-expanded="false"
+              aria-haspopup="true"
+              aria-controls="cov-account-out"
+            >
+              <span>Sign In</span>
+            </button>
+            <ul id="cov-account-out" class="ex-account-menu__dropdown" role="menu" hidden>
+              <li role="none">
+                <button type="button" role="menuitem" data-set-auth="logged-in">
+                  View ADXCustomer3
+                </button>
+              </li>
+            </ul>
+          </div>
+          <button type="button" class="ex-header__util-btn" aria-label="Region and language">
+            <img
+              class="ex-header__flag ex-header__flag--site"
+              src="assets/images/site-selector-icon-dtna.png"
+              alt="United States / Canada"
+            />
+            <i class="fas fa-chevron-down" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Nav row -->
+      <nav class="ph-nav" aria-label="Primary">
+        <div class="ph-nav__lob-wrap ex-account-menu">
+          <button
+            type="button"
+            class="ph-nav__lob ex-account-menu__toggle"
+            aria-expanded="false"
+            aria-haspopup="true"
+            aria-controls="cov-lob-menu"
+          >
+            <i class="fas fa-shield-alt" aria-hidden="true"></i>
+            <span>Extended Coverages</span>
+            <i class="fas fa-chevron-down" aria-hidden="true"></i>
+          </button>
+          <ul id="cov-lob-menu" class="ph-lob-dropdown ex-account-menu__dropdown" role="menu" hidden>
+            <li role="none"><a role="menuitem" href="index.html">Home</a></li>
+            <li role="none"><a role="menuitem" href="parts.html">Parts &amp; PartsProX</a></li>
+            <li role="none"><a role="menuitem" href="coverage.html">Extended Coverage</a></li>
+            <li role="none"><a role="menuitem" href="connectivity.html">Connectivity Services</a></li>
+          </ul>
+        </div>
+        <div class="ph-nav__divider" aria-hidden="true"></div>
+
+        <ul class="ph-nav__links auth-logged-in">
+          <li><a href="#">Dashboard</a></li>
+          <li><a href="#">Orders/Quotes</a></li>
+          <li><a href="#">My Garage</a></li>
+        </ul>
+
+        <ul class="ph-nav__links auth-logged-out">
+          <li><a href="index.html">Home</a></li>
+        </ul>
+
+        <div class="ph-nav__utils auth-logged-in">
+          <button type="button" aria-label="Quick actions"><i class="fas fa-bolt"></i></button>
+          <button type="button" aria-label="Favorites"><i class="far fa-star"></i></button>
+          <span class="ph-nav__cart"><i class="fas fa-shopping-cart"></i> (0 Items) $0.00</span>
+        </div>
+      </nav>
+
+      <div class="ph-subnav">
+        <span class="ph-subnav__title">Extended Coverages</span>
+        <span class="ph-subnav__divider" aria-hidden="true"></span>
+        <a href="#shop-coverage">Shop Coverage</a>
+        <a href="#enter-vin">Enter VIN</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="cov-hero" id="enter-vin">
+        <div class="cov-hero__inner">
+          <div>
+            <div class="cov-hero__logos">
+              <img src="assets/images/coverage/logo-freightliner.png" alt="Freightliner" />
+              <img src="assets/images/coverage/logo-westernstar.png" alt="Western Star" />
+              <img src="assets/images/coverage/logo-detroit.png" alt="Detroit" />
+            </div>
+            <h1>Protect Your Investment with OEM-Backed Coverage.</h1>
+            <p class="cov-hero__sub">Enter your VIN number to see available coverages.</p>
+            <a class="ex-btn-primary" href="#">
+              Enter Vin Number
+              <i class="fas fa-chevron-right" aria-hidden="true"></i>
+            </a>
+          </div>
+          <div class="cov-hero__media">
+            <img
+              src="assets/images/coverage/hero-truck.png"
+              alt="Blue Freightliner truck on a highway"
+            />
+            <div class="cov-hero__dots" aria-hidden="true">
+              <span class="is-active"></span>
+              <span></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="cov-toggle-wrap">
+        <div class="cov-toggle" role="tablist" aria-label="Coverage type">
+          <button type="button" class="is-active" data-cov-tab="new">New Coverage</button>
+          <button type="button" data-cov-tab="extend">Extend Coverage</button>
+        </div>
+      </div>
+
+      <section class="cov-start" id="shop-coverage" aria-labelledby="start-coverage-heading">
+        <div class="cov-start__inner">
+          <div class="cov-start__head">
+            <div>
+              <h2 id="start-coverage-heading">Start Coverage</h2>
+              <p>Is your base warranty or extended coverage expired?</p>
+            </div>
+            <img
+              class="cov-start__logo"
+              src="assets/images/coverage/extended-optimum.png"
+              alt="Extended OPTIMUM Used Truck Coverage"
+            />
+          </div>
+
+          <div class="cov-plan">
+            <div class="cov-plan__tabs">
+              <button type="button" class="is-active">
+                <i class="fas fa-tools" aria-hidden="true"></i> Detroit Engine
+              </button>
+              <button type="button">
+                <i class="fas fa-cog" aria-hidden="true"></i> Chassis
+              </button>
+              <button type="button">
+                <i class="fas fa-shield-alt" aria-hidden="true"></i> Standalone Coverages
+              </button>
+              <a class="ex-btn-primary" href="#">
+                Check Eligibility
+                <i class="fas fa-chevron-right" aria-hidden="true"></i>
+              </a>
+            </div>
+
+            <div class="cov-plan__card">
+              <img
+                src="assets/images/coverage/detroit-engine.jpg"
+                alt="Detroit engine"
+              />
+              <div>
+                <h3>Extended OPTIMUM - Detroit Engine</h3>
+                <p>
+                  Extended OPTIMUM engine coverage is available for Detroit DD5®,
+                  DD8®, DD13®, DD15®, and DD16® engines that do not have an active
+                  manufacturer base warranty or extended coverage.
+                </p>
+                <p>
+                  Extended OPTIMUM begins on the date the coverage is purchased.
+                  Time and distance limits are measured from the contract purchase
+                  date of the product and start from the current miles/kilometers
+                  on the odometer/hubometer.
+                </p>
+                <p>Coverage ends once the time or mileage limit of the purchase plan is reached.</p>
+                <ul>
+                  <li>
+                    On-Highway units: Coverage is limited to 750,000 miles
+                    (1,207,500 km) or 7 years, whichever occurs first.
+                  </li>
+                  <li>
+                    Vocational units: Coverage is limited to 500,000 miles
+                    (805,000 km) or 7 years, whichever occurs first.
+                  </li>
+                  <li>
+                    Medium-duty units: Coverage is limited to 400,000 miles
+                    (644,000 km) or 7 years, whichever occurs first.
+                  </li>
+                </ul>
+
+                <div class="cov-tiers">
+                  <div class="cov-tiers__head">
+                    <div>Basic</div>
+                    <div>Enhanced</div>
+                    <div>Ultimate</div>
+                  </div>
+                  <div class="cov-tiers__body">
+                    <div>
+                      <span class="cov-tiers__link">50+ Components Covered</span>
+                      <ul>
+                        <li>Air compressor</li>
+                        <li>Camshaft assembly</li>
+                        <li>Connecting rod bearings &amp; bolts</li>
+                        <li>Cylinder block &amp; head assembly</li>
+                        <li>Engine mounted sensors</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <span class="cov-tiers__link">Everything in Basic +</span>
+                      <ul>
+                        <li>Aftertreatment pressure sensors</li>
+                        <li>Aftertreatment temperature sensors</li>
+                        <li>Aftertreatment control module</li>
+                        <li>DEF pump / metering unit / injection unit</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <span class="cov-tiers__link">Everything in Basic &amp; Enhanced +</span>
+                      <ul>
+                        <li>Aftertreatment system mounting brackets &amp; clamps</li>
+                        <li>Diesel oxidation catalyst &amp; housing</li>
+                        <li>Diesel particulate filter &amp; housing</li>
+                        <li>SCR catalyst &amp; housing</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <a class="cov-show-all" href="#">
+                  Show All <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="cov-how" aria-labelledby="how-heading">
+        <h2 id="how-heading">How It Works</h2>
+        <div class="cov-how__inner">
+          <div>
+            <h3>Choose Your Coverage</h3>
+            <div class="cov-how__tabs" role="tablist">
+              <button type="button" class="is-active">Coverage</button>
+              <button type="button">Inspection</button>
+              <button type="button">Activation</button>
+            </div>
+            <p>
+              Explore our best-in-class protection plans and find the ideal fit
+              for your truck. From engine-only and chassis-only plans to bundled
+              and standalone options, you’ll see exactly what your truck
+              qualifies for. Just enter your VIN to start building your coverage.
+            </p>
+            <a class="cov-btn-outline" href="#">
+              Build Coverage
+              <i class="fas fa-chevron-right" aria-hidden="true"></i>
+            </a>
+          </div>
+          <img
+            src="assets/images/coverage/how-it-works.png"
+            alt="Person reviewing Extended Coverage on a desktop computer"
+          />
+        </div>
+      </section>
+
+      <section class="cov-benefits" aria-labelledby="benefits-heading">
+        <div class="cov-benefits__inner">
+          <h2 id="benefits-heading">Benefits</h2>
+          <p>
+            Our comprehensive extended coverage plans provide peace of mind mile
+            after mile. Designed to protect your investment, our coverages help
+            keep your truck running smoothly. Explore the key benefits below to
+            see how we help you stay on the road with confidence.
+          </p>
+          <div class="cov-benefits__grid">
+            <article class="cov-benefit-card">
+              <h3>Extensive Dealer Network</h3>
+              <p>Over 750 repair facilities across the U.S. and Canada ensure help is always nearby.</p>
+            </article>
+            <article class="cov-benefit-card">
+              <h3>Comprehensive Coverage</h3>
+              <p>Choose from coverage packages and add-ons that protect your truck and fit your budget.</p>
+            </article>
+            <article class="cov-benefit-card">
+              <h3>Transferable Warranty</h3>
+              <p>Extended Coverage transfers to future owners at no extra cost, boosting your truck's resale value.</p>
+            </article>
+            <article class="cov-benefit-card">
+              <h3>Expert Technicians</h3>
+              <p>OEM-certified technicians ensure quality repairs are done right the first time.</p>
+            </article>
+            <article class="cov-benefit-card">
+              <h3>Peace of Mind</h3>
+              <p>Avoid unexpected repair costs and stay focused on the road ahead.</p>
+            </article>
+            <article class="cov-benefit-card">
+              <h3>Reduce Costly Downtime</h3>
+              <p>Get pre-approved repairs that keep your truck on the road and avoid long delays.</p>
+            </article>
+          </div>
+          <p style="margin-top: 1.5rem">
+            <a class="ex-btn-primary" href="#">
+              Build Coverage
+              <i class="fas fa-chevron-right" aria-hidden="true"></i>
+            </a>
+          </p>
+        </div>
+      </section>
+
+      <section class="cov-split" aria-labelledby="why-heading">
+        <div>
+          <h2 id="why-heading">Why Choose Our Extended Coverage?</h2>
+          <p>
+            As the OEM for Freightliner, Western Star, and Detroit, we designed
+            and built your truck and its components, so no one knows them better
+            than we do. From minor repairs to major breakdowns, we've got you
+            covered. Our expert technicians work quickly and efficiently to get
+            your truck back in top shape. With comprehensive coverage, you can
+            focus on what matters most - keeping your business moving forward.
+          </p>
+          <a class="ex-btn-primary" href="#">
+            Enter Vin Number
+            <i class="fas fa-chevron-right" aria-hidden="true"></i>
+          </a>
+        </div>
+        <img
+          src="assets/images/coverage/why-choose.png"
+          alt="Technician performing truck maintenance"
+        />
+      </section>
+
+      <section class="cov-split" aria-labelledby="confidence-heading" style="padding-top: 0">
+        <img
+          src="assets/images/coverage/drive-confidence.png"
+          alt="Detroit engine coverage"
+        />
+        <div>
+          <h2 id="confidence-heading">Drive with Confidence</h2>
+          <ul>
+            <li>Focus on your business, while we take care of your truck.</li>
+            <li>Enjoy extended coverage that goes beyond the manufacturer's warranty.</li>
+            <li>Benefit from our hassle-free claims process, making it easy to get repairs done.</li>
+            <li>Experience peace of mind with coverage covering both parts and labor.</li>
+          </ul>
+          <a class="ex-btn-primary" href="#">
+            Check Eligibility
+            <i class="fas fa-chevron-right" aria-hidden="true"></i>
+          </a>
+        </div>
+      </section>
+
+      <section class="cov-faq" aria-labelledby="faq-heading">
+        <div class="cov-faq__inner">
+          <h2 id="faq-heading">Frequently Asked Questions</h2>
+          <details>
+            <summary>What is Extended Coverage?</summary>
+            <p>Extended Coverage protects your truck beyond the manufacturer’s base warranty with OEM-backed plans for engines, chassis, and more.</p>
+          </details>
+          <details>
+            <summary>How long does the Extended Coverage last?</summary>
+            <p>Coverage length depends on the plan and vehicle type, typically limited by time or mileage, whichever occurs first.</p>
+          </details>
+          <details>
+            <summary>What package covers the engine aftertreatment?</summary>
+            <p>Enhanced and Ultimate packages include aftertreatment components beyond the Basic engine coverage.</p>
+          </details>
+          <details>
+            <summary>What is the difference between Extended NEXT and Extended OPTIMUM?</summary>
+            <p>Extended NEXT and Extended OPTIMUM are different product families designed for different truck and warranty situations. Enter your VIN to see what you qualify for.</p>
+          </details>
+          <details>
+            <summary>Can I cover multiple trucks in my fleet, including different makes and models?</summary>
+            <p>Yes — coverage eligibility is evaluated per VIN so mixed fleets can be reviewed truck by truck.</p>
+          </details>
+          <details>
+            <summary>Can I purchase Extended OPTIMUM towing with my Extended NEXT chassis coverage?</summary>
+            <p>Standalone options such as towing may be available depending on eligibility. Check eligibility for your VIN to confirm.</p>
+          </details>
+        </div>
+      </section>
+    </main>
+
+    <footer class="ex-footer">
+      <div class="ex-footer__cols">
+        <div class="ex-footer__col">
+          <h3 class="ex-footer__col-title">About Us</h3>
+          <ul>
+            <li><a href="#">About Excelerator</a></li>
+            <li><a href="#">DTNA Parts</a></li>
+            <li><a href="#">Inner Circle Rewards</a></li>
+          </ul>
+        </div>
+        <div class="ex-footer__col">
+          <h3 class="ex-footer__col-title">Product Resources</h3>
+          <ul>
+            <li><a href="#">Allison Transmission</a></li>
+            <li><a href="#">Caterpillar</a></li>
+            <li><a href="#">Cummins</a></li>
+            <li><a href="#">Fuller Transmission</a></li>
+            <li><a href="#">Meritor</a></li>
+            <li><a href="#">Thomas Built Bus</a></li>
+          </ul>
+        </div>
+        <div class="ex-footer__col">
+          <h3 class="ex-footer__col-title">Support</h3>
+          <ul>
+            <li><a href="#">Training Videos</a></li>
+            <li><a href="#">PartsProX Quick Ref</a></li>
+          </ul>
+        </div>
+        <div class="ex-footer__col">
+          <h3 class="ex-footer__col-title">Account</h3>
+          <ul>
+            <li class="auth-logged-out"><a href="#">Sign In</a></li>
+            <li class="auth-logged-in"><a href="#">Sign Out</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="ex-footer__brand">
+        <img class="ex-footer__brand-logo" src="assets/images/excelerator-logo.png" alt="Excelerator" />
+        <img class="ex-footer__banner" src="assets/images/footer-banner.png" alt="" />
+        <p class="ex-footer__tagline">Search • Find • Buy • Deliver</p>
+      </div>
+      <div class="ex-footer__bottom">
+        <div class="ex-footer__social">
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-square"></i></a>
+        </div>
+        <div class="ex-footer__legal">
+          <a href="#">Privacy Statement</a>
+          <span class="sep" aria-hidden="true">|</span>
+          <a href="#">Terms &amp; Conditions</a>
+          <span class="sep" aria-hidden="true">|</span>
+          <a href="#">Accessibility</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/auth-toggle.js"></script>
+    <script src="js/notification-placement.js"></script>
+    <script src="js/back-to-options.js"></script>
+    <script>
+      document.querySelectorAll("[data-cov-tab]").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          document.querySelectorAll("[data-cov-tab]").forEach(function (b) {
+            b.classList.toggle("is-active", b === btn);
+          });
+        });
+      });
+      document.querySelectorAll(".cov-how__tabs button, .cov-plan__tabs > button").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          btn.parentElement.querySelectorAll("button").forEach(function (b) {
+            b.classList.toggle("is-active", b === btn);
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

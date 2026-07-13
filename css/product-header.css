@@ -1,0 +1,349 @@
+/* Shared product-line header — Figma Customer View (logged-in) + live logged-out */
+
+.product-header {
+  background: var(--ex-header-black);
+  color: var(--ex-white);
+}
+
+/* —— Logged-in top (Figma) —— */
+.ph-logged-in-top {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  grid-template-areas:
+    "logo . user"
+    "shop search dealer";
+  column-gap: 1.25rem;
+  row-gap: 0.75rem;
+  align-items: center;
+  padding: 0.85rem 1.5rem 1rem;
+}
+
+.ph-brand-col {
+  display: contents;
+}
+
+.ph-brand-col .ex-header__logo {
+  grid-area: logo;
+  align-self: center;
+}
+
+.ph-brand-col .ex-header__logo img {
+  height: 26px;
+}
+
+.ph-shop-vehicle {
+  grid-area: shop;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  height: 36px;
+  box-sizing: border-box;
+  background: var(--ex-primary);
+  color: var(--ex-white);
+  border: 0;
+  border-radius: var(--ex-radius);
+  padding: 0 0.75rem;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: default;
+  white-space: nowrap;
+}
+
+.ph-search {
+  grid-area: search;
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+  height: 36px;
+  box-sizing: border-box;
+  border-radius: var(--ex-radius);
+  overflow: hidden;
+  background: var(--ex-gray-100);
+}
+
+.ph-search__filter {
+  width: 36px;
+  flex-shrink: 0;
+  border: 0;
+  background: var(--ex-primary);
+  color: var(--ex-white);
+  cursor: default;
+}
+
+.ph-search__input {
+  flex: 1;
+  border: 0;
+  background: transparent;
+  padding: 0 0.85rem;
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 36px;
+  color: var(--ex-body-text);
+  outline: none;
+  min-width: 0;
+}
+
+.ph-search__submit {
+  width: 36px;
+  flex-shrink: 0;
+  border: 0;
+  background: var(--ex-primary);
+  color: var(--ex-white);
+  cursor: default;
+}
+
+.ph-user-col {
+  display: contents;
+}
+
+.ph-user-row {
+  grid-area: user;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1rem;
+  font-size: 14px;
+}
+
+.ph-user-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: transparent;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  padding: 0;
+  cursor: pointer;
+  position: relative;
+}
+
+.ph-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  border-radius: 999px;
+  background: #e45151;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.ph-dealer {
+  grid-area: dealer;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  justify-self: end;
+  min-height: 36px;
+  text-align: left;
+  line-height: 1.3;
+  font-size: 14px;
+}
+
+.ph-dealer__name {
+  font-weight: 500;
+  font-size: 13px;
+}
+
+.ph-dealer__meta {
+  font-size: 12px;
+  opacity: 0.95;
+}
+
+/* —— Logged-out top —— */
+.ph-logged-out-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem 1.5rem;
+}
+
+.ph-logged-out-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 14px;
+}
+
+/* —— Primary nav row —— */
+.ph-nav {
+  display: flex;
+  align-items: center;
+  background: var(--ex-navbar);
+  min-height: 48px;
+  padding: 0 1rem;
+  gap: 0.25rem;
+}
+
+.ph-nav__lob-wrap {
+  position: relative;
+  margin: 0.5rem 0.5rem 0.5rem 0.25rem;
+}
+
+.ph-nav__lob {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--ex-white);
+  color: var(--ex-body-text);
+  border: 0;
+  border-radius: 999px;
+  padding: 0.4rem 0.85rem 0.4rem 0.65rem;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.ph-nav__divider {
+  width: 1px;
+  align-self: stretch;
+  background: rgba(255, 255, 255, 0.35);
+  margin: 0.65rem 0.35rem;
+}
+
+.ph-nav__links {
+  display: flex;
+  align-items: stretch;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex: 1;
+}
+
+.ph-nav__links a {
+  display: flex;
+  align-items: center;
+  color: var(--ex-white);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 0.75rem 1rem;
+  min-height: 48px;
+}
+
+.ph-nav__links a:hover {
+  background: var(--ex-navbar-hover);
+  color: var(--ex-white);
+  text-decoration: none;
+}
+
+.ph-nav__utils {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: var(--ex-white);
+  padding-right: 0.5rem;
+  margin-left: auto;
+}
+
+.ph-nav__utils button,
+.ph-nav__cart {
+  background: transparent;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  cursor: default;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 14px;
+  padding: 0;
+}
+
+.ph-lob-dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  z-index: 1100;
+  min-width: 240px;
+  margin: 0;
+  padding: 0.35rem 0;
+  list-style: none;
+  background: var(--ex-white);
+  border: 1px solid var(--ex-border);
+  border-radius: var(--ex-radius);
+  box-shadow: var(--ex-shadow);
+}
+
+.ph-lob-dropdown a {
+  display: block;
+  padding: 0.55rem 1rem;
+  color: var(--ex-body-text);
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.ph-lob-dropdown a:hover {
+  background: var(--ex-gray-100);
+  color: var(--ex-body-text);
+  text-decoration: none;
+}
+
+/* —— Subnav —— */
+.ph-subnav {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: var(--ex-gray-200);
+  padding: 0.65rem 1.5rem;
+  font-size: 14px;
+  color: var(--ex-body-text);
+}
+
+.ph-subnav__title {
+  font-weight: 500;
+}
+
+.ph-subnav__divider {
+  width: 1px;
+  height: 1rem;
+  background: #adb5bd;
+}
+
+.ph-subnav a {
+  color: var(--ex-body-text);
+  text-decoration: none;
+  font-weight: 400;
+}
+
+.ph-subnav a:hover {
+  text-decoration: underline;
+  color: var(--ex-body-text);
+}
+
+@media (max-width: 991.98px) {
+  .ph-logged-in-top {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "logo"
+      "user"
+      "shop"
+      "search"
+      "dealer";
+  }
+
+  .ph-search {
+    max-width: none;
+  }
+
+  .ph-user-row,
+  .ph-dealer {
+    justify-self: start;
+  }
+
+  .ph-nav__utils {
+    display: none;
+  }
+}
