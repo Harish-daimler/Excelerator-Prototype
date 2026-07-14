@@ -3,12 +3,13 @@
  *
  * Swap title, intro, options, and previewUrl; cards re-render from this list.
  * Optional `image` on an option shows a thumbnail; omit it for text-only cards.
+ * Mark one option with `prioritized: true` to feature it above the others.
  */
 window.ExOptionsStory = {
   pageTitle: "System Notification Placement Options | Excelerator Prototype",
   title: "System notification placement",
   intro:
-    "We're exploring design directions for the system notification banner. Review each option below and choose the one you'd like us to move forward with. Your selection is saved for this browser session and highlighted when you return here.",
+    "Business selected Option 1 as the direction to move forward. Click the prioritized option below to preview the updated yellow banner. Other explored directions are listed afterward for reference.",
   /** Where to send the user after they pick an option */
   previewUrl: "global-homepage.html",
   /**
@@ -16,12 +17,15 @@ window.ExOptionsStory = {
    * Keep in sync with js/notification-placement.js (STORAGE_KEY) for this story.
    */
   storageKey: "ex-notice-placement",
+  prioritizedHeading: "Prioritized — click to preview",
+  otherHeading: "Other options explored",
   options: [
     {
       id: "1a",
       label: "Option 1",
       name: "Top strip, above the header",
-      desc: "Full-width notice above site chrome — highest visibility on every page.",
+      desc: "Full-width yellow notice above site chrome — highest visibility on every page. Business priority.",
+      prioritized: true,
       // image: "assets/images/options/1a.png",
     },
     {

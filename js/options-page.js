@@ -43,49 +43,108 @@
     if (story.pageTitle) document.title = story.pageTitle;
   }
 
+  function createCard(opt, selected) {
+    var btn = document.createElement("button");
+    btn.type = "button";
+    btn.className =
+      "opts-card" +
+      (selected === opt.id ? " is-selected" : "") +
+      (opt.prioritized ? " opts-card--prioritized" : "");
+    btn.setAttribute("role", "listitem");
+
+    var imageHtml = "";
+    if (opt.image) {
+      imageHtml =
+        '<span class="opts-card__media">' +
+        '<img src="' +
+        escapeHtml(opt.image) +
+        '" alt="" loading="lazy" />' +
+        "</span>";
+    }
+
+    var badgeHtml = opt.prioritized
+      ? '<span class="opts-card__badge">Prioritized</span>'
+      : "";
+
+    btn.innerHTML =
+      imageHtml +
+      '<span class="opts-card__label">' +
+      escapeHtml(opt.label) +
+      "</span>" +
+      badgeHtml +
+      '<h2 class="opts-card__title">' +
+      escapeHtml(opt.name) +
+      "</h2>" +
+      '<p class="opts-card__desc">' +
+      escapeHtml(opt.desc) +
+      "</p>" +
+      '<span class="opts-card__selected"><i class="fas fa-check-circle" aria-hidden="true"></i> Currently selected</span>';
+
+    btn.addEventListener("click", function () {
+      setSelected(opt.id);
+      window.location.href = story.previewUrl || "global-homepage.html";
+    });
+
+    return btn;
+  }
+
+  function appendSection(container, heading, options, selected) {
+    if (!options.length) return;
+
+    var section = document.createElement("section");
+    section.className = "opts-section";
+
+    if (heading) {
+      var h = document.createElement("h2");
+      h.className = "opts-section__heading";
+      h.textContent = heading;
+      section.appendChild(h);
+    }
+
+    var grid = document.createElement("div");
+    grid.className =
+      "opts-grid" + (options.length === 1 ? " opts-grid--single" : "");
+    grid.setAttribute("role", "list");
+
+    options.forEach(function (opt) {
+      grid.appendChild(createCard(opt, selected));
+    });
+
+    section.appendChild(grid);
+    container.appendChild(section);
+  }
+
   function renderCards() {
-    var grid = document.getElementById("opts-grid");
-    if (!grid || !Array.isArray(story.options)) return;
+    var wrap = document.getElementById("opts-sections");
+    if (!wrap || !Array.isArray(story.options)) return;
 
     var selected = getSelected();
-    grid.innerHTML = "";
+    var prioritized = [];
+    var other = [];
 
     story.options.forEach(function (opt) {
-      var btn = document.createElement("button");
-      btn.type = "button";
-      btn.className = "opts-card" + (selected === opt.id ? " is-selected" : "");
-      btn.setAttribute("role", "listitem");
-
-      var imageHtml = "";
-      if (opt.image) {
-        imageHtml =
-          '<span class="opts-card__media">' +
-          '<img src="' +
-          escapeHtml(opt.image) +
-          '" alt="" loading="lazy" />' +
-          "</span>";
-      }
-
-      btn.innerHTML =
-        imageHtml +
-        '<span class="opts-card__label">' +
-        escapeHtml(opt.label) +
-        "</span>" +
-        '<h2 class="opts-card__title">' +
-        escapeHtml(opt.name) +
-        "</h2>" +
-        '<p class="opts-card__desc">' +
-        escapeHtml(opt.desc) +
-        "</p>" +
-        '<span class="opts-card__selected"><i class="fas fa-check-circle" aria-hidden="true"></i> Currently selected</span>';
-
-      btn.addEventListener("click", function () {
-        setSelected(opt.id);
-        window.location.href = story.previewUrl || "global-homepage.html";
-      });
-
-      grid.appendChild(btn);
+      if (opt.prioritized) prioritized.push(opt);
+      else other.push(opt);
     });
+
+    wrap.innerHTML = "";
+
+    if (prioritized.length || other.length) {
+      appendSection(
+        wrap,
+        story.prioritizedHeading || "Prioritized",
+        prioritized.length ? prioritized : story.options,
+        selected
+      );
+      if (prioritized.length) {
+        appendSection(
+          wrap,
+          story.otherHeading || "Other options",
+          other,
+          selected
+        );
+      }
+    }
   }
 
   function init() {
