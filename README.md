@@ -12,33 +12,29 @@ npx --yes serve .
 
 ## Stories
 
-| Story | Options landing |
+| Story | Entry |
 | --- | --- |
 | System Notification Banner | [`stories/notification-banner/options.html`](stories/notification-banner/options.html) |
-| Dealer Access Approval | [`stories/dealer-access-approval/options.html`](stories/dealer-access-approval/options.html) |
+| Dealer Access Approval | [`stories/dealer-access-approval/email.html`](stories/dealer-access-approval/email.html) |
 
-Story folders follow:
+Options-based stories follow:
 
 ```
 stories/<story-name>/options.html
 stories/<story-name>/options-story.js
-stories/<story-name>/<option-name>/screen-1.html
+stories/<story-name>/<option-name>/…
 ```
 
 ### Dealer Access Approval
 
-Shared flow:
+Single decided flow (`stories/dealer-access-approval/`):
 
-- `email.html` — Outlook-wrapped Screen 1
-- `screen-2.html` — Approve Dealer Access (Confirm routes by stored option)
-- `decline.html` — shared decline end state
+1. `email.html` — Outlook-wrapped welcome email  
+2. `screen-2.html` — Approve Dealer Access (Confirm → Screen 3; Decline → `decline.html`)  
+3. `screen-3.html` — Account active + optional password  
+4. `skip-end.html` or `screen-4.html` — terminal states  
 
-Per Screen 3 layout (`option-a` / `option-b` / `option-c`):
-
-- `screen-3-with-steps.html` / `screen-3-no-steps.html`
-- `skip-end.html` / `screen-4.html`
-
-Options page: 3 cards × With/Without step indicator. Each link starts at Email with `?option=&steps=` so Confirm lands on the matching Screen 3.
+Features hub links straight to `email.html`.
 
 ### Options story pattern
 

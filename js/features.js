@@ -18,8 +18,8 @@ window.ExFeatures = {
       id: "dealer-access-approval",
       label: "Feature",
       name: "Dealer Access Approval",
-      desc: "Two-step welcome + approve flow. Compare three info-card layouts that emphasize dealership name and fix Dealer Family asymmetry.",
-      href: "stories/dealer-access-approval/options.html",
+      desc: "Email → approve dealer access → optional password setup. Single decided flow.",
+      href: "stories/dealer-access-approval/email.html",
     },
   ],
 };

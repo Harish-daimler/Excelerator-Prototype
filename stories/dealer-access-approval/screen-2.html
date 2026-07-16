@@ -20,23 +20,15 @@
     <link rel="stylesheet" href="../../css/dealer-access.css" />
   </head>
   <body class="da-page da-page--site" data-dealer-access data-da-root="../..">
-    <a class="da-back" href="options.html"
+    <a class="da-back" href="../../index.html"
       ><i class="fas fa-th-large" aria-hidden="true"></i
-      ><span>Back to Options</span></a
+      ><span>All features</span></a
     >
 
     <div data-da-site-header></div>
 
     <div class="da-shell">
       <div class="da-shell__card">
-        <div class="da-steps" aria-label="Progress">
-          <span class="da-steps__dot is-done" aria-label="Step 1 complete"
-            ><i class="fas fa-check" aria-hidden="true"></i
-          ></span>
-          <span class="da-steps__line" aria-hidden="true"></span>
-          <span class="da-steps__dot is-current" aria-label="Step 2 current"></span>
-        </div>
-
         <h1 class="da-screen-title">Approve Dealer Access</h1>
 
         <section class="da-card da-card--hero" aria-label="Requesting dealership">
@@ -56,7 +48,10 @@
             >
           </div>
 
-          <h2 class="da-hero-name">Fort Mill Freightliner</h2>
+          <div class="da-field">
+            <span class="da-field__label">Dealership Name</span>
+            <h2 class="da-hero-name">Fort Mill Freightliner</h2>
+          </div>
 
           <div class="da-meta-row">
             <div class="da-field">
@@ -94,7 +89,8 @@
             <label class="da-radio">
               <input type="radio" name="decision" value="approve-icr" />
               <span
-                >Yes, I approve and want to save with Inner Circle Rewards*</span
+                >Yes, I approve and want to save with
+                <span class="da-radio__icr">Inner Circle Rewards</span>*</span
               >
             </label>
             <label class="da-radio">
@@ -111,8 +107,10 @@
           </div>
 
           <p class="da-decision__note">
-            *Inner Circle Rewards™ — Save money on eligible parts orders. Free
-            to join. By enrolling you agree to the
+            *Inner Circle Rewards<sup>SM</sup> is DTNA’s loyalty program designed
+            to get you the maximum discount when shopping online for truck and
+            bus parts. Save money on eligible parts orders. Free to join. By
+            enrolling you agree to the
             <a href="#">program rules</a>.
           </p>
 
@@ -133,7 +131,6 @@
       </div>
     </div>
 
-    <script src="../../js/dealer-access-route.js"></script>
     <script src="../../js/dealer-access-header.js"></script>
     <script src="../../js/dealer-access-decision.js"></script>
   </body>

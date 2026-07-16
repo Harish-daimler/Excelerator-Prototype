@@ -9,6 +9,7 @@
   var resetBtn = form.querySelector("[data-da-reset]");
   var confirmBtn = form.querySelector("[data-da-confirm]");
   var declineUrl = form.getAttribute("data-decline-url") || "decline.html";
+  var approveUrl = form.getAttribute("data-approve-url") || "screen-3.html";
 
   function selectedValue() {
     var checked = form.querySelector('input[name="decision"]:checked');
@@ -36,20 +37,7 @@
       return;
     }
 
-    var route =
-      window.ExDealerAccessRoute && window.ExDealerAccessRoute.load
-        ? window.ExDealerAccessRoute.load()
-        : null;
-    var path =
-      window.ExDealerAccessRoute && window.ExDealerAccessRoute.screen3Path
-        ? window.ExDealerAccessRoute.screen3Path(route)
-        : null;
-
-    if (!path) {
-      // Fallback if reviewer opened Screen 2 without an options entry
-      path = "option-a/screen-3-no-steps.html";
-    }
-    window.location.href = path;
+    window.location.href = approveUrl;
   }
 
   radios.forEach(function (radio) {

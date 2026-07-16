@@ -1,6 +1,7 @@
 /**
  * Optional password setup on dealer-access Screen 3.
  * Terms are only required when the user is actively setting a password.
+ * Requirement / match checks run on Create password submit.
  */
 (function () {
   var form = document.querySelector("[data-da-password-form]");
@@ -11,6 +12,8 @@
   var terms = form.querySelector("#da-terms");
   var termsLabel = form.querySelector("[data-da-terms]");
   var errorEl = form.querySelector("[data-da-error]");
+  var reqsEl = form.querySelector("[data-da-password-reqs]");
+  var matchErrorEl = form.querySelector("[data-da-match-error]");
   var skipBtn = form.querySelector("[data-da-skip]");
   var skipUrl = form.getAttribute("data-skip-url") || "skip-end.html";
   var successUrl = form.getAttribute("data-success-url") || "screen-4.html";
@@ -20,6 +23,19 @@
       (password && password.value.trim().length > 0) ||
       (confirm && confirm.value.trim().length > 0)
     );
+  }
+
+  function hasFourConsecutiveSame(value) {
+    return /(.)\1{3,}/.test(value);
+  }
+
+  function meetsPasswordRequirements(value) {
+    if (!value || value.length < 8) return false;
+    if (!/[A-Z]/.test(value)) return false;
+    if (!/[a-z]/.test(value)) return false;
+    if (!/[0-9]/.test(value)) return false;
+    if (hasFourConsecutiveSame(value)) return false;
+    return true;
   }
 
   function syncTermsState() {
@@ -43,24 +59,57 @@
     errorEl.classList.remove("is-visible");
   }
 
+  function setReqsInvalid(invalid) {
+    if (!reqsEl) return;
+    reqsEl.classList.toggle("is-invalid", invalid);
+  }
+
+  function setMatchError(visible) {
+    if (!matchErrorEl) return;
+    if (visible) {
+      matchErrorEl.removeAttribute("hidden");
+    } else {
+      matchErrorEl.setAttribute("hidden", "");
+    }
+  }
+
+  function clearFieldErrors() {
+    setReqsInvalid(false);
+    setMatchError(false);
+  }
+
   function onSubmit(event) {
     event.preventDefault();
     clearError();
+    clearFieldErrors();
 
     if (!isSettingPassword()) {
       showError("Enter a password to continue, or choose Skip for now.");
       return;
     }
 
-    if (password.value !== confirm.value) {
-      showError("Passwords do not match.");
-      return;
+    var passwordOk = meetsPasswordRequirements(password.value);
+    var passwordsMatch = password.value === confirm.value;
+    var valid = true;
+
+    if (!passwordOk) {
+      setReqsInvalid(true);
+      valid = false;
+    }
+
+    if (!passwordsMatch) {
+      setMatchError(true);
+      valid = false;
     }
 
     if (!terms.checked) {
-      showError("Please accept the Terms & Conditions to create a password.");
-      return;
+      showError(
+        "Please accept Excelerator Terms & Conditions and DTNA Privacy Policy to create a password."
+      );
+      valid = false;
     }
+
+    if (!valid) return;
 
     window.location.href = successUrl;
   }
