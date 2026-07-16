@@ -27,14 +27,18 @@ stories/<story-name>/<option-name>/screen-1.html
 
 ### Dealer Access Approval
 
-Per layout option (`option-a` / `option-b` / `option-c`):
+Shared flow:
 
-- Screens 1–2 — welcome + approve
-- `screen-3-with-steps.html` / `screen-3-no-steps.html` — account already active + optional password
-- `skip-end.html` — skip password
-- `screen-4.html` — password created confirmation
+- `email.html` — Outlook-wrapped Screen 1
+- `screen-2.html` — Approve Dealer Access (Confirm routes by stored option)
+- `decline.html` — shared decline end state
 
-The options page lists Screen 1 and both Screen 3 entry points. Screen 2 **Continue** is intentionally not wired to Screen 3 yet.
+Per Screen 3 layout (`option-a` / `option-b` / `option-c`):
+
+- `screen-3-with-steps.html` / `screen-3-no-steps.html`
+- `skip-end.html` / `screen-4.html`
+
+Options page: 3 cards × With/Without step indicator. Each link starts at Email with `?option=&steps=` so Confirm lands on the matching Screen 3.
 
 ### Options story pattern
 
