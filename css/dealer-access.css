@@ -1,0 +1,859 @@
+/* Dealer Access Approval flow — Excelerator-styled */
+
+.da-page {
+  min-height: 100vh;
+  background: var(--ex-white);
+  color: var(--ex-body-text);
+  font-family: var(--ex-font);
+}
+
+.da-back {
+  position: fixed;
+  left: 1rem;
+  bottom: 1rem;
+  z-index: 1050;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.55rem 0.85rem;
+  background: #fff;
+  border: 1px solid var(--ex-border);
+  border-radius: var(--ex-radius);
+  box-shadow: var(--ex-shadow-sm);
+  color: var(--ex-tertiary);
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.da-back:hover {
+  background: var(--ex-gray-100);
+  color: var(--ex-tertiary);
+  text-decoration: none;
+}
+
+/* —— Screen 1 welcome header —— */
+.da-welcome {
+  background: var(--ex-header-black);
+  color: var(--ex-white);
+  padding: 2rem 1.5rem 2.25rem;
+}
+
+.da-welcome__inner {
+  max-width: 960px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.da-welcome__title {
+  margin: 0 0 0.75rem;
+  font-size: clamp(1.6rem, 2.5vw, 2rem);
+  font-weight: 500;
+}
+
+.da-welcome__copy {
+  margin: 0;
+  max-width: 36rem;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.da-welcome__logo {
+  height: 28px;
+  width: auto;
+  margin-top: 0.25rem;
+}
+
+/* —— Screen body —— */
+.da-main {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 3rem;
+}
+
+.da-main--wide {
+  max-width: 760px;
+}
+
+.da-lead {
+  margin: 0 0 1.5rem;
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--ex-body-text);
+}
+
+.da-section-label {
+  margin: 0 0 0.75rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--ex-body-text-secondary);
+}
+
+/* —— Shared info card shell —— */
+.da-card {
+  background: #eef7fc;
+  border-radius: 10px;
+  padding: 1.15rem 1.25rem 1.35rem;
+  margin-bottom: 1.25rem;
+}
+
+.da-card__top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1.25rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid rgba(14, 152, 222, 0.18);
+}
+
+.da-requester {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+  font-size: 0.92rem;
+  color: var(--ex-body-text);
+}
+
+.da-requester span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.da-requester i {
+  color: var(--ex-primary);
+}
+
+.da-verified {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--ex-success);
+  white-space: nowrap;
+}
+
+.da-field__label {
+  display: block;
+  margin-bottom: 0.2rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--ex-body-text-secondary);
+}
+
+.da-field__value {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--ex-header-black);
+  line-height: 1.4;
+}
+
+/* Option A — hero stack */
+.da-card--hero .da-hero-name {
+  margin: 0 0 0.85rem;
+  font-size: 1.45rem;
+  font-weight: 500;
+  color: var(--ex-header-black);
+  line-height: 1.25;
+}
+
+.da-card--hero .da-meta-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.da-card--hero .da-hero-family {
+  padding-top: 0.85rem;
+  border-top: 1px solid rgba(14, 152, 222, 0.18);
+}
+
+/* Option B — identity vs location */
+.da-card--columns .da-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem 2rem;
+}
+
+.da-card--columns .da-identity-name {
+  margin: 0 0 0.85rem;
+  font-size: 1.35rem;
+  font-weight: 500;
+  color: var(--ex-header-black);
+  line-height: 1.25;
+}
+
+.da-card--columns .da-identity .da-field + .da-field {
+  margin-top: 0.85rem;
+}
+
+.da-card--columns .da-location .da-field + .da-field {
+  margin-top: 0.85rem;
+}
+
+/* Option C — featured band */
+.da-card--band .da-name-band {
+  background: var(--ex-primary);
+  color: var(--ex-white);
+  border-radius: 8px;
+  padding: 0.85rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.da-card--band .da-name-band__label {
+  display: block;
+  margin-bottom: 0.15rem;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+.da-card--band .da-name-band__value {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+.da-card--band .da-chip-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.85rem 1rem;
+}
+
+.da-card--band .da-chip-row--dealership {
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 1rem;
+}
+
+.da-card--band .da-band-family {
+  padding-top: 0.85rem;
+  border-top: 1px solid rgba(14, 152, 222, 0.18);
+}
+
+/* Primary CTA */
+.da-btn-primary {
+  display: block;
+  width: 100%;
+  border: 0;
+  border-radius: var(--ex-radius);
+  background: var(--ex-primary);
+  color: var(--ex-white);
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.85rem 1.25rem;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.da-btn-primary:hover {
+  background: var(--ex-primary-hover);
+  color: var(--ex-white);
+  text-decoration: none;
+}
+
+.da-why {
+  margin-top: 1.75rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--ex-border);
+}
+
+.da-why__box {
+  background: var(--ex-gray-100);
+  border-radius: var(--ex-radius);
+  padding: 1rem 1.15rem;
+  font-size: 0.9rem;
+  color: var(--ex-body-text-secondary);
+  line-height: 1.5;
+}
+
+.da-why__box a {
+  color: var(--ex-tertiary);
+  text-decoration: underline;
+}
+
+.da-skyline {
+  margin-top: 2rem;
+  height: 120px;
+  border-radius: var(--ex-radius);
+  background:
+    linear-gradient(180deg, transparent 40%, rgba(14, 152, 222, 0.12) 100%),
+    repeating-linear-gradient(
+      90deg,
+      #d7e8f3 0 28px,
+      #c5dcec 28px 40px,
+      #d7e8f3 40px 72px,
+      #b9d4e8 72px 88px,
+      #d7e8f3 88px 120px
+    );
+  opacity: 0.9;
+}
+
+/* —— Screen 2 —— */
+.da-steps {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  margin: 0 auto 1.25rem;
+}
+
+.da-steps__dot {
+  width: 1.65rem;
+  height: 1.65rem;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  border: 2px solid var(--ex-border);
+  background: var(--ex-white);
+  color: var(--ex-body-text-secondary);
+}
+
+.da-steps__dot.is-done {
+  background: var(--ex-primary);
+  border-color: var(--ex-primary);
+  color: var(--ex-white);
+}
+
+.da-steps__dot.is-current {
+  border-color: var(--ex-primary);
+  color: var(--ex-primary);
+}
+
+.da-steps__line {
+  width: 2.5rem;
+  height: 2px;
+  background: var(--ex-border);
+}
+
+.da-screen-title {
+  margin: 0 0 1.5rem;
+  text-align: center;
+  font-size: 1.65rem;
+  font-weight: 500;
+  color: var(--ex-header-black);
+}
+
+/* Screen 2: recap card is secondary; decision panel is primary focus */
+.da-main--wide .da-card {
+  background: var(--ex-gray-100);
+  border: 1px solid var(--ex-border);
+  box-shadow: none;
+  padding: 0.95rem 1.1rem 1.05rem;
+  margin-bottom: 1.75rem;
+  opacity: 1;
+}
+
+.da-main--wide .da-card__top {
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.65rem;
+  border-bottom-color: var(--ex-border);
+}
+
+.da-main--wide .da-hero-name,
+.da-main--wide .da-identity-name {
+  font-size: 1.15rem;
+}
+
+.da-main--wide .da-card--band .da-name-band {
+  background: var(--ex-gray-200);
+  color: var(--ex-header-black);
+  padding: 0.65rem 0.85rem;
+}
+
+.da-main--wide .da-card--band .da-name-band__label {
+  opacity: 1;
+  color: var(--ex-body-text-secondary);
+}
+
+.da-main--wide .da-card--band .da-name-band__value {
+  font-size: 1.15rem;
+}
+
+.da-main--wide .da-card--hero .da-hero-family,
+.da-main--wide .da-card--band .da-band-family {
+  border-top-color: var(--ex-border);
+}
+
+.da-decision {
+  background: var(--ex-white);
+  border: 2px solid var(--ex-primary);
+  border-radius: 10px;
+  box-shadow: var(--ex-shadow);
+  padding: 1.35rem 1.4rem 1.4rem;
+  margin-bottom: 0;
+}
+
+.da-decision__title {
+  margin: 0 0 0.85rem;
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: var(--ex-header-black);
+}
+
+.da-decision__disclaimer {
+  margin: 0 0 1.15rem;
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--ex-body-text-secondary);
+  line-height: 1.5;
+}
+
+.da-radios {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin: 0 0 1.15rem;
+}
+
+.da-radio {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--ex-header-black);
+  cursor: pointer;
+  padding: 0.7rem 0.85rem;
+  border: 1px solid var(--ex-border);
+  border-radius: var(--ex-radius);
+  background: var(--ex-gray-100);
+}
+
+.da-radio:has(input:checked) {
+  border-color: var(--ex-primary);
+  background: #eef7fc;
+  box-shadow: inset 3px 0 0 var(--ex-primary);
+}
+
+.da-radio input {
+  margin-top: 0.2rem;
+  accent-color: var(--ex-primary);
+}
+
+.da-decision__note {
+  margin: 0 0 1.25rem;
+  font-size: 0.82rem;
+  color: var(--ex-body-text-secondary);
+  line-height: 1.45;
+}
+
+.da-decision .da-actions {
+  padding-top: 1.15rem;
+  border-top: 1px solid var(--ex-border);
+}
+
+.da-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+}
+
+.da-btn-secondary {
+  border: 1px solid var(--ex-border);
+  border-radius: var(--ex-radius);
+  background: var(--ex-white);
+  color: var(--ex-body-text);
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 0.65rem 1.15rem;
+  cursor: pointer;
+}
+
+.da-btn-secondary:hover {
+  background: var(--ex-gray-100);
+}
+
+.da-actions .da-btn-primary {
+  width: auto;
+  display: inline-block;
+  padding: 0.65rem 1.35rem;
+}
+
+/* —— Screen 3: account active + optional password —— */
+.da-active {
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
+}
+
+.da-active--hero {
+  background: #eef7fc;
+  padding: 1.35rem 1.4rem 1.45rem;
+}
+
+.da-active--hero .da-active__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0 0 0.65rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--ex-success);
+}
+
+.da-active--hero .da-active__title {
+  margin: 0 0 0.65rem;
+  font-size: 1.55rem;
+  font-weight: 500;
+  color: var(--ex-header-black);
+  line-height: 1.25;
+}
+
+.da-active--hero .da-active__body {
+  margin: 0;
+  font-size: 0.98rem;
+  line-height: 1.55;
+  color: var(--ex-body-text);
+}
+
+.da-active--columns {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 1.25rem;
+  align-items: stretch;
+  background: transparent;
+  padding: 0;
+}
+
+.da-active--columns .da-active__panel {
+  background: #eef7fc;
+  border-radius: 10px;
+  padding: 1.25rem 1.3rem;
+}
+
+.da-active--columns .da-active__title {
+  margin: 0 0 0.55rem;
+  font-size: 1.35rem;
+  font-weight: 500;
+  color: var(--ex-header-black);
+}
+
+.da-active--columns .da-active__body {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--ex-body-text);
+}
+
+.da-active--columns .da-active__aside {
+  background: var(--ex-gray-100);
+  border: 1px solid var(--ex-border);
+  border-radius: 10px;
+  padding: 1.15rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.da-active--columns .da-active__aside-label {
+  margin: 0 0 0.35rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--ex-body-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.da-active--columns .da-active__aside-dealer {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: var(--ex-header-black);
+  line-height: 1.3;
+}
+
+.da-active--band {
+  background: var(--ex-gray-100);
+  border: 1px solid var(--ex-border);
+  padding: 1.15rem 1.2rem 1.3rem;
+}
+
+.da-active--band .da-active__band {
+  background: var(--ex-success);
+  color: var(--ex-white);
+  border-radius: 8px;
+  padding: 0.9rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.da-active--band .da-active__band-label {
+  display: block;
+  margin-bottom: 0.15rem;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+
+.da-active--band .da-active__title {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+.da-active--band .da-active__body {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--ex-body-text);
+}
+
+.da-password {
+  background: var(--ex-white);
+  border: 2px solid var(--ex-primary);
+  border-radius: 10px;
+  box-shadow: var(--ex-shadow);
+  padding: 1.35rem 1.4rem 1.4rem;
+}
+
+.da-password__title {
+  margin: 0 0 0.35rem;
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: var(--ex-header-black);
+}
+
+.da-password__optional {
+  display: inline-block;
+  margin: 0 0 1rem;
+  padding: 0.15rem 0.45rem;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--ex-body-text);
+  background: var(--ex-warning);
+  border-radius: 4px;
+}
+
+.da-password__hint {
+  margin: 0 0 1.15rem;
+  font-size: 0.9rem;
+  color: var(--ex-body-text-secondary);
+  line-height: 1.45;
+}
+
+.da-form-field {
+  margin-bottom: 1rem;
+}
+
+.da-form-field label {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--ex-body-text);
+}
+
+.da-form-field input[type="password"],
+.da-form-field input[type="text"] {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid var(--ex-border);
+  border-radius: var(--ex-radius);
+  padding: 0.65rem 0.85rem;
+  font-family: inherit;
+  font-size: 0.95rem;
+  color: var(--ex-header-black);
+  background: var(--ex-white);
+}
+
+.da-form-field input:focus {
+  outline: 2px solid rgba(14, 152, 222, 0.35);
+  border-color: var(--ex-primary);
+}
+
+.da-terms {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  margin: 0.25rem 0 1.25rem;
+  font-size: 0.9rem;
+  color: var(--ex-body-text);
+  cursor: pointer;
+}
+
+.da-terms input {
+  margin-top: 0.2rem;
+  accent-color: var(--ex-primary);
+}
+
+.da-terms.is-muted {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.da-terms a {
+  color: var(--ex-tertiary);
+  text-decoration: underline;
+}
+
+.da-password__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.75rem;
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--ex-border);
+}
+
+.da-password__actions .da-btn-primary {
+  width: auto;
+  display: inline-block;
+  padding: 0.65rem 1.35rem;
+}
+
+.da-btn-skip {
+  border: 0;
+  background: transparent;
+  color: var(--ex-tertiary);
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 0.65rem 0.5rem;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.da-btn-skip:hover {
+  color: var(--ex-primary-hover);
+}
+
+.da-form-error {
+  display: none;
+  margin: 0 0 1rem;
+  padding: 0.65rem 0.85rem;
+  border-radius: var(--ex-radius);
+  background: #fdecec;
+  color: var(--ex-danger);
+  font-size: 0.88rem;
+}
+
+.da-form-error.is-visible {
+  display: block;
+}
+
+/* —— Terminal screens (skip-end / screen 4) —— */
+.da-complete {
+  text-align: center;
+  max-width: 32rem;
+  margin: 0 auto;
+  padding: 1rem 0 2rem;
+}
+
+.da-complete--hero .da-complete__title {
+  margin: 0 0 0.85rem;
+  font-size: 1.75rem;
+  font-weight: 500;
+  color: var(--ex-header-black);
+  line-height: 1.25;
+}
+
+.da-complete--columns {
+  text-align: left;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+.da-complete--columns .da-complete__panel {
+  background: #eef7fc;
+  border-radius: 10px;
+  padding: 1.35rem 1.4rem;
+}
+
+.da-complete--columns .da-complete__title {
+  margin: 0 0 0.65rem;
+  font-size: 1.45rem;
+  font-weight: 500;
+  color: var(--ex-header-black);
+}
+
+.da-complete--band .da-complete__band {
+  background: var(--ex-primary);
+  color: var(--ex-white);
+  border-radius: 8px;
+  padding: 1rem 1.15rem;
+  margin-bottom: 1.15rem;
+  text-align: left;
+}
+
+.da-complete--band .da-complete__title {
+  margin: 0;
+  font-size: 1.45rem;
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+.da-complete__body {
+  margin: 0 0 1.5rem;
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--ex-body-text);
+}
+
+.da-complete--band .da-complete__body {
+  text-align: left;
+}
+
+.da-complete .da-btn-primary {
+  width: auto;
+  display: inline-block;
+  min-width: 10rem;
+  padding: 0.75rem 1.5rem;
+}
+
+.da-complete--columns .da-btn-primary {
+  width: 100%;
+}
+
+@media (max-width: 639.98px) {
+  .da-welcome__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .da-welcome__logo {
+    order: -1;
+  }
+
+  .da-card--hero .da-meta-row,
+  .da-card--columns .da-split,
+  .da-card--band .da-chip-row,
+  .da-active--columns {
+    grid-template-columns: 1fr;
+  }
+
+  .da-actions,
+  .da-password__actions {
+    flex-direction: column-reverse;
+  }
+
+  .da-actions .da-btn-primary,
+  .da-btn-secondary,
+  .da-password__actions .da-btn-primary,
+  .da-btn-skip {
+    width: 100%;
+    text-align: center;
+  }
+}

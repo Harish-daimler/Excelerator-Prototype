@@ -1,6 +1,6 @@
 /**
  * Renders the options landing page from window.ExOptionsStory.
- * Keep story content in js/options-story.js — this file is the shared shell.
+ * Keep story content in each story's options-story.js — this file is the shared shell.
  */
 (function () {
   var story = window.ExOptionsStory;
@@ -38,18 +38,30 @@
   function renderHero() {
     var titleEl = document.getElementById("opts-title");
     var introEl = document.getElementById("opts-intro");
+    var hubEl = document.getElementById("opts-hub-link");
     if (titleEl) titleEl.textContent = story.title || "";
     if (introEl) introEl.textContent = story.intro || "";
     if (story.pageTitle) document.title = story.pageTitle;
+    if (hubEl) {
+      if (story.hubUrl) {
+        hubEl.href = story.hubUrl;
+        hubEl.hidden = false;
+      } else {
+        hubEl.hidden = true;
+      }
+    }
   }
 
   function createCard(opt, selected) {
-    var btn = document.createElement("button");
-    btn.type = "button";
+    var btn = document.createElement(opt.links && opt.links.length ? "div" : "button");
+    if (!opt.links || !opt.links.length) {
+      btn.type = "button";
+    }
     btn.className =
       "opts-card" +
       (selected === opt.id ? " is-selected" : "") +
-      (opt.prioritized ? " opts-card--prioritized" : "");
+      (opt.prioritized ? " opts-card--prioritized" : "") +
+      (opt.links && opt.links.length ? " opts-card--static" : "");
     btn.setAttribute("role", "listitem");
 
     var imageHtml = "";
@@ -80,10 +92,26 @@
       "</p>" +
       '<span class="opts-card__selected"><i class="fas fa-check-circle" aria-hidden="true"></i> Currently selected</span>';
 
-    btn.addEventListener("click", function () {
-      setSelected(opt.id);
-      window.location.href = story.previewUrl || "global-homepage.html";
-    });
+    if (opt.links && opt.links.length) {
+      var links = document.createElement("div");
+      links.className = "opts-card__links";
+      opt.links.forEach(function (link) {
+        var a = document.createElement("a");
+        a.className = "opts-card__link";
+        a.href = link.href;
+        a.textContent = link.label;
+        a.addEventListener("click", function () {
+          setSelected(opt.id);
+        });
+        links.appendChild(a);
+      });
+      btn.appendChild(links);
+    } else {
+      btn.addEventListener("click", function () {
+        setSelected(opt.id);
+        window.location.href = opt.previewUrl || story.previewUrl || "#";
+      });
+    }
 
     return btn;
   }
@@ -129,21 +157,21 @@
 
     wrap.innerHTML = "";
 
-    if (prioritized.length || other.length) {
+    if (prioritized.length) {
       appendSection(
         wrap,
         story.prioritizedHeading || "Prioritized",
-        prioritized.length ? prioritized : story.options,
+        prioritized,
         selected
       );
-      if (prioritized.length) {
-        appendSection(
-          wrap,
-          story.otherHeading || "Other options",
-          other,
-          selected
-        );
-      }
+      appendSection(
+        wrap,
+        story.otherHeading || "Other options",
+        other,
+        selected
+      );
+    } else {
+      appendSection(wrap, story.optionsHeading || null, story.options, selected);
     }
   }
 

@@ -1,13 +1,15 @@
 /**
  * Shared "Back to Options" control — injected on homepage templates only.
+ * Returns to the System Notification Banner options story.
  */
 (function () {
   if (document.body.hasAttribute("data-options-landing")) return;
+  if (document.body.hasAttribute("data-dealer-access")) return;
 
   function mount() {
     if (document.querySelector(".ex-back-to-options")) return;
     var link = document.createElement("a");
-    link.href = "index.html";
+    link.href = "stories/notification-banner/options.html";
     link.className = "ex-back-to-options";
     link.innerHTML =
       '<i class="fas fa-th-large" aria-hidden="true"></i><span>Back to Options</span>';

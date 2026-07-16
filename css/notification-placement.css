@@ -86,6 +86,20 @@
   border-top: 1px solid rgba(255, 255, 255, 0.12);
 }
 
+/* Sticky chrome: banner + header stick together (Option 1) */
+.ex-sticky-chrome {
+  position: sticky;
+  top: 0;
+  z-index: 1020;
+}
+
+.ex-sticky-chrome .ex-header,
+.ex-sticky-chrome .product-header {
+  position: relative;
+  top: auto;
+  z-index: auto;
+}
+
 /* 1a — Top strip above header (winner: yellow warning treatment) */
 .ex-notice-slot--top {
   width: 100%;

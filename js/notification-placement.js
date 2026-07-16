@@ -140,13 +140,17 @@
   function applyTopStrip() {
     var header = findHeader();
     if (!header) return;
+    var parent = header.parentNode;
+    var chrome = el('<div class="ex-sticky-chrome"></div>');
     var root = el(
       '<div data-ex-notice-root class="ex-notice-slot--top">' +
         noticeRow(NOTICES[0], { showLink: true, useDetail: false }) +
         "</div>"
     );
     root.querySelector(".ex-notice").classList.add("ex-notice--top-strip");
-    header.parentNode.insertBefore(root, header);
+    parent.insertBefore(chrome, header);
+    chrome.appendChild(root);
+    chrome.appendChild(header);
     bindDismiss(root);
   }
 
@@ -333,7 +337,7 @@
     }
   }
 
-  // Public API for options landing (content lives in js/options-story.js)
+  // Public API for options landing (content lives in stories/notification-banner/options-story.js)
   window.ExNoticePlacement = {
     STORAGE_KEY: STORAGE_KEY,
     get: getPlacement,

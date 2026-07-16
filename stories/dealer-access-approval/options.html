@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Excelerator Design Sandbox</title>
+    <title>Dealer Access Approval Options | Excelerator Prototype</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -18,28 +18,29 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
-    <link rel="stylesheet" href="css/excelerator.css" />
-    <link rel="stylesheet" href="css/notification-placement.css" />
-    <link rel="stylesheet" href="css/features-hub.css" />
+    <link rel="stylesheet" href="../../css/excelerator.css" />
+    <link rel="stylesheet" href="../../css/notification-placement.css" />
+    <link rel="stylesheet" href="../../css/features-hub.css" />
   </head>
-  <body class="opts-page" data-features-hub>
+  <body class="opts-page" data-options-landing>
     <header class="opts-hero">
       <div class="opts-hero__inner">
+        <p class="opts-hero__nav">
+          <a id="opts-hub-link" href="../../index.html" hidden>&larr; All features</a>
+        </p>
         <img
           class="opts-hero__brand"
-          src="assets/images/excelerator-logo.png"
+          src="../../assets/images/excelerator-logo.png"
           alt="Excelerator"
         />
-        <h1 id="hub-title"></h1>
-        <p id="hub-intro"></p>
+        <h1 id="opts-title"></h1>
+        <p id="opts-intro"></p>
       </div>
     </header>
 
-    <main class="opts-grid-wrap">
-      <div class="opts-grid hub-grid" id="hub-stories" role="list"></div>
-    </main>
+    <main class="opts-grid-wrap" id="opts-sections"></main>
 
-    <script src="js/features.js"></script>
-    <script src="js/features-hub.js"></script>
+    <script src="options-story.js"></script>
+    <script src="../../js/options-page.js"></script>
   </body>
 </html>
