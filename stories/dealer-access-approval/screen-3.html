@@ -36,23 +36,19 @@
             </p>
             <h1 class="da-active__title">Your account is active</h1>
             <p class="da-active__body">
-              Fort Mill Freightliner can now start shopping on your behalf using
-              your Excelerator account. Want to place your own orders too? Set
-              up a password below — this step is optional.
+              <span class="da-lead__dealer">Fort Mill Freightliner</span> can now
+              start shopping on your behalf using your Excelerator account. Want
+              to place your own orders too? Set up a password below.
             </p>
           </section>
 
-          <section class="da-password" aria-label="Optional password setup">
+          <section class="da-password" aria-label="Password setup">
             <form
               data-da-password-form
               data-skip-url="skip-end.html"
               data-success-url="screen-4.html"
             >
-              <span class="da-password__optional">Optional</span>
               <h2 class="da-password__title">Set up your password</h2>
-              <p class="da-password__hint">
-                Only needed if you also want to shop on Excelerator yourself.
-              </p>
               <div class="da-form-error" data-da-error role="alert"></div>
               <div class="da-form-field">
                 <label for="da-password">Password</label>
@@ -63,6 +59,14 @@
                   autocomplete="new-password"
                   placeholder="Enter here"
                 />
+                <p
+                  class="da-field-error"
+                  data-da-password-error
+                  role="alert"
+                  hidden
+                >
+                  Enter a password to continue, or choose Set up later.
+                </p>
                 <div
                   class="da-password-reqs"
                   data-da-password-reqs
@@ -109,7 +113,7 @@
               </label>
               <div class="da-password__actions">
                 <button type="button" class="da-btn-secondary" data-da-skip>
-                  Skip for now
+                  Set up later
                 </button>
                 <button type="submit" class="da-btn-primary">
                   Create password

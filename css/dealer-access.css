@@ -325,6 +325,10 @@
   color: var(--ex-body-text);
 }
 
+.da-lead__dealer {
+  font-weight: 500;
+}
+
 .da-section-label {
   margin: 0 0 0.75rem;
   font-family: "Rubik", var(--ex-font), sans-serif;
@@ -596,7 +600,7 @@
 .da-decision__prompt {
   margin: 0 0 0.55rem;
   font-family: "Rubik", var(--ex-font), sans-serif;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 500;
   font-style: normal;
   color: var(--ex-header-black);
@@ -763,6 +767,7 @@
 .da-decision__note {
   margin: 0 0 1.25rem;
   font-size: 12px;
+  font-style: italic;
   color: var(--ex-body-text-secondary);
   line-height: 1.45;
 }
@@ -930,8 +935,8 @@
 }
 
 .da-password__title {
-  margin: 0 0 0.35rem;
-  font-size: 1.15rem;
+  margin: 0 0 1.15rem;
+  font-size: 20px;
   font-weight: 500;
   color: var(--ex-header-black);
 }
@@ -1125,6 +1130,10 @@
   font-size: 1.15rem;
 }
 
+.da-complete__icon--danger {
+  background: var(--ex-danger);
+}
+
 .da-complete--hero .da-complete__title {
   margin: 0 auto 1.15rem;
   max-width: 36rem;
@@ -1144,8 +1153,16 @@
   padding: 1.5rem 1.6rem;
 }
 
+.da-complete--hero .da-complete__panel--danger {
+  background: #ffdfdf;
+}
+
 .da-complete--hero .da-complete__panel .da-complete__body {
   margin: 0 0 1.25rem;
+}
+
+.da-complete--hero .da-complete__panel .da-complete__body:last-child {
+  margin-bottom: 0;
 }
 
 .da-complete--hero .da-complete__panel .da-btn-primary {

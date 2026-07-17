@@ -13,6 +13,7 @@
   var termsLabel = form.querySelector("[data-da-terms]");
   var errorEl = form.querySelector("[data-da-error]");
   var reqsEl = form.querySelector("[data-da-password-reqs]");
+  var passwordErrorEl = form.querySelector("[data-da-password-error]");
   var matchErrorEl = form.querySelector("[data-da-match-error]");
   var skipBtn = form.querySelector("[data-da-skip]");
   var skipUrl = form.getAttribute("data-skip-url") || "skip-end.html";
@@ -64,18 +65,19 @@
     reqsEl.classList.toggle("is-invalid", invalid);
   }
 
-  function setMatchError(visible) {
-    if (!matchErrorEl) return;
+  function setFieldError(el, visible) {
+    if (!el) return;
     if (visible) {
-      matchErrorEl.removeAttribute("hidden");
+      el.removeAttribute("hidden");
     } else {
-      matchErrorEl.setAttribute("hidden", "");
+      el.setAttribute("hidden", "");
     }
   }
 
   function clearFieldErrors() {
     setReqsInvalid(false);
-    setMatchError(false);
+    setFieldError(passwordErrorEl, false);
+    setFieldError(matchErrorEl, false);
   }
 
   function onSubmit(event) {
@@ -84,7 +86,7 @@
     clearFieldErrors();
 
     if (!isSettingPassword()) {
-      showError("Enter a password to continue, or choose Skip for now.");
+      setFieldError(passwordErrorEl, true);
       return;
     }
 
@@ -98,7 +100,7 @@
     }
 
     if (!passwordsMatch) {
-      setMatchError(true);
+      setFieldError(matchErrorEl, true);
       valid = false;
     }
 
