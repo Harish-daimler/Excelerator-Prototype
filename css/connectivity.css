@@ -64,7 +64,7 @@
 
 .conn-intro h1 {
   font-size: 2rem;
-  font-weight: 500;
+  font-weight: var(--ex-heading-weight);
   color: var(--ex-body-text);
   margin: 0 0 0.85rem;
 }
@@ -108,8 +108,8 @@
   border: 0;
   color: rgba(255, 255, 255, 0.75);
   font-family: inherit;
-  font-size: 14px;
-  font-weight: 500;
+  font-size: var(--ex-text-size);
+  font-weight: var(--ex-text-weight);
   padding: 1rem 0.85rem 0.85rem;
   cursor: pointer;
   border-bottom: 2px solid transparent;
@@ -137,14 +137,14 @@
 
 .conn-services__panel h2 {
   font-size: 1.5rem;
-  font-weight: 500;
+  font-weight: var(--ex-heading-weight);
   margin: 0 0 0.35rem;
   color: var(--ex-body-text);
 }
 
 .conn-services__panel h3 {
   font-size: 1.1rem;
-  font-weight: 500;
+  font-weight: var(--ex-heading-weight);
   margin: 0 0 0.75rem;
   color: var(--ex-body-text);
 }
@@ -186,20 +186,20 @@
 
 .conn-card__body h4 {
   font-size: 1.05rem;
-  font-weight: 500;
+  font-weight: var(--ex-heading-weight);
   margin: 0 0 0.5rem;
   color: var(--ex-body-text);
 }
 
 .conn-card__body p {
   margin: 0 0 0.75rem;
-  font-size: 0.95rem;
+  font-size: var(--ex-text-size);
   color: var(--ex-body-text);
   flex: 1;
 }
 
 .conn-card__note {
-  font-size: 0.85rem;
+  font-size: var(--ex-text-size);
   font-style: italic;
   color: var(--ex-body-text-secondary);
 }
@@ -212,7 +212,7 @@
 
 .conn-portal h2 {
   font-size: 1.75rem;
-  font-weight: 500;
+  font-weight: var(--ex-heading-weight);
   margin: 0 auto 1rem;
   max-width: 40rem;
   color: var(--ex-body-text);
@@ -244,7 +244,7 @@
 
 .conn-split h2 {
   font-size: 1.75rem;
-  font-weight: 500;
+  font-weight: var(--ex-heading-weight);
   margin: 0 0 1rem;
   color: var(--ex-body-text);
 }
@@ -281,7 +281,7 @@
 
 .conn-faq h2 {
   font-size: 1.75rem;
-  font-weight: 500;
+  font-weight: var(--ex-heading-weight);
   margin: 0 0 1.25rem;
   color: var(--ex-body-text);
 }
@@ -296,14 +296,14 @@
 
 .conn-faq summary {
   cursor: pointer;
-  font-weight: 500;
+  font-weight: var(--ex-text-weight);
   color: var(--ex-body-text);
 }
 
 .conn-faq details p {
   margin: 0.75rem 0 0;
   color: var(--ex-body-text-secondary);
-  font-size: 0.95rem;
+  font-size: var(--ex-text-size);
 }
 
 @media (max-width: 991.98px) {

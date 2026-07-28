@@ -13,7 +13,7 @@
   align-items: center;
   gap: 1rem;
   color: var(--ex-white);
-  font-size: 14px;
+  font-size: var(--ex-text-size);
 }
 
 .parts-header__search-row {
@@ -47,7 +47,7 @@
   border: 0;
   padding: 0 0.85rem;
   font-family: inherit;
-  font-size: 14px;
+  font-size: var(--ex-text-size);
   color: var(--ex-body-text);
   outline: none;
   min-width: 0;
@@ -71,8 +71,8 @@
   gap: 0.45rem;
   color: var(--ex-white);
   text-decoration: none;
-  font-size: 14px;
-  font-weight: 500;
+  font-size: var(--ex-text-size);
+  font-weight: var(--ex-text-weight);
   white-space: nowrap;
   flex-shrink: 0;
 }
@@ -88,12 +88,12 @@
 }
 
 .parts-dealer__name {
-  font-size: 13px;
-  font-weight: 500;
+  font-size: var(--ex-text-size);
+  font-weight: var(--ex-heading-weight);
 }
 
 .parts-dealer__meta {
-  font-size: 12px;
+  font-size: var(--ex-text-size);
   opacity: 0.95;
 }
 
@@ -102,7 +102,7 @@
 }
 
 .parts-nav__lob .fa-cogs {
-  font-size: 14px;
+  font-size: var(--ex-text-size);
 }
 
 .parts-lob-menu {
@@ -123,7 +123,7 @@
   display: block;
   width: 100%;
   color: var(--ex-body-text);
-  font-size: 14px;
+  font-size: var(--ex-text-size);
   text-decoration: none;
   padding: 0.55rem 1rem;
 }
@@ -140,7 +140,7 @@
   gap: 0.75rem;
   background: var(--ex-gray-200);
   padding: 0.65rem 1.5rem;
-  font-size: 14px;
+  font-size: var(--ex-text-size);
 }
 
 .parts-subnav a {
@@ -150,7 +150,7 @@
 }
 
 .parts-subnav a.is-active {
-  font-weight: 500;
+  font-weight: var(--ex-text-weight);
 }
 
 .parts-subnav a:hover {
@@ -229,7 +229,7 @@
 .parts-shopby__title {
   text-align: center;
   font-size: 1.75rem;
-  font-weight: 500;
+  font-weight: var(--ex-heading-weight);
   letter-spacing: 0.04em;
   color: var(--ex-body-text);
   margin: 0 0 1.75rem;
@@ -261,7 +261,7 @@
 
 .parts-shop-card__body h2 {
   font-size: 1.25rem;
-  font-weight: 500;
+  font-weight: var(--ex-heading-weight);
   margin: 0 0 0.85rem;
   color: var(--ex-body-text);
 }
@@ -275,7 +275,7 @@
 
 .parts-shop-card__body li {
   margin-bottom: 0.45rem;
-  font-size: 0.95rem;
+  font-size: var(--ex-text-size);
 }
 
 .parts-testimonials {
@@ -322,14 +322,14 @@
   writing-mode: vertical-rl;
   text-orientation: mixed;
   transform: rotate(180deg);
-  font-size: 13px;
-  font-weight: 500;
+  font-size: var(--ex-text-size);
+  font-weight: var(--ex-text-weight);
   box-shadow: var(--ex-shadow-sm);
 }
 
 .parts-help-tab i {
   transform: rotate(180deg);
-  font-size: 14px;
+  font-size: var(--ex-text-size);
 }
 
 .parts-help-tab:hover {

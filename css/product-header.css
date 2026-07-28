@@ -48,8 +48,8 @@
   border-radius: var(--ex-radius);
   padding: 0 0.75rem;
   font-family: inherit;
-  font-size: 13px;
-  font-weight: 500;
+  font-size: var(--ex-text-size);
+  font-weight: var(--ex-text-weight);
   cursor: default;
   white-space: nowrap;
 }
@@ -83,7 +83,7 @@
   background: transparent;
   padding: 0 0.85rem;
   font-family: inherit;
-  font-size: 14px;
+  font-size: var(--ex-text-size);
   line-height: 36px;
   color: var(--ex-body-text);
   outline: none;
@@ -109,7 +109,7 @@
   align-items: center;
   justify-content: flex-end;
   gap: 1rem;
-  font-size: 14px;
+  font-size: var(--ex-text-size);
 }
 
 .ph-user-btn {
@@ -135,8 +135,8 @@
   border-radius: 999px;
   background: #e45151;
   color: #fff;
-  font-size: 11px;
-  font-weight: 500;
+  font-size: var(--ex-text-size);
+  font-weight: var(--ex-text-weight);
   line-height: 1;
 }
 
@@ -149,16 +149,16 @@
   min-height: 36px;
   text-align: left;
   line-height: 1.3;
-  font-size: 14px;
+  font-size: var(--ex-text-size);
 }
 
 .ph-dealer__name {
-  font-weight: 500;
-  font-size: 13px;
+  font-weight: var(--ex-text-weight);
+  font-size: var(--ex-text-size);
 }
 
 .ph-dealer__meta {
-  font-size: 12px;
+  font-size: var(--ex-text-size);
   opacity: 0.95;
 }
 
@@ -175,7 +175,7 @@
   display: flex;
   align-items: center;
   gap: 1rem;
-  font-size: 14px;
+  font-size: var(--ex-text-size);
 }
 
 /* —— Primary nav row —— */
@@ -203,8 +203,8 @@
   border-radius: 999px;
   padding: 0.4rem 0.85rem 0.4rem 0.65rem;
   font-family: inherit;
-  font-size: 14px;
-  font-weight: 500;
+  font-size: var(--ex-text-size);
+  font-weight: var(--ex-text-weight);
   cursor: pointer;
   white-space: nowrap;
 }
@@ -230,8 +230,8 @@
   align-items: center;
   color: var(--ex-white);
   text-decoration: none;
-  font-size: 14px;
-  font-weight: 500;
+  font-size: var(--ex-text-size);
+  font-weight: var(--ex-text-weight);
   padding: 0.75rem 1rem;
   min-height: 48px;
 }
@@ -261,7 +261,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  font-size: 14px;
+  font-size: var(--ex-text-size);
   padding: 0;
 }
 
@@ -284,7 +284,7 @@
   display: block;
   padding: 0.55rem 1rem;
   color: var(--ex-body-text);
-  font-size: 14px;
+  font-size: var(--ex-text-size);
   text-decoration: none;
 }
 
@@ -301,12 +301,12 @@
   gap: 0.75rem;
   background: var(--ex-gray-200);
   padding: 0.65rem 1.5rem;
-  font-size: 14px;
+  font-size: var(--ex-text-size);
   color: var(--ex-body-text);
 }
 
 .ph-subnav__title {
-  font-weight: 500;
+  font-weight: var(--ex-text-weight);
 }
 
 .ph-subnav__divider {

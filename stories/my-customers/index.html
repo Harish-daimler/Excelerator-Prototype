@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>My Customers | Excelerator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../../css/excelerator.css" />
+    <link rel="stylesheet" href="../../css/product-header.css" />
+    <link rel="stylesheet" href="../../css/my-customers.css" />
+  </head>
+  <body class="mc-page" data-auth="logged-in">
+    <a class="mc-back" href="../../index.html"
+      ><i class="fas fa-th-large" aria-hidden="true"></i
+      ><span>All features</span></a
+    >
+
+    <header class="product-header">
+      <div class="ph-logged-in-top auth-logged-in">
+        <div class="ph-brand-col">
+          <a
+            class="ex-header__logo"
+            href="../../global-homepage.html"
+            aria-label="Excelerator home"
+          >
+            <img
+              src="../../assets/images/excelerator-logo.png"
+              alt="Excelerator"
+            />
+          </a>
+          <button type="button" class="ph-shop-vehicle">
+            <i class="fas fa-truck" aria-hidden="true"></i>
+            Shop by Vehicle
+            <i class="fas fa-plus" aria-hidden="true"></i>
+          </button>
+        </div>
+        <form class="ph-search" role="search" action="#" onsubmit="return false;">
+          <button
+            type="button"
+            class="ph-search__filter"
+            aria-label="Search filters"
+          >
+            <i class="fas fa-caret-down" aria-hidden="true"></i>
+          </button>
+          <input
+            class="ph-search__input"
+            type="search"
+            placeholder="Search by part name, number, VMRS, or cross reference"
+            aria-label="Search"
+          />
+          <button type="submit" class="ph-search__submit" aria-label="Search">
+            <i class="fas fa-search" aria-hidden="true"></i>
+          </button>
+        </form>
+        <div class="ph-user-col">
+          <div class="ph-user-row">
+            <button type="button" class="ph-user-btn">
+              <i class="fas fa-briefcase" aria-hidden="true"></i>
+              <span>Shop for a Customer</span>
+            </button>
+            <div class="ex-account-menu">
+              <button
+                type="button"
+                class="ph-user-btn ex-account-menu__toggle"
+                aria-expanded="false"
+                aria-haspopup="true"
+                aria-controls="mc-account-in"
+              >
+                <i class="fas fa-user" aria-hidden="true"></i>
+                <span>ADXDealer2</span>
+                <span class="ph-badge">3</span>
+                <i class="fas fa-chevron-down" aria-hidden="true"></i>
+              </button>
+              <ul
+                id="mc-account-in"
+                class="ex-account-menu__dropdown"
+                role="menu"
+                hidden
+              >
+                <li role="none">
+                  <button type="button" role="menuitem">Account settings</button>
+                </li>
+              </ul>
+            </div>
+            <button
+              type="button"
+              class="ph-user-btn"
+              aria-label="Region and language"
+            >
+              <img
+                class="ex-header__flag ex-header__flag--site"
+                src="../../assets/images/site-selector-icon-dtna.png"
+                alt="United States / Canada"
+              />
+              <i class="fas fa-chevron-down" aria-hidden="true"></i>
+            </button>
+          </div>
+          <div class="ph-dealer">
+            <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+            <div>
+              <div class="ph-dealer__name">Houston Freightliner</div>
+              <div class="ph-dealer__meta">50311111 | $USD</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <nav class="ph-nav" aria-label="Primary">
+        <div class="ph-nav__lob-wrap ex-account-menu">
+          <button
+            type="button"
+            class="ph-nav__lob ex-account-menu__toggle"
+            aria-expanded="false"
+            aria-haspopup="true"
+            aria-controls="mc-lob-menu"
+          >
+            <i class="fas fa-cogs" aria-hidden="true"></i>
+            <span>Parts &amp; Services</span>
+            <i class="fas fa-chevron-down" aria-hidden="true"></i>
+          </button>
+          <ul
+            id="mc-lob-menu"
+            class="ph-lob-dropdown ex-account-menu__dropdown"
+            role="menu"
+            hidden
+          >
+            <li role="none">
+              <a role="menuitem" href="../../parts.html">Parts &amp; PartsProX</a>
+            </li>
+            <li role="none">
+              <a role="menuitem" href="../../coverage.html">Extended Coverage</a>
+            </li>
+            <li role="none">
+              <a role="menuitem" href="../../connectivity.html"
+                >Connectivity Services</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div class="ph-nav__divider" aria-hidden="true"></div>
+        <ul class="ph-nav__links auth-logged-in">
+          <li><a href="#">Dashboard</a></li>
+          <li><a class="is-active" href="#" aria-current="page">Customers</a></li>
+          <li><a href="#">Dealers</a></li>
+          <li><a href="#">Orders/Quotes</a></li>
+          <li><a href="#">My Garage</a></li>
+        </ul>
+        <div class="ph-nav__utils auth-logged-in">
+          <button type="button" aria-label="Quick actions">
+            <i class="fas fa-bolt"></i>
+          </button>
+          <button type="button" aria-label="Favorites">
+            <i class="far fa-star"></i>
+          </button>
+        </div>
+      </nav>
+
+      <div class="ph-subnav">
+        <a href="#">Error Management</a>
+        <span class="ph-subnav__divider" aria-hidden="true"></span>
+        <a href="#">Inner Circle Rewards</a>
+      </div>
+    </header>
+
+    <main class="mc-shell">
+      <div class="mc-page-head">
+        <h1 class="mc-page-head__title">My Customers</h1>
+        <div class="mc-page-head__actions">
+          <a href="#">+ Add New Customer</a>
+          <a href="#"><i class="fas fa-cog" aria-hidden="true"></i> Global Customer Settings</a>
+        </div>
+      </div>
+
+      <div class="mc-layout">
+        <aside class="mc-sidebar" aria-label="Search and filters">
+          <form class="mc-search" action="#" onsubmit="return false;">
+            <div class="mc-search__field">
+              <input
+                class="mc-search__input"
+                type="search"
+                placeholder="Search for a customer"
+                aria-label="Search for a customer"
+              />
+              <button type="submit" class="mc-search__go" aria-label="Search">
+                <i class="fas fa-search" aria-hidden="true"></i>
+              </button>
+            </div>
+            <button type="button" class="mc-btn-reset">Reset</button>
+          </form>
+
+          <button type="button" class="mc-btn-filters">Filters</button>
+
+          <section class="mc-filters" aria-label="Filters">
+            <h2 class="mc-filters__title">Filters</h2>
+            <div class="mc-filters__applied-head">
+              <span>Applied Filters</span>
+              <button type="button" class="mc-filters__clear">Clear All</button>
+            </div>
+            <span class="mc-chip"
+              >Archived: Current
+              <button type="button" aria-label="Remove filter">
+                <i class="fas fa-times" aria-hidden="true"></i>
+              </button>
+            </span>
+
+            <div class="mc-filter-group">
+              <button type="button" class="mc-filter-group__toggle">
+                Primary Dealer
+                <i class="fas fa-chevron-up" aria-hidden="true"></i>
+              </button>
+              <ul class="mc-filter-group__list">
+                <li>
+                  <label
+                    ><input type="checkbox" /> FBCFD-HOUSTON (2,112)</label
+                  >
+                </li>
+                <li>
+                  <label
+                    ><input type="checkbox" /> FBCFD-SAN ANTONIO (189)</label
+                  >
+                </li>
+                <li>
+                  <label
+                    ><input type="checkbox" /> FBCFD-AUSTIN (142)</label
+                  >
+                </li>
+                <li>
+                  <label
+                    ><input type="checkbox" /> FBCFD-DALLAS (98)</label
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <div class="mc-filter-group">
+              <button type="button" class="mc-filter-group__toggle">
+                Primary Blocked
+                <i class="fas fa-chevron-up" aria-hidden="true"></i>
+              </button>
+              <ul class="mc-filter-group__list">
+                <li>
+                  <label
+                    ><input type="checkbox" checked /> Not Blocked
+                    (2,604)</label
+                  >
+                </li>
+                <li>
+                  <label><input type="checkbox" /> Blocked (33)</label>
+                </li>
+              </ul>
+            </div>
+
+            <div class="mc-filter-group">
+              <button type="button" class="mc-filter-group__toggle">
+                Pending accounts
+                <i class="fas fa-chevron-down" aria-hidden="true"></i>
+              </button>
+            </div>
+
+            <div class="mc-filter-group">
+              <button type="button" class="mc-filter-group__toggle">
+                Online Payment
+                <i class="fas fa-chevron-down" aria-hidden="true"></i>
+              </button>
+            </div>
+          </section>
+        </aside>
+
+        <section class="mc-main" aria-label="Customer results">
+          <div class="mc-toolbar">
+            <p class="mc-results">2,641 results, 60 archived available</p>
+            <div class="mc-toolbar__actions">
+              <label class="visually-hidden" for="mc-customer-actions"
+                >Customer Actions</label
+              >
+              <select
+                id="mc-customer-actions"
+                class="mc-select"
+                aria-label="Customer Actions"
+              >
+                <option selected>Customer Actions</option>
+                <option>Export selected</option>
+                <option>Archive selected</option>
+                <option>Invite to Excelerator</option>
+              </select>
+              <label class="visually-hidden" for="mc-sort">Sort</label>
+              <select id="mc-sort" class="mc-select" aria-label="Sort">
+                <option selected>Sort by Relevance</option>
+                <option>Sort by Name A–Z</option>
+                <option>Sort by Name Z–A</option>
+                <option>Sort by Account #</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="mc-table-wrap">
+            <table class="mc-table">
+              <thead>
+                <tr>
+                  <th scope="col">Name</th>
+                  <th scope="col">Primary Dealer</th>
+                  <th scope="col">Customer Acct #</th>
+                  <th scope="col">Contact Email</th>
+                  <th scope="col">Contact Phone</th>
+                  <th scope="col"><span class="visually-hidden">Actions</span></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="mc-table__name">
+                    (ACSI) ADVANCE CONTAINMENT SYSTEMS INCORPORATED
+                  </td>
+                  <td>FBCFD-HOUSTON</td>
+                  <td>203023</td>
+                  <td>parts@acsi.example</td>
+                  <td>(713) 555-0142</td>
+                  <td>
+                    <div class="mc-table__actions">
+                      <button
+                        type="button"
+                        class="mc-icon-btn"
+                        aria-label="Archive"
+                      >
+                        <i class="fas fa-box-archive" aria-hidden="true"></i>
+                      </button>
+                      <button
+                        type="button"
+                        class="mc-icon-btn mc-icon-btn--primary"
+                        aria-label="View customer"
+                      >
+                        <i class="fas fa-chevron-right" aria-hidden="true"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="mc-table__name">
+                    ALLIANCE FREIGHT LOGISTICS LLC
+                  </td>
+                  <td>FBCFD-SAN ANTONIO</td>
+                  <td>198441</td>
+                  <td>ops@alliance.example</td>
+                  <td>(210) 555-0198</td>
+                  <td>
+                    <div class="mc-table__actions">
+                      <button
+                        type="button"
+                        class="mc-icon-btn"
+                        aria-label="Archive"
+                      >
+                        <i class="fas fa-box-archive" aria-hidden="true"></i>
+                      </button>
+                      <button
+                        type="button"
+                        class="mc-icon-btn mc-icon-btn--primary"
+                        aria-label="View customer"
+                      >
+                        <i class="fas fa-chevron-right" aria-hidden="true"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="mc-table__name">
+                    BAYOU HEAVY HAUL TRANSPORT INC
+                  </td>
+                  <td>FBCFD-HOUSTON</td>
+                  <td>204118</td>
+                  <td>dispatch@bayou.example</td>
+                  <td>(832) 555-0177</td>
+                  <td>
+                    <div class="mc-table__actions">
+                      <button
+                        type="button"
+                        class="mc-icon-btn"
+                        aria-label="Archive"
+                      >
+                        <i class="fas fa-box-archive" aria-hidden="true"></i>
+                      </button>
+                      <button
+                        type="button"
+                        class="mc-icon-btn mc-icon-btn--primary"
+                        aria-label="View customer"
+                      >
+                        <i class="fas fa-chevron-right" aria-hidden="true"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="mc-table__name">
+                    CLOSED LOOP TEST ACCOUNT
+                  </td>
+                  <td>FBCFD-AUSTIN</td>
+                  <td>190002</td>
+                  <td>closedloop test</td>
+                  <td>—</td>
+                  <td>
+                    <div class="mc-table__actions">
+                      <button
+                        type="button"
+                        class="mc-icon-btn"
+                        aria-label="Archive"
+                      >
+                        <i class="fas fa-box-archive" aria-hidden="true"></i>
+                      </button>
+                      <button
+                        type="button"
+                        class="mc-icon-btn mc-icon-btn--primary"
+                        aria-label="View customer"
+                      >
+                        <i class="fas fa-chevron-right" aria-hidden="true"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="mc-table__name">
+                    DELTA STAR FLEET SERVICES
+                  </td>
+                  <td>FBCFD-DALLAS</td>
+                  <td>211905</td>
+                  <td>admin@deltastar.example</td>
+                  <td>(214) 555-0110</td>
+                  <td>
+                    <div class="mc-table__actions">
+                      <button
+                        type="button"
+                        class="mc-icon-btn"
+                        aria-label="Archive"
+                      >
+                        <i class="fas fa-box-archive" aria-hidden="true"></i>
+                      </button>
+                      <button
+                        type="button"
+                        class="mc-icon-btn mc-icon-btn--primary"
+                        aria-label="View customer"
+                      >
+                        <i class="fas fa-chevron-right" aria-hidden="true"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="mc-cards" aria-label="Customer cards">
+            <article class="mc-card">
+              <button
+                type="button"
+                class="mc-icon-btn mc-card__archive"
+                aria-label="Archive"
+              >
+                <i class="fas fa-box-archive" aria-hidden="true"></i>
+              </button>
+              <i
+                class="fas fa-chevron-right mc-card__chevron"
+                aria-hidden="true"
+              ></i>
+              <span class="mc-card__label">Name</span>
+              <h2 class="mc-card__name">
+                (ACSI) ADVANCE CONTAINMENT SYSTEMS INCORPORATED
+              </h2>
+              <div class="mc-card__grid">
+                <div>
+                  <span class="mc-card__label">Primary Dealer</span>
+                  <p class="mc-card__value">FBCFD</p>
+                </div>
+                <div>
+                  <span class="mc-card__label">Customer Acct #</span>
+                  <p class="mc-card__value">203023</p>
+                </div>
+                <div>
+                  <span class="mc-card__label">Contact Email</span>
+                  <p class="mc-card__value">parts@acsi.example</p>
+                </div>
+                <div>
+                  <span class="mc-card__label">Contact Phone</span>
+                  <p class="mc-card__value">(713) 555-0142</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="mc-card">
+              <button
+                type="button"
+                class="mc-icon-btn mc-card__archive"
+                aria-label="Archive"
+              >
+                <i class="fas fa-box-archive" aria-hidden="true"></i>
+              </button>
+              <i
+                class="fas fa-chevron-right mc-card__chevron"
+                aria-hidden="true"
+              ></i>
+              <span class="mc-card__label">Name</span>
+              <h2 class="mc-card__name">ALLIANCE FREIGHT LOGISTICS LLC</h2>
+              <div class="mc-card__grid">
+                <div>
+                  <span class="mc-card__label">Primary Dealer</span>
+                  <p class="mc-card__value">FBCFD</p>
+                </div>
+                <div>
+                  <span class="mc-card__label">Customer Acct #</span>
+                  <p class="mc-card__value">198441</p>
+                </div>
+                <div>
+                  <span class="mc-card__label">Contact Email</span>
+                  <p class="mc-card__value">ops@alliance.example</p>
+                </div>
+                <div>
+                  <span class="mc-card__label">Contact Phone</span>
+                  <p class="mc-card__value">(210) 555-0198</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="mc-card">
+              <button
+                type="button"
+                class="mc-icon-btn mc-card__archive"
+                aria-label="Archive"
+              >
+                <i class="fas fa-box-archive" aria-hidden="true"></i>
+              </button>
+              <i
+                class="fas fa-chevron-right mc-card__chevron"
+                aria-hidden="true"
+              ></i>
+              <span class="mc-card__label">Name</span>
+              <h2 class="mc-card__name">BAYOU HEAVY HAUL TRANSPORT INC</h2>
+              <div class="mc-card__grid">
+                <div>
+                  <span class="mc-card__label">Primary Dealer</span>
+                  <p class="mc-card__value">FBCFD</p>
+                </div>
+                <div>
+                  <span class="mc-card__label">Customer Acct #</span>
+                  <p class="mc-card__value">204118</p>
+                </div>
+                <div>
+                  <span class="mc-card__label">Contact Email</span>
+                  <p class="mc-card__value">dispatch@bayou.example</p>
+                </div>
+                <div>
+                  <span class="mc-card__label">Contact Phone</span>
+                  <p class="mc-card__value">(832) 555-0177</p>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <nav class="mc-pagination" aria-label="Pagination">
+            <a href="#" aria-label="First page"
+              ><i class="fas fa-angles-left" aria-hidden="true"></i
+            ></a>
+            <a href="#" aria-label="Previous page"
+              ><i class="fas fa-angle-left" aria-hidden="true"></i
+            ></a>
+            <span class="is-current" aria-current="page">1</span>
+            <a href="#">2</a>
+            <a href="#">3</a>
+            <a href="#">4</a>
+            <a href="#">5</a>
+            <a href="#" aria-label="Next page"
+              ><i class="fas fa-angle-right" aria-hidden="true"></i
+            ></a>
+            <a href="#" aria-label="Last page"
+              ><i class="fas fa-angles-right" aria-hidden="true"></i
+            ></a>
+          </nav>
+        </section>
+      </div>
+    </main>
+
+    <script src="../../js/auth-toggle.js"></script>
+  </body>
+</html>
