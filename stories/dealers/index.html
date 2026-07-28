@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dealers — Extended Coverages | Excelerator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../../css/excelerator.css" />
+    <link rel="stylesheet" href="../../css/product-header.css" />
+    <link rel="stylesheet" href="../../css/dealers.css" />
+  </head>
+  <body class="dl-page" data-auth="logged-in">
+    <a class="dl-back" href="../../index.html"
+      ><i class="fas fa-th-large" aria-hidden="true"></i
+      ><span>All features</span></a
+    >
+
+    <header class="product-header">
+      <div class="ph-logged-in-top auth-logged-in">
+        <div class="ph-brand-col">
+          <a
+            class="ex-header__logo"
+            href="../../global-homepage.html"
+            aria-label="Excelerator home"
+          >
+            <img
+              src="../../assets/images/excelerator-logo.png"
+              alt="Excelerator"
+            />
+          </a>
+          <button type="button" class="ph-shop-vehicle">
+            <i class="fas fa-truck" aria-hidden="true"></i>
+            Shop by Vehicle
+            <i class="fas fa-plus" aria-hidden="true"></i>
+          </button>
+        </div>
+        <form class="ph-search" role="search" action="#" onsubmit="return false;">
+          <button
+            type="button"
+            class="ph-search__filter"
+            aria-label="Search filters"
+          >
+            <i class="fas fa-caret-down" aria-hidden="true"></i>
+          </button>
+          <input
+            class="ph-search__input"
+            type="search"
+            placeholder="Search by part name, number, VMRS, or cross reference"
+            aria-label="Search"
+          />
+          <button type="submit" class="ph-search__submit" aria-label="Search">
+            <i class="fas fa-search" aria-hidden="true"></i>
+          </button>
+        </form>
+        <div class="ph-user-col">
+          <div class="ph-user-row">
+            <div class="ex-account-menu">
+              <button
+                type="button"
+                class="ph-user-btn ex-account-menu__toggle"
+                aria-expanded="false"
+                aria-haspopup="true"
+                aria-controls="dl-account-in"
+              >
+                <i class="fas fa-user" aria-hidden="true"></i>
+                <span>Max</span>
+                <i class="fas fa-chevron-down" aria-hidden="true"></i>
+              </button>
+              <ul
+                id="dl-account-in"
+                class="ex-account-menu__dropdown"
+                role="menu"
+                hidden
+              >
+                <li role="none">
+                  <button type="button" role="menuitem">Account settings</button>
+                </li>
+              </ul>
+            </div>
+            <button
+              type="button"
+              class="ph-user-btn"
+              aria-label="Region and language"
+            >
+              <img
+                class="ex-header__flag ex-header__flag--site"
+                src="../../assets/images/site-selector-icon-dtna.png"
+                alt="United States / Canada"
+              />
+              <i class="fas fa-chevron-down" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <nav class="ph-nav" aria-label="Primary">
+        <div class="ph-nav__lob-wrap ex-account-menu">
+          <button
+            type="button"
+            class="ph-nav__lob ex-account-menu__toggle"
+            aria-expanded="false"
+            aria-haspopup="true"
+            aria-controls="dl-lob-menu"
+          >
+            <i class="fas fa-cogs" aria-hidden="true"></i>
+            <span>Parts &amp; PartsProX</span>
+            <i class="fas fa-chevron-down" aria-hidden="true"></i>
+          </button>
+          <ul
+            id="dl-lob-menu"
+            class="ph-lob-dropdown ex-account-menu__dropdown"
+            role="menu"
+            hidden
+          >
+            <li role="none">
+              <a role="menuitem" href="../../parts.html">Parts &amp; PartsProX</a>
+            </li>
+            <li role="none">
+              <a role="menuitem" href="../../coverage.html">Extended Coverage</a>
+            </li>
+            <li role="none">
+              <a role="menuitem" href="../../connectivity.html"
+                >Connectivity Services</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div class="ph-nav__divider" aria-hidden="true"></div>
+        <ul class="ph-nav__links auth-logged-in">
+          <li><a href="#">Dashboard</a></li>
+          <li><a href="../my-customers/index.html">Customers</a></li>
+          <li>
+            <a class="is-active" href="#" aria-current="page">Dealers</a>
+          </li>
+          <li><a href="#">Orders/Quotes</a></li>
+        </ul>
+        <div class="ph-nav__utils auth-logged-in">
+          <button type="button" aria-label="Favorites">
+            <i class="far fa-star"></i>
+          </button>
+        </div>
+      </nav>
+
+      <div class="ph-subnav">
+        <a href="#">Inner Circle Rewards<sup>TM</sup></a>
+        <span class="ph-subnav__divider" aria-hidden="true"></span>
+        <a href="#"
+          >Error Management<span class="ph-badge-inline">18</span></a
+        >
+      </div>
+    </header>
+
+    <div class="dl-shell">
+      <aside class="dl-sidebar" aria-label="My Locations">
+        <div class="dl-sidebar__head">
+          <h2 class="dl-sidebar__title">My Locations</h2>
+          <a class="dl-link dl-sidebar__export" href="#"
+            ><i class="fas fa-save" aria-hidden="true"></i> Export all
+            dealers</a
+          >
+        </div>
+        <form
+          class="dl-sidebar__search"
+          action="#"
+          onsubmit="return false;"
+          role="search"
+        >
+          <input
+            type="search"
+            placeholder="Search by dealer location"
+            aria-label="Search by dealer location"
+          />
+          <button type="submit" aria-label="Search">
+            <i class="fas fa-search" aria-hidden="true"></i>
+          </button>
+        </form>
+        <ul class="dl-locations" data-dl-locations>
+          <li>
+            <button type="button" class="dl-location" data-name="Beaumont Freightliner, IncS" data-code="FWNFD" data-city="BEAUMONT, TX">
+              <p class="dl-location__name">Beaumont Freightliner, IncS</p>
+              <p class="dl-location__meta">Dealer Code: FWNFD</p>
+              <p class="dl-location__meta">BEAUMONT, TX</p>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="dl-location" data-name="Houston Freightliner - North" data-code="FBCFN" data-city="HOUSTON, TX">
+              <p class="dl-location__name">Houston Freightliner - North</p>
+              <p class="dl-location__meta">Dealer Code: FBCFN</p>
+              <p class="dl-location__meta">HOUSTON, TX</p>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="dl-location" data-name="Corpus Christi Freightliner" data-code="FCCFD" data-city="CORPUS CHRISTI, TX">
+              <p class="dl-location__name">Corpus Christi Freightliner</p>
+              <p class="dl-location__meta">Dealer Code: FCCFD</p>
+              <p class="dl-location__meta">CORPUS CHRISTI, TX</p>
+            </button>
+          </li>
+          <li>
+            <button
+              type="button"
+              class="dl-location is-active"
+              data-name="Houston Freightliner Head Dealer"
+              data-code="FBCFD"
+              data-city="HOUSTON, TX"
+              aria-current="true"
+            >
+              <p class="dl-location__name">Houston Freightliner Head Dealer</p>
+              <p class="dl-location__meta">Dealer Code: FBCFD</p>
+              <p class="dl-location__meta">HOUSTON, TX</p>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="dl-location" data-name="San Antonio Freightliner" data-code="FSAFD" data-city="SAN ANTONIO, TX">
+              <p class="dl-location__name">San Antonio Freightliner</p>
+              <p class="dl-location__meta">Dealer Code: FSAFD</p>
+              <p class="dl-location__meta">SAN ANTONIO, TX</p>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="dl-location" data-name="Austin Freightliner" data-code="FAUFD" data-city="AUSTIN, TX">
+              <p class="dl-location__name">Austin Freightliner</p>
+              <p class="dl-location__meta">Dealer Code: FAUFD</p>
+              <p class="dl-location__meta">AUSTIN, TX</p>
+            </button>
+          </li>
+        </ul>
+      </aside>
+
+      <main class="dl-main">
+        <div class="dl-main__top">
+          <div>
+            <h1 class="dl-dealer-title" data-dl-dealer-name>
+              Houston Freightliner Head Dealer
+            </h1>
+            <p class="dl-dealer-code">
+              Dealer Code: <span data-dl-dealer-code>FBCFD</span>
+            </p>
+          </div>
+          <div class="dl-main__tools">
+            <div class="dl-inventory">
+              <span class="dl-inventory__label" id="dl-inventory-label"
+                >Dealer Inventory<span>*</span></span
+              >
+              <div class="dl-switch">
+                <span class="dl-switch__text" id="dl-unblock-label"
+                  >Unblock</span
+                >
+                <button
+                  type="button"
+                  class="dl-switch__control"
+                  role="switch"
+                  aria-checked="false"
+                  aria-labelledby="dl-inventory-label dl-unblock-label dl-block-label"
+                  data-dl-inventory-switch
+                >
+                  <span class="dl-switch__thumb" aria-hidden="true"></span>
+                </button>
+                <span class="dl-switch__text" id="dl-block-label">Block</span>
+              </div>
+              <p class="dl-inventory__note">
+                * Blocking Dealer Inventory will block all orders from
+                processing
+              </p>
+            </div>
+            <a class="dl-link dl-export-users" href="#"
+              ><i class="fas fa-save" aria-hidden="true"></i> Export Dealer
+              Users</a
+            >
+          </div>
+        </div>
+
+        <div class="dl-content-card">
+        <div class="dl-tabs" role="tablist" aria-label="Dealer settings">
+          <button type="button" role="tab" aria-selected="false" data-dl-tab="dealer">
+            Dealer
+          </button>
+          <button
+            type="button"
+            role="tab"
+            aria-selected="false"
+            data-dl-tab="email"
+          >
+            Email Notification Settings
+          </button>
+          <button
+            type="button"
+            role="tab"
+            aria-selected="false"
+            data-dl-tab="guest"
+          >
+            Parts Guest Shopper
+          </button>
+          <button
+            type="button"
+            role="tab"
+            aria-selected="false"
+            data-dl-tab="payment"
+          >
+            Parts Online Payment
+          </button>
+          <button
+            type="button"
+            role="tab"
+            class="is-active"
+            aria-selected="true"
+            data-dl-tab="coverage"
+          >
+            Extended Coverages
+          </button>
+          <button
+            type="button"
+            role="tab"
+            aria-selected="false"
+            data-dl-tab="connectivity"
+          >
+            Connectivity Services
+          </button>
+        </div>
+
+        <section
+          class="dl-panel is-active"
+          id="dl-panel-coverage"
+          data-dl-panel="coverage"
+          role="tabpanel"
+        >
+          <div class="dl-card">
+            <p class="dl-pay-status">
+              Online Payment powered by DT Pay
+              <span class="dl-badge">Enabled</span>
+            </p>
+            <p>
+              For more information on this functionality, please contact
+              <a href="mailto:adxsupport@daimlertruck.com"
+                >adxsupport@daimlertruck.com</a
+              >.
+            </p>
+          </div>
+
+          <div class="ac" data-ac-root>
+            <div class="ac-header">
+              <h3 class="ac-title">Available Coverages</h3>
+              <p class="ac-intro">
+                Control which packages customers see under this dealership and
+                set MSRP discount or Dnet markup pricing per package and bundle.
+              </p>
+            </div>
+
+            <div class="ac-offering-tabs" role="tablist" aria-label="Offering type">
+              <button
+                type="button"
+                class="is-active"
+                role="tab"
+                aria-selected="true"
+                data-ac-offering-tab="next"
+              >
+                Extended NEXT
+              </button>
+              <button
+                type="button"
+                role="tab"
+                aria-selected="false"
+                data-ac-offering-tab="optimum"
+              >
+                Extended OPTIMUM
+              </button>
+            </div>
+
+            <div
+              class="ac-offering is-active"
+              data-ac-offering-panel="next"
+              role="tabpanel"
+            ></div>
+            <div
+              class="ac-offering"
+              data-ac-offering-panel="optimum"
+              role="tabpanel"
+              hidden
+            ></div>
+          </div>
+
+          <p class="ac-form-error" data-ac-error hidden></p>
+
+          <div class="dl-actions">
+            <button type="button" class="dl-btn-secondary" data-ac-reset>
+              Reset
+            </button>
+            <button
+              type="button"
+              class="dl-btn-primary"
+              data-ac-update
+              disabled
+            >
+              Update
+            </button>
+          </div>
+        </section>
+
+        <section
+          class="dl-panel"
+          data-dl-panel="dealer"
+          role="tabpanel"
+          hidden
+        >
+          <div class="dl-card">
+            <p>Dealer profile settings will appear here.</p>
+          </div>
+        </section>
+        <section class="dl-panel" data-dl-panel="email" role="tabpanel" hidden>
+          <div class="dl-card">
+            <p>Email notification settings will appear here.</p>
+          </div>
+        </section>
+        <section class="dl-panel" data-dl-panel="guest" role="tabpanel" hidden>
+          <div class="dl-card">
+            <p>Parts Guest Shopper settings will appear here.</p>
+          </div>
+        </section>
+        <section
+          class="dl-panel"
+          data-dl-panel="payment"
+          role="tabpanel"
+          hidden
+        >
+          <div class="dl-card">
+            <p>Parts Online Payment settings will appear here.</p>
+          </div>
+        </section>
+        <section
+          class="dl-panel"
+          data-dl-panel="connectivity"
+          role="tabpanel"
+          hidden
+        >
+          <div class="dl-card">
+            <p>Connectivity Services settings will appear here.</p>
+          </div>
+        </section>
+        </div>
+      </main>
+    </div>
+
+    <script src="../../js/auth-toggle.js"></script>
+    <script src="../../js/dealers.js"></script>
+    <script src="../../js/dealers-coverages.js"></script>
+  </body>
+</html>

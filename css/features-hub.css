@@ -26,8 +26,8 @@
   align-items: center;
   gap: 0.4rem;
   margin-top: 1rem;
-  font-size: 0.9rem;
-  font-weight: 500;
+  font-size: var(--ex-text-size);
+  font-weight: var(--ex-text-weight);
   color: var(--ex-primary, #0e98de);
 }
 
@@ -49,8 +49,8 @@
   border-radius: 6px;
   background: #fff;
   color: var(--ex-tertiary, #095c84);
-  font-size: 0.88rem;
-  font-weight: 500;
+  font-size: var(--ex-text-size);
+  font-weight: var(--ex-text-weight);
   text-decoration: none;
 }
 
@@ -67,8 +67,8 @@
 
 .opts-hero__nav a {
   color: rgba(255, 255, 255, 0.75);
-  font-size: 0.9rem;
-  font-weight: 500;
+  font-size: var(--ex-text-size);
+  font-weight: var(--ex-text-weight);
   text-decoration: none;
 }
 

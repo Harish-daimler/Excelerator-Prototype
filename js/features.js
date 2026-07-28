@@ -21,5 +21,19 @@ window.ExFeatures = {
       desc: "Email → approve dealer access → optional password setup. Single decided flow.",
       href: "stories/dealer-access-approval/email.html",
     },
+    {
+      id: "my-customers",
+      label: "Feature",
+      name: "My Customers",
+      desc: "Customer list with Customer Actions + Sort dropdowns on desktop, tablet, and mobile.",
+      href: "stories/my-customers/index.html",
+    },
+    {
+      id: "dealers-extended-coverages",
+      label: "Feature",
+      name: "Dealers — Extended Coverages",
+      desc: "Dealer admin for Available Coverages: show/hide packages, MSRP/Dnet pricing, and one bundle per offering type.",
+      href: "stories/dealers/index.html",
+    },
   ],
 };

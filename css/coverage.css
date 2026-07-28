@@ -30,7 +30,7 @@
 
 .cov-hero h1 {
   font-size: 2rem;
-  font-weight: 500;
+  font-weight: var(--ex-heading-weight);
   color: var(--ex-body-text);
   margin: 0 0 0.85rem;
   line-height: 1.25;
@@ -91,8 +91,8 @@
 
 .cov-toggle button {
   font-family: inherit;
-  font-size: 14px;
-  font-weight: 500;
+  font-size: var(--ex-text-size);
+  font-weight: var(--ex-text-weight);
   border: 0;
   padding: 0.55rem 1.35rem;
   background: var(--ex-white);
@@ -134,7 +134,7 @@
 
 .cov-start__head h2 {
   font-size: 1.75rem;
-  font-weight: 500;
+  font-weight: var(--ex-heading-weight);
   margin: 0 0 0.5rem;
   color: var(--ex-body-text);
 }
@@ -169,8 +169,8 @@
   border: 0;
   color: rgba(255, 255, 255, 0.75);
   font-family: inherit;
-  font-size: 14px;
-  font-weight: 500;
+  font-size: var(--ex-text-size);
+  font-weight: var(--ex-text-weight);
   padding: 1rem 1rem 0.85rem;
   cursor: pointer;
   border-bottom: 2px solid transparent;
@@ -208,7 +208,7 @@
 
 .cov-plan__card h3 {
   font-size: 1.35rem;
-  font-weight: 500;
+  font-weight: var(--ex-heading-weight);
   margin: 0 0 0.85rem;
   color: var(--ex-body-text);
 }
@@ -216,7 +216,7 @@
 .cov-plan__card p {
   margin: 0 0 0.85rem;
   color: var(--ex-body-text);
-  font-size: 0.95rem;
+  font-size: var(--ex-text-size);
 }
 
 .cov-plan__card ul {
@@ -227,7 +227,7 @@
 
 .cov-plan__card li {
   margin-bottom: 0.4rem;
-  font-size: 0.95rem;
+  font-size: var(--ex-text-size);
 }
 
 .cov-tiers {
@@ -246,7 +246,7 @@
 
 .cov-tiers__head > div {
   padding: 0.85rem 1rem;
-  font-weight: 500;
+  font-weight: var(--ex-text-weight);
   color: var(--ex-body-text);
 }
 
@@ -266,8 +266,8 @@
 
 .cov-tiers__link {
   color: var(--ex-primary);
-  font-size: 0.9rem;
-  font-weight: 500;
+  font-size: var(--ex-text-size);
+  font-weight: var(--ex-text-weight);
   margin-bottom: 0.65rem;
   display: block;
 }
@@ -275,7 +275,7 @@
 .cov-tiers__body ul {
   margin: 0;
   padding-left: 1rem;
-  font-size: 0.9rem;
+  font-size: var(--ex-text-size);
 }
 
 .cov-show-all {
@@ -283,7 +283,7 @@
   text-align: center;
   margin-top: 1rem;
   color: var(--ex-body-text);
-  font-weight: 500;
+  font-weight: var(--ex-text-weight);
   text-decoration: none;
 }
 
@@ -299,7 +299,7 @@
 .cov-how h2 {
   text-align: center;
   font-size: 2rem;
-  font-weight: 500;
+  font-weight: var(--ex-heading-weight);
   margin: 0 0 2rem;
   color: var(--ex-body-text);
 }
@@ -324,8 +324,8 @@
   border: 0;
   background: transparent;
   font-family: inherit;
-  font-size: 14px;
-  font-weight: 500;
+  font-size: var(--ex-text-size);
+  font-weight: var(--ex-text-weight);
   color: var(--ex-body-text);
   padding: 0.4rem 0.9rem;
   border-radius: 999px;
@@ -339,7 +339,7 @@
 
 .cov-how h3 {
   font-size: 1.35rem;
-  font-weight: 500;
+  font-weight: var(--ex-heading-weight);
   margin: 0 0 0.5rem;
   color: var(--ex-body-text);
 }
@@ -360,7 +360,7 @@
   padding: 0.5rem 1rem;
   font-family: inherit;
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: var(--ex-text-weight);
   text-decoration: none;
 }
 
@@ -382,7 +382,7 @@
 
 .cov-benefits h2 {
   font-size: 1.75rem;
-  font-weight: 500;
+  font-weight: var(--ex-heading-weight);
   margin: 0 0 0.75rem;
   color: var(--ex-body-text);
 }
@@ -408,14 +408,14 @@
 
 .cov-benefit-card h3 {
   font-size: 1.05rem;
-  font-weight: 500;
+  font-weight: var(--ex-heading-weight);
   margin: 0 0 0.5rem;
   color: var(--ex-body-text);
 }
 
 .cov-benefit-card p {
   margin: 0;
-  font-size: 0.95rem;
+  font-size: var(--ex-text-size);
   color: var(--ex-body-text);
 }
 
@@ -431,7 +431,7 @@
 
 .cov-split h2 {
   font-size: 1.75rem;
-  font-weight: 500;
+  font-weight: var(--ex-heading-weight);
   margin: 0 0 1rem;
   color: var(--ex-body-text);
 }
@@ -463,7 +463,7 @@
 
 .cov-faq h2 {
   font-size: 1.75rem;
-  font-weight: 500;
+  font-weight: var(--ex-heading-weight);
   margin: 0 0 1.25rem;
   color: var(--ex-body-text);
 }
@@ -478,14 +478,14 @@
 
 .cov-faq summary {
   cursor: pointer;
-  font-weight: 500;
+  font-weight: var(--ex-text-weight);
   color: var(--ex-body-text);
 }
 
 .cov-faq details p {
   margin: 0.75rem 0 0;
   color: var(--ex-body-text-secondary);
-  font-size: 0.95rem;
+  font-size: var(--ex-text-size);
 }
 
 @media (max-width: 991.98px) {
