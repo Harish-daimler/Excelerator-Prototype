@@ -61,7 +61,7 @@
 
 .da-site-header__signin {
   color: var(--ex-white);
-  font-size: 14px;
+  font-size: var(--ex-text-size);
   font-weight: 400;
   text-decoration: none;
 }
@@ -84,7 +84,7 @@
 }
 
 .da-site-header__locale .fa-chevron-down {
-  font-size: 10px;
+  font-size: var(--ex-text-size);
   opacity: 0.9;
 }
 
@@ -104,8 +104,8 @@
   padding: 0 0.85rem;
   background: #0078d4;
   color: #fff;
-  font-size: 13px;
-  font-weight: 600;
+  font-size: var(--ex-text-size);
+  font-weight: var(--ex-heading-weight);
 }
 
 .outlook-titlebar__brand {
@@ -132,14 +132,14 @@
   gap: 0.55rem;
   padding: 0.45rem 0.65rem;
   border-radius: 4px;
-  font-size: 13px;
+  font-size: var(--ex-text-size);
   color: #252423;
 }
 
 .outlook-nav__item.is-active {
   background: #e8f3fc;
   color: #0078d4;
-  font-weight: 600;
+  font-weight: var(--ex-text-weight);
 }
 
 .outlook-reading {
@@ -156,7 +156,7 @@
   align-items: center;
   padding: 0.55rem 1rem;
   border-bottom: 1px solid #edebe9;
-  font-size: 12px;
+  font-size: var(--ex-text-size);
   color: #605e5c;
 }
 
@@ -174,7 +174,7 @@
 .outlook-reading__subject {
   margin: 0 0 0.65rem;
   font-size: 1.25rem;
-  font-weight: 600;
+  font-weight: var(--ex-heading-weight);
   color: #252423;
 }
 
@@ -193,19 +193,19 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 13px;
-  font-weight: 600;
+  font-size: var(--ex-text-size);
+  font-weight: var(--ex-text-weight);
   flex-shrink: 0;
 }
 
 .outlook-reading__from-text {
   min-width: 0;
-  font-size: 13px;
+  font-size: var(--ex-text-size);
   line-height: 1.4;
 }
 
 .outlook-reading__from-text strong {
-  font-weight: 600;
+  font-weight: var(--ex-text-weight);
 }
 
 .outlook-reading__from-text .outlook-muted {
@@ -260,8 +260,8 @@
   border-radius: var(--ex-radius);
   box-shadow: var(--ex-shadow-sm);
   color: var(--ex-tertiary);
-  font-size: 13px;
-  font-weight: 500;
+  font-size: var(--ex-text-size);
+  font-weight: var(--ex-text-weight);
   text-decoration: none;
 }
 
@@ -290,14 +290,15 @@
 .da-welcome__title {
   margin: 0 0 0.75rem;
   font-size: clamp(1.6rem, 2.5vw, 2rem);
-  font-weight: 500;
+  font-weight: var(--ex-heading-weight);
+  color: var(--ex-white);
 }
 
 .da-welcome__copy {
   margin: 0;
   max-width: 36rem;
   color: rgba(255, 255, 255, 0.82);
-  font-size: 0.95rem;
+  font-size: var(--ex-text-size);
   line-height: 1.55;
 }
 
@@ -332,9 +333,10 @@
 .da-section-label {
   margin: 0 0 0.75rem;
   font-family: "Rubik", var(--ex-font), sans-serif;
-  font-size: 16px;
-  font-weight: 500;
-  color: var(--ex-body-text-secondary);
+  font-size: var(--ex-h3-size);
+  font-weight: var(--ex-heading-weight);
+  color: var(--ex-header-black);
+  line-height: 1.3;
 }
 
 /* —— Shared info card shell —— */
@@ -362,7 +364,7 @@
   flex-wrap: wrap;
   gap: 0.75rem 1.25rem;
   font-family: "Rubik", var(--ex-font), sans-serif;
-  font-size: 12px;
+  font-size: var(--ex-text-size);
   font-weight: 400;
   color: var(--ex-body-text);
 }
@@ -381,8 +383,8 @@
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  font-size: 12px;
-  font-weight: 500;
+  font-size: var(--ex-text-size);
+  font-weight: var(--ex-text-weight);
   color: var(--ex-success);
   white-space: nowrap;
 }
@@ -391,7 +393,7 @@
   display: block;
   margin-bottom: 0.2rem;
   font-family: "Rubik", var(--ex-font), sans-serif;
-  font-size: 12px;
+  font-size: var(--ex-text-size);
   font-weight: 400;
   color: var(--ex-body-text-secondary);
 }
@@ -410,7 +412,7 @@
   margin: 0;
   font-family: "Rubik", var(--ex-font), sans-serif;
   font-size: 20px;
-  font-weight: 500;
+  font-weight: var(--ex-heading-weight);
   color: var(--ex-header-black);
   line-height: 1.25;
 }
@@ -445,7 +447,7 @@
 .da-card--columns .da-identity-name {
   margin: 0 0 0.85rem;
   font-size: 1.35rem;
-  font-weight: 500;
+  font-weight: var(--ex-heading-weight);
   color: var(--ex-header-black);
   line-height: 1.25;
 }
@@ -470,8 +472,8 @@
 .da-card--band .da-name-band__label {
   display: block;
   margin-bottom: 0.15rem;
-  font-size: 0.72rem;
-  font-weight: 500;
+  font-size: var(--ex-text-size);
+  font-weight: var(--ex-text-weight);
   letter-spacing: 0.04em;
   text-transform: uppercase;
   opacity: 0.85;
@@ -480,7 +482,7 @@
 .da-card--band .da-name-band__value {
   margin: 0;
   font-size: 1.35rem;
-  font-weight: 500;
+  font-weight: var(--ex-heading-weight);
   line-height: 1.25;
 }
 
@@ -510,7 +512,7 @@
   color: var(--ex-white);
   font-family: inherit;
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: var(--ex-text-weight);
   padding: 0.85rem 1.25rem;
   text-align: center;
   text-decoration: none;
@@ -533,7 +535,7 @@
   background: var(--ex-gray-100);
   border-radius: var(--ex-radius);
   padding: 1rem 1.15rem;
-  font-size: 0.9rem;
+  font-size: var(--ex-text-size);
   color: var(--ex-body-text-secondary);
   line-height: 1.5;
 }
@@ -575,7 +577,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.75rem;
+  font-size: var(--ex-text-size);
   border: 2px solid var(--ex-border);
   background: var(--ex-white);
   color: var(--ex-body-text-secondary);
@@ -601,7 +603,7 @@
   margin: 0 0 0.55rem;
   font-family: "Rubik", var(--ex-font), sans-serif;
   font-size: 20px;
-  font-weight: 500;
+  font-weight: var(--ex-heading-weight);
   font-style: normal;
   color: var(--ex-header-black);
 }
@@ -612,8 +614,8 @@
   background: var(--ex-white);
   color: var(--ex-header-black);
   font-family: inherit;
-  font-size: 0.95rem;
-  font-weight: 500;
+  font-size: var(--ex-text-size);
+  font-weight: var(--ex-text-weight);
   padding: 0.65rem 1.15rem;
   cursor: pointer;
 }
@@ -638,7 +640,7 @@
   margin: 0 0 1.5rem;
   text-align: center;
   font-size: 1.65rem;
-  font-weight: 500;
+  font-weight: var(--ex-heading-weight);
   color: var(--ex-header-black);
 }
 
@@ -695,7 +697,7 @@
 .da-decision__title {
   margin: 0 0 0.85rem;
   font-size: 1.15rem;
-  font-weight: 500;
+  font-weight: var(--ex-heading-weight);
   color: var(--ex-header-black);
 }
 
@@ -721,7 +723,7 @@
   align-items: flex-start;
   gap: 0.65rem;
   font-family: "Rubik", var(--ex-font), sans-serif;
-  font-size: 14px;
+  font-size: var(--ex-text-size);
   font-weight: 400;
   color: var(--ex-header-black);
   cursor: pointer;
@@ -761,7 +763,7 @@
 
 .da-radio__icr {
   color: #31baae;
-  font-weight: 500;
+  font-weight: var(--ex-text-weight);
 }
 
 .da-decision__note {
@@ -794,7 +796,7 @@
   padding: 0.65rem 1.35rem;
 }
 
-/* —— Screen 3: account active + optional password —— */
+/* —— Screen 3: shopping profile active + optional password —— */
 .da-active {
   border-radius: 10px;
   margin-bottom: 1.5rem;
@@ -810,8 +812,8 @@
   align-items: center;
   gap: 0.4rem;
   margin: 0 0 0.65rem;
-  font-size: 0.8rem;
-  font-weight: 500;
+  font-size: var(--ex-text-size);
+  font-weight: var(--ex-text-weight);
   letter-spacing: 0.03em;
   text-transform: uppercase;
   color: var(--ex-success);
@@ -820,14 +822,14 @@
 .da-active--hero .da-active__title {
   margin: 0 0 0.65rem;
   font-size: 1.55rem;
-  font-weight: 500;
+  font-weight: var(--ex-heading-weight);
   color: var(--ex-header-black);
   line-height: 1.25;
 }
 
 .da-active--hero .da-active__body {
   margin: 0;
-  font-size: 0.98rem;
+  font-size: var(--ex-text-size);
   line-height: 1.55;
   color: var(--ex-body-text);
 }
@@ -850,13 +852,13 @@
 .da-active--columns .da-active__title {
   margin: 0 0 0.55rem;
   font-size: 1.35rem;
-  font-weight: 500;
+  font-weight: var(--ex-heading-weight);
   color: var(--ex-header-black);
 }
 
 .da-active--columns .da-active__body {
   margin: 0;
-  font-size: 0.95rem;
+  font-size: var(--ex-text-size);
   line-height: 1.55;
   color: var(--ex-body-text);
 }
@@ -873,8 +875,8 @@
 
 .da-active--columns .da-active__aside-label {
   margin: 0 0 0.35rem;
-  font-size: 0.78rem;
-  font-weight: 500;
+  font-size: var(--ex-text-size);
+  font-weight: var(--ex-text-weight);
   color: var(--ex-body-text-secondary);
   text-transform: uppercase;
   letter-spacing: 0.03em;
@@ -883,7 +885,7 @@
 .da-active--columns .da-active__aside-dealer {
   margin: 0;
   font-size: 1.15rem;
-  font-weight: 500;
+  font-weight: var(--ex-heading-weight);
   color: var(--ex-header-black);
   line-height: 1.3;
 }
@@ -905,8 +907,8 @@
 .da-active--band .da-active__band-label {
   display: block;
   margin-bottom: 0.15rem;
-  font-size: 0.72rem;
-  font-weight: 500;
+  font-size: var(--ex-text-size);
+  font-weight: var(--ex-text-weight);
   letter-spacing: 0.04em;
   text-transform: uppercase;
   opacity: 0.9;
@@ -915,13 +917,13 @@
 .da-active--band .da-active__title {
   margin: 0;
   font-size: 1.35rem;
-  font-weight: 500;
+  font-weight: var(--ex-heading-weight);
   line-height: 1.25;
 }
 
 .da-active--band .da-active__body {
   margin: 0;
-  font-size: 0.95rem;
+  font-size: var(--ex-text-size);
   line-height: 1.55;
   color: var(--ex-body-text);
 }
@@ -937,7 +939,7 @@
 .da-password__title {
   margin: 0 0 1.15rem;
   font-size: 20px;
-  font-weight: 500;
+  font-weight: var(--ex-heading-weight);
   color: var(--ex-header-black);
 }
 
@@ -945,8 +947,8 @@
   display: inline-block;
   margin: 0 0 1rem;
   padding: 0.15rem 0.45rem;
-  font-size: 0.72rem;
-  font-weight: 500;
+  font-size: var(--ex-text-size);
+  font-weight: var(--ex-text-weight);
   letter-spacing: 0.03em;
   text-transform: uppercase;
   color: var(--ex-body-text);
@@ -956,7 +958,7 @@
 
 .da-password__hint {
   margin: 0 0 1.15rem;
-  font-size: 0.9rem;
+  font-size: var(--ex-text-size);
   color: var(--ex-body-text-secondary);
   line-height: 1.45;
 }
@@ -968,8 +970,8 @@
 .da-form-field label {
   display: block;
   margin-bottom: 0.35rem;
-  font-size: 0.85rem;
-  font-weight: 500;
+  font-size: var(--ex-text-size);
+  font-weight: var(--ex-text-weight);
   color: var(--ex-body-text);
 }
 
@@ -981,7 +983,7 @@
   border-radius: var(--ex-radius);
   padding: 0.65rem 0.85rem;
   font-family: inherit;
-  font-size: 0.95rem;
+  font-size: var(--ex-text-size);
   color: var(--ex-header-black);
   background: var(--ex-white);
 }
@@ -1008,7 +1010,7 @@
 
 .da-password-reqs__title {
   margin: 0 0 0.45rem;
-  font-size: 0.88rem;
+  font-size: 16px;
   font-weight: 400;
   color: var(--ex-body-text);
 }
@@ -1016,7 +1018,7 @@
 .da-password-reqs__list {
   margin: 0;
   padding-left: 1.15rem;
-  font-size: 0.88rem;
+  font-size: 16px;
   color: var(--ex-body-text);
   line-height: 1.5;
 }
@@ -1027,7 +1029,7 @@
 
 .da-field-error {
   margin: 0.4rem 0 0;
-  font-size: 0.88rem;
+  font-size: var(--ex-text-size);
   font-weight: 400;
   color: #e45151;
   line-height: 1.35;
@@ -1042,7 +1044,7 @@
   align-items: flex-start;
   gap: 0.6rem;
   margin: 0.25rem 0 1.25rem;
-  font-size: 0.9rem;
+  font-size: var(--ex-text-size);
   color: var(--ex-body-text);
   cursor: pointer;
 }
@@ -1083,8 +1085,8 @@
   background: transparent;
   color: var(--ex-tertiary);
   font-family: inherit;
-  font-size: 0.95rem;
-  font-weight: 500;
+  font-size: var(--ex-text-size);
+  font-weight: var(--ex-text-weight);
   padding: 0.65rem 0.5rem;
   cursor: pointer;
   text-decoration: underline;
@@ -1101,7 +1103,7 @@
   border-radius: var(--ex-radius);
   background: #fdecec;
   color: var(--ex-danger);
-  font-size: 0.88rem;
+  font-size: var(--ex-text-size);
 }
 
 .da-form-error.is-visible {
@@ -1138,7 +1140,7 @@
   margin: 0 auto 1.15rem;
   max-width: 36rem;
   font-size: 1.75rem;
-  font-weight: 500;
+  font-weight: var(--ex-heading-weight);
   color: var(--ex-header-black);
   line-height: 1.25;
 }
@@ -1185,7 +1187,7 @@
 .da-complete--columns .da-complete__title {
   margin: 0 0 0.65rem;
   font-size: 1.45rem;
-  font-weight: 500;
+  font-weight: var(--ex-heading-weight);
   color: var(--ex-header-black);
 }
 
@@ -1201,7 +1203,7 @@
 .da-complete--band .da-complete__title {
   margin: 0;
   font-size: 1.45rem;
-  font-weight: 500;
+  font-weight: var(--ex-heading-weight);
   line-height: 1.25;
 }
 
