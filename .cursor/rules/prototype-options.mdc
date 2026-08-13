@@ -1,0 +1,52 @@
+---
+description: Conventions for Excelerator design-sandbox options stories and the Jira → options first loop
+alwaysApply: true
+---
+
+# Excelerator prototype — options stories
+
+This repo is a static HTML/JS design sandbox. The features hub is the entry point; each story is either an **options exploration** or a **decided flow**.
+
+## Features hub
+
+- Hub page: `index.html` (loads `js/features.js` + `js/features-hub.js`)
+- Register every new story by appending one object to `window.ExFeatures.stories` in `js/features.js`
+- Required fields: `id`, `label`, `name`, `desc`, `href`
+- For options explorations, `href` must point at `stories/<kebab-name>/options.html`
+
+## Options story layout
+
+```
+stories/<kebab-name>/
+  options.html          # landing page shell (copy from notification-banner)
+  options-story.js      # window.ExOptionsStory config
+  <option-name>/…       # optional per-option HTML when previews are not shared pages
+```
+
+Reuse shared renderer `js/options-page.js` and hub styles `css/features-hub.css` + `css/excelerator.css`.
+
+### `options-story.js` shape
+
+- `pageTitle`, `title`, `intro`, `hubUrl` (usually `../../index.html`)
+- `previewUrl` and/or per-option `previewUrl` / `links[]`
+- Optional: `storageKey`, `prioritizedHeading`, `otherHeading`
+- `options[]`: `id`, `label`, `name`, `desc`; optional `image`, `prioritized`, `previewUrl`
+
+### First-loop rules (design options for business review)
+
+When scaffolding from a Jira ticket (webhook or chat):
+
+1. Create **3–4** distinct options grounded in the ticket summary and acceptance criteria
+2. Do **not** set `prioritized: true` — business has not chosen yet
+3. Intro copy should invite review of alternatives, not declare a winner
+4. Branch: `story/<jira-key>-<short-slug>` (e.g. `story/EXC-1234-notification-banner`)
+5. Open a **draft PR** titled with the Jira key and a short summary
+6. Do not remove other stories; do not convert to a decided flow; do not delete losing options
+
+### Decided flows (later — not this loop)
+
+Hub `href` may point at the first screen (e.g. `stories/dealer-access-approval/email.html`) with no options page.
+
+## Business share message
+
+After the designer confirms options look good, draft a message using `docs/share-message-template.md`. Include the live GitHub Pages URL to the story’s `options.html` (or the hub if the story is listed there).

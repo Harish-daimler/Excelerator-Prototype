@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Reminder — Excelerator Inbox</title>
+    <title>Welcome to Excelerator — Inbox</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -70,11 +70,7 @@
             </a>
           </li>
           <li>
-            <a
-              class="outlook-inbox__item is-active is-unread"
-              href="email-reminder.html"
-              aria-current="page"
-            >
+            <a class="outlook-inbox__item is-unread" href="email-reminder.html">
               <div class="outlook-inbox__from">
                 <span class="outlook-inbox__from-name">Excelerator</span>
                 <span class="outlook-inbox__time">Today</span>
@@ -90,7 +86,11 @@
             </a>
           </li>
           <li>
-            <a class="outlook-inbox__item is-unread" href="email-welcome.html">
+            <a
+              class="outlook-inbox__item is-active is-unread"
+              href="email-welcome.html"
+              aria-current="page"
+            >
               <div class="outlook-inbox__from">
                 <span class="outlook-inbox__from-name">Excelerator</span>
                 <span class="outlook-inbox__time">Today</span>
@@ -131,11 +131,7 @@
         </div>
 
         <div class="outlook-reading__meta">
-          <h1 class="outlook-reading__subject">
-            Reminder: Activate Your
-            <span class="da-lead__dealer">Fort Mill Freightliner</span>
-            Excelerator online shopping profile
-          </h1>
+          <h1 class="outlook-reading__subject">Welcome to Excelerator</h1>
           <div class="outlook-reading__from">
             <span class="outlook-avatar" aria-hidden="true">EX</span>
             <div class="outlook-reading__from-text">
@@ -144,7 +140,7 @@
                 <span class="outlook-muted">&lt;noreply@excelerator.com&gt;</span>
               </div>
               <div class="outlook-muted">To: you@example.com</div>
-              <div class="outlook-muted">Today 2:30 PM</div>
+              <div class="outlook-muted">Today 3:05 PM</div>
             </div>
           </div>
         </div>
@@ -169,61 +165,42 @@
               </div>
             </header>
 
-            <main class="da-main">
-              <p class="da-lead">
-                <span class="da-lead__dealer">Fort Mill Freightliner</span> has
-                requested to create an Excelerator online shopping profile for
-                you.
+            <main class="da-main da-main--email-welcome">
+              <p class="da-email-username">
+                Your Excelerator username is
+                <span class="da-email-username__value">TEST test@gmail.com</span>
               </p>
 
-              <h3 class="da-section-label">Requesting Dealership</h3>
+              <p class="da-email-copy da-email-copy--password">
+                Click this link to set up the password for your Excelerator
+                online shopping profile:
+                <a href="screen-3.html">Set Up Password</a>
+              </p>
 
-              <section
-                class="da-card da-card--hero"
-                aria-label="Requesting dealership"
-              >
-                <div class="da-card__top">
-                  <div class="da-requester">
-                    <span
-                      ><i class="fas fa-user" aria-hidden="true"></i> Marcus
-                      Reeve</span
-                    >
-                    <span
-                      ><i class="fas fa-envelope" aria-hidden="true"></i>
-                      marcr@fortmillftl.com</span
-                    >
-                  </div>
-                </div>
-
-                <div class="da-field">
-                  <span class="da-field__label">Dealership Name</span>
-                  <h4 class="da-hero-name">Fort Mill Freightliner</h4>
-                </div>
-
-                <div class="da-meta-row">
-                  <div class="da-field">
-                    <span class="da-field__label">Address</span>
-                    <p class="da-field__value">
-                      4421 Industrial Way, Fort Mill, SC 29715
-                    </p>
-                  </div>
-                  <div class="da-field">
-                    <span class="da-field__label">Phone</span>
-                    <p class="da-field__value">(803) 555-0912</p>
-                  </div>
-                </div>
-              </section>
-
-              <a class="da-btn-primary" href="screen-2.html">Review Request</a>
-
-              <div class="da-why">
-                <div class="da-why__box">
-                  <strong>Why am I receiving this?</strong> A dealership has
-                  created an Excelerator online shopping profile using your email
-                  address. If you weren’t expecting this, please
-                  <a href="#">contact support</a>.
-                </div>
+              <div class="da-email-alert" role="note">
+                <i class="fas fa-circle-exclamation" aria-hidden="true"></i>
+                <p>
+                  This password setup link will expire after 24 hours.
+                </p>
               </div>
+
+              <p class="da-email-copy da-email-copy--signin">
+                Already have a Password? Go to
+                <a
+                  href="https://excelerator.com/en/login"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Excelerator.com</a
+                >
+                to sign in.
+              </p>
+
+              <p class="da-email-noreply">
+                Please do not reply to this message as this email account is
+                unmonitored.
+              </p>
+
+              <hr class="da-email-footer-rule" />
 
               <div class="da-skyline">
                 <img
