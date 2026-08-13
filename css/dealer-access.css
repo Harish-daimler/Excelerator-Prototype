@@ -398,6 +398,25 @@
   margin-top: 0.25rem;
 }
 
+.da-welcome--title-only {
+  padding: 1.75rem 1.5rem;
+}
+
+.da-welcome--title-only .da-welcome__inner {
+  align-items: center;
+}
+
+.da-welcome--title-only .da-welcome__title {
+  margin: 0;
+}
+
+.da-email-noreply {
+  margin: 2rem 0 0;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--ex-body-text-secondary);
+}
+
 /* —— Screen body —— */
 .da-main {
   max-width: 720px;
@@ -418,6 +437,166 @@
 
 .da-lead__dealer {
   font-weight: 500;
+}
+
+.da-email-copy {
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--ex-body-text);
+}
+
+.da-email-copy a {
+  color: var(--ex-tertiary);
+  font-weight: 500;
+  text-decoration: underline;
+}
+
+.da-email-logo {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0 0 2.5rem;
+}
+
+.da-email-logo img {
+  display: block;
+  height: 28px;
+  width: auto;
+}
+
+.da-email-heading {
+  margin: 0 0 1.25rem;
+  font-family: "Rubik", var(--ex-font), sans-serif;
+  font-size: clamp(1.6rem, 2.5vw, 2rem);
+  font-weight: var(--ex-heading-weight);
+  color: var(--ex-header-black);
+  line-height: 1.25;
+}
+
+.da-email-alert {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin: 0 0 1rem;
+  padding: 0.85rem 1rem;
+  background: var(--ex-gray-100);
+  border-radius: var(--ex-radius);
+  color: var(--ex-body-text);
+}
+
+.da-email-alert i {
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+  color: var(--ex-body-text-secondary);
+  font-size: 1rem;
+}
+
+.da-email-alert p {
+  margin: 0;
+  font-size: var(--ex-text-size);
+  line-height: 1.5;
+  color: var(--ex-body-text);
+}
+
+.da-main--email-welcome {
+  padding: 2.5rem 2rem 3.5rem;
+}
+
+.da-main--email-welcome .da-email-username {
+  margin: 0 0 2rem;
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--ex-body-text);
+}
+
+.da-main--email-welcome .da-email-username__value {
+  font-weight: 500;
+  color: var(--ex-header-black);
+}
+
+.da-main--email-welcome .da-lead {
+  margin: 0 0 2.25rem;
+}
+
+.da-main--email-welcome .da-email-copy {
+  margin: 0 0 2rem;
+}
+
+.da-main--email-welcome .da-email-copy--password {
+  margin: 0 0 0.65rem;
+}
+
+.da-main--email-welcome .da-email-alert {
+  margin: 0 0 2rem;
+  padding: 0.55rem 0.85rem;
+  align-items: center;
+}
+
+.da-main--email-welcome .da-email-alert i {
+  margin-top: 0;
+  font-size: 0.9rem;
+}
+
+.da-main--email-welcome .da-email-alert p {
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.da-main--email-welcome .da-email-copy--signin {
+  margin: 0;
+}
+
+.da-main--email-welcome .da-email-noreply {
+  margin: 150px 0 0.75rem;
+}
+
+.da-main--email-welcome .da-email-footer-rule {
+  margin: 0;
+  border: 0;
+  border-top: 1px solid var(--ex-border);
+}
+
+.da-main--email-welcome .da-skyline {
+  margin-top: 1.25rem;
+}
+
+.da-main--email-welcome-buttons .da-email-copy--password {
+  margin: 0 0 0.85rem;
+}
+
+.da-main--email-welcome-buttons .da-email-btn {
+  display: inline-block;
+  width: auto;
+  min-width: 8.5rem;
+  margin: 0 0 0.65rem;
+  padding: 0.5rem 1rem;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.35;
+  text-align: center;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.da-main--email-welcome-buttons .da-btn-secondary.da-email-btn:hover {
+  color: var(--ex-header-black);
+  text-decoration: none;
+}
+
+.da-main--email-welcome-buttons .da-email-alert {
+  margin: 0.35rem 0 2rem;
+}
+
+.da-main--email-welcome-buttons .da-email-copy--signin {
+  margin: 0 0 0.85rem;
+}
+
+.da-main--email-welcome-buttons .da-email-copy--signin + .da-email-btn {
+  margin-bottom: 0;
+}
+
+.da-main--email-welcome-buttons .da-email-noreply {
+  margin-top: 150px;
 }
 
 .da-section-label {

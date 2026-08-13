@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Option 1 — Consent Panel | Update Customer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../../../css/excelerator.css" />
+    <link rel="stylesheet" href="../../../css/product-header.css" />
+    <link rel="stylesheet" href="../../../css/update-customer.css" />
+  </head>
+  <body class="uc-page" data-auth="logged-in">
+    <a class="uc-back" href="../../../index.html"
+      ><i class="fas fa-th-large" aria-hidden="true"></i
+      ><span>All features</span></a
+    >
+
+    <header class="product-header">
+      <div class="ph-logged-in-top auth-logged-in">
+        <div class="ph-brand-col">
+          <a
+            class="ex-header__logo"
+            href="../../../global-homepage.html"
+            aria-label="Excelerator home"
+          >
+            <img
+              src="../../../assets/images/excelerator-logo.png"
+              alt="Excelerator"
+            />
+          </a>
+          <button type="button" class="ph-shop-vehicle">
+            <i class="fas fa-truck" aria-hidden="true"></i>
+            Shop by Vehicle
+            <i class="fas fa-plus" aria-hidden="true"></i>
+          </button>
+        </div>
+        <form class="ph-search" role="search" action="#" onsubmit="return false;">
+          <button
+            type="button"
+            class="ph-search__filter"
+            aria-label="Search filters"
+          >
+            <i class="fas fa-caret-down" aria-hidden="true"></i>
+          </button>
+          <input
+            class="ph-search__input"
+            type="search"
+            placeholder="Search by part name, number, VMRS, or cross reference"
+            aria-label="Search"
+          />
+          <button type="submit" class="ph-search__submit" aria-label="Search">
+            <i class="fas fa-search" aria-hidden="true"></i>
+          </button>
+        </form>
+        <div class="ph-user-col">
+          <div class="ph-user-row">
+            <button type="button" class="ph-user-btn">
+              <i class="fas fa-briefcase" aria-hidden="true"></i>
+              <span>Shop for a Customer</span>
+            </button>
+            <div class="ex-account-menu">
+              <button
+                type="button"
+                class="ph-user-btn ex-account-menu__toggle"
+                aria-expanded="false"
+                aria-haspopup="true"
+                aria-controls="uc-account-in"
+              >
+                <i class="fas fa-user" aria-hidden="true"></i>
+                <span>ADXDealer3</span>
+                <span class="ph-badge">3</span>
+                <i class="fas fa-chevron-down" aria-hidden="true"></i>
+              </button>
+              <ul
+                id="uc-account-in"
+                class="ex-account-menu__dropdown"
+                role="menu"
+                hidden
+              >
+                <li role="none">
+                  <button type="button" role="menuitem">Account settings</button>
+                </li>
+              </ul>
+            </div>
+            <button
+              type="button"
+              class="ph-user-btn"
+              aria-label="Region and language"
+            >
+              <img
+                class="ex-header__flag ex-header__flag--site"
+                src="../../../assets/images/site-selector-icon-dtna.png"
+                alt="United States / Canada"
+              />
+              <i class="fas fa-chevron-down" aria-hidden="true"></i>
+            </button>
+          </div>
+          <div class="ph-dealer">
+            <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+            <div>
+              <div class="ph-dealer__name">Houston Freightliner</div>
+              <div class="ph-dealer__meta">50311111 | $USD</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <nav class="ph-nav" aria-label="Primary">
+        <div class="ph-nav__lob-wrap ex-account-menu">
+          <button
+            type="button"
+            class="ph-nav__lob ex-account-menu__toggle"
+            aria-expanded="false"
+            aria-haspopup="true"
+            aria-controls="uc-lob-menu"
+          >
+            <i class="fas fa-cogs" aria-hidden="true"></i>
+            <span>Parts &amp; Services</span>
+            <i class="fas fa-chevron-down" aria-hidden="true"></i>
+          </button>
+          <ul
+            id="uc-lob-menu"
+            class="ph-lob-dropdown ex-account-menu__dropdown"
+            role="menu"
+            hidden
+          >
+            <li role="none">
+              <a role="menuitem" href="../../../parts.html">Parts &amp; PartsProX</a>
+            </li>
+            <li role="none">
+              <a role="menuitem" href="../../../coverage.html">Extended Coverage</a>
+            </li>
+            <li role="none">
+              <a role="menuitem" href="../../../connectivity.html"
+                >Connectivity Services</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div class="ph-nav__divider" aria-hidden="true"></div>
+        <ul class="ph-nav__links auth-logged-in">
+          <li><a href="#">Dashboard</a></li>
+          <li>
+            <a class="is-active" href="../options.html" aria-current="page"
+              >Customers</a
+            >
+          </li>
+          <li><a href="#">Dealers</a></li>
+          <li><a href="#">Orders/Quotes</a></li>
+          <li><a href="#">My Garage</a></li>
+        </ul>
+        <div class="ph-nav__utils auth-logged-in">
+          <button type="button" aria-label="Quick actions">
+            <i class="fas fa-bolt"></i>
+          </button>
+          <button type="button" aria-label="Favorites">
+            <i class="far fa-star"></i>
+          </button>
+        </div>
+      </nav>
+
+      <div class="ph-subnav">
+        <a href="#">Error Management</a>
+        <span class="ph-subnav__divider" aria-hidden="true"></span>
+        <a href="#">Inner Circle Rewards</a>
+      </div>
+    </header>
+
+    <main class="uc-shell">
+      <div class="uc-titlebar">
+        <div class="uc-titlebar__main">
+          <a class="uc-titlebar__back" href="../options.html">
+            <i class="fas fa-chevron-left" aria-hidden="true"></i>
+            <h1 class="uc-titlebar__name">
+              Update (CLOSED LOOP)RYDER WYNLEARZE5 (293425)
+            </h1>
+          </a>
+          <div class="uc-badges">
+            <span class="uc-badge uc-badge--danger">Inactive</span>
+            <span class="uc-badge uc-badge--success"
+              >Dealer Ordering Available</span
+            >
+          </div>
+        </div>
+
+        <div class="uc-actions-row" aria-label="Customer actions">
+          <button type="button" class="uc-actions-row__link">
+            <i class="fas fa-compress-alt" aria-hidden="true"></i>
+            Collapse all Sections
+          </button>
+
+          <details class="uc-actions-menu">
+            <summary class="uc-actions-menu__toggle">
+              Actions
+              <i class="fas fa-chevron-down" aria-hidden="true"></i>
+            </summary>
+            <ul class="uc-actions-menu__list" role="menu">
+              <li role="none">
+                <button type="button" role="menuitem" class="uc-actions-menu__item">
+                  <i class="fas fa-file-export" aria-hidden="true"></i>
+                  Export Customer Details
+                </button>
+              </li>
+              <li role="none">
+                <button type="button" role="menuitem" class="uc-actions-menu__item">
+                  <i class="fas fa-book" aria-hidden="true"></i>
+                  Request/Revoke Parts Catalog Access
+                </button>
+              </li>
+              <li class="uc-actions-menu__divider" role="separator"></li>
+              <li role="none">
+                <button
+                  type="button"
+                  role="menuitem"
+                  class="uc-actions-menu__item uc-actions-menu__item--danger"
+                >
+                  <i class="fas fa-box-archive" aria-hidden="true"></i>
+                  Archive
+                </button>
+              </li>
+            </ul>
+          </details>
+        </div>
+      </div>
+
+      <section class="uc-panel" aria-labelledby="uc-consent-title">
+        <div class="uc-panel__head">
+          <h2 class="uc-panel__title" id="uc-consent-title">Consent Details</h2>
+          <button
+            type="button"
+            class="uc-panel__toggle"
+            aria-label="Collapse section"
+          >
+            <i class="fas fa-chevron-up" aria-hidden="true"></i>
+          </button>
+        </div>
+        <div class="uc-panel__body">
+          <div class="uc-consent">
+            <div class="uc-consent__row">
+              <span class="uc-consent__label">Consent status</span>
+              <span class="uc-status uc-status--pending">Pending</span>
+            </div>
+
+            <div class="uc-consent__row uc-consent__row--email">
+              <span class="uc-consent__label">Customer email</span>
+              <div class="uc-consent__email-block">
+                <p class="uc-consent__email" id="uc-consent-email-display">
+                  closedloop.test@example.com
+                </p>
+                <p class="uc-consent__hint">
+                  To change this email, update the Email field in
+                  <a href="#uc-company-section">Company Identity &amp; Contact Information</a>
+                  below. Changes apply to the primary user for this customer
+                  account.
+                </p>
+              </div>
+            </div>
+
+            <div class="uc-consent__row">
+              <span class="uc-consent__label">Request sent on</span>
+              <span class="uc-consent__value">Jul 15, 2026 at 9:14 AM</span>
+            </div>
+
+            <div class="uc-consent__actions">
+              <p class="uc-consent__expiry-note">
+                Consent requests expire after 90 days if the customer does not
+                respond.
+              </p>
+              <button type="button" class="uc-consent__resend">
+                <i class="fas fa-paper-plane" aria-hidden="true"></i>
+                Resend consent request
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="uc-panel" id="uc-company-section" aria-labelledby="uc-company-title">
+        <div class="uc-panel__head">
+          <h2 class="uc-panel__title" id="uc-company-title">
+            Company Identity &amp; Contact Information
+          </h2>
+          <div class="uc-panel__tools">
+            <button type="button" class="uc-btn uc-btn--ghost" disabled>
+              Reset
+            </button>
+            <button type="button" class="uc-btn uc-btn--ghost" disabled>
+              Save
+            </button>
+            <button
+              type="button"
+              class="uc-panel__toggle"
+              aria-label="Collapse section"
+            >
+              <i class="fas fa-chevron-up" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="uc-panel__body">
+          <div class="uc-form-grid">
+            <div class="uc-field">
+              <label for="uc-company">Company Name</label>
+              <input id="uc-company" type="text" value="(CLOSED LOOP)RYDER WYNLEARZE5" />
+            </div>
+            <div class="uc-field">
+              <label for="uc-acct">Customer Account #</label>
+              <input id="uc-acct" type="text" value="293425" />
+            </div>
+            <div class="uc-field">
+              <label for="uc-email">Email</label>
+              <input
+                id="uc-email"
+                type="email"
+                value="closedloop.test@example.com"
+                aria-describedby="uc-email-hint"
+              />
+              <p class="uc-field__hint" id="uc-email-hint">
+                Also shown in Consent Details above for the primary user on this
+                account.
+              </p>
+            </div>
+
+            <div class="uc-field">
+              <label for="uc-contact">Contact Person</label>
+              <input id="uc-contact" type="text" value="Test User" />
+            </div>
+            <div class="uc-field">
+              <label for="uc-phone">Phone Number</label>
+              <input id="uc-phone" type="text" value="(555) 010-2934" />
+            </div>
+            <div class="uc-field">
+              <label for="uc-addr1">Address Line 1</label>
+              <input id="uc-addr1" type="text" value="1200 Commerce Pkwy" />
+            </div>
+
+            <div class="uc-field">
+              <label for="uc-addr2">Address Line 2</label>
+              <input id="uc-addr2" type="text" value="" />
+            </div>
+            <div class="uc-field">
+              <label for="uc-city">City</label>
+              <input id="uc-city" type="text" value="Houston" />
+            </div>
+            <div class="uc-field">
+              <label for="uc-country">Country</label>
+              <select id="uc-country">
+                <option selected>United States</option>
+                <option>Canada</option>
+              </select>
+            </div>
+
+            <div class="uc-field">
+              <label for="uc-state">State</label>
+              <select id="uc-state">
+                <option selected>Texas</option>
+                <option>California</option>
+              </select>
+            </div>
+            <div class="uc-field">
+              <label for="uc-zip">Zipcode</label>
+              <input id="uc-zip" type="text" value="77002" />
+            </div>
+            <div class="uc-field">
+              <label for="uc-county">County</label>
+              <input id="uc-county" type="text" value="Harris" />
+            </div>
+
+            <div class="uc-field">
+              <label for="uc-potential">Sales Potential</label>
+              <select id="uc-potential">
+                <option selected>Select</option>
+                <option>High</option>
+                <option>Medium</option>
+                <option>Low</option>
+              </select>
+            </div>
+            <div class="uc-field">
+              <label for="uc-sales-emp">Salesperson Emp ID</label>
+              <input id="uc-sales-emp" type="text" value="" />
+            </div>
+            <div class="uc-field">
+              <label for="uc-segment">Customer Segment</label>
+              <select id="uc-segment">
+                <option selected>Select</option>
+                <option>Fleet</option>
+                <option>Owner Operator</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="uc-toggles">
+            <div class="uc-toggle">
+              <span class="uc-toggle__label">Cash Account</span>
+              <div class="uc-toggle__control">
+                <span>No</span>
+                <label class="uc-switch">
+                  <input type="checkbox" />
+                  <span class="uc-switch__track"></span>
+                </label>
+                <span>Yes</span>
+              </div>
+            </div>
+            <div class="uc-toggle">
+              <span class="uc-toggle__label"
+                >Show Frequently Bought Together Items</span
+              >
+              <div class="uc-toggle__control">
+                <span>No</span>
+                <label class="uc-switch">
+                  <input type="checkbox" />
+                  <span class="uc-switch__track"></span>
+                </label>
+                <span>Yes</span>
+              </div>
+            </div>
+            <div class="uc-toggle">
+              <span class="uc-toggle__label">Enable ICR Enrollment</span>
+              <div class="uc-toggle__control">
+                <span>No</span>
+                <label class="uc-switch">
+                  <input type="checkbox" checked />
+                  <span class="uc-switch__track"></span>
+                </label>
+                <span>Yes</span>
+              </div>
+            </div>
+            <div class="uc-toggle">
+              <span class="uc-toggle__label">Enable Credit Card Payments</span>
+              <div class="uc-toggle__control">
+                <span>No</span>
+                <label class="uc-switch">
+                  <input type="checkbox" />
+                  <span class="uc-switch__track"></span>
+                </label>
+                <span>Yes</span>
+              </div>
+            </div>
+            <div class="uc-toggle">
+              <span class="uc-toggle__label">Enable Dealership Account</span>
+              <div class="uc-toggle__control">
+                <span>No</span>
+                <label class="uc-switch">
+                  <input type="checkbox" checked />
+                  <span class="uc-switch__track"></span>
+                </label>
+                <span>Yes</span>
+              </div>
+            </div>
+            <div class="uc-toggle">
+              <span class="uc-toggle__label">Enable Quote</span>
+              <div class="uc-toggle__control">
+                <span>No</span>
+                <label class="uc-switch">
+                  <input type="checkbox" checked />
+                  <span class="uc-switch__track"></span>
+                </label>
+                <span>Yes</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="uc-form-grid" style="margin-top: 1.15rem">
+            <div class="uc-field">
+              <label for="uc-quote-reason">Quote Disabled Reason</label>
+              <input id="uc-quote-reason" type="text" value="" />
+            </div>
+            <div class="uc-field">
+              <label for="uc-min-cart">Minimum Cart Value Required For Quote</label>
+              <input id="uc-min-cart" type="text" value="" />
+            </div>
+            <div class="uc-field">
+              <div class="uc-radio-group">
+                <span class="uc-radio-group__label">Fleet Boost Customer</span>
+                <div class="uc-radio-group__options">
+                  <label
+                    ><input type="radio" name="fleet-boost" /> Yes</label
+                  >
+                  <label
+                    ><input type="radio" name="fleet-boost" checked /> No</label
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="uc-field">
+              <label for="uc-fleet-name">Fleet Name</label>
+              <input id="uc-fleet-name" type="text" value="" />
+            </div>
+            <div class="uc-field">
+              <label for="uc-routing">Electronic Order Routing</label>
+              <input id="uc-routing" type="text" value="" disabled />
+            </div>
+            <div class="uc-field">
+              <label for="uc-fleet-acct">Fleet Boost Account Number</label>
+              <input id="uc-fleet-acct" type="text" value="" disabled />
+            </div>
+            <div class="uc-field">
+              <label for="uc-site-id">Customer Site ID</label>
+              <input id="uc-site-id" type="text" value="" disabled />
+            </div>
+          </div>
+
+          <div class="uc-panel__footer">
+            <button type="button" class="uc-btn uc-btn--ghost" disabled>
+              Reset
+            </button>
+            <button type="button" class="uc-btn uc-btn--ghost" disabled>
+              Save
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="uc-panel" aria-labelledby="uc-dealers-title">
+        <div class="uc-panel__head">
+          <h2 class="uc-panel__title" id="uc-dealers-title">Dealers</h2>
+          <button
+            type="button"
+            class="uc-panel__toggle"
+            aria-label="Collapse section"
+          >
+            <i class="fas fa-chevron-up" aria-hidden="true"></i>
+          </button>
+        </div>
+        <div class="uc-panel__body">
+          <div class="uc-toolbar">
+            <form class="uc-search" action="#" onsubmit="return false;">
+              <input type="search" placeholder="Search" aria-label="Search dealers" />
+              <button type="submit" aria-label="Search">
+                <i class="fas fa-search" aria-hidden="true"></i>
+              </button>
+            </form>
+            <div class="uc-panel__tools">
+              <button type="button" class="uc-btn uc-btn--ghost" disabled>
+                Block Selected
+              </button>
+              <button type="button" class="uc-btn uc-btn--ghost" disabled>
+                Unblock Selected
+              </button>
+            </div>
+          </div>
+          <div class="uc-table-wrap">
+            <table class="uc-table">
+              <thead>
+                <tr>
+                  <th scope="col"><span class="visually-hidden">Select</span></th>
+                  <th scope="col">Dealer Code</th>
+                  <th scope="col">Dealer Name</th>
+                  <th scope="col">City</th>
+                  <th scope="col">Fulfillment</th>
+                  <th scope="col">Shipping</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="is-selected">
+                  <td><input type="checkbox" checked aria-label="Select dealer" /></td>
+                  <td>60311D</td>
+                  <td>Houston Freightliner</td>
+                  <td>Houston</td>
+                  <td>Yes</td>
+                  <td>Yes</td>
+                </tr>
+                <tr>
+                  <td><input type="checkbox" aria-label="Select dealer" /></td>
+                  <td>60312D</td>
+                  <td>Fort Mill Freightliner</td>
+                  <td>Fort Mill</td>
+                  <td>No</td>
+                  <td>Yes</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="uc-panel" aria-labelledby="uc-users-title">
+        <div class="uc-panel__head">
+          <h2 class="uc-panel__title" id="uc-users-title">User Management</h2>
+          <button
+            type="button"
+            class="uc-panel__toggle"
+            aria-label="Collapse section"
+          >
+            <i class="fas fa-chevron-up" aria-hidden="true"></i>
+          </button>
+        </div>
+        <div class="uc-panel__body">
+          <div class="uc-toolbar">
+            <form class="uc-search" action="#" onsubmit="return false;">
+              <input type="search" placeholder="Search" aria-label="Search users" />
+              <button type="submit" aria-label="Search">
+                <i class="fas fa-search" aria-hidden="true"></i>
+              </button>
+            </form>
+            <button type="button" class="uc-btn uc-btn--primary">
+              Add New User
+            </button>
+          </div>
+          <div class="uc-table-wrap">
+            <table class="uc-table">
+              <thead>
+                <tr>
+                  <th scope="col">Name</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">DTNA Connect ID</th>
+                  <th scope="col">Last Login</th>
+                  <th scope="col">Access Type</th>
+                  <th scope="col">Log In</th>
+                  <th scope="col">Parts Order Confirmations</th>
+                  <th scope="col"><span class="visually-hidden">Actions</span></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Test User</td>
+                  <td>closedloop.test@example.com</td>
+                  <td>DTNA-293425</td>
+                  <td>—</td>
+                  <td>Admin</td>
+                  <td>Enabled</td>
+                  <td>Yes</td>
+                  <td>
+                    <button
+                      type="button"
+                      class="uc-icon-btn"
+                      aria-label="User details"
+                    >
+                      <i class="fas fa-user" aria-hidden="true"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="../../../js/auth-toggle.js"></script>
+  </body>
+</html>
