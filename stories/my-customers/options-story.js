@@ -5,17 +5,20 @@ window.ExOptionsStory = {
   pageTitle: "My Customers — Consent Options | Excelerator Prototype",
   title: "Customer consent on Update Customer",
   intro:
-    "Review how dealer consent status, customer email, and resend actions appear on the Update Customer account page. Each option opens directly on a pending-consent scenario — the customer list is omitted for this review.",
+    "Business selected Option 1 as the direction to move forward. Click the prioritized option below to preview the Customer Consent Details section on the Update Customer page. Other explored directions are listed afterward for reference.",
   hubUrl: "../../index.html",
   storageKey: "ex-my-customers-consent",
+  prioritizedHeading: "Prioritized — click to preview",
+  otherHeading: "Other options explored",
   options: [
     {
       id: "panel",
       label: "Option 1",
-      name: "Dedicated Consent Details panel",
+      name: "Dedicated Customer Consent Details panel",
       desc:
-        "Standalone accordion section above Company Identity with full consent fields, email helper text, and resend action.",
+        "Standalone accordion above Company Identity with consent status, blocked Shop As Customer note, customer email, request date with expiry, and a Resend Consent Request action. Business priority.",
       previewUrl: "consent-panel/update-customer.html",
+      prioritized: true,
     },
     {
       id: "banner",

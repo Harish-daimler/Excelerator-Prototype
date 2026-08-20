@@ -419,23 +419,27 @@
   display: flex;
   flex-direction: column;
   gap: 1.15rem;
-  max-width: 40rem;
 }
 
 .uc-consent__row {
   display: grid;
-  grid-template-columns: 10rem minmax(0, 1fr);
+  grid-template-columns: 9rem minmax(0, 1fr) auto;
   gap: 0.75rem 1.25rem;
   align-items: start;
+}
+
+.uc-consent__value-block {
+  min-width: 0;
 }
 
 .uc-consent__label {
   font-size: 14px;
   font-weight: 500;
-  color: var(--ex-body-text-secondary);
+  color: var(--ex-header-black);
 }
 
 .uc-consent__value {
+  margin: 0;
   font-size: var(--ex-text-size);
   color: var(--ex-header-black);
 }
@@ -443,12 +447,11 @@
 .uc-consent__email {
   margin: 0;
   font-size: var(--ex-text-size);
-  font-weight: 500;
   color: var(--ex-header-black);
 }
 
 .uc-consent__hint {
-  margin: 0.45rem 0 0;
+  margin: 0.35rem 0 0;
   font-size: 13px;
   line-height: 1.5;
   color: var(--ex-body-text-secondary);
@@ -493,11 +496,12 @@
   font-weight: 500;
   padding: 0;
   cursor: pointer;
-  text-decoration: underline;
+  white-space: nowrap;
 }
 
 .uc-consent__resend:hover {
   color: var(--ex-primary-hover);
+  text-decoration: underline;
 }
 
 .uc-field__hint {

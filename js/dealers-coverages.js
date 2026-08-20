@@ -1,5 +1,13 @@
 /**
- * Available Coverages admin — customer defaults, pricing, and bundle composition.
+ * Available Coverages admin — customer pre-selection defaults and pricing.
+ *
+ * Bundle composition is authored on a separate page, so bundle contents are
+ * read-only here. The bundle is priced as a single unit — its MSRP/Dnet is the
+ * sum of the packages it includes, and one discount or markup applies to that.
+ *
+ * Bundle and individual pre-selections coexist: the priority toggle decides
+ * which the shopping page shows first, and the other becomes the fallback when
+ * a customer's truck is not eligible.
  */
 (function () {
   var root = document.querySelector("[data-ac-root]");
@@ -44,7 +52,6 @@
     next: {
       id: "next",
       label: "Extended NEXT",
-      selectionMode: null,
       packages: [
         multiPkg("en2", "EN2", "Engine", [2800, 3200, 4000, 4800], [2100, 2400, 3000, 3600]),
         multiPkg("en3", "EN3", "Engine", [4200, 4800, 5600, 6500], [3200, 3600, 4200, 4900]),
@@ -63,7 +70,7 @@
     optimum: {
       id: "optimum",
       label: "Extended OPTIMUM",
-      selectionMode: null,
+      priority: "bundle",
       packages: [
         multiPkg(
           "opt-eng-basic",
@@ -100,7 +107,7 @@
           "Towing",
           [2500, 3500, 4500, 6500],
           [1800, 2500, 3200, 4600],
-          { coverageType: "standalone", bundleEligible: true }
+          { coverageType: "standalone" }
         ),
         multiPkg(
           "opt-ats",
@@ -121,10 +128,10 @@
       ],
       bundle: {
         name: "OPTIMUM Bundle",
-        mode: "dnet",
-        percent: 15,
-        packageIds: [],
-        terms: termBases([6500, 7500, 9000, 10500], [4800, 5600, 6800, 7900]),
+        memberIds: ["opt-eng-basic", "opt-chs-basic"],
+        mode: "msrp",
+        percent: 20,
+        terms: [],
         preselected: false,
         defaultTermId: null,
       },
@@ -133,8 +140,8 @@
 
   var state = null;
   var baseline = null;
-  var updateBtn = document.querySelector("[data-ac-update]");
-  var resetBtn = document.querySelector("[data-ac-reset]");
+  var updateBtns = document.querySelectorAll("[data-ac-update]");
+  var resetBtns = document.querySelectorAll("[data-ac-reset]");
   var errorEl = document.querySelector("[data-ac-error]");
 
   function clone(value) {
@@ -155,6 +162,33 @@
     if (isNaN(pct) || pct < 0) pct = 0;
     if (mode === "msrp") return term.msrp * (1 - pct / 100);
     return term.dnet * (1 + pct / 100);
+  }
+
+  function bundleMemberPackages(offering) {
+    return offering.bundle.memberIds
+      .map(function (id) {
+        return offering.packages.find(function (pkg) {
+          return pkg.id === id;
+        });
+      })
+      .filter(Boolean);
+  }
+
+  /**
+   * The bundle's base MSRP/Dnet is the sum of the packages it includes, so the
+   * numbers stay authored once on the package definitions.
+   */
+  function buildBundleTerms(offering) {
+    var members = bundleMemberPackages(offering);
+    return TERMS.map(function (term, index) {
+      var msrp = 0;
+      var dnet = 0;
+      members.forEach(function (pkg) {
+        msrp += pkg.terms[index].msrp;
+        dnet += pkg.terms[index].dnet;
+      });
+      return { id: term.id, label: term.label, msrp: msrp, dnet: dnet };
+    });
   }
 
   function hasBundle(offering) {
@@ -192,55 +226,25 @@
     });
   }
 
-  function syncSelectionMode(offeringId) {
-    var offering = state[offeringId];
-    if (hasBundle(offering) && offering.bundle.preselected) {
-      offering.selectionMode = "bundle";
-      return;
-    }
-    var hasCategoryDefault = categoryPackages(offering).some(function (pkg) {
+  function hasPreselectedPackage(offering) {
+    return offering.packages.some(function (pkg) {
       return pkg.preselected;
-    });
-    offering.selectionMode = hasCategoryDefault ? "categories" : null;
-  }
-
-  function clearCategoryDefaults(offeringId) {
-    categoryPackages(state[offeringId]).forEach(function (pkg) {
-      pkg.preselected = false;
-      pkg.defaultTermId = null;
     });
   }
 
   function setCategoryDefault(offeringId, category, pkgId) {
-    var offering = state[offeringId];
-    if (hasBundle(offering)) {
-      offering.bundle.preselected = false;
-      offering.bundle.defaultTermId = null;
-    }
-
-    categoryPackages(offering).forEach(function (pkg) {
-      if (pkg.category === category) {
-        pkg.preselected = pkgId ? pkg.id === pkgId : false;
-        if (!pkg.preselected) pkg.defaultTermId = null;
-      }
+    categoryPackages(state[offeringId]).forEach(function (pkg) {
+      if (pkg.category !== category) return;
+      pkg.preselected = pkgId ? pkg.id === pkgId : false;
+      if (!pkg.preselected) pkg.defaultTermId = null;
     });
-
-    syncSelectionMode(offeringId);
   }
 
   function setBundlePreselected(offeringId, preselected) {
     var offering = state[offeringId];
     if (!hasBundle(offering)) return;
-    if (preselected) {
-      clearCategoryDefaults(offeringId);
-      offering.bundle.preselected = true;
-      offering.selectionMode = "bundle";
-      return;
-    }
-
-    offering.bundle.preselected = false;
-    offering.bundle.defaultTermId = null;
-    syncSelectionMode(offeringId);
+    offering.bundle.preselected = preselected;
+    if (!preselected) offering.bundle.defaultTermId = null;
   }
 
   function setStandalonePreselected(offeringId, pkgId, preselected) {
@@ -250,16 +254,47 @@
     if (!preselected) pkg.defaultTermId = null;
   }
 
+  function setPriority(offeringId, priority) {
+    var offering = state[offeringId];
+    if (!hasBundle(offering)) return;
+    offering.priority = priority;
+  }
+
   function setDefaultTerm(entityKey, termId) {
     var entity = getEntity(entityKey);
     if (!entity || !entity.preselected) return;
     entity.defaultTermId = termId;
   }
 
-  function renderTermTable(entityKey, terms, mode, percent, preselected, defaultTermId) {
-    var rows = terms
+  function renderDefaultTermCell(entityKey, termId, enabled, defaultTermId) {
+    return (
+      '<td class="ac-term-default">' +
+      '<label class="ac-term-default__label">' +
+      '<input type="radio" name="default-term-' +
+      entityKey +
+      '" value="' +
+      termId +
+      '" data-ac-default-term="' +
+      termId +
+      '" data-ac-default-entity="' +
+      entityKey +
+      '"' +
+      (enabled ? "" : " disabled") +
+      (defaultTermId === termId ? " checked" : "") +
+      ' aria-label="Default term" />' +
+      '<span class="visually-hidden">Default</span>' +
+      "</label>" +
+      "</td>"
+    );
+  }
+
+  /**
+   * config: entityKey, terms, mode, percent, showDefault, defaultEnabled,
+   * defaultTermId, msrpLabel, dnetLabel
+   */
+  function renderTermTable(config) {
+    var rows = config.terms
       .map(function (term) {
-        var termKey = entityKey + ":" + term.id;
         return (
           "<tr>" +
           "<td>" +
@@ -272,27 +307,20 @@
           money(term.dnet) +
           "</td>" +
           '<td class="ac-num ac-price" data-ac-price="' +
-          termKey +
-          '">' +
-          money(calcPrice(term, mode, percent)) +
-          "</td>" +
-          '<td class="ac-term-default">' +
-          '<label class="ac-term-default__label">' +
-          '<input type="radio" name="default-term-' +
-          entityKey +
-          '" value="' +
+          config.entityKey +
+          ":" +
           term.id +
-          '" data-ac-default-term="' +
-          termKey +
-          '"' +
-          (preselected ? "" : " disabled") +
-          (defaultTermId === term.id ? " checked" : "") +
-          ' aria-label="Default term: ' +
-          term.label +
-          '" />' +
-          '<span class="visually-hidden">Default</span>' +
-          "</label>" +
+          '">' +
+          money(calcPrice(term, config.mode, config.percent)) +
           "</td>" +
+          (config.showDefault
+            ? renderDefaultTermCell(
+                config.entityKey,
+                term.id,
+                config.defaultEnabled,
+                config.defaultTermId
+              )
+            : "") +
           "</tr>"
         );
       })
@@ -301,7 +329,12 @@
     return (
       '<div class="ac-table-wrap"><table class="ac-table">' +
       "<thead><tr>" +
-      "<th>Term</th><th>MSRP</th><th>Dnet</th><th>Customer price</th><th>Default term</th>" +
+      "<th>Term</th><th>" +
+      (config.msrpLabel || "MSRP") +
+      "</th><th>" +
+      (config.dnetLabel || "Dnet") +
+      "</th><th>Customer price</th>" +
+      (config.showDefault ? "<th>Default term</th>" : "") +
       "</tr></thead><tbody>" +
       rows +
       "</tbody></table></div>"
@@ -343,12 +376,9 @@
     );
   }
 
-  function renderCategoryDefaultControl(offeringId, pkg, offering) {
-    var disabled = hasBundle(offering) && offering.selectionMode === "bundle";
+  function renderCategoryDefaultControl(offeringId, pkg) {
     return (
-      '<label class="ac-default' +
-      (disabled ? " is-disabled" : "") +
-      '">' +
+      '<label class="ac-default">' +
       '<input type="radio" name="default-cat-' +
       offeringId +
       "-" +
@@ -361,8 +391,7 @@
       pkg.id +
       '"' +
       (pkg.preselected ? " checked" : "") +
-      (disabled ? " disabled" : "") +
-      " /> Customer default for " +
+      " /> Pre-select for " +
       pkg.category +
       "</label>"
     );
@@ -381,12 +410,12 @@
     );
   }
 
-  function renderPackageCard(offeringId, pkg, offering) {
+  function renderPackageCard(offeringId, pkg) {
     var key = "pkg:" + offeringId + ":" + pkg.id;
     var defaultControl =
       pkg.coverageType === "standalone"
         ? renderStandaloneDefaultControl(offeringId, pkg)
-        : renderCategoryDefaultControl(offeringId, pkg, offering);
+        : renderCategoryDefaultControl(offeringId, pkg);
 
     return (
       '<article class="ac-card' +
@@ -402,80 +431,136 @@
       defaultControl +
       "</div>" +
       renderModeControls(key, pkg.mode, pkg.percent, pkg.name) +
-      renderTermTable(
-        key,
-        pkg.terms,
-        pkg.mode,
-        pkg.percent,
-        pkg.preselected,
-        pkg.defaultTermId
-      ) +
+      renderTermTable({
+        entityKey: key,
+        terms: pkg.terms,
+        mode: pkg.mode,
+        percent: pkg.percent,
+        showDefault: true,
+        defaultEnabled: pkg.preselected,
+        defaultTermId: pkg.defaultTermId,
+      }) +
       "</article>"
     );
   }
 
-  function bundleEligiblePackages(offering) {
-    return offering.packages.filter(function (pkg) {
-      return pkg.coverageType === "category" || pkg.bundleEligible;
-    });
-  }
+  function priorityHint(offering) {
+    var bundleOn = offering.bundle.preselected;
+    var packagesOn = hasPreselectedPackage(offering);
+    var bundleFirst = offering.priority === "bundle";
 
-  function getBundleItems(offering) {
-    return bundleEligiblePackages(offering).map(function (pkg) {
+    if (!bundleOn && !packagesOn) {
       return {
-        id: pkg.id,
-        label: pkg.name,
-        packageIds: [pkg.id],
+        warning: true,
+        text:
+          "Nothing is pre-selected yet, so customers will land on the shopping page with no coverages selected.",
       };
-    });
+    }
+
+    if (bundleOn && packagesOn) {
+      return {
+        warning: false,
+        text: bundleFirst
+          ? "Customers see the " +
+            offering.bundle.name +
+            " first. If their truck is not eligible for it, the pre-selected individual packages are shown instead."
+          : "Customers see the pre-selected individual packages first. If their truck is not eligible for those, the " +
+            offering.bundle.name +
+            " is shown instead.",
+      };
+    }
+
+    if (bundleOn) {
+      return {
+        warning: true,
+        text:
+          "Only the " +
+          offering.bundle.name +
+          " is pre-selected. No individual packages are pre-selected, so there is no fallback if the truck is not eligible for the bundle.",
+      };
+    }
+
+    return {
+      warning: true,
+      text:
+        "Only individual packages are pre-selected. The " +
+        offering.bundle.name +
+        " is not pre-selected, so there is no fallback if the truck is not eligible for those packages.",
+    };
   }
 
-  function countSelectedBundleItems(offeringId) {
-    var offering = state[offeringId];
-    if (!hasBundle(offering)) return 0;
-    var bundle = offering.bundle;
-    var items = getBundleItems(state[offeringId]);
-    var selected = 0;
+  function renderPriority(offeringId, offering) {
+    var hint = priorityHint(offering);
+    var options = [
+      {
+        value: "bundle",
+        label: "Show the bundle first, fall back to individual packages",
+      },
+      {
+        value: "packages",
+        label: "Show individual packages first, fall back to the bundle",
+      },
+    ]
+      .map(function (option) {
+        return (
+          '<label class="ac-default">' +
+          '<input type="radio" name="priority-' +
+          offeringId +
+          '" value="' +
+          option.value +
+          '" data-ac-priority="' +
+          offeringId +
+          '"' +
+          (offering.priority === option.value ? " checked" : "") +
+          " /> " +
+          option.label +
+          "</label>"
+        );
+      })
+      .join("");
 
-    items.forEach(function (item) {
-      var allSelected = item.packageIds.every(function (id) {
-        return bundle.packageIds.indexOf(id) !== -1;
-      });
-      if (allSelected && item.packageIds.length) selected += 1;
-    });
-
-    return selected;
+    return (
+      '<section class="ac-priority">' +
+      '<h4 class="ac-category__title">Pre-selection priority</h4>' +
+      '<p class="ac-category__help">Pre-select the bundle and individual packages independently, then choose which the shopping page shows first. The other becomes the fallback when a customer\u2019s truck is not eligible.</p>' +
+      '<div class="ac-priority__options">' +
+      options +
+      "</div>" +
+      '<p class="ac-priority__hint' +
+      (hint.warning ? " is-warning" : "") +
+      '"><i class="fas ' +
+      (hint.warning ? "fa-triangle-exclamation" : "fa-circle-info") +
+      '" aria-hidden="true"></i> ' +
+      hint.text +
+      "</p>" +
+      "</section>"
+    );
   }
 
-  function isBundleItemChecked(bundle, item) {
-    return item.packageIds.every(function (id) {
-      return bundle.packageIds.indexOf(id) !== -1;
-    });
+  function renderBundleContents(offering) {
+    var chips = bundleMemberPackages(offering)
+      .map(function (pkg) {
+        return (
+          '<span class="ac-member-tag"><i class="fas fa-lock" aria-hidden="true"></i> ' +
+          pkg.name +
+          "</span>"
+        );
+      })
+      .join("");
+
+    return (
+      '<div class="ac-bundle-contents">' +
+      '<span class="ac-bundle-contents__label">Includes</span>' +
+      '<div class="ac-bundle-members">' +
+      chips +
+      "</div>" +
+      "</div>"
+    );
   }
 
   function renderBundle(offeringId, offering) {
     var bundle = offering.bundle;
     var key = "bundle:" + offeringId;
-    var selectedCount = countSelectedBundleItems(offeringId);
-    var categoryMode = offering.selectionMode === "categories";
-    var options = getBundleItems(offering)
-      .map(function (item) {
-        var checked = isBundleItemChecked(bundle, item);
-        return (
-          '<label class="ac-bundle-pkg"><input type="checkbox" data-ac-bundle-item="' +
-          offeringId +
-          ":" +
-          item.id +
-          '" data-ac-bundle-pkgs="' +
-          item.packageIds.join(",") +
-          '"' +
-          (checked ? " checked" : "") +
-          " /> " +
-          item.label +
-          "</label>"
-        );
-      })
-      .join("");
 
     return (
       '<section class="ac-bundle">' +
@@ -487,17 +572,12 @@
       bundle.name +
       "</h4>" +
       '<div class="ac-card__defaults">' +
-      '<label class="ac-default' +
-      (categoryMode ? " is-disabled" : "") +
-      '">' +
-      '<input type="radio" name="default-offering-' +
-      offeringId +
-      '" data-ac-bundle-default="' +
+      '<label class="ac-default">' +
+      '<input type="checkbox" data-ac-bundle-default="' +
       offeringId +
       '"' +
       (bundle.preselected ? " checked" : "") +
-      (categoryMode ? " disabled" : "") +
-      " /> Pre-select bundle when customers arrive</label>" +
+      " /> Pre-select bundle for customers</label>" +
       (bundle.preselected
         ? '<button type="button" class="ac-clear-default" data-ac-clear-bundle="' +
           offeringId +
@@ -505,24 +585,20 @@
         : "") +
       "</div>" +
       "</div>" +
-      '<p class="ac-bundle-help">Extended OPTIMUM only. Select at least 2 packages to compose the bundle (category packages and Towing). Bundle default and category defaults are mutually exclusive.</p>' +
-      '<div class="ac-bundle-grid">' +
-      options +
-      "</div>" +
-      '<p class="ac-bundle-count" data-ac-bundle-count="' +
-      offeringId +
-      '">' +
-      selectedCount +
-      " selected (minimum 2)</p>" +
+      '<p class="ac-bundle-help">Bundle contents are managed on the bundle composition page and cannot be changed here. MSRP and Dnet below are the combined totals of the included packages \u2014 set one discount or markup for the whole bundle.</p>' +
+      renderBundleContents(offering) +
       renderModeControls(key, bundle.mode, bundle.percent, bundle.name) +
-      renderTermTable(
-        key,
-        bundle.terms,
-        bundle.mode,
-        bundle.percent,
-        bundle.preselected,
-        bundle.defaultTermId
-      ) +
+      renderTermTable({
+        entityKey: key,
+        terms: bundle.terms,
+        mode: bundle.mode,
+        percent: bundle.percent,
+        showDefault: true,
+        defaultEnabled: bundle.preselected,
+        defaultTermId: bundle.defaultTermId,
+        msrpLabel: "MSRP total",
+        dnetLabel: "Dnet total",
+      }) +
       "</article></section>"
     );
   }
@@ -560,11 +636,11 @@
           "</div>" +
           '<p class="ac-category__help">Choose one package to pre-select under ' +
           group.name +
-          " when customers land on the shopping page.</p>" +
+          ".</p>" +
           '<div class="ac-category__packages">' +
           group.packages
             .map(function (pkg) {
-              return renderPackageCard(offeringId, pkg, offering);
+              return renderPackageCard(offeringId, pkg);
             })
             .join("") +
           "</div></section>"
@@ -576,17 +652,18 @@
     var standaloneSection = standalone.length
       ? '<section class="ac-standalone">' +
         '<h4 class="ac-category__title">Standalone coverages</h4>' +
-        '<p class="ac-category__help">Independent of bundle or category defaults. Pre-select as many as you want; customers can change any selection.</p>' +
+        '<p class="ac-category__help">Pre-select as many as you want. These are added on top of whichever pre-selection the customer sees.</p>' +
         '<div class="ac-category__packages">' +
         standalone
           .map(function (pkg) {
-            return renderPackageCard(offeringId, pkg, offering);
+            return renderPackageCard(offeringId, pkg);
           })
           .join("") +
         "</div></section>"
       : "";
 
     panel.innerHTML =
+      (hasBundle(offering) ? renderPriority(offeringId, offering) : "") +
       (hasBundle(offering) ? renderBundle(offeringId, offering) : "") +
       categoryGroups +
       standaloneSection;
@@ -601,43 +678,42 @@
 
   function parseEntityKey(key) {
     var parts = key.split(":");
-    if (parts[0] === "pkg") {
-      return { type: "pkg", offeringId: parts[1], id: parts[2] };
-    }
-    return { type: "bundle", offeringId: parts[1] };
+    return { type: parts[0], offeringId: parts[1], id: parts[2] };
   }
 
   function getEntity(key) {
     var ref = parseEntityKey(key);
     if (ref.type === "pkg") return findPkg(ref.offeringId, ref.id);
-    return state[ref.offeringId].bundle || null;
+    var offering = state[ref.offeringId];
+    return offering && offering.bundle ? offering.bundle : null;
   }
 
   function refreshPrices(entityKey) {
     var entity = getEntity(entityKey);
-    if (!entity) return;
+    if (!entity || !entity.terms) return;
     entity.terms.forEach(function (term) {
       var cell = root.querySelector(
         '[data-ac-price="' + entityKey + ":" + term.id + '"]'
       );
       if (cell) cell.textContent = money(calcPrice(term, entity.mode, entity.percent));
     });
-    var pctLabel = root.querySelector('[data-ac-percent="' + entityKey + '"]');
-    if (pctLabel && pctLabel.previousElementSibling) {
-      pctLabel.previousElementSibling.textContent =
+
+    var pctInput = root.querySelector('[data-ac-percent="' + entityKey + '"]');
+    if (pctInput && pctInput.previousElementSibling) {
+      pctInput.previousElementSibling.textContent =
         entity.mode === "msrp" ? "Discount %" : "Markup %";
     }
   }
 
-  function updateBundleCount(offeringId) {
-    var el = root.querySelector('[data-ac-bundle-count="' + offeringId + '"]');
-    if (!el) return;
-    var count = countSelectedBundleItems(offeringId);
-    el.textContent = count + " selected (minimum 2)";
-    el.classList.toggle("is-invalid", count > 0 && count < 2);
-  }
-
   function bindControls() {
+    root.querySelectorAll("[data-ac-priority]").forEach(function (input) {
+      input.addEventListener("change", function () {
+        if (!input.checked) return;
+        setPriority(input.getAttribute("data-ac-priority"), input.value);
+        renderAll();
+      });
+    });
+
     root.querySelectorAll("[data-ac-category-default]").forEach(function (input) {
       input.addEventListener("change", function () {
         if (!input.checked) return;
@@ -657,8 +733,10 @@
 
     root.querySelectorAll("[data-ac-bundle-default]").forEach(function (input) {
       input.addEventListener("change", function () {
-        var offeringId = input.getAttribute("data-ac-bundle-default");
-        setBundlePreselected(offeringId, input.checked);
+        setBundlePreselected(
+          input.getAttribute("data-ac-bundle-default"),
+          input.checked
+        );
         renderAll();
       });
     });
@@ -681,10 +759,10 @@
     root.querySelectorAll("[data-ac-default-term]").forEach(function (input) {
       input.addEventListener("change", function () {
         if (!input.checked) return;
-        var key = input.getAttribute("data-ac-default-term");
-        var entityKey = key.split(":").slice(0, 3).join(":");
-        var termId = key.split(":")[3];
-        setDefaultTerm(entityKey, termId);
+        setDefaultTerm(
+          input.getAttribute("data-ac-default-entity"),
+          input.getAttribute("data-ac-default-term")
+        );
         syncDirty();
       });
     });
@@ -711,61 +789,29 @@
         syncDirty();
       });
     });
-
-    root.querySelectorAll("[data-ac-bundle-item]").forEach(function (input) {
-      input.addEventListener("change", function () {
-        var offeringId = input.getAttribute("data-ac-bundle-item").split(":")[0];
-        var offering = state[offeringId];
-        if (!hasBundle(offering)) return;
-        var pkgIds = (input.getAttribute("data-ac-bundle-pkgs") || "").split(",");
-        var ids = offering.bundle.packageIds;
-
-        pkgIds.forEach(function (pkgId) {
-          if (!pkgId) return;
-          var idx = ids.indexOf(pkgId);
-          if (input.checked && idx === -1) ids.push(pkgId);
-          if (!input.checked && idx !== -1) ids.splice(idx, 1);
-        });
-
-        updateBundleCount(offeringId);
-        syncDirty();
-      });
-    });
   }
 
   function isDirty() {
     return JSON.stringify(state) !== JSON.stringify(baseline);
   }
 
-  function validateBundles() {
-    var issues = [];
-    if (!hasBundle(state.optimum)) return issues;
-    var bundle = state.optimum.bundle;
-    var count = countSelectedBundleItems("optimum");
-    if (count === 1 || (bundle.preselected && count < 2)) {
-      issues.push(
-        state.optimum.label +
-          " bundle needs at least 2 packages" +
-          (bundle.preselected ? " when pre-selected for customers" : "") +
-          "."
-      );
-    }
-    return issues;
-  }
-
   function validateDefaults() {
     var issues = [];
     ["next", "optimum"].forEach(function (id) {
       var offering = state[id];
-      if (hasBundle(offering) && offering.bundle.preselected && !offering.bundle.defaultTermId) {
-        issues.push(
-          state[id].label + " bundle needs a default term when pre-selected."
-        );
+
+      if (
+        hasBundle(offering) &&
+        offering.bundle.preselected &&
+        !offering.bundle.defaultTermId
+      ) {
+        issues.push(offering.label + " bundle needs a default term when pre-selected.");
       }
+
       offering.packages.forEach(function (pkg) {
         if (pkg.preselected && !pkg.defaultTermId) {
           issues.push(
-            state[id].label +
+            offering.label +
               " — " +
               pkg.name +
               " needs a default term when pre-selected."
@@ -777,7 +823,10 @@
   }
 
   function syncDirty() {
-    if (updateBtn) updateBtn.disabled = !isDirty();
+    var dirty = isDirty();
+    updateBtns.forEach(function (btn) {
+      btn.disabled = !dirty;
+    });
     if (errorEl) {
       errorEl.hidden = true;
       errorEl.textContent = "";
@@ -809,16 +858,16 @@
     });
   });
 
-  if (resetBtn) {
-    resetBtn.addEventListener("click", function () {
+  resetBtns.forEach(function (btn) {
+    btn.addEventListener("click", function () {
       state = clone(baseline);
       renderAll();
     });
-  }
+  });
 
-  if (updateBtn) {
-    updateBtn.addEventListener("click", function () {
-      var issues = validateBundles().concat(validateDefaults());
+  updateBtns.forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var issues = validateDefaults();
       if (issues.length) {
         showError(issues.join(" "));
         return;
@@ -833,7 +882,13 @@
         }
       }, 2500);
     });
-  }
+  });
+
+  Object.keys(OFFERINGS).forEach(function (id) {
+    if (hasBundle(OFFERINGS[id])) {
+      OFFERINGS[id].bundle.terms = buildBundleTerms(OFFERINGS[id]);
+    }
+  });
 
   state = clone(OFFERINGS);
   baseline = clone(OFFERINGS);

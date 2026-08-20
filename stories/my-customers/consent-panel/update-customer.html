@@ -181,15 +181,9 @@
           <a class="uc-titlebar__back" href="../options.html">
             <i class="fas fa-chevron-left" aria-hidden="true"></i>
             <h1 class="uc-titlebar__name">
-              Update (CLOSED LOOP)RYDER WYNLEARZE5 (293425)
+              Update Carolina Trucking (293453)
             </h1>
           </a>
-          <div class="uc-badges">
-            <span class="uc-badge uc-badge--danger">Inactive</span>
-            <span class="uc-badge uc-badge--success"
-              >Dealer Ordering Available</span
-            >
-          </div>
         </div>
 
         <div class="uc-actions-row" aria-label="Customer actions">
@@ -234,7 +228,9 @@
 
       <section class="uc-panel" aria-labelledby="uc-consent-title">
         <div class="uc-panel__head">
-          <h2 class="uc-panel__title" id="uc-consent-title">Consent Details</h2>
+          <h2 class="uc-panel__title" id="uc-consent-title">
+            Customer Consent Details
+          </h2>
           <button
             type="button"
             class="uc-panel__toggle"
@@ -246,39 +242,41 @@
         <div class="uc-panel__body">
           <div class="uc-consent">
             <div class="uc-consent__row">
-              <span class="uc-consent__label">Consent status</span>
-              <span class="uc-status uc-status--pending">Pending</span>
+              <span class="uc-consent__label">Consent Status</span>
+              <div class="uc-consent__value-block">
+                <span class="uc-status uc-status--pending">Pending</span>
+                <p class="uc-consent__hint">
+                  Shop As Customer is not available until customer consent
+                  completed
+                </p>
+              </div>
+              <button type="button" class="uc-consent__resend">
+                Resend Consent Request
+                <i class="fas fa-envelope" aria-hidden="true"></i>
+              </button>
             </div>
 
-            <div class="uc-consent__row uc-consent__row--email">
-              <span class="uc-consent__label">Customer email</span>
-              <div class="uc-consent__email-block">
+            <div class="uc-consent__row">
+              <span class="uc-consent__label">Customer Email</span>
+              <div class="uc-consent__value-block">
                 <p class="uc-consent__email" id="uc-consent-email-display">
-                  closedloop.test@example.com
+                  test@gmail.com
                 </p>
                 <p class="uc-consent__hint">
-                  To change this email, update the Email field in
-                  <a href="#uc-company-section">Company Identity &amp; Contact Information</a>
-                  below. Changes apply to the primary user for this customer
-                  account.
+                  To change this email, update the Email field in Company
+                  Identity &amp; Contact Information below.
                 </p>
               </div>
             </div>
 
             <div class="uc-consent__row">
-              <span class="uc-consent__label">Request sent on</span>
-              <span class="uc-consent__value">Jul 15, 2026 at 9:14 AM</span>
-            </div>
-
-            <div class="uc-consent__actions">
-              <p class="uc-consent__expiry-note">
-                Consent requests expire after 90 days if the customer does not
-                respond.
-              </p>
-              <button type="button" class="uc-consent__resend">
-                <i class="fas fa-paper-plane" aria-hidden="true"></i>
-                Resend consent request
-              </button>
+              <span class="uc-consent__label">Request Sent on</span>
+              <div class="uc-consent__value-block">
+                <p class="uc-consent__value">July 15th, 2026 at 9:15 AM</p>
+                <p class="uc-consent__hint">
+                  Consent request expires on November 14th, 2026.
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -310,23 +308,23 @@
           <div class="uc-form-grid">
             <div class="uc-field">
               <label for="uc-company">Company Name</label>
-              <input id="uc-company" type="text" value="(CLOSED LOOP)RYDER WYNLEARZE5" />
+              <input id="uc-company" type="text" value="Carolina Trucking" />
             </div>
             <div class="uc-field">
               <label for="uc-acct">Customer Account #</label>
-              <input id="uc-acct" type="text" value="293425" />
+              <input id="uc-acct" type="text" value="293453" />
             </div>
             <div class="uc-field">
               <label for="uc-email">Email</label>
               <input
                 id="uc-email"
                 type="email"
-                value="closedloop.test@example.com"
+                value="test@gmail.com"
                 aria-describedby="uc-email-hint"
               />
               <p class="uc-field__hint" id="uc-email-hint">
-                Also shown in Consent Details above for the primary user on this
-                account.
+                Also shown in Customer Consent Details above for the primary user
+                on this account.
               </p>
             </div>
 
@@ -623,8 +621,8 @@
               <tbody>
                 <tr>
                   <td>Test User</td>
-                  <td>closedloop.test@example.com</td>
-                  <td>DTNA-293425</td>
+                  <td>test@gmail.com</td>
+                  <td>DTNA-293453</td>
                   <td>—</td>
                   <td>Admin</td>
                   <td>Enabled</td>

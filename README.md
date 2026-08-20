@@ -15,7 +15,14 @@ npx --yes serve .
 | Story | Entry |
 | --- | --- |
 | System Notification Banner | [`stories/notification-banner/options.html`](stories/notification-banner/options.html) |
-| Dealer Access Approval | [`stories/dealer-access-approval/email.html`](stories/dealer-access-approval/email.html) |
+| Customer Consent — dealer access approval | [`stories/dealer-access-approval/email.html`](stories/dealer-access-approval/email.html) |
+| Customer Consent — consent on Update Customer | [`stories/my-customers/options.html`](stories/my-customers/options.html) |
+| Customer Consent — shop as customer | [`stories/shop-as-customer/options.html`](stories/shop-as-customer/options.html) |
+| Dealers — Extended Coverages | [`stories/dealers/index.html`](stories/dealers/index.html) |
+
+Dealer Access Approval, My Customers, and Shop as Customer share one **Customer Consent** card on the features hub, since they belong to the same epic.
+
+`stories/shop-as-customer/index.html` is the Customer Login Selection page. Rows come from `js/shop-as-customer.js`, and `?treatment=dim|lock|action|reason` switches how customers without approved consent are shown as non-selectable.
 
 Options-based stories follow:
 

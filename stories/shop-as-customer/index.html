@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Shop as Customer — Customer Login Selection | Excelerator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../../css/excelerator.css" />
+    <link rel="stylesheet" href="../../css/product-header.css" />
+    <link rel="stylesheet" href="../../css/shop-as-customer.css" />
+  </head>
+  <body class="sac-page" data-auth="logged-in">
+    <a class="sac-back" href="options.html"
+      ><i class="fas fa-th-large" aria-hidden="true"></i
+      ><span>All options</span></a
+    >
+
+    <header class="product-header">
+      <div class="ph-logged-in-top auth-logged-in">
+        <div class="ph-brand-col">
+          <a
+            class="ex-header__logo"
+            href="../../global-homepage.html"
+            aria-label="Excelerator home"
+          >
+            <img
+              src="../../assets/images/excelerator-logo.png"
+              alt="Excelerator"
+            />
+          </a>
+          <button type="button" class="ph-shop-vehicle">
+            <i class="fas fa-truck" aria-hidden="true"></i>
+            Shop by Vehicle
+            <i class="fas fa-plus" aria-hidden="true"></i>
+          </button>
+        </div>
+        <form class="ph-search" role="search" action="#" onsubmit="return false;">
+          <button
+            type="button"
+            class="ph-search__filter"
+            aria-label="Search filters"
+          >
+            <i class="fas fa-caret-down" aria-hidden="true"></i>
+          </button>
+          <input
+            class="ph-search__input"
+            type="search"
+            placeholder="Search by part name, number, VMRS, or cross reference"
+            aria-label="Search"
+          />
+          <button type="submit" class="ph-search__submit" aria-label="Search">
+            <i class="fas fa-search" aria-hidden="true"></i>
+          </button>
+        </form>
+        <div class="ph-user-col">
+          <div class="ph-user-row">
+            <button type="button" class="ph-user-btn">
+              <i class="fas fa-briefcase" aria-hidden="true"></i>
+              <span>Shop for a Customer</span>
+            </button>
+            <div class="ex-account-menu">
+              <button
+                type="button"
+                class="ph-user-btn ex-account-menu__toggle"
+                aria-expanded="false"
+                aria-haspopup="true"
+                aria-controls="sac-account-in"
+              >
+                <i class="fas fa-user" aria-hidden="true"></i>
+                <span>ADXDealer2</span>
+                <span class="ph-badge">2</span>
+                <i class="fas fa-chevron-down" aria-hidden="true"></i>
+              </button>
+              <ul
+                id="sac-account-in"
+                class="ex-account-menu__dropdown"
+                role="menu"
+                hidden
+              >
+                <li role="none">
+                  <button type="button" role="menuitem">Account settings</button>
+                </li>
+              </ul>
+            </div>
+            <button
+              type="button"
+              class="ph-user-btn"
+              aria-label="Region and language"
+            >
+              <img
+                class="ex-header__flag ex-header__flag--site"
+                src="../../assets/images/site-selector-icon-dtna.png"
+                alt="United States / Canada"
+              />
+              <i class="fas fa-chevron-down" aria-hidden="true"></i>
+            </button>
+          </div>
+          <div class="ph-dealer">
+            <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+            <div>
+              <div class="ph-dealer__name">Houston Freightliner</div>
+              <div class="ph-dealer__meta">50311111 | $USD</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <nav class="ph-nav" aria-label="Primary">
+        <div class="ph-nav__lob-wrap ex-account-menu">
+          <button
+            type="button"
+            class="ph-nav__lob ex-account-menu__toggle"
+            aria-expanded="false"
+            aria-haspopup="true"
+            aria-controls="sac-lob-menu"
+          >
+            <i class="fas fa-cogs" aria-hidden="true"></i>
+            <span>Parts &amp; Services</span>
+            <i class="fas fa-chevron-down" aria-hidden="true"></i>
+          </button>
+          <ul
+            id="sac-lob-menu"
+            class="ph-lob-dropdown ex-account-menu__dropdown"
+            role="menu"
+            hidden
+          >
+            <li role="none">
+              <a role="menuitem" href="../../parts.html">Parts &amp; PartsProX</a>
+            </li>
+            <li role="none">
+              <a role="menuitem" href="../../coverage.html">Extended Coverage</a>
+            </li>
+            <li role="none">
+              <a role="menuitem" href="../../connectivity.html"
+                >Connectivity Services</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div class="ph-nav__divider" aria-hidden="true"></div>
+        <ul class="ph-nav__links auth-logged-in">
+          <li><a href="#">Dashboard</a></li>
+          <li><a href="../my-customers/options.html">Customers</a></li>
+          <li><a href="../dealers/index.html">Dealers</a></li>
+          <li><a href="#">Orders/Quotes</a></li>
+          <li><a href="#">My Garage</a></li>
+        </ul>
+        <div class="ph-nav__utils auth-logged-in">
+          <button type="button" aria-label="Quick actions">
+            <i class="fas fa-bolt"></i>
+          </button>
+          <button type="button" aria-label="Favorites">
+            <i class="far fa-star"></i>
+          </button>
+        </div>
+      </nav>
+
+      <div class="ph-subnav">
+        <a href="#">Inner Circle Rewards<sup>SM</sup></a>
+        <span class="ph-subnav__divider" aria-hidden="true"></span>
+        <a href="#">Error Management<span class="ph-badge-inline">53</span></a>
+      </div>
+    </header>
+
+    <main class="sac-shell">
+      <h1 class="sac-page-title">Customer Login Selection</h1>
+
+      <p class="sac-treatment-note" data-sac-treatment-note hidden></p>
+
+      <section class="sac-card" aria-labelledby="sac-select-heading">
+        <div class="sac-card__head">
+          <p class="sac-card__lead" id="sac-select-heading">
+            Select a customer, or continue as yourself.
+          </p>
+          <button type="button" class="sac-btn sac-btn--outline">
+            <i class="fas fa-chevron-right" aria-hidden="true"></i>
+            Continue as ADXDealer2
+          </button>
+        </div>
+
+        <div class="sac-card__body">
+          <h2 class="sac-section-title">
+            <i class="fas fa-search" aria-hidden="true"></i>
+            Search for a Customer
+          </h2>
+
+          <form class="sac-search" action="#" onsubmit="return false;">
+            <div class="sac-search__field">
+              <input
+                class="sac-search__input"
+                type="search"
+                value="cas"
+                aria-label="Search for a customer"
+              />
+              <button type="submit" class="sac-search__go" aria-label="Search">
+                <i class="fas fa-search" aria-hidden="true"></i>
+              </button>
+            </div>
+            <button type="button" class="sac-btn sac-btn--muted">Clear</button>
+          </form>
+
+          <div class="sac-filters">
+            <fieldset class="sac-radio-group">
+              <legend class="sac-filters__label">Customers</legend>
+              <div class="sac-radio-group__options">
+                <label>
+                  <input type="radio" name="sac-audience" checked />
+                  All customers
+                </label>
+                <label>
+                  <input type="radio" name="sac-audience" />
+                  My dealership customers
+                </label>
+                <label>
+                  <input type="radio" name="sac-audience" />
+                  Guest shoppers
+                </label>
+              </div>
+            </fieldset>
+
+            <div class="sac-icr-filter">
+              <span class="sac-filters__label">ICR Enrollment Status</span>
+              <div class="sac-segmented" role="group" aria-label="ICR Enrollment Status">
+                <button type="button">Eligible</button>
+                <button type="button">Enrolled</button>
+                <button type="button">Not Eligible</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="sac-table-wrap">
+            <table class="sac-table" data-sac-table>
+              <thead>
+                <tr>
+                  <th scope="col">User Name</th>
+                  <th scope="col">User Email</th>
+                  <th scope="col">Consent Status</th>
+                  <th scope="col">ICR Enrollment Status</th>
+                  <th scope="col">OMS Account Number</th>
+                  <th scope="col">Dealer</th>
+                  <th scope="col" class="sac-table__action-col">
+                    <span class="visually-hidden">Shop as customer</span>
+                  </th>
+                </tr>
+              </thead>
+              <tbody data-sac-rows></tbody>
+            </table>
+          </div>
+
+          <nav class="sac-pagination" aria-label="Pagination">
+            <a href="#" aria-label="First page"
+              ><i class="fas fa-angles-left" aria-hidden="true"></i
+            ></a>
+            <a href="#" aria-label="Previous page"
+              ><i class="fas fa-angle-left" aria-hidden="true"></i
+            ></a>
+            <span class="is-current" aria-current="page">1</span>
+            <a href="#">2</a>
+            <a href="#">3</a>
+            <span class="sac-pagination__gap" aria-hidden="true">…</span>
+            <a href="#">9</a>
+            <a href="#">10</a>
+            <a href="#" aria-label="Next page"
+              ><i class="fas fa-angle-right" aria-hidden="true"></i
+            ></a>
+            <a href="#" aria-label="Last page"
+              ><i class="fas fa-angles-right" aria-hidden="true"></i
+            ></a>
+          </nav>
+        </div>
+      </section>
+    </main>
+
+    <footer class="ex-footer">
+      <div class="ex-footer__cols">
+        <div class="ex-footer__col">
+          <h3 class="ex-footer__col-title">About Us</h3>
+          <ul>
+            <li><a href="#">About Excelerator</a></li>
+            <li><a href="#">DTNA Parts</a></li>
+            <li><a href="#">Inner Circle Rewards</a></li>
+          </ul>
+        </div>
+        <div class="ex-footer__col">
+          <h3 class="ex-footer__col-title">Product Resources</h3>
+          <ul>
+            <li><a href="#">Alliance Truck Parts</a></li>
+            <li><a href="#">Allison Transmission</a></li>
+            <li><a href="#">Caterpillar</a></li>
+            <li><a href="#">Cummins</a></li>
+            <li><a href="#">Fuller Transmission</a></li>
+            <li><a href="#">Meritor</a></li>
+            <li><a href="#">Thomas Built Bus</a></li>
+          </ul>
+        </div>
+        <div class="ex-footer__col">
+          <h3 class="ex-footer__col-title">Support</h3>
+          <ul>
+            <li><a href="#">Feedback</a></li>
+            <li><a href="#">Find My Dealer</a></li>
+            <li><a href="#">Parts Cap</a></li>
+            <li><a href="#">PartsProX Quick Ref</a></li>
+            <li><a href="#">Training Videos</a></li>
+          </ul>
+        </div>
+        <div class="ex-footer__col">
+          <h3 class="ex-footer__col-title">Account</h3>
+          <ul>
+            <li><a href="#">My Account</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="ex-footer__bottom">
+        <div class="ex-footer__social">
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="#" aria-label="Facebook"
+            ><i class="fab fa-facebook-square"></i
+          ></a>
+        </div>
+        <div class="ex-footer__legal">
+          <a href="#">Privacy Statement</a>
+          <span class="sep" aria-hidden="true">|</span>
+          <a href="#">Terms &amp; Conditions</a>
+          <span class="sep" aria-hidden="true">|</span>
+          <a href="#">Accessibility</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="../../js/auth-toggle.js"></script>
+    <script src="../../js/shop-as-customer.js"></script>
+  </body>
+</html>

@@ -22,11 +22,14 @@
 
     listEl.innerHTML = "";
     hub.stories.forEach(function (story) {
-      var a = document.createElement("a");
-      a.className = "opts-card hub-card";
-      a.href = story.href;
-      a.setAttribute("role", "listitem");
-      a.innerHTML =
+      var hasLinks = Array.isArray(story.links) && story.links.length;
+      var card = document.createElement(hasLinks ? "div" : "a");
+      card.className =
+        "opts-card hub-card" + (hasLinks ? " opts-card--static" : "");
+      if (!hasLinks) card.href = story.href;
+      card.setAttribute("role", "listitem");
+
+      card.innerHTML =
         '<span class="opts-card__label">' +
         escapeHtml(story.label || "Feature") +
         "</span>" +
@@ -36,8 +39,24 @@
         '<p class="opts-card__desc">' +
         escapeHtml(story.desc) +
         "</p>" +
-        '<span class="hub-card__cta">Review options <i class="fas fa-arrow-right" aria-hidden="true"></i></span>';
-      listEl.appendChild(a);
+        (hasLinks
+          ? ""
+          : '<span class="hub-card__cta">Review options <i class="fas fa-arrow-right" aria-hidden="true"></i></span>');
+
+      if (hasLinks) {
+        var links = document.createElement("div");
+        links.className = "opts-card__links";
+        story.links.forEach(function (link) {
+          var a = document.createElement("a");
+          a.className = "opts-card__link";
+          a.href = link.href;
+          a.textContent = link.label;
+          links.appendChild(a);
+        });
+        card.appendChild(links);
+      }
+
+      listEl.appendChild(card);
     });
   }
 

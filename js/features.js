@@ -15,18 +15,24 @@ window.ExFeatures = {
       href: "stories/notification-banner/options.html",
     },
     {
-      id: "dealer-access-approval",
-      label: "Feature",
-      name: "Dealer Access Approval",
-      desc: "Email → approve dealer access → optional password setup. Single decided flow.",
-      href: "stories/dealer-access-approval/email.html",
-    },
-    {
-      id: "my-customers",
-      label: "Options",
-      name: "My Customers",
-      desc: "Consent Details placement on Update Customer — panel, banner, inline, or title bar approaches.",
-      href: "stories/my-customers/options.html",
+      id: "customer-consent",
+      label: "Epic",
+      name: "Customer Consent",
+      desc: "How a customer grants a dealer permission to shop on their behalf, and how dealers track and use that consent. Covers the approval email, the consent status on the customer account, and customer selection when shopping on behalf.",
+      links: [
+        {
+          label: "Dealer Access Approval — customer email flow",
+          href: "stories/dealer-access-approval/email.html",
+        },
+        {
+          label: "My Customers — consent on Update Customer",
+          href: "stories/my-customers/options.html",
+        },
+        {
+          label: "Shop as Customer — customer login selection",
+          href: "stories/shop-as-customer/options.html",
+        },
+      ],
     },
     {
       id: "dealers-extended-coverages",
