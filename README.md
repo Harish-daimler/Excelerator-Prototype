@@ -15,7 +15,7 @@ npx --yes serve .
 | Story | Entry |
 | --- | --- |
 | System Notification Banner | [`stories/notification-banner/options.html`](stories/notification-banner/options.html) |
-| Customer Consent — dealer access approval | [`stories/dealer-access-approval/email.html`](stories/dealer-access-approval/email.html) |
+| Customer Consent — dealer access approval | [`stories/dealer-access-approval/options.html`](stories/dealer-access-approval/options.html) |
 | Customer Consent — consent on Update Customer | [`stories/my-customers/options.html`](stories/my-customers/options.html) |
 | Customer Consent — shop as customer | [`stories/shop-as-customer/options.html`](stories/shop-as-customer/options.html) |
 | Dealers — Extended Coverages | [`stories/dealers/index.html`](stories/dealers/index.html) |
@@ -34,14 +34,10 @@ stories/<story-name>/<option-name>/…
 
 ### Dealer Access Approval
 
-Single decided flow (`stories/dealer-access-approval/`):
+Options landing: [`stories/dealer-access-approval/options.html`](stories/dealer-access-approval/options.html).
 
-1. `email.html` — Outlook-wrapped welcome email  
-2. `screen-2.html` — Approve Dealer Access (Confirm → Screen 3; Decline → `decline.html`)  
-3. `screen-3.html` — Account active + optional password  
-4. `skip-end.html` or `screen-4.html` — terminal states  
-
-Features hub links straight to `email.html`.
+- **Option 1 (prioritized)** `confirm-success/`: Confirm on Approve Dealer Access goes to `success.html` (no password setup, no Reset). Decline is unchanged.
+- **Option 2** (root files): existing flow with optional password setup and Reset.
 
 ### Options story pattern
 

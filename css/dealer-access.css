@@ -1428,8 +1428,20 @@
   background: #ffdfdf;
 }
 
+.da-complete--hero .da-complete__status {
+  margin: 0 0 0.75rem;
+  font-size: 20px;
+  font-weight: var(--ex-heading-weight);
+  color: var(--ex-header-black);
+  line-height: 1.25;
+}
+
 .da-complete--hero .da-complete__panel .da-complete__body {
   margin: 0 0 1.25rem;
+  font-size: 1rem;
+  font-weight: var(--ex-text-weight);
+  line-height: 1.55;
+  color: var(--ex-body-text);
 }
 
 .da-complete--hero .da-complete__panel .da-complete__body:last-child {

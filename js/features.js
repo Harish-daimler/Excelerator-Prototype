@@ -22,7 +22,7 @@ window.ExFeatures = {
       links: [
         {
           label: "Dealer Access Approval — customer email flow",
-          href: "stories/dealer-access-approval/email.html",
+          href: "stories/dealer-access-approval/options.html",
         },
         {
           label: "My Customers — consent on Update Customer",

@@ -46,5 +46,11 @@
   if (resetBtn) resetBtn.addEventListener("click", onReset);
   if (confirmBtn) confirmBtn.addEventListener("click", onConfirm);
 
-  onReset();
+  // Sync to the current selection (including restored history state on Back).
+  // Do not clear radios on load — that left Confirm disabled after Back.
+  syncConfirm();
+  window.addEventListener("pageshow", function () {
+    syncConfirm();
+    setTimeout(syncConfirm, 0);
+  });
 })();
