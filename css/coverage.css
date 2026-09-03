@@ -32,7 +32,7 @@
   font-size: 2rem;
   font-weight: var(--ex-heading-weight);
   color: var(--ex-body-text);
-  margin: 0 0 0.85rem;
+  margin: 0 0 0.75rem;
   line-height: 1.25;
 }
 
@@ -94,7 +94,7 @@
   font-size: var(--ex-text-size);
   font-weight: var(--ex-text-weight);
   border: 0;
-  padding: 0.55rem 1.35rem;
+  padding: 0.5rem 1.25rem;
   background: var(--ex-white);
   color: var(--ex-body-text);
   cursor: pointer;
@@ -171,12 +171,12 @@
   font-family: inherit;
   font-size: var(--ex-text-size);
   font-weight: var(--ex-text-weight);
-  padding: 1rem 1rem 0.85rem;
+  padding: 1rem 1rem 0.75rem;
   cursor: pointer;
   border-bottom: 2px solid transparent;
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.5rem;
 }
 
 .cov-plan__tabs button.is-active {
@@ -186,8 +186,8 @@
 
 .cov-plan__tabs .ex-btn-primary {
   margin-left: auto;
-  margin-bottom: 0.65rem;
-  margin-top: 0.65rem;
+  margin-bottom: 0.75rem;
+  margin-top: 0.75rem;
 }
 
 .cov-plan__card {
@@ -209,24 +209,24 @@
 .cov-plan__card h3 {
   font-size: 1.35rem;
   font-weight: var(--ex-heading-weight);
-  margin: 0 0 0.85rem;
+  margin: 0 0 0.75rem;
   color: var(--ex-body-text);
 }
 
 .cov-plan__card p {
-  margin: 0 0 0.85rem;
+  margin: 0 0 0.75rem;
   color: var(--ex-body-text);
   font-size: var(--ex-text-size);
 }
 
 .cov-plan__card ul {
   margin: 0 0 1.25rem;
-  padding-left: 1.15rem;
+  padding-left: 1.25rem;
   color: var(--ex-body-text);
 }
 
 .cov-plan__card li {
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.5rem;
   font-size: var(--ex-text-size);
 }
 
@@ -245,7 +245,7 @@
 }
 
 .cov-tiers__head > div {
-  padding: 0.85rem 1rem;
+  padding: 0.75rem 1rem;
   font-weight: var(--ex-text-weight);
   color: var(--ex-body-text);
 }
@@ -261,14 +261,14 @@
 }
 
 .cov-tiers__body > div {
-  padding: 0.85rem 1rem 1rem;
+  padding: 0.75rem 1rem 1rem;
 }
 
 .cov-tiers__link {
-  color: var(--ex-primary);
+  color: var(--ex-body-text);
   font-size: var(--ex-text-size);
   font-weight: var(--ex-text-weight);
-  margin-bottom: 0.65rem;
+  margin-bottom: 0.75rem;
   display: block;
 }
 
@@ -288,7 +288,7 @@
 }
 
 .cov-show-all:hover {
-  color: var(--ex-tertiary);
+  color: var(--ex-body-text);
 }
 
 .cov-how {
@@ -327,7 +327,7 @@
   font-size: var(--ex-text-size);
   font-weight: var(--ex-text-weight);
   color: var(--ex-body-text);
-  padding: 0.4rem 0.9rem;
+  padding: 0.5rem 1rem;
   border-radius: 999px;
   cursor: pointer;
 }
@@ -352,7 +352,7 @@
 .cov-btn-outline {
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
+  gap: 0.25rem;
   border: 1px solid var(--ex-body-text);
   color: var(--ex-body-text);
   background: #fff;
@@ -443,7 +443,7 @@
 
 .cov-split ul {
   margin: 0 0 1.25rem;
-  padding-left: 1.15rem;
+  padding-left: 1.25rem;
 }
 
 .cov-split img {
@@ -472,8 +472,8 @@
   background: #fff;
   border: 1px solid var(--ex-border);
   border-radius: var(--ex-radius);
-  padding: 0.85rem 1rem;
-  margin-bottom: 0.65rem;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.75rem;
 }
 
 .cov-faq summary {

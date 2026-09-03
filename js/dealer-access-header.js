@@ -34,5 +34,10 @@
     "</button>" +
     "</div>" +
     "</div>" +
+    '<div class="da-site-header__nav">' +
+    '<button type="button" class="da-site-header__menu" aria-label="Open menu">' +
+    '<i class="fas fa-bars" aria-hidden="true"></i>' +
+    "</button>" +
+    "</div>" +
     "</header>";
 })();

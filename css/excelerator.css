@@ -10,6 +10,7 @@
   --ex-header-black: #1f2425;
   --ex-navbar: #414b4f;
   --ex-navbar-hover: #353e41;
+  /* Type: primary #414B4F, secondary #6C757D — the only content font colors */
   --ex-body-text: #414b4f;
   --ex-body-text-secondary: #6c757d;
   --ex-border: #dee2e6;
@@ -65,7 +66,7 @@ h5 {
   font-family: inherit;
   font-weight: var(--ex-heading-weight);
   line-height: 1.3;
-  color: var(--ex-header-black);
+  color: var(--ex-body-text);
 }
 
 h1 {
@@ -89,12 +90,12 @@ h5 {
 }
 
 a {
-  color: var(--ex-tertiary);
+  color: var(--ex-body-text);
   text-decoration: none;
 }
 
 a:hover {
-  color: var(--ex-primary-hover);
+  color: var(--ex-body-text);
   text-decoration: underline;
 }
 
@@ -144,7 +145,7 @@ img {
 .ex-header__util-btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.5rem;
   background: transparent;
   border: 0;
   color: inherit;
@@ -173,7 +174,7 @@ img {
   z-index: 1100;
   min-width: 200px;
   margin: 0;
-  padding: 0.35rem 0;
+  padding: 0.25rem 0;
   list-style: none;
   background: var(--ex-white);
   border: 1px solid var(--ex-border);
@@ -191,7 +192,7 @@ img {
   font-size: var(--ex-text-size);
   font-weight: 400;
   text-align: left;
-  padding: 0.55rem 1rem;
+  padding: 0.5rem 1rem;
   cursor: pointer;
 }
 
@@ -224,7 +225,7 @@ img {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 0.35rem;
+  gap: 0.25rem;
   font-weight: var(--ex-text-weight);
 }
 
@@ -252,7 +253,7 @@ img {
   color: var(--ex-body-text);
   border: 0;
   border-radius: 999px;
-  padding: 0.4rem 0.85rem 0.4rem 0.65rem;
+  padding: 0.5rem 0.75rem 0.5rem 0.75rem;
   font-family: inherit;
   font-size: var(--ex-text-size);
   font-weight: var(--ex-text-weight);
@@ -267,14 +268,14 @@ img {
 
 .ex-nav__home .fa-chevron-down {
   font-size: var(--ex-text-size);
-  margin-left: 0.15rem;
+  margin-left: 0.25rem;
 }
 
 .ex-nav__divider {
   width: 1px;
   align-self: stretch;
   background: rgba(255, 255, 255, 0.35);
-  margin: 0.65rem 0.5rem;
+  margin: 0.75rem 0.5rem;
 }
 
 .ex-nav__links {
@@ -289,7 +290,7 @@ img {
 .ex-nav__links > li > a {
   display: flex;
   align-items: center;
-  gap: 0.35rem;
+  gap: 0.25rem;
   color: var(--ex-white);
   text-decoration: none;
   font-size: var(--ex-text-size);
@@ -425,7 +426,7 @@ img {
 .ex-btn-primary {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.5rem;
   background: var(--ex-primary);
   color: var(--ex-white);
   border: 1px solid var(--ex-primary);
@@ -480,7 +481,7 @@ img {
 .ex-footer__col-title {
   font-size: 1rem;
   font-weight: 500;
-  margin: 0 0 0.85rem;
+  margin: 0 0 0.75rem;
 }
 
 .ex-footer__col ul {

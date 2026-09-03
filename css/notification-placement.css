@@ -16,7 +16,7 @@
   background: var(--ex-notice-bg);
   color: var(--ex-notice-text);
   border-left: 4px solid var(--ex-notice-border);
-  padding: 0.85rem 1.25rem;
+  padding: 0.75rem 1.25rem;
   font-family: var(--ex-font, "Rubik", system-ui, sans-serif);
   font-size: var(--ex-text-size);
   line-height: 1.45;
@@ -41,7 +41,7 @@
 
 .ex-notice__title {
   font-weight: var(--ex-heading-weight);
-  margin: 0 0 0.15rem;
+  margin: 0 0 0.25rem;
 }
 
 .ex-notice__text {
@@ -68,7 +68,7 @@
   color: rgba(255, 255, 255, 0.7);
   font-size: 1.1rem;
   line-height: 1;
-  padding: 0.15rem;
+  padding: 0.25rem;
   cursor: pointer;
 }
 
@@ -114,7 +114,7 @@
   justify-content: flex-start;
   align-items: center;
   text-align: left;
-  padding: 0.85rem 2.75rem 0.85rem 1.25rem;
+  padding: 0.75rem 2.75rem 0.75rem 1.25rem;
   border-left: 0;
   --ex-notice-bg: var(--ex-warning);
   --ex-notice-text: var(--ex-header-black);
@@ -133,12 +133,12 @@
 
 .ex-notice--top-strip .ex-notice__text a,
 .ex-notice--top-strip .ex-notice__link {
-  color: var(--ex-tertiary);
+  color: var(--ex-body-text);
 }
 
 .ex-notice--top-strip .ex-notice__text a:hover,
 .ex-notice--top-strip .ex-notice__link:hover {
-  color: var(--ex-primary-hover);
+  color: var(--ex-body-text);
 }
 
 .ex-notice--top-strip .ex-notice__dismiss {
@@ -150,7 +150,7 @@
 }
 
 .ex-notice--top-strip .ex-notice__dismiss:hover {
-  color: var(--ex-header-black);
+  color: var(--ex-body-text);
 }
 
 /* 1b — Below nav */
@@ -183,7 +183,7 @@
   gap: 0.5rem;
   background: #161a1b;
   color: #fff;
-  padding: 0.55rem 0.85rem;
+  padding: 0.5rem 0.75rem;
   font-size: var(--ex-text-size);
   font-weight: var(--ex-text-weight);
   letter-spacing: 0.04em;
@@ -206,7 +206,7 @@
 .ex-notice-toast__body {
   background: var(--ex-notice-bg);
   color: var(--ex-notice-muted);
-  padding: 0.75rem 0.85rem 0.9rem;
+  padding: 0.75rem 0.75rem 1rem;
   font-size: var(--ex-text-size);
 }
 
@@ -226,9 +226,9 @@
   font-size: var(--ex-text-size);
   font-weight: var(--ex-text-weight);
   font-family: var(--ex-font, "Rubik", system-ui, sans-serif);
-  padding: 0.35rem 0.45rem;
+  padding: 0.25rem 0.5rem;
   cursor: pointer;
-  margin-right: 0.15rem;
+  margin-right: 0.25rem;
 }
 
 .ex-notice-bell__label {
@@ -286,8 +286,8 @@
 
 .ex-notice-panel__item {
   display: flex;
-  gap: 0.65rem;
-  padding: 0.85rem 1rem;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
   border-bottom: 1px solid #f1f3f5;
   font-size: var(--ex-text-size);
 }
@@ -335,7 +335,7 @@
 .ex-notice-modal__header {
   display: flex;
   align-items: center;
-  gap: 0.65rem;
+  gap: 0.75rem;
   background: var(--ex-notice-bg);
   color: #fff;
   padding: 1rem 1.25rem;
@@ -352,21 +352,21 @@
 }
 
 .ex-notice-modal__body {
-  padding: 1.25rem 1.35rem 0.5rem;
+  padding: 1.25rem 1.25rem 0.5rem;
   color: #414b4f;
   font-size: var(--ex-text-size);
   line-height: 1.55;
 }
 
 .ex-notice-modal__body p {
-  margin: 0 0 0.85rem;
+  margin: 0 0 0.75rem;
 }
 
 .ex-notice-modal__footer {
-  padding: 0.75rem 1.35rem 1.25rem;
+  padding: 0.75rem 1.25rem 1.25rem;
   display: flex;
   justify-content: flex-end;
-  gap: 0.65rem;
+  gap: 0.75rem;
 }
 
 .ex-notice-modal__footer .btn-primary {
@@ -391,7 +391,7 @@
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  padding: 0.65rem 1.25rem;
+  padding: 0.75rem 1.25rem;
   font-size: var(--ex-text-size);
   cursor: pointer;
 }
@@ -412,7 +412,7 @@
 
 .ex-notice-ticker__detail {
   display: none;
-  padding: 0 1.25rem 0.9rem 2.75rem;
+  padding: 0 1.25rem 1rem 2.75rem;
   color: var(--ex-notice-muted);
   font-size: var(--ex-text-size);
 }
@@ -429,13 +429,13 @@
   z-index: 1090;
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.5rem;
   background: #fff;
   color: #414b4f;
   border: 1px solid #dee2e6;
   border-radius: 6px;
   box-shadow: 0 0.35rem 1rem rgba(0, 0, 0, 0.12);
-  padding: 0.55rem 0.85rem;
+  padding: 0.5rem 0.75rem;
   font-family: var(--ex-font, "Rubik", system-ui, sans-serif);
   font-size: var(--ex-text-size);
   font-weight: var(--ex-text-weight);
@@ -444,7 +444,7 @@
 
 .ex-back-to-options:hover {
   background: #f8f9fa;
-  color: #095c84;
+  color: #414b4f;
   text-decoration: none;
 }
 

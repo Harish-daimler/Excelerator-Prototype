@@ -26,8 +26,8 @@
   z-index: 1100;
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  padding: 0.45rem 0.75rem;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
   border-radius: 999px;
   background: var(--ex-header-black);
   color: var(--ex-white);
@@ -54,7 +54,7 @@
   margin: 0 0 1rem;
   font-size: var(--ex-h4-size);
   font-weight: var(--ex-heading-weight);
-  color: var(--ex-header-black);
+  color: var(--ex-body-text);
   line-height: 1.3;
 }
 
@@ -71,7 +71,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 0.75rem 1.5rem;
-  padding: 1.15rem 1.5rem;
+  padding: 1.25rem 1.5rem;
   border-bottom: 1px solid var(--ex-border);
 }
 
@@ -82,7 +82,7 @@
 }
 
 .sac-card__body {
-  padding: 1.35rem 1.5rem 1.5rem;
+  padding: 1.25rem 1.5rem 1.5rem;
 }
 
 /* —— Buttons —— */
@@ -95,19 +95,19 @@
   font-size: var(--ex-text-size);
   font-weight: var(--ex-text-weight);
   line-height: 1.3;
-  padding: 0.5rem 0.9rem;
+  padding: 0.5rem 1rem;
   cursor: pointer;
 }
 
 .sac-btn--outline {
   border: 1px solid var(--ex-border);
   background: var(--ex-white);
-  color: var(--ex-header-black);
+  color: var(--ex-body-text);
 }
 
 .sac-btn--outline:hover {
   border-color: var(--ex-primary);
-  color: var(--ex-primary);
+  color: var(--ex-body-text);
 }
 
 .sac-btn--outline i {
@@ -116,7 +116,7 @@
 }
 
 .sac-btn--outline:hover i {
-  color: var(--ex-primary);
+  color: var(--ex-body-text);
 }
 
 .sac-btn--muted {
@@ -135,14 +135,14 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  margin: 0 0 0.85rem;
+  margin: 0 0 0.75rem;
   font-size: var(--ex-text-size);
   font-weight: var(--ex-heading-weight);
-  color: var(--ex-header-black);
+  color: var(--ex-body-text);
 }
 
 .sac-section-title i {
-  color: var(--ex-primary);
+  color: var(--ex-body-text);
   font-size: 0.9rem;
 }
 
@@ -150,7 +150,7 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  margin-bottom: 1.15rem;
+  margin-bottom: 1.25rem;
 }
 
 .sac-search__field {
@@ -166,7 +166,7 @@
   border: 1px solid var(--ex-border);
   border-right: 0;
   border-radius: var(--ex-radius) 0 0 var(--ex-radius);
-  padding: 0.45rem 0.65rem;
+  padding: 0.5rem 0.75rem;
   font-family: inherit;
   font-size: var(--ex-text-size);
   color: var(--ex-body-text);
@@ -201,7 +201,7 @@
   align-items: flex-start;
   justify-content: space-between;
   gap: 1rem 2rem;
-  margin-bottom: 1.15rem;
+  margin-bottom: 1.25rem;
 }
 
 .sac-filters__label {
@@ -209,10 +209,10 @@
   float: none;
   width: auto;
   padding: 0;
-  margin: 0 0 0.4rem;
+  margin: 0 0 0.5rem;
   font-size: 13px;
   font-weight: 500;
-  color: var(--ex-header-black);
+  color: var(--ex-body-text);
 }
 
 .sac-radio-group {
@@ -231,7 +231,7 @@
 .sac-radio-group__options label {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.5rem;
   margin: 0;
   font-size: var(--ex-text-size);
   font-weight: 400;
@@ -261,7 +261,7 @@
   font-family: inherit;
   font-size: 13px;
   line-height: 1.3;
-  padding: 0.4rem 0.85rem;
+  padding: 0.5rem 0.75rem;
   cursor: pointer;
 }
 
@@ -276,7 +276,7 @@
 
 .sac-segmented button:hover {
   border-color: var(--ex-primary);
-  color: var(--ex-primary);
+  color: var(--ex-body-text);
 }
 
 .sac-segmented button.is-active {
@@ -307,7 +307,7 @@
 
 .sac-table th,
 .sac-table td {
-  padding: 0.65rem 0.85rem;
+  padding: 0.75rem 0.75rem;
   text-align: left;
   font-size: 13px;
   line-height: 1.4;
@@ -328,7 +328,7 @@
 .sac-table th {
   background: #f1f1f1;
   font-weight: 500;
-  color: var(--ex-header-black);
+  color: var(--ex-body-text);
   vertical-align: bottom;
 }
 
@@ -341,7 +341,7 @@
 }
 
 .sac-table__name {
-  color: var(--ex-header-black);
+  color: var(--ex-body-text);
   word-break: break-word;
 }
 
@@ -351,7 +351,7 @@
 }
 
 .sac-guest-icon {
-  margin-left: 0.35rem;
+  margin-left: 0.25rem;
   color: var(--ex-body-text-secondary);
   font-size: 0.8rem;
 }
@@ -363,14 +363,14 @@
 .sac-row-go {
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
+  gap: 0.25rem;
   border: 0;
   background: transparent;
-  color: var(--ex-primary);
+  color: var(--ex-body-text);
   font-family: inherit;
   font-size: 13px;
   line-height: 1.3;
-  padding: 0.25rem 0.35rem;
+  padding: 0.25rem 0.25rem;
   cursor: pointer;
   white-space: nowrap;
 }
@@ -380,7 +380,7 @@
 }
 
 .sac-row-go:hover {
-  color: var(--ex-primary-hover);
+  color: var(--ex-body-text);
 }
 
 .sac-row-go:disabled {
@@ -393,13 +393,13 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 0.3rem;
+  gap: 0.25rem;
 }
 
 .sac-consent {
   display: inline-flex;
   align-items: center;
-  padding: 0.15rem 0.5rem;
+  padding: 0.25rem 0.5rem;
   border-radius: 4px;
   font-size: 12px;
   font-weight: 500;
@@ -429,10 +429,10 @@
 .sac-resend {
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
+  gap: 0.25rem;
   border: 0;
   background: transparent;
-  color: var(--ex-primary);
+  color: var(--ex-body-text);
   font-family: inherit;
   font-size: 13px;
   font-weight: 500;
@@ -443,19 +443,19 @@
 }
 
 .sac-resend:hover {
-  color: var(--ex-primary-hover);
+  color: var(--ex-body-text);
   text-decoration: underline;
 }
 
 /* —— Blocked-row treatments —— */
 .sac-treatment-note {
   margin: 0 0 1rem;
-  padding: 0.6rem 0.85rem;
+  padding: 0.5rem 0.75rem;
   border-left: 3px solid var(--ex-primary);
   border-radius: 0 var(--ex-radius) var(--ex-radius) 0;
   background: #eaf6fd;
   font-size: 13px;
-  color: var(--ex-tertiary);
+  color: var(--ex-body-text);
 }
 
 /* Treatment A — dim the whole row, keep the disabled control visible. */
@@ -505,7 +505,7 @@
 .sac-blocked-reason {
   display: flex;
   align-items: center;
-  gap: 0.3rem;
+  gap: 0.25rem;
   margin-top: 0.25rem;
   font-size: 12px;
   color: #9a6b00;
@@ -519,7 +519,7 @@
 .sac-icr-enrolled {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.5rem;
   color: var(--ex-success);
   font-weight: 500;
   white-space: nowrap;
@@ -544,18 +544,18 @@
 }
 
 .sac-icr-sep {
-  margin: 0 0.15rem;
+  margin: 0 0.25rem;
   color: var(--ex-body-text-secondary);
 }
 
 .sac-icr-enroll {
-  color: var(--ex-primary);
+  color: var(--ex-body-text);
   font-weight: 500;
   text-decoration: none;
 }
 
 .sac-icr-enroll:hover {
-  color: var(--ex-primary-hover);
+  color: var(--ex-body-text);
   text-decoration: underline;
 }
 
@@ -576,7 +576,7 @@
   justify-content: center;
   min-width: 2rem;
   height: 2rem;
-  padding: 0 0.4rem;
+  padding: 0 0.5rem;
   border-radius: 4px;
   font-size: var(--ex-text-size);
   color: var(--ex-body-text);
