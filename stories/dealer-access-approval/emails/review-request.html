@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Review Request — email body</title>
+    <!--
+      Developer handoff: email BODY only (no Outlook inbox chrome).
+      Visual spec for the Review Request message. Rebuild in the email
+      platform (tables + inline CSS). Do not paste this into the storefront.
+
+      CSS: review-request.css
+      Dark header: #1f2425
+    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="review-request.css" />
+  </head>
+  <body>
+    <article class="email">
+      <header class="da-welcome">
+        <div class="da-welcome__inner">
+          <div>
+            <h1 class="da-welcome__title">Welcome to Excelerator</h1>
+            <p class="da-welcome__copy">
+              Excelerator is the e-commerce platform provided by Daimler Truck
+              North America (DTNA), designed to streamline and enhance your
+              shopping experience at your local dealership.
+            </p>
+          </div>
+          <img
+            class="da-welcome__logo"
+            src="../../../assets/images/excelerator-logo.png"
+            alt="Excelerator"
+          />
+        </div>
+      </header>
+
+      <main class="da-main">
+        <p class="da-lead">
+          <span class="da-lead__dealer">Fort Mill Freightliner</span> has
+          requested to create an Excelerator online shopping profile for you.
+        </p>
+
+        <h2 class="da-section-label">Requesting Dealership</h2>
+
+        <section class="da-card da-card--hero" aria-label="Requesting dealership">
+          <div class="da-card__top">
+            <div class="da-requester">
+              <span
+                ><i class="fas fa-user" aria-hidden="true"></i> Marcus
+                Reeve</span
+              >
+              <span
+                ><i class="fas fa-envelope" aria-hidden="true"></i>
+                marcr@fortmillftl.com</span
+              >
+            </div>
+          </div>
+
+          <div class="da-field">
+            <span class="da-field__label">Dealership Name</span>
+            <h3 class="da-hero-name">Fort Mill Freightliner</h3>
+          </div>
+
+          <div class="da-meta-row">
+            <div class="da-field">
+              <span class="da-field__label">Address</span>
+              <p class="da-field__value">
+                4421 Industrial Way, Fort Mill, SC 29715
+              </p>
+            </div>
+            <div class="da-field">
+              <span class="da-field__label">Phone</span>
+              <p class="da-field__value">(803) 555-0912</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Replace href with the tokenized Review Request URL -->
+        <a class="da-btn-primary" href="#">Review Request</a>
+
+        <div class="da-why">
+          <div class="da-why__box">
+            <strong>Why am I receiving this?</strong> A dealership has created
+            an Excelerator online shopping profile using your email address. If
+            you weren’t expecting this, please <a href="#">contact support</a>.
+          </div>
+        </div>
+
+        <div class="da-skyline">
+          <img src="../../../assets/images/excelerator-skyline.png" alt="" />
+        </div>
+      </main>
+    </article>
+  </body>
+</html>
