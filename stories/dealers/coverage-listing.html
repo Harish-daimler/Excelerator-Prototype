@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Coverage listing after VIN | Excelerator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../../css/excelerator.css" />
+    <link rel="stylesheet" href="../../css/product-header.css" />
+    <link rel="stylesheet" href="../../css/dealers.css" />
+    <link rel="stylesheet" href="../../css/dealer-vin-packages.css" />
+  </head>
+  <body class="dvp-page dvp-page--customer" data-auth="logged-in">
+    <a class="dl-back" href="../dealer-vin-packages/options.html"
+      ><i class="fas fa-th-large" aria-hidden="true"></i
+      ><span>All options</span></a
+    >
+
+    <header class="product-header">
+      <div class="ph-logged-in-top auth-logged-in">
+        <div class="ph-brand-col">
+          <a
+            class="ex-header__logo"
+            href="../../global-homepage.html"
+            aria-label="Excelerator home"
+          >
+            <img
+              src="../../assets/images/excelerator-logo.png"
+              alt="Excelerator"
+            />
+          </a>
+          <button type="button" class="ph-shop-vehicle">
+            <i class="fas fa-truck" aria-hidden="true"></i>
+            Shop by Vehicle
+            <i class="fas fa-plus" aria-hidden="true"></i>
+          </button>
+        </div>
+        <form class="ph-search" role="search" action="#" onsubmit="return false;">
+          <button type="button" class="ph-search__filter" aria-label="Search filters">
+            <i class="fas fa-caret-down" aria-hidden="true"></i>
+          </button>
+          <input
+            class="ph-search__input"
+            type="search"
+            placeholder="Search by part name, number, VMRS, or cross reference"
+            aria-label="Search"
+          />
+          <button type="submit" class="ph-search__submit" aria-label="Search">
+            <i class="fas fa-search" aria-hidden="true"></i>
+          </button>
+        </form>
+        <div class="ph-user-col">
+          <div class="ph-user-row">
+            <div class="ex-account-menu">
+              <button
+                type="button"
+                class="ph-user-btn ex-account-menu__toggle"
+                aria-expanded="false"
+                aria-haspopup="true"
+                aria-controls="list-account"
+              >
+                <i class="fas fa-user" aria-hidden="true"></i>
+                <span>ADXCustomer3</span>
+                <i class="fas fa-chevron-down" aria-hidden="true"></i>
+              </button>
+              <ul
+                id="list-account"
+                class="ex-account-menu__dropdown"
+                role="menu"
+                hidden
+              >
+                <li role="none">
+                  <button type="button" role="menuitem">Account settings</button>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="ph-dealer">
+            <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+            <div>
+              <div class="ph-dealer__name">Houston Freightliner</div>
+              <div class="ph-dealer__meta">FBCFD | $USD</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <nav class="ph-nav" aria-label="Primary">
+        <div class="ph-nav__lob-wrap">
+          <button type="button" class="ph-nav__lob">
+            <i class="fas fa-shield-alt" aria-hidden="true"></i>
+            <span>Extended Coverages</span>
+          </button>
+        </div>
+        <div class="ph-nav__divider" aria-hidden="true"></div>
+        <ul class="ph-nav__links auth-logged-in">
+          <li>
+            <a class="is-active" href="#" aria-current="page">Shop Coverage</a>
+          </li>
+          <li><a href="#">Orders</a></li>
+        </ul>
+      </nav>
+      <div class="ph-subnav">
+        <span class="ph-subnav__title">Extended Coverages</span>
+        <span class="ph-subnav__divider" aria-hidden="true"></span>
+        <a href="index.html">Dealer catalog setup</a>
+      </div>
+    </header>
+
+    <main class="dvp-customer">
+      <p class="dvp-note">
+        Customer view after VIN. Houston Freightliner selected packages to show.
+        If none of those were eligible, every package would list instead. Trucks
+        over 7 years or 750,000 miles are not eligible for any coverages.
+      </p>
+      <div class="dvp-hero-copy">
+        <h1>Coverages for your VIN</h1>
+        <p>
+          A truck is not eligible for any extended coverages after 7 years or
+          750,000 miles.
+        </p>
+      </div>
+      <div data-listing-root></div>
+    </main>
+
+    <script src="../../js/auth-toggle.js"></script>
+    <script src="../../js/coverage-listing.js"></script>
+  </body>
+</html>

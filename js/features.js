@@ -38,8 +38,8 @@ window.ExFeatures = {
       id: "dealers-extended-coverages",
       label: "Feature",
       name: "Dealers — Extended Coverages",
-      desc: "Dealer admin for Available Coverages: pre-select customer defaults (packages + terms), MSRP/Dnet pricing, and bundle composition.",
-      href: "stories/dealers/index.html",
+      desc: "Dealer chooses which OPTIMUM and NEXT packages to show after VIN. No pricing setup. If none of those packages are eligible, all packages show. Trucks over 7 years / 750,000 miles are not eligible.",
+      href: "stories/dealer-vin-packages/options.html",
     },
   ],
 };
