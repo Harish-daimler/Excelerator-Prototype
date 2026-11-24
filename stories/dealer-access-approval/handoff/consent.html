@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Approve Dealer Access</title>
+    <!--
+      Developer handoff: consent page content only (no site header).
+      Visual spec — rebuild in composable storefront. Do not paste as-is.
+      Confirm goes to youre-all-set.html; decline goes to request-declined.html.
+    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <style>
+      :root {
+        --primary: #0e98de;
+        --primary-hover: #0b79b1;
+        --text: #414b4f;
+        --text-secondary: #6c757d;
+        --white: #ffffff;
+        --page: #f4f4f4;
+        --border: #dee2e6;
+        --gray: #f8f9fa;
+        --card: #eef7fc;
+        --radius: 6px;
+        --font: "Rubik", Arial, Helvetica, sans-serif;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--page);
+        color: var(--text);
+        font-family: var(--font);
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 1.5;
+      }
+
+      .shell {
+        max-width: 820px;
+        margin: 28px auto 48px;
+        padding: 0 20px;
+      }
+
+      .card {
+        background: var(--white);
+        border-radius: 10px;
+        box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+        padding: 32px 28px;
+      }
+
+      .screen-title {
+        margin: 0 0 24px;
+        text-align: center;
+        font-size: 26px;
+        font-weight: 500;
+        color: var(--text);
+      }
+
+      .dealer-card {
+        background: var(--card);
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 20px;
+      }
+
+      .dealer-card__top {
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid rgba(14, 152, 222, 0.18);
+      }
+
+      .requester {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px 20px;
+        font-size: 16px;
+        color: var(--text-secondary);
+      }
+
+      .requester span {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .requester i {
+        color: var(--primary);
+      }
+
+      .field__label {
+        display: block;
+        margin-bottom: 4px;
+        font-size: 16px;
+        font-weight: 400;
+        color: var(--text-secondary);
+      }
+
+      .hero-name {
+        margin: 0;
+        font-size: 20px;
+        font-weight: 500;
+        color: var(--text);
+        line-height: 1.25;
+      }
+
+      .dealer-card > .field {
+        margin-bottom: 12px;
+      }
+
+      .meta-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px 24px;
+      }
+
+      .field__value {
+        margin: 0;
+        font-size: 16px;
+        font-weight: 500;
+        color: var(--text);
+        line-height: 1.4;
+      }
+
+      .decision {
+        background: var(--white);
+        border: 2px solid var(--primary);
+        border-radius: 10px;
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+        padding: 20px 24px 24px;
+      }
+
+      .decision__prompt {
+        margin: 0 0 8px;
+        font-size: 20px;
+        font-weight: 500;
+        color: var(--text);
+      }
+
+      .decision__disclaimer {
+        margin: 0 0 20px;
+        font-size: 12px;
+        color: var(--text-secondary);
+        line-height: 1.5;
+      }
+
+      .radios {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin: 0 0 20px;
+      }
+
+      .radio {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        font-size: 16px;
+        color: var(--text);
+        cursor: pointer;
+      }
+
+      .radio input {
+        appearance: none;
+        -webkit-appearance: none;
+        width: 18px;
+        height: 18px;
+        margin: 4px 0 0;
+        flex-shrink: 0;
+        border: 2px solid #c8c8c8;
+        border-radius: 50%;
+        background: var(--white);
+        cursor: pointer;
+      }
+
+      .radio input:checked {
+        border-color: var(--primary);
+        background: radial-gradient(
+          circle at center,
+          var(--primary) 0 38%,
+          var(--white) 42% 100%
+        );
+      }
+
+      .decision__note {
+        margin: 0 0 20px;
+        font-size: 12px;
+        font-style: italic;
+        color: var(--text-secondary);
+        line-height: 1.45;
+      }
+
+      .decision__note a {
+        color: inherit;
+        text-decoration: underline;
+      }
+
+      .actions {
+        display: flex;
+        justify-content: flex-end;
+        padding-top: 20px;
+        border-top: 1px solid var(--border);
+      }
+
+      .btn-primary {
+        display: inline-block;
+        border: 0;
+        border-radius: var(--radius);
+        background: var(--primary);
+        color: var(--white);
+        font-family: inherit;
+        font-size: 16px;
+        font-weight: 400;
+        padding: 12px 20px;
+        text-align: center;
+        cursor: pointer;
+      }
+
+      .btn-primary:hover:not(:disabled) {
+        background: var(--primary-hover);
+      }
+
+      .btn-primary:disabled {
+        opacity: 0.45;
+        cursor: not-allowed;
+      }
+
+      @media (max-width: 639.98px) {
+        .meta-row {
+          grid-template-columns: 1fr;
+          gap: 12px;
+        }
+
+        .requester {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 8px;
+        }
+
+        .decision {
+          padding: 20px 16px;
+        }
+
+        .actions .btn-primary {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="shell">
+      <div class="card">
+        <h1 class="screen-title">Approve Dealer Access</h1>
+
+        <section class="dealer-card" aria-label="Requesting dealership">
+          <div class="dealer-card__top">
+            <div class="requester">
+              <span
+                ><i class="fas fa-user" aria-hidden="true"></i> Marcus Reeve</span
+              >
+              <span
+                ><i class="fas fa-envelope" aria-hidden="true"></i>
+                marcr@fortmillftl.com</span
+              >
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field__label">Dealership Name</span>
+            <h2 class="hero-name">Fort Mill Freightliner</h2>
+          </div>
+
+          <div class="meta-row">
+            <div class="field">
+              <span class="field__label">Address</span>
+              <p class="field__value">4421 Industrial Way, Fort Mill, SC 29715</p>
+            </div>
+            <div class="field">
+              <span class="field__label">Phone</span>
+              <p class="field__value">(803) 555-0912</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="decision" aria-label="Approval decision" data-decision>
+          <p class="decision__prompt">*Please select an option</p>
+          <p class="decision__disclaimer">
+            By approving this request, you authorize all locations associated
+            with the dealership family that includes “Fort Mill Freightliner” to
+            place orders on behalf of the company you represent and support your
+            Excelerator online shopping profile.
+          </p>
+
+          <div class="radios" role="radiogroup" aria-label="Approval options">
+            <label class="radio">
+              <input type="radio" name="decision" value="approve-icr" />
+              <span>Yes, I approve and want to save with Inner Circle Rewards*</span>
+            </label>
+            <label class="radio">
+              <input type="radio" name="decision" value="approve-no-icr" />
+              <span
+                >Yes, I approve but don’t want to save with Inner Circle
+                Rewards*</span
+              >
+            </label>
+            <label class="radio">
+              <input type="radio" name="decision" value="decline" />
+              <span>No, I decline</span>
+            </label>
+          </div>
+
+          <p class="decision__note">
+            *Inner Circle Rewards<sup>SM</sup> is DTNA’s rewards program designed
+            to get you the maximum discount when shopping online for truck and
+            bus parts. Save money on eligible parts orders. Free to join. By
+            enrolling you agree to the
+            <a href="#">program rules</a>.
+          </p>
+
+          <div class="actions">
+            <button type="button" class="btn-primary" data-confirm disabled>
+              Confirm
+            </button>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        var form = document.querySelector("[data-decision]");
+        if (!form) return;
+        var radios = form.querySelectorAll('input[name="decision"]');
+        var confirmBtn = form.querySelector("[data-confirm]");
+
+        function selectedValue() {
+          var checked = form.querySelector('input[name="decision"]:checked');
+          return checked ? checked.value : null;
+        }
+
+        function syncConfirm() {
+          confirmBtn.disabled = !selectedValue();
+        }
+
+        radios.forEach(function (radio) {
+          radio.addEventListener("change", syncConfirm);
+        });
+        confirmBtn.addEventListener("click", function () {
+          var value = selectedValue();
+          if (!value) return;
+          window.location.href =
+            value === "decline" ? "request-declined.html" : "youre-all-set.html";
+        });
+        syncConfirm();
+      })();
+    </script>
+  </body>
+</html>

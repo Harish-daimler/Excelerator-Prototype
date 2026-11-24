@@ -1,13 +1,12 @@
 /**
- * Available Coverages admin — customer pre-selection defaults and pricing.
+ * Available Coverages admin — which packages appear after VIN, plus pricing.
  *
  * Bundle composition is authored on a separate page, so bundle contents are
  * read-only here. The bundle is priced as a single unit — its MSRP/Dnet is the
  * sum of the packages it includes, and one discount or markup applies to that.
  *
- * Bundle and individual pre-selections coexist: the priority toggle decides
- * which the shopping page shows first, and the other becomes the fallback when
- * a customer's truck is not eligible.
+ * Show after VIN replaces pre-select. Hidden packages stay in this admin for
+ * pricing, but they do not appear on the customer coverage listing.
  */
 (function () {
   var root = document.querySelector("[data-ac-root]");
@@ -41,8 +40,7 @@
         terms: termBases(msrp, dnet),
         mode: "msrp",
         percent: 10,
-        preselected: false,
-        defaultTermId: null,
+        shown: false,
       },
       extras || {}
     );
@@ -61,10 +59,10 @@
           "Engine",
           [5200, 6000, 7200, 8500],
           [3900, 4500, 5400, 6400],
-          { popular: true }
+          { popular: true, shown: true }
         ),
         multiPkg("entc2", "ENTC2", "Chassis", [2800, 3200, 4000, 4800], [2100, 2400, 3000, 3600]),
-        multiPkg("entc4", "ENTC4", "Chassis", [4200, 4800, 5600, 6500], [3200, 3600, 4200, 4900]),
+        multiPkg("entc4", "ENTC4", "Chassis", [4200, 4800, 5600, 6500], [3200, 3600, 4200, 4900], { shown: true }),
       ],
     },
     optimum: {
@@ -92,7 +90,7 @@
           "Engine",
           [4800, 5600, 6800, 7800],
           [3600, 4200, 5100, 5900],
-          { popular: true }
+          { popular: true, shown: true }
         ),
         multiPkg(
           "opt-chs-basic",
@@ -107,7 +105,7 @@
           "Towing",
           [2500, 3500, 4500, 6500],
           [1800, 2500, 3200, 4600],
-          { coverageType: "standalone" }
+          { coverageType: "standalone", shown: true }
         ),
         multiPkg(
           "opt-ats",
@@ -132,8 +130,7 @@
         mode: "msrp",
         percent: 20,
         terms: [],
-        preselected: false,
-        defaultTermId: null,
+        shown: false,
       },
     },
   };
@@ -226,71 +223,72 @@
     });
   }
 
-  function hasPreselectedPackage(offering) {
-    return offering.packages.some(function (pkg) {
-      return pkg.preselected;
+  function shownPackages(offering) {
+    return offering.packages.filter(function (pkg) {
+      return pkg.shown;
     });
   }
 
-  function setCategoryDefault(offeringId, category, pkgId) {
-    categoryPackages(state[offeringId]).forEach(function (pkg) {
-      if (pkg.category !== category) return;
-      pkg.preselected = pkgId ? pkg.id === pkgId : false;
-      if (!pkg.preselected) pkg.defaultTermId = null;
-    });
-  }
-
-  function setBundlePreselected(offeringId, preselected) {
-    var offering = state[offeringId];
-    if (!hasBundle(offering)) return;
-    offering.bundle.preselected = preselected;
-    if (!preselected) offering.bundle.defaultTermId = null;
-  }
-
-  function setStandalonePreselected(offeringId, pkgId, preselected) {
+  function setPackageShown(offeringId, pkgId, shown) {
     var pkg = findPkg(offeringId, pkgId);
     if (!pkg) return;
-    pkg.preselected = preselected;
-    if (!preselected) pkg.defaultTermId = null;
+    pkg.shown = shown;
   }
 
-  function setPriority(offeringId, priority) {
+  function setBundleShown(offeringId, shown) {
     var offering = state[offeringId];
     if (!hasBundle(offering)) return;
-    offering.priority = priority;
+    offering.bundle.shown = shown;
   }
 
-  function setDefaultTerm(entityKey, termId) {
-    var entity = getEntity(entityKey);
-    if (!entity || !entity.preselected) return;
-    entity.defaultTermId = termId;
+  function listingItems() {
+    var items = [];
+    ["next", "optimum"].forEach(function (id) {
+      var offering = state[id];
+      if (hasBundle(offering) && offering.bundle.shown) {
+        var mid = offering.bundle.terms[1] || offering.bundle.terms[0];
+        items.push({
+          id: "bundle-" + id,
+          name: offering.bundle.name,
+          category: "Bundle",
+          offeringId: id,
+          offeringLabel: offering.label,
+          popular: false,
+          price: money(calcPrice(mid, offering.bundle.mode, offering.bundle.percent)),
+          blurb: "Includes " + offering.bundle.memberIds.length + " coverages as one package.",
+        });
+      }
+      offering.packages.forEach(function (pkg) {
+        if (!pkg.shown) return;
+        var term = pkg.terms[1] || pkg.terms[0];
+        items.push({
+          id: pkg.id,
+          name: pkg.name,
+          category: pkg.category,
+          offeringId: id,
+          offeringLabel: offering.label,
+          popular: !!pkg.popular,
+          price: money(calcPrice(term, pkg.mode, pkg.percent)),
+          blurb: pkg.category + " coverage from " + offering.label + ".",
+        });
+      });
+    });
+    return items;
   }
 
-  function renderDefaultTermCell(entityKey, termId, enabled, defaultTermId) {
-    return (
-      '<td class="ac-term-default">' +
-      '<label class="ac-term-default__label">' +
-      '<input type="radio" name="default-term-' +
-      entityKey +
-      '" value="' +
-      termId +
-      '" data-ac-default-term="' +
-      termId +
-      '" data-ac-default-entity="' +
-      entityKey +
-      '"' +
-      (enabled ? "" : " disabled") +
-      (defaultTermId === termId ? " checked" : "") +
-      ' aria-label="Default term" />' +
-      '<span class="visually-hidden">Default</span>' +
-      "</label>" +
-      "</td>"
-    );
+  var CATALOG_KEY = "ex-dealer-coverage-catalog";
+
+  function persistCatalog() {
+    try {
+      sessionStorage.setItem(
+        CATALOG_KEY,
+        JSON.stringify({ items: listingItems() })
+      );
+    } catch (e) {}
   }
 
   /**
-   * config: entityKey, terms, mode, percent, showDefault, defaultEnabled,
-   * defaultTermId, msrpLabel, dnetLabel
+   * config: entityKey, terms, mode, percent, msrpLabel, dnetLabel
    */
   function renderTermTable(config) {
     var rows = config.terms
@@ -313,14 +311,6 @@
           '">' +
           money(calcPrice(term, config.mode, config.percent)) +
           "</td>" +
-          (config.showDefault
-            ? renderDefaultTermCell(
-                config.entityKey,
-                term.id,
-                config.defaultEnabled,
-                config.defaultTermId
-              )
-            : "") +
           "</tr>"
         );
       })
@@ -334,7 +324,6 @@
       "</th><th>" +
       (config.dnetLabel || "Dnet") +
       "</th><th>Customer price</th>" +
-      (config.showDefault ? "<th>Default term</th>" : "") +
       "</tr></thead><tbody>" +
       rows +
       "</tbody></table></div>"
@@ -376,50 +365,25 @@
     );
   }
 
-  function renderCategoryDefaultControl(offeringId, pkg) {
+  function renderShowControl(offeringId, pkg) {
     return (
-      '<label class="ac-default">' +
-      '<input type="radio" name="default-cat-' +
-      offeringId +
-      "-" +
-      pkg.category +
-      '" data-ac-category-default="' +
-      offeringId +
-      ":" +
-      pkg.category +
-      ":" +
-      pkg.id +
-      '"' +
-      (pkg.preselected ? " checked" : "") +
-      " /> Pre-select for " +
-      pkg.category +
-      "</label>"
-    );
-  }
-
-  function renderStandaloneDefaultControl(offeringId, pkg) {
-    return (
-      '<label class="ac-default">' +
-      '<input type="checkbox" data-ac-standalone-default="' +
+      '<label class="ac-show">' +
+      '<input type="checkbox" data-ac-show="' +
       offeringId +
       ":" +
       pkg.id +
       '"' +
-      (pkg.preselected ? " checked" : "") +
-      " /> Pre-select for customers</label>"
+      (pkg.shown ? " checked" : "") +
+      " /> Show after VIN</label>"
     );
   }
 
   function renderPackageCard(offeringId, pkg) {
     var key = "pkg:" + offeringId + ":" + pkg.id;
-    var defaultControl =
-      pkg.coverageType === "standalone"
-        ? renderStandaloneDefaultControl(offeringId, pkg)
-        : renderCategoryDefaultControl(offeringId, pkg);
 
     return (
       '<article class="ac-card' +
-      (pkg.preselected ? " is-preselected" : "") +
+      (pkg.shown ? " is-shown" : " is-hidden-from-customer") +
       '" data-ac-package="' +
       pkg.id +
       '">' +
@@ -427,8 +391,11 @@
       '<h5 class="ac-card__title">' +
       pkg.name +
       (pkg.popular ? ' <span class="ac-popular">Popular</span>' : "") +
+      (pkg.shown
+        ? ' <span class="ac-vis-tag ac-vis-tag--public">On listing</span>'
+        : ' <span class="ac-vis-tag">Hidden from customer</span>') +
       "</h5>" +
-      defaultControl +
+      renderShowControl(offeringId, pkg) +
       "</div>" +
       renderModeControls(key, pkg.mode, pkg.percent, pkg.name) +
       renderTermTable({
@@ -436,105 +403,133 @@
         terms: pkg.terms,
         mode: pkg.mode,
         percent: pkg.percent,
-        showDefault: true,
-        defaultEnabled: pkg.preselected,
-        defaultTermId: pkg.defaultTermId,
       }) +
       "</article>"
     );
   }
 
-  function priorityHint(offering) {
-    var bundleOn = offering.bundle.preselected;
-    var packagesOn = hasPreselectedPackage(offering);
-    var bundleFirst = offering.priority === "bundle";
-
-    if (!bundleOn && !packagesOn) {
+  function catalogHint(offering) {
+    var names = shownPackages(offering).map(function (pkg) {
+      return pkg.name;
+    });
+    if (hasBundle(offering) && offering.bundle.shown) {
+      names.unshift(offering.bundle.name);
+    }
+    if (!names.length) {
       return {
         warning: true,
         text:
-          "Nothing is pre-selected yet, so customers will land on the shopping page with no coverages selected.",
+          "No " +
+          offering.label +
+          " packages are shown after VIN, so this offering will not appear on the customer coverage listing.",
       };
     }
-
-    if (bundleOn && packagesOn) {
-      return {
-        warning: false,
-        text: bundleFirst
-          ? "Customers see the " +
-            offering.bundle.name +
-            " first. If their truck is not eligible for it, the pre-selected individual packages are shown instead."
-          : "Customers see the pre-selected individual packages first. If their truck is not eligible for those, the " +
-            offering.bundle.name +
-            " is shown instead.",
-      };
-    }
-
-    if (bundleOn) {
-      return {
-        warning: true,
-        text:
-          "Only the " +
-          offering.bundle.name +
-          " is pre-selected. No individual packages are pre-selected, so there is no fallback if the truck is not eligible for the bundle.",
-      };
-    }
-
     return {
-      warning: true,
+      warning: false,
       text:
-        "Only individual packages are pre-selected. The " +
-        offering.bundle.name +
-        " is not pre-selected, so there is no fallback if the truck is not eligible for those packages.",
+        "After VIN, customers will see " +
+        names.join(", ") +
+        " on the coverage listing.",
     };
   }
 
-  function renderPriority(offeringId, offering) {
-    var hint = priorityHint(offering);
-    var options = [
-      {
-        value: "bundle",
-        label: "Show the bundle first, fall back to individual packages",
-      },
-      {
-        value: "packages",
-        label: "Show individual packages first, fall back to the bundle",
-      },
-    ]
-      .map(function (option) {
-        return (
-          '<label class="ac-default">' +
-          '<input type="radio" name="priority-' +
-          offeringId +
-          '" value="' +
-          option.value +
-          '" data-ac-priority="' +
-          offeringId +
-          '"' +
-          (offering.priority === option.value ? " checked" : "") +
-          " /> " +
-          option.label +
-          "</label>"
-        );
-      })
-      .join("");
-
+  function renderCatalogHint(offering) {
+    var hint = catalogHint(offering);
     return (
-      '<section class="ac-priority">' +
-      '<h4 class="ac-category__title">Pre-selection priority</h4>' +
-      '<p class="ac-category__help">Pre-select the bundle and individual packages independently, then choose which the shopping page shows first. The other becomes the fallback when a customer\u2019s truck is not eligible.</p>' +
-      '<div class="ac-priority__options">' +
-      options +
-      "</div>" +
       '<p class="ac-priority__hint' +
       (hint.warning ? " is-warning" : "") +
       '"><i class="fas ' +
       (hint.warning ? "fa-triangle-exclamation" : "fa-circle-info") +
       '" aria-hidden="true"></i> ' +
       hint.text +
-      "</p>" +
-      "</section>"
+      "</p>"
     );
+  }
+
+  function renderBundle(offeringId, offering) {
+    var bundle = offering.bundle;
+    var key = "bundle:" + offeringId;
+
+    return (
+      '<section class="ac-bundle">' +
+      '<article class="ac-card ac-card--bundle' +
+      (bundle.shown ? " is-shown" : " is-hidden-from-customer") +
+      '">' +
+      '<div class="ac-card__top">' +
+      '<h4 class="ac-card__title">' +
+      bundle.name +
+      (bundle.shown
+        ? ' <span class="ac-vis-tag ac-vis-tag--public">On listing</span>'
+        : ' <span class="ac-vis-tag">Hidden from customer</span>') +
+      "</h4>" +
+      '<label class="ac-show">' +
+      '<input type="checkbox" data-ac-bundle-show="' +
+      offeringId +
+      '"' +
+      (bundle.shown ? " checked" : "") +
+      " /> Show after VIN</label>" +
+      "</div>" +
+      '<p class="ac-bundle-help">Bundle contents are managed on the bundle composition page and cannot be changed here. Showing the bundle after VIN does not hide the individual packages — turn those off separately if you only want the bundle on the listing.</p>' +
+      renderBundleContents(offering) +
+      renderModeControls(key, bundle.mode, bundle.percent, bundle.name) +
+      renderTermTable({
+        entityKey: key,
+        terms: bundle.terms,
+        mode: bundle.mode,
+        percent: bundle.percent,
+        msrpLabel: "MSRP total",
+        dnetLabel: "Dnet total",
+      }) +
+      "</article></section>"
+    );
+  }
+
+  function renderOffering(offeringId) {
+    var offering = state[offeringId];
+    var panel = root.querySelector('[data-ac-offering-panel="' + offeringId + '"]');
+    if (!panel) return;
+
+    var categoryGroups = groupByCategory(categoryPackages(offering))
+      .map(function (group) {
+        return (
+          '<section class="ac-category">' +
+          '<div class="ac-category__head">' +
+          '<h4 class="ac-category__title">' +
+          group.name +
+          "</h4></div>" +
+          '<p class="ac-category__help">Choose which ' +
+          group.name +
+          " packages appear on the customer coverage listing after VIN lookup. Customers can compare every package you show.</p>" +
+          '<div class="ac-category__packages">' +
+          group.packages
+            .map(function (pkg) {
+              return renderPackageCard(offeringId, pkg);
+            })
+            .join("") +
+          "</div></section>"
+        );
+      })
+      .join("");
+
+    var standalone = standalonePackages(offering);
+    var standaloneSection = standalone.length
+      ? '<section class="ac-standalone">' +
+        '<h4 class="ac-category__title">Standalone coverages</h4>' +
+        '<p class="ac-category__help">Show as many as you want. These appear as add-ons on the coverage listing after VIN.</p>' +
+        '<div class="ac-category__packages">' +
+        standalone
+          .map(function (pkg) {
+            return renderPackageCard(offeringId, pkg);
+          })
+          .join("") +
+        "</div></section>"
+      : "";
+
+    panel.innerHTML =
+      renderCatalogHint(offering) +
+      (hasBundle(offering) ? renderBundle(offeringId, offering) : "") +
+      categoryGroups +
+      standaloneSection;
   }
 
   function renderBundleContents(offering) {
@@ -556,117 +551,6 @@
       "</div>" +
       "</div>"
     );
-  }
-
-  function renderBundle(offeringId, offering) {
-    var bundle = offering.bundle;
-    var key = "bundle:" + offeringId;
-
-    return (
-      '<section class="ac-bundle">' +
-      '<article class="ac-card ac-card--bundle' +
-      (bundle.preselected ? " is-preselected" : "") +
-      '">' +
-      '<div class="ac-card__top">' +
-      '<h4 class="ac-card__title">' +
-      bundle.name +
-      "</h4>" +
-      '<div class="ac-card__defaults">' +
-      '<label class="ac-default">' +
-      '<input type="checkbox" data-ac-bundle-default="' +
-      offeringId +
-      '"' +
-      (bundle.preselected ? " checked" : "") +
-      " /> Pre-select bundle for customers</label>" +
-      (bundle.preselected
-        ? '<button type="button" class="ac-clear-default" data-ac-clear-bundle="' +
-          offeringId +
-          '">Clear bundle default</button>'
-        : "") +
-      "</div>" +
-      "</div>" +
-      '<p class="ac-bundle-help">Bundle contents are managed on the bundle composition page and cannot be changed here. MSRP and Dnet below are the combined totals of the included packages \u2014 set one discount or markup for the whole bundle.</p>' +
-      renderBundleContents(offering) +
-      renderModeControls(key, bundle.mode, bundle.percent, bundle.name) +
-      renderTermTable({
-        entityKey: key,
-        terms: bundle.terms,
-        mode: bundle.mode,
-        percent: bundle.percent,
-        showDefault: true,
-        defaultEnabled: bundle.preselected,
-        defaultTermId: bundle.defaultTermId,
-        msrpLabel: "MSRP total",
-        dnetLabel: "Dnet total",
-      }) +
-      "</article></section>"
-    );
-  }
-
-  function renderCategoryClear(offeringId, category, offering) {
-    var hasDefault = categoryPackages(offering).some(function (pkg) {
-      return pkg.category === category && pkg.preselected;
-    });
-    if (!hasDefault) return "";
-    return (
-      '<button type="button" class="ac-clear-default" data-ac-clear-category="' +
-      offeringId +
-      ":" +
-      category +
-      '">Clear ' +
-      category +
-      " default</button>"
-    );
-  }
-
-  function renderOffering(offeringId) {
-    var offering = state[offeringId];
-    var panel = root.querySelector('[data-ac-offering-panel="' + offeringId + '"]');
-    if (!panel) return;
-
-    var categoryGroups = groupByCategory(categoryPackages(offering))
-      .map(function (group) {
-        return (
-          '<section class="ac-category">' +
-          '<div class="ac-category__head">' +
-          '<h4 class="ac-category__title">' +
-          group.name +
-          "</h4>" +
-          renderCategoryClear(offeringId, group.name, offering) +
-          "</div>" +
-          '<p class="ac-category__help">Choose one package to pre-select under ' +
-          group.name +
-          ".</p>" +
-          '<div class="ac-category__packages">' +
-          group.packages
-            .map(function (pkg) {
-              return renderPackageCard(offeringId, pkg);
-            })
-            .join("") +
-          "</div></section>"
-        );
-      })
-      .join("");
-
-    var standalone = standalonePackages(offering);
-    var standaloneSection = standalone.length
-      ? '<section class="ac-standalone">' +
-        '<h4 class="ac-category__title">Standalone coverages</h4>' +
-        '<p class="ac-category__help">Pre-select as many as you want. These are added on top of whichever pre-selection the customer sees.</p>' +
-        '<div class="ac-category__packages">' +
-        standalone
-          .map(function (pkg) {
-            return renderPackageCard(offeringId, pkg);
-          })
-          .join("") +
-        "</div></section>"
-      : "";
-
-    panel.innerHTML =
-      (hasBundle(offering) ? renderPriority(offeringId, offering) : "") +
-      (hasBundle(offering) ? renderBundle(offeringId, offering) : "") +
-      categoryGroups +
-      standaloneSection;
   }
 
   function renderAll() {
@@ -706,64 +590,18 @@
   }
 
   function bindControls() {
-    root.querySelectorAll("[data-ac-priority]").forEach(function (input) {
+    root.querySelectorAll("[data-ac-show]").forEach(function (input) {
       input.addEventListener("change", function () {
-        if (!input.checked) return;
-        setPriority(input.getAttribute("data-ac-priority"), input.value);
+        var parts = input.getAttribute("data-ac-show").split(":");
+        setPackageShown(parts[0], parts[1], input.checked);
         renderAll();
       });
     });
 
-    root.querySelectorAll("[data-ac-category-default]").forEach(function (input) {
+    root.querySelectorAll("[data-ac-bundle-show]").forEach(function (input) {
       input.addEventListener("change", function () {
-        if (!input.checked) return;
-        var parts = input.getAttribute("data-ac-category-default").split(":");
-        setCategoryDefault(parts[0], parts[1], parts[2]);
+        setBundleShown(input.getAttribute("data-ac-bundle-show"), input.checked);
         renderAll();
-      });
-    });
-
-    root.querySelectorAll("[data-ac-standalone-default]").forEach(function (input) {
-      input.addEventListener("change", function () {
-        var parts = input.getAttribute("data-ac-standalone-default").split(":");
-        setStandalonePreselected(parts[0], parts[1], input.checked);
-        renderAll();
-      });
-    });
-
-    root.querySelectorAll("[data-ac-bundle-default]").forEach(function (input) {
-      input.addEventListener("change", function () {
-        setBundlePreselected(
-          input.getAttribute("data-ac-bundle-default"),
-          input.checked
-        );
-        renderAll();
-      });
-    });
-
-    root.querySelectorAll("[data-ac-clear-bundle]").forEach(function (button) {
-      button.addEventListener("click", function () {
-        setBundlePreselected(button.getAttribute("data-ac-clear-bundle"), false);
-        renderAll();
-      });
-    });
-
-    root.querySelectorAll("[data-ac-clear-category]").forEach(function (button) {
-      button.addEventListener("click", function () {
-        var parts = button.getAttribute("data-ac-clear-category").split(":");
-        setCategoryDefault(parts[0], parts[1], null);
-        renderAll();
-      });
-    });
-
-    root.querySelectorAll("[data-ac-default-term]").forEach(function (input) {
-      input.addEventListener("change", function () {
-        if (!input.checked) return;
-        setDefaultTerm(
-          input.getAttribute("data-ac-default-entity"),
-          input.getAttribute("data-ac-default-term")
-        );
-        syncDirty();
       });
     });
 
@@ -793,33 +631,6 @@
 
   function isDirty() {
     return JSON.stringify(state) !== JSON.stringify(baseline);
-  }
-
-  function validateDefaults() {
-    var issues = [];
-    ["next", "optimum"].forEach(function (id) {
-      var offering = state[id];
-
-      if (
-        hasBundle(offering) &&
-        offering.bundle.preselected &&
-        !offering.bundle.defaultTermId
-      ) {
-        issues.push(offering.label + " bundle needs a default term when pre-selected.");
-      }
-
-      offering.packages.forEach(function (pkg) {
-        if (pkg.preselected && !pkg.defaultTermId) {
-          issues.push(
-            offering.label +
-              " — " +
-              pkg.name +
-              " needs a default term when pre-selected."
-          );
-        }
-      });
-    });
-    return issues;
   }
 
   function syncDirty() {
@@ -858,6 +669,12 @@
     });
   });
 
+  root.querySelectorAll('a[href="coverage-listing.html"]').forEach(function (link) {
+    link.addEventListener("click", function () {
+      persistCatalog();
+    });
+  });
+
   resetBtns.forEach(function (btn) {
     btn.addEventListener("click", function () {
       state = clone(baseline);
@@ -867,14 +684,18 @@
 
   updateBtns.forEach(function (btn) {
     btn.addEventListener("click", function () {
-      var issues = validateDefaults();
-      if (issues.length) {
-        showError(issues.join(" "));
-        return;
-      }
       baseline = clone(state);
+      persistCatalog();
       syncDirty();
-      showError("Customer defaults updated for this dealership.", true);
+      var count = listingItems().length;
+      showError(
+        "Coverage listing updated. Customers will see " +
+          count +
+          " package" +
+          (count === 1 ? "" : "s") +
+          " after VIN lookup.",
+        true
+      );
       setTimeout(function () {
         if (errorEl) {
           errorEl.classList.remove("is-success");
@@ -892,5 +713,8 @@
 
   state = clone(OFFERINGS);
   baseline = clone(OFFERINGS);
+  try {
+    if (!sessionStorage.getItem(CATALOG_KEY)) persistCatalog();
+  } catch (e) {}
   renderAll();
 })();

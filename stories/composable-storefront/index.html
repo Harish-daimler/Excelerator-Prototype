@@ -1,0 +1,1782 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Composable storefront components | Excelerator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../../css/excelerator.css" />
+    <link rel="stylesheet" href="../../css/features-hub.css" />
+    <link rel="stylesheet" href="../../css/composable-storefront.css" />
+  </head>
+  <body class="csf-page" data-csf>
+    <a class="csf-back" href="../../index.html"
+      ><i class="fas fa-th-large" aria-hidden="true"></i
+      ><span>All features</span></a
+    >
+
+    <header class="opts-hero">
+      <div class="opts-hero__inner">
+        <p class="opts-hero__nav">
+          <a href="../../index.html">&larr; All features</a>
+        </p>
+        <img
+          class="opts-hero__brand"
+          src="../../assets/images/excelerator-logo.png"
+          alt="Excelerator"
+        />
+        <h1>Composable storefront components</h1>
+        <p>
+          A working cheat sheet for Excelerator: what SAP already gives you,
+          what merchandisers change in SmartEdit, and when you need a new
+          component. Demos below are prototype stand-ins, not the live Angular
+          widgets.
+        </p>
+      </div>
+    </header>
+
+    <div class="csf-layout">
+      <nav class="csf-toc" aria-label="On this page">
+        <h2>On this page</h2>
+        <ul>
+          <li><a href="#start-here">Start here</a></li>
+          <li><a href="#rules">Rules</a></li>
+          <li><a href="#model">How a page is built</a></li>
+          <li><a href="#catalog">Not only these nine</a></li>
+          <li><a href="#banner">Banner</a></li>
+          <li><a href="#carousel">Carousel</a></li>
+          <li><a href="#media">Media</a></li>
+          <li><a href="#pagination">Pagination</a></li>
+          <li><a href="#password">Password visibility</a></li>
+          <li><a href="#popover">Popover</a></li>
+          <li><a href="#searchbox">Searchbox</a></li>
+          <li><a href="#split">Split view</a></li>
+          <li><a href="#table">Table</a></li>
+          <li><a href="#missed">What else matters</a></li>
+          <li><a href="#excelerator">For Dealers / VIN</a></li>
+        </ul>
+      </nav>
+
+      <main class="csf-main">
+        <section class="csf-section" id="start-here">
+          <h2>Start here</h2>
+          <p class="csf-lede">
+            Three buckets. If you can name which bucket a request is in, you
+            know who owns the change. The nine widgets on the SAP
+            “Composable Storefront Components” page are <strong>not</strong>
+            the full SmartEdit catalog — they are shared UI building blocks.
+            See <a href="#catalog">Not only these nine</a>.
+          </p>
+          <table class="csf-matrix">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Reuse as-is</th>
+                <th>Edit in SmartEdit</th>
+                <th>New code</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th>Who</th>
+                <td>UX / FE uses the OOTB widget</td>
+                <td>Business / merchandising</td>
+                <td>FE + often BE/CMS type</td>
+              </tr>
+              <tr>
+                <th>Typical ask</th>
+                <td>
+                  “Put a banner / carousel / table on this page using the
+                  standard control.”
+                </td>
+                <td>
+                  “Change the image, headline, link, which widget sits in which
+                  slot, hide a component.”
+                </td>
+                <td>
+                  “After VIN, only show packages this dealer turned on.” No CMS
+                  type exists for that logic.
+                </td>
+              </tr>
+              <tr>
+                <th>Deploy?</th>
+                <td>Already in the library</td>
+                <td>No storefront deploy</td>
+                <td>Yes — Angular mapping, maybe ImpEx + OCC</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="csf-note">
+            SmartEdit edits <strong>content and placement</strong> of existing
+            CMS types. It does not invent new behavior. If OCC does not return
+            a field, SmartEdit cannot show it.
+          </p>
+        </section>
+
+        <section class="csf-section" id="rules">
+          <h2>Rules to keep</h2>
+          <ol class="csf-rules">
+            <li>
+              <strong>Copy, image, URL, show/hide, slot</strong> → SmartEdit
+              (or ImpEx for initial load). No feature story needed for “swap
+              the homepage banner.”
+            </li>
+            <li>
+              <strong>Same CMS type, different look</strong> → reuse the
+              component, restyle with CSS / <code>styleClasses</code>, or map
+              the type to a custom Angular class. Do not clone Banner into five
+              CMS types unless the data is actually different.
+            </li>
+            <li>
+              <strong>New business rule</strong> (VIN eligibility, dealer
+              catalog visibility, consent gating) → new component and usually a
+              new CMS type or a non-CMS page that still uses shared primitives
+              (table, pagination, popover).
+            </li>
+            <li>
+              <strong>One Angular component can serve many CMS types.</strong>
+              All banner types already map to one <code>BannerComponent</code>.
+              Mirror that pattern instead of forking.
+            </li>
+            <li>
+              <strong>Searchbox is product catalog only.</strong> It will not
+              find coverage packages, VINs, or dealers. Do not promise typeahead
+              for those without new code.
+            </li>
+            <li>
+              <strong>Banner is not video.</strong> Known limitation: images and
+              SVG only.
+            </li>
+            <li>
+              <strong>Product media ≠ banner media.</strong> PDP/cart use product
+              formats (thumbnail, zoom). Banners use content formats (mobile,
+              tablet, desktop, widescreen) uploaded in CMS.
+            </li>
+            <li>
+              <strong>Slots are the page skeleton; components fill them.</strong>
+              Layout changes (new row on homepage) are CMS page structure.
+              Pixel tweaks are CSS.
+            </li>
+            <li>
+              <strong>Config in code still needs a developer</strong> —
+              <code>maxProducts</code> on search, carousel <code>itemWidth</code>,
+              pagination structure, table cell renderers. SmartEdit does not
+              edit those TypeScript configs.
+            </li>
+            <li>
+              <strong>Prototype ≠ production.</strong> Demos on this page are
+              HTML stand-ins. Production widgets live in composable storefront
+              (<code>cx-media</code>, <code>cx-pagination</code>, etc.).
+            </li>
+          </ol>
+        </section>
+
+        <section class="csf-section" id="model">
+          <h2>How a page is built</h2>
+          <p class="csf-lede">
+            Customer hits a URL → storefront asks OCC for the CMS page →
+            backend returns slots and component payloads → each
+            <code>typeCode</code> is mapped to an Angular component → that
+            class renders.
+          </p>
+          <p>
+            <strong>SmartEdit</strong> authors the CMS page: which components
+            sit in Section1 / Section2 / header slots, and the fields on each
+            instance (headline, media, URL).
+          </p>
+          <p>
+            <strong>Developers</strong> own the mapping
+            (<code>cmsComponents: { BannerComponent: { component: … } }</code>),
+            guards, styling placeholders (<code>%cx-banner</code>), and any
+            service logic.
+          </p>
+        </section>
+
+        <section class="csf-section" id="catalog">
+          <h2>Not only these nine</h2>
+          <p class="csf-lede">
+            The SAP page you shared is a <strong>landing page for shared UI
+            widgets</strong>, not a list of every CMS type you drag in
+            SmartEdit. Several of those nine never appear as a CMS type at
+            all — they are used <em>inside</em> other components.
+          </p>
+          <table class="csf-matrix">
+            <thead>
+              <tr>
+                <th>On the SAP Components page</th>
+                <th>Placed in SmartEdit as its own CMS type?</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Banner, Searchbox</td>
+                <td>Yes — you drop them on a page</td>
+              </tr>
+              <tr>
+                <td>Carousel</td>
+                <td>
+                  Usually no — used by Product Carousel, Product References,
+                  rotating banners, PDP images
+                </td>
+              </tr>
+              <tr>
+                <td>Media</td>
+                <td>No — used inside banners, PDP, cart line items</td>
+              </tr>
+              <tr>
+                <td>Pagination, Popover, Table, Split view, Password visibility</td>
+                <td>
+                  No — form/list chrome. You reuse them in code; merchandisers
+                  do not add “a pagination” to the homepage
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <h3>CMS types you will actually see in SmartEdit</h3>
+          <p class="csf-lede">
+            Standard composable storefront mappings include these (and feature
+            libraries add more: checkout, ASM, user, organization, quote).
+          </p>
+          <table class="csf-matrix">
+            <thead>
+              <tr>
+                <th>CMS type</th>
+                <th>Typical page</th>
+                <th>SmartEdit edits</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>CMSParagraphComponent</code></td>
+                <td>Any — FAQ, legal, intro copy</td>
+                <td>Rich text</td>
+              </tr>
+              <tr>
+                <td><code>CMSTabParagraphComponent</code> / tab container</td>
+                <td>PDP tabs, long help pages</td>
+                <td>Which tabs, order, inner paragraphs</td>
+              </tr>
+              <tr>
+                <td><code>CMSLinkComponent</code></td>
+                <td>Footer, utility links</td>
+                <td>Label + URL</td>
+              </tr>
+              <tr>
+                <td>Navigation / Footer / Category navigation</td>
+                <td>Header, footer, megamenu</td>
+                <td>Navigation node tree</td>
+              </tr>
+              <tr>
+                <td><code>BreadcrumbComponent</code></td>
+                <td>Most inner pages</td>
+                <td>Usually placement only</td>
+              </tr>
+              <tr>
+                <td><code>MiniCartComponent</code></td>
+                <td>Header</td>
+                <td>Title, shown product count</td>
+              </tr>
+              <tr>
+                <td><code>LoginComponent</code></td>
+                <td>Header</td>
+                <td>Placement; copy is often i18n</td>
+              </tr>
+              <tr>
+                <td><code>ProductCarouselComponent</code></td>
+                <td>Home, category, PDP</td>
+                <td>Title + product codes</td>
+              </tr>
+              <tr>
+                <td><code>ProductReferencesComponent</code></td>
+                <td>PDP upsell / cross-sell</td>
+                <td>Reference type, title</td>
+              </tr>
+              <tr>
+                <td><code>ProductAddToCartComponent</code></td>
+                <td>PDP</td>
+                <td>Slot placement</td>
+              </tr>
+              <tr>
+                <td>PDP images / intro / summary</td>
+                <td>Product details</td>
+                <td>Slot order; data is the product</td>
+              </tr>
+              <tr>
+                <td><code>CMSSiteContextComponent</code></td>
+                <td>Header</td>
+                <td>Language / currency selector</td>
+              </tr>
+              <tr>
+                <td><code>CMSFlexComponent</code></td>
+                <td>Custom “flex” placeholders</td>
+                <td>Which flex type; UI is code</td>
+              </tr>
+              <tr>
+                <td>Banner types + Searchbox</td>
+                <td>Home, header, landing</td>
+                <td>See those sections below</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="csf-note">
+            When you “edit a page” in SmartEdit you are editing
+            <strong>slots filled with these CMS types</strong>. Pagination,
+            popover, and table only show up if a developer already used them
+            inside some mapped component.
+          </p>
+        </section>
+
+        <section class="csf-section" id="banner">
+          <div class="csf-pills">
+            <span class="csf-pill--reuse csf-pill">Reuse</span>
+            <span class="csf-pill--edit csf-pill">SmartEdit</span>
+          </div>
+          <h2>Banner</h2>
+          <p class="csf-lede">
+            CMS hero / promo tile: image(s), optional headline and body, usually
+            a link. CMS types
+            <code>BannerComponent</code>,
+            <code>SimpleBannerComponent</code>,
+            <code>SimpleResponsiveBannerComponent</code> all render with one
+            Angular banner. <code>RotatingImagesComponent</code> is a container
+            of banners in a carousel.
+          </p>
+          <div class="csf-demo">
+            <p class="csf-demo__label">Live stand-in</p>
+            <a class="csf-banner" href="#banner">
+              <div class="csf-banner__media">
+                <span>media · desktop format</span>
+              </div>
+              <p>
+                <strong>Protect your Cascadia</strong>
+                OEM-backed coverage after your base warranty. Headline and
+                content come from CMS.
+              </p>
+            </a>
+          </div>
+          <div class="csf-cols">
+            <div>
+              <h3>SmartEdit</h3>
+              <ul>
+                <li>Headline, content, urlLink, external flag</li>
+                <li>Media per format (mobile → widescreen)</li>
+                <li>Which slot it sits in; rotating vs single</li>
+              </ul>
+            </div>
+            <div>
+              <h3>Code / reuse</h3>
+              <ul>
+                <li>Mapping all banner types to one class</li>
+                <li>Responsive + adaptive images via Media</li>
+                <li>Styles: <code>%cx-banner</code></li>
+                <li>ImpEx for first-time sample data</li>
+              </ul>
+            </div>
+          </div>
+          <p class="csf-warn">
+            No video. If marketing wants a video hero, that is new work — do
+            not stretch Banner.
+          </p>
+          <h3>Instances in use</h3>
+          <div class="csf-instances">
+            <article class="csf-instance">
+              <div class="csf-instance__stage">
+                <div class="csf-chrome">
+                  <div class="csf-chrome__bar">
+                    <img src="../../assets/images/excelerator-logo.png" alt="" />
+                    Home
+                  </div>
+                  <div class="csf-stage-hero">
+                    <img
+                      src="../../assets/images/coverage/hero-truck.png"
+                      alt=""
+                    />
+                    <div class="csf-stage-hero__copy">
+                      <strong>Protect your investment</strong>
+                      <span>Shop Coverage →</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="csf-instance__cap">
+                <h4>Homepage hero</h4>
+                <p>Full-width banner. SmartEdit: media, headline, urlLink.</p>
+              </div>
+            </article>
+            <article class="csf-instance">
+              <div class="csf-instance__stage">
+                <div class="csf-chrome">
+                  <div class="csf-chrome__bar">
+                    <img src="../../assets/images/excelerator-logo.png" alt="" />
+                    Parts · category slot
+                  </div>
+                  <div class="csf-stage-tile">
+                    <img
+                      src="../../assets/images/parts/promo-alliance.png"
+                      alt=""
+                    />
+                    <div class="csf-stage-tile__copy">
+                      <strong>Free shipping on filters this month</strong>
+                      <span>Shop filters →</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="csf-instance__cap">
+                <h4>Seasonal promo tile</h4>
+                <p>Same Banner type, smaller slot and a different image set.</p>
+              </div>
+            </article>
+            <article class="csf-instance csf-instance--wide">
+              <div class="csf-instance__stage">
+                <div class="csf-chrome">
+                  <div class="csf-chrome__bar">
+                    <img src="../../assets/images/excelerator-logo.png" alt="" />
+                    Home · RotatingImages
+                  </div>
+                  <div class="csf-carousel" data-csf-carousel>
+                    <button type="button" data-csf-prev aria-label="Previous">
+                      <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <div class="csf-carousel__track">
+                      <div class="csf-carousel__slides" data-csf-slides>
+                        <article class="csf-carousel__item">
+                          <div class="csf-stage-hero">
+                            <img
+                              src="../../assets/images/parts/hero-carousel-1.png"
+                              alt=""
+                            />
+                            <div class="csf-stage-hero__copy">
+                              <strong>Genuine parts, ready to ship</strong>
+                              <span>Shop Parts →</span>
+                            </div>
+                          </div>
+                        </article>
+                        <article class="csf-carousel__item">
+                          <div class="csf-stage-hero">
+                            <img
+                              src="../../assets/images/coverage/hero-truck.png"
+                              alt=""
+                            />
+                            <div class="csf-stage-hero__copy">
+                              <strong>Coverage after the base warranty</strong>
+                              <span>Shop Coverage →</span>
+                            </div>
+                          </div>
+                        </article>
+                        <article class="csf-carousel__item">
+                          <div class="csf-stage-hero">
+                            <img
+                              src="../../assets/images/connectivity/hero.png"
+                              alt=""
+                            />
+                            <div class="csf-stage-hero__copy">
+                              <strong>Stay connected on the road</strong>
+                              <span>Detroit Connect →</span>
+                            </div>
+                          </div>
+                        </article>
+                      </div>
+                    </div>
+                    <button type="button" data-csf-next aria-label="Next">
+                      <i class="fas fa-chevron-right"></i>
+                    </button>
+                  </div>
+                  <div class="csf-dots">
+                    <button type="button" data-csf-dot="0" class="is-active" aria-label="Slide 1"></button>
+                    <button type="button" data-csf-dot="1" aria-label="Slide 2"></button>
+                    <button type="button" data-csf-dot="2" aria-label="Slide 3"></button>
+                  </div>
+                </div>
+              </div>
+              <div class="csf-instance__cap">
+                <h4>Rotating hero</h4>
+                <p>Several banners inside RotatingImages. Use the arrows — carousel chrome is code; which banners rotate is SmartEdit.</p>
+              </div>
+            </article>
+            <article class="csf-instance csf-instance--wide">
+              <div class="csf-instance__stage">
+                <div class="csf-login-art">
+                  <div class="csf-login-art__form">
+                    <label for="csf-login-email">Email</label>
+                    <input id="csf-login-email" type="email" value="dealer@example.com" />
+                    <label for="csf-login-pw">Password</label>
+                    <div class="csf-password">
+                      <input
+                        id="csf-login-pw"
+                        data-csf-password
+                        type="password"
+                        value="Cover@ge1"
+                        aria-label="Password"
+                      />
+                      <button type="button" data-csf-password-toggle aria-label="Show password">
+                        <i class="fas fa-eye" aria-hidden="true"></i>
+                      </button>
+                    </div>
+                    <button type="button" class="ex-btn-primary">Sign in</button>
+                  </div>
+                  <img src="../../assets/images/coverage/drive-confidence.png" alt="" />
+                </div>
+              </div>
+              <div class="csf-instance__cap">
+                <h4>Login / empty-state art</h4>
+                <p>Side image is still a Banner if it is CMS media. Do not use this for VIN results.</p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="csf-section" id="carousel">
+          <div class="csf-pills">
+            <span class="csf-pill--reuse csf-pill">Reuse</span>
+            <span class="csf-pill csf-pill--code">Caller supplies items</span>
+          </div>
+          <h2>Carousel</h2>
+          <p class="csf-lede">
+            Generic slider. Not tied to products. The caller renders each item;
+            the carousel builds slides and prev/next (optional dots). Item
+            count per slide is calculated from item width vs available space.
+          </p>
+          <div class="csf-demo">
+            <p class="csf-demo__label">Live stand-in — try the arrows</p>
+            <div class="csf-carousel" data-csf-carousel>
+              <button type="button" data-csf-prev aria-label="Previous">
+                <i class="fas fa-chevron-left"></i>
+              </button>
+              <div class="csf-carousel__track">
+                <div class="csf-carousel__slides" data-csf-slides>
+                  <article class="csf-carousel__item">
+                    <strong>EN4</strong>
+                    <p>Engine coverage — popular NEXT package.</p>
+                  </article>
+                  <article class="csf-carousel__item">
+                    <strong>ENTC4</strong>
+                    <p>Chassis coverage for the same VIN.</p>
+                  </article>
+                  <article class="csf-carousel__item">
+                    <strong>Towing</strong>
+                    <p>Standalone add-on on the listing.</p>
+                  </article>
+                </div>
+              </div>
+              <button type="button" data-csf-next aria-label="Next">
+                <i class="fas fa-chevron-right"></i>
+              </button>
+            </div>
+            <div class="csf-dots">
+              <button type="button" data-csf-dot="0" class="is-active" aria-label="Slide 1"></button>
+              <button type="button" data-csf-dot="1" aria-label="Slide 2"></button>
+              <button type="button" data-csf-dot="2" aria-label="Slide 3"></button>
+            </div>
+          </div>
+          <p>
+            OOTB callers: product carousel, product references, PDP images,
+            rotating homepage banners. SmartEdit can place a
+            <em>product</em> carousel CMS component and pick which products;
+            it cannot change slide math without a developer.
+          </p>
+          <h3>Instances in use</h3>
+          <div class="csf-instances">
+            <article class="csf-instance">
+              <div class="csf-instance__stage">
+                <div class="csf-chrome">
+                  <div class="csf-chrome__bar">Home · ProductCarousel</div>
+                  <div class="csf-carousel" data-csf-carousel>
+                    <button type="button" data-csf-prev aria-label="Previous">
+                      <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <div class="csf-carousel__track">
+                      <div class="csf-carousel__slides" data-csf-slides>
+                        <article class="csf-carousel__item">
+                          <div class="csf-prod-row">
+                            <div class="csf-prod">
+                              <img src="../../assets/images/parts/promo-detroit-reman.png" alt="" />
+                              <strong>Detroit Reman turbo</strong>
+                              <span>$2,184.00</span>
+                            </div>
+                            <div class="csf-prod">
+                              <img src="../../assets/images/parts/promo-landing-gear.png" alt="" />
+                              <strong>Landing gear</strong>
+                              <span>$486.00</span>
+                            </div>
+                          </div>
+                        </article>
+                        <article class="csf-carousel__item">
+                          <div class="csf-prod-row">
+                            <div class="csf-prod">
+                              <img src="../../assets/images/parts/promo-alliance.png" alt="" />
+                              <strong>Alliance filters</strong>
+                              <span>$64.20</span>
+                            </div>
+                            <div class="csf-prod">
+                              <img src="../../assets/images/parts/shop-alliance.png" alt="" />
+                              <strong>Alliance battery</strong>
+                              <span>$189.00</span>
+                            </div>
+                          </div>
+                        </article>
+                      </div>
+                    </div>
+                    <button type="button" data-csf-next aria-label="Next">
+                      <i class="fas fa-chevron-right"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="csf-instance__cap">
+                <h4>Featured parts (home)</h4>
+                <p>Merchandiser pastes product codes. Carousel lays out the slides.</p>
+              </div>
+            </article>
+            <article class="csf-instance">
+              <div class="csf-instance__stage">
+                <div class="csf-pdp-gal" data-csf-gallery>
+                  <img
+                    class="csf-pdp-gal__main"
+                    data-csf-gallery-main
+                    src="../../assets/images/coverage/detroit-engine.jpg"
+                    alt="Product"
+                  />
+                  <div class="csf-pdp-gal__thumbs">
+                    <button type="button" class="is-active" data-csf-thumb="../../assets/images/coverage/detroit-engine.jpg">
+                      <img src="../../assets/images/coverage/detroit-engine.jpg" alt="" />
+                    </button>
+                    <button type="button" data-csf-thumb="../../assets/images/parts/promo-detroit-reman.png">
+                      <img src="../../assets/images/parts/promo-detroit-reman.png" alt="" />
+                    </button>
+                    <button type="button" data-csf-thumb="../../assets/images/coverage/why-choose.png">
+                      <img src="../../assets/images/coverage/why-choose.png" alt="" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="csf-instance__cap">
+                <h4>PDP image gallery</h4>
+                <p>Click a thumbnail. Data is the product, not SmartEdit product codes.</p>
+              </div>
+            </article>
+            <article class="csf-instance">
+              <div class="csf-instance__stage">
+                <div class="csf-chrome">
+                  <div class="csf-chrome__bar">PDP · Customers also bought</div>
+                  <div class="csf-prod-row">
+                    <div class="csf-prod">
+                      <img src="../../assets/images/parts/promo-alliance.png" alt="" />
+                      <strong>Oil filter kit</strong>
+                      <span>$84.00</span>
+                    </div>
+                    <div class="csf-prod">
+                      <img src="../../assets/images/parts/promo-landing-gear.png" alt="" />
+                      <strong>Landing gear</strong>
+                      <span>$486.00</span>
+                    </div>
+                    <div class="csf-prod">
+                      <div class="csf-prod__ph"><i class="fas fa-cog"></i></div>
+                      <strong>Air dryer</strong>
+                      <span>$312.00</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="csf-instance__cap">
+                <h4>Customers also bought</h4>
+                <p>ProductReferences on PDP — upsell / cross-sell / accessories.</p>
+              </div>
+            </article>
+            <article class="csf-instance">
+              <div class="csf-instance__stage">
+                <div class="csf-chrome">
+                  <div class="csf-chrome__bar">After VIN · custom items</div>
+                  <div class="csf-cov-row">
+                    <article class="csf-cov">
+                      <em>Engine</em>
+                      <strong>EN4</strong>
+                      <span>From $4,120</span>
+                    </article>
+                    <article class="csf-cov">
+                      <em>Chassis</em>
+                      <strong>ENTC4</strong>
+                      <span>From $6,840</span>
+                    </article>
+                    <article class="csf-cov">
+                      <em>Standalone</em>
+                      <strong>Towing</strong>
+                      <span>From $890</span>
+                    </article>
+                  </div>
+                </div>
+              </div>
+              <div class="csf-instance__cap">
+                <h4>Coverage packages (custom)</h4>
+                <p>Reuse carousel chrome if you want a slider. VIN filter is new code.</p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="csf-section" id="media">
+          <div class="csf-pills">
+            <span class="csf-pill--reuse csf-pill">Reuse everywhere</span>
+            <span class="csf-pill--edit csf-pill">CMS uploads content images</span>
+          </div>
+          <h2>Media</h2>
+          <p class="csf-lede">
+            Renders one image from a media container. Browser picks a format
+            from <code>srcset</code>. Used inside banners, carousels, PDP, cart.
+          </p>
+          <div class="csf-demo">
+            <p class="csf-demo__label">Live stand-in — click a format</p>
+            <div class="csf-media">
+              <figure data-csf-format class="is-active">
+                <div class="csf-frame"></div>
+                <figcaption>mobile · 400</figcaption>
+              </figure>
+              <figure data-csf-format>
+                <div class="csf-frame" style="height: 110px; width: 180px"></div>
+                <figcaption>tablet · 1070</figcaption>
+              </figure>
+              <figure data-csf-format>
+                <div class="csf-frame" style="height: 110px; width: 220px"></div>
+                <figcaption>desktop · 1140</figcaption>
+              </figure>
+            </div>
+          </div>
+          <p>
+            Content formats (banner): mobile, tablet, desktop, widescreen.
+            Product formats: cartIcon, thumbnail, product, zoom. Same technical
+            container, different format names — merchandisers upload banner
+            crops in SmartEdit; product shots come from the product catalog.
+          </p>
+          <h3>Instances in use</h3>
+          <div class="csf-instances">
+            <article class="csf-instance">
+              <div class="csf-instance__stage">
+                <div class="csf-media-crops">
+                  <figure>
+                    <img src="../../assets/images/coverage/hero-truck.png" class="csf-crop" style="height: 88px" alt="" />
+                    <figcaption>mobile</figcaption>
+                  </figure>
+                  <figure>
+                    <img src="../../assets/images/coverage/hero-truck.png" class="csf-crop" style="height: 72px" alt="" />
+                    <figcaption>tablet</figcaption>
+                  </figure>
+                  <figure>
+                    <img src="../../assets/images/coverage/hero-truck.png" class="csf-crop" style="height: 64px" alt="" />
+                    <figcaption>desktop</figcaption>
+                  </figure>
+                  <figure>
+                    <img src="../../assets/images/coverage/hero-truck.png" class="csf-crop" style="height: 52px" alt="" />
+                    <figcaption>wide</figcaption>
+                  </figure>
+                </div>
+              </div>
+              <div class="csf-instance__cap">
+                <h4>Banner crop set</h4>
+                <p>Four CMS uploads of the same promo for different breakpoints.</p>
+              </div>
+            </article>
+            <article class="csf-instance">
+              <div class="csf-instance__stage">
+                <div class="csf-thumb-card">
+                  <img src="../../assets/images/parts/promo-alliance.png" alt="" />
+                  <div>
+                    <strong>Alliance oil filter</strong>
+                    <p>A04-16825-000 · $64.20</p>
+                    <p>Cart uses <code>cartIcon</code> / PLP uses <code>thumbnail</code>.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="csf-instance__cap">
+                <h4>PLP / cart thumbnail</h4>
+                <p>Product catalog formats — not a CMS banner crop.</p>
+              </div>
+            </article>
+            <article class="csf-instance">
+              <div class="csf-instance__stage">
+                <div class="csf-zoom">
+                  <img src="../../assets/images/coverage/detroit-engine.jpg" alt="" />
+                  <i class="fas fa-search-plus" aria-hidden="true"></i>
+                </div>
+              </div>
+              <div class="csf-instance__cap">
+                <h4>PDP main / zoom</h4>
+                <p><code>product</code> and <code>zoom</code> formats on the details page.</p>
+              </div>
+            </article>
+            <article class="csf-instance">
+              <div class="csf-instance__stage">
+                <div class="csf-missing">
+                  <i class="far fa-image" aria-hidden="true"></i>
+                  <span>No media for this format</span>
+                </div>
+              </div>
+              <div class="csf-instance__cap">
+                <h4>Missing image fallback</h4>
+                <p>Media shows a placeholder. Do not special-case every page.</p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="csf-section" id="pagination">
+          <div class="csf-pills">
+            <span class="csf-pill--reuse csf-pill">Reuse</span>
+            <span class="csf-pill--code csf-pill">Structure is config</span>
+          </div>
+          <h2>Pagination</h2>
+          <p class="csf-lede">
+            Low-level pager used by Product List, Order History, Store Finder.
+            First / prev / pages / next / last. Can emit a page event or build
+            query params.
+          </p>
+          <div class="csf-demo">
+            <p class="csf-demo__label">Live stand-in</p>
+            <nav class="csf-pager" data-csf-pager aria-label="Example pagination">
+              <a href="#pagination">«</a>
+              <a href="#pagination">‹</a>
+              <a href="#pagination" class="is-current">1</a>
+              <a href="#pagination">2</a>
+              <a href="#pagination">3</a>
+              <a href="#pagination">›</a>
+              <a href="#pagination">»</a>
+            </nav>
+          </div>
+          <p>
+            SmartEdit does not redesign the pager. A coverage listing with many
+            packages can reuse this; the list itself is still custom.
+          </p>
+          <h3>Instances in use</h3>
+          <div class="csf-instances">
+            <article class="csf-instance">
+              <div class="csf-instance__stage">
+                <div class="csf-plp">
+                  <div class="csf-plp__grid">
+                    <div class="csf-plp__cell">
+                      <img src="../../assets/images/parts/promo-alliance.png" alt="" />
+                      <span>Oil filter</span>
+                    </div>
+                    <div class="csf-plp__cell">
+                      <img src="../../assets/images/parts/promo-detroit-reman.png" alt="" />
+                      <span>Reman turbo</span>
+                    </div>
+                    <div class="csf-plp__cell">
+                      <img src="../../assets/images/parts/promo-landing-gear.png" alt="" />
+                      <span>Landing gear</span>
+                    </div>
+                    <div class="csf-plp__cell">
+                      <img src="../../assets/images/parts/shop-alliance.png" alt="" />
+                      <span>Battery</span>
+                    </div>
+                  </div>
+                  <nav class="csf-pager" data-csf-pager aria-label="Product list pages">
+                    <a href="#pagination">‹</a>
+                    <a href="#pagination" class="is-current">1</a>
+                    <a href="#pagination">2</a>
+                    <a href="#pagination">3</a>
+                    <a href="#pagination">›</a>
+                  </nav>
+                </div>
+              </div>
+              <div class="csf-instance__cap">
+                <h4>Product list / search results</h4>
+                <p>Page through parts. Current page rides on a query param.</p>
+              </div>
+            </article>
+            <article class="csf-instance">
+              <div class="csf-instance__stage">
+                <div class="csf-table-wrap">
+                  <table class="csf-table">
+                    <thead>
+                      <tr>
+                        <th>Order</th>
+                        <th>Status</th>
+                        <th>Total</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>00008412</td>
+                        <td><span class="csf-badge csf-badge--ok">Shipped</span></td>
+                        <td>$1,204</td>
+                      </tr>
+                      <tr>
+                        <td>00008390</td>
+                        <td><span class="csf-badge csf-badge--wait">Open</span></td>
+                        <td>$486</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <nav class="csf-pager" data-csf-pager aria-label="Order history pages">
+                    <a href="#pagination">‹</a>
+                    <a href="#pagination">1</a>
+                    <a href="#pagination" class="is-current">2</a>
+                    <a href="#pagination">›</a>
+                  </nav>
+                </div>
+              </div>
+              <div class="csf-instance__cap">
+                <h4>Order history</h4>
+                <p>Account → orders. Same pager, different list API.</p>
+              </div>
+            </article>
+            <article class="csf-instance">
+              <div class="csf-instance__stage">
+                <div class="csf-map">
+                  <div class="csf-map__art">
+                    <i class="fas fa-map-marker-alt csf-map__pin" style="top: 28%; left: 42%"></i>
+                    <i class="fas fa-map-marker-alt csf-map__pin" style="top: 58%; left: 61%"></i>
+                  </div>
+                  <div class="csf-map__list">
+                    <strong>Dealers near 97217</strong>
+                    <ul>
+                      <li>Freightliner of Portland</li>
+                      <li>Western Star Northwest</li>
+                    </ul>
+                    <nav class="csf-pager" data-csf-pager aria-label="Dealer finder pages">
+                      <a href="#pagination" class="is-current">1</a>
+                      <a href="#pagination">2</a>
+                    </nav>
+                  </div>
+                </div>
+              </div>
+              <div class="csf-instance__cap">
+                <h4>Store / dealer finder</h4>
+                <p>Map plus a paged dealer list.</p>
+              </div>
+            </article>
+            <article class="csf-instance">
+              <div class="csf-instance__stage">
+                <div class="csf-chrome">
+                  <div class="csf-chrome__bar">VIN 1FUJGHDV8NLBS1234</div>
+                  <div class="csf-cov-row">
+                    <article class="csf-cov">
+                      <em>Engine</em>
+                      <strong>EN4</strong>
+                      <span>From $4,120</span>
+                    </article>
+                    <article class="csf-cov">
+                      <em>Chassis</em>
+                      <strong>ENTC4</strong>
+                      <span>From $6,840</span>
+                    </article>
+                  </div>
+                  <nav class="csf-pager" data-csf-pager aria-label="Coverage pages">
+                    <a href="#pagination" class="is-current">1</a>
+                    <a href="#pagination">2</a>
+                  </nav>
+                </div>
+              </div>
+              <div class="csf-instance__cap">
+                <h4>VIN coverage listing</h4>
+                <p>Reuse the pager if you page packages. The VIN filter is still custom.</p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="csf-section" id="password">
+          <div class="csf-pills">
+            <span class="csf-pill--reuse csf-pill">Reuse</span>
+          </div>
+          <h2>Password visibility</h2>
+          <p class="csf-lede">
+            Eye toggle on a password field. Use on login, reset, and any new
+            account form. Not a CMS component — it is a form control.
+          </p>
+          <div class="csf-demo">
+            <p class="csf-demo__label">Live stand-in</p>
+            <div class="csf-password">
+              <input
+                id="csf-pw"
+                data-csf-password
+                type="password"
+                value="Cover@ge1"
+                aria-label="Password"
+              />
+              <button
+                type="button"
+                data-csf-password-toggle
+                aria-label="Show password"
+              >
+                <i class="fas fa-eye" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+          <h3>Instances in use</h3>
+          <div class="csf-instances">
+            <article class="csf-instance">
+              <div class="csf-instance__stage">
+                <div class="csf-form-stage">
+                  <label>Email</label>
+                  <input class="csf-field" type="email" value="dealer@example.com" />
+                  <label>Password</label>
+                  <div class="csf-password">
+                    <input data-csf-password type="password" value="Cover@ge1" aria-label="Password" />
+                    <button type="button" data-csf-password-toggle aria-label="Show password">
+                      <i class="fas fa-eye" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="csf-instance__cap">
+                <h4>Sign in</h4>
+                <p>Login page or header flyout. Click the eye to reveal.</p>
+              </div>
+            </article>
+            <article class="csf-instance">
+              <div class="csf-instance__stage">
+                <div class="csf-form-stage">
+                  <label>Password</label>
+                  <div class="csf-password">
+                    <input data-csf-password type="password" value="Cover@ge1" aria-label="Create password" />
+                    <button type="button" data-csf-password-toggle aria-label="Show password">
+                      <i class="fas fa-eye" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                  <label>Confirm password</label>
+                  <div class="csf-password">
+                    <input data-csf-password type="password" value="Cover@ge1" aria-label="Confirm password" />
+                    <button type="button" data-csf-password-toggle aria-label="Show password">
+                      <i class="fas fa-eye" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="csf-instance__cap">
+                <h4>Create account</h4>
+                <p>Same control on two fields — register + confirm.</p>
+              </div>
+            </article>
+            <article class="csf-instance">
+              <div class="csf-instance__stage">
+                <div class="csf-form-stage">
+                  <p class="csf-muted">Reset from email token</p>
+                  <label>New password</label>
+                  <div class="csf-password">
+                    <input data-csf-password type="password" value="N3wPass!" aria-label="New password" />
+                    <button type="button" data-csf-password-toggle aria-label="Show password">
+                      <i class="fas fa-eye" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="csf-instance__cap">
+                <h4>Forgot / reset password</h4>
+                <p>Still this toggle — not a CMS banner.</p>
+              </div>
+            </article>
+            <article class="csf-instance">
+              <div class="csf-instance__stage">
+                <div class="csf-form-stage">
+                  <label>Current password</label>
+                  <div class="csf-password">
+                    <input data-csf-password type="password" value="Cover@ge1" aria-label="Current password" />
+                    <button type="button" data-csf-password-toggle aria-label="Show password">
+                      <i class="fas fa-eye" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                  <label>New password</label>
+                  <div class="csf-password">
+                    <input data-csf-password type="password" value="N3wPass!" aria-label="New password" />
+                    <button type="button" data-csf-password-toggle aria-label="Show password">
+                      <i class="fas fa-eye" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="csf-instance__cap">
+                <h4>Account settings</h4>
+                <p>Change password on My Account. Reuse as-is.</p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="csf-section" id="popover">
+          <div class="csf-pills">
+            <span class="csf-pill--reuse csf-pill">Reuse</span>
+            <span class="csf-pill--code csf-pill">Placement is config</span>
+          </div>
+          <h2>Popover</h2>
+          <p class="csf-lede">
+            Extra note on click (placement, auto-flip in the viewport, optional
+            append to body). Keyboard: Enter opens, Escape closes. Good for
+            “what does Show after VIN mean?” without a new page.
+          </p>
+          <div class="csf-demo">
+            <p class="csf-demo__label">Live stand-in</p>
+            <div class="csf-pop-wrap" data-csf-pop-wrap>
+              <button
+                type="button"
+                class="ex-btn-primary"
+                data-csf-pop-btn
+                aria-expanded="false"
+              >
+                What is Show after VIN?
+              </button>
+              <div class="csf-pop" data-csf-pop hidden>
+                Hidden packages stay in dealer admin for pricing. They do not
+                appear on the customer coverage listing after VIN lookup.
+              </div>
+            </div>
+          </div>
+          <h3>Instances in use</h3>
+          <div class="csf-instances">
+            <article class="csf-instance">
+              <div class="csf-instance__stage">
+                <div class="csf-help-row">
+                  <label>
+                    <input type="checkbox" checked />
+                    Show after VIN
+                  </label>
+                  <div class="csf-pop-wrap" data-csf-pop-wrap>
+                    <button type="button" class="csf-icon-btn" data-csf-pop-btn aria-expanded="true" aria-label="Help">
+                      <i class="fas fa-info"></i>
+                    </button>
+                    <div class="csf-pop csf-pop--open" data-csf-pop>
+                      Hidden packages stay in dealer admin for pricing. They do not appear after VIN lookup.
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="csf-instance__cap">
+                <h4>Field help</h4>
+                <p>“Show after VIN” or Dnet vs MSRP next to a control. Click the icon.</p>
+              </div>
+            </article>
+            <article class="csf-instance">
+              <div class="csf-instance__stage">
+                <div class="csf-price-card">
+                  <em>EN4 · Engine</em>
+                  <strong>From $4,120</strong>
+                  <div class="csf-pop-wrap" data-csf-pop-wrap>
+                    <button type="button" class="csf-linkish" data-csf-pop-btn aria-expanded="true">
+                      Term note
+                    </button>
+                    <div class="csf-pop csf-pop--open" data-csf-pop>
+                      Starts from current odometer. Term is not a calendar date.
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="csf-instance__cap">
+                <h4>Price / term note</h4>
+                <p>Short note on a coverage card without leaving the listing.</p>
+              </div>
+            </article>
+            <article class="csf-instance">
+              <div class="csf-instance__stage">
+                <div class="csf-form-stage">
+                  <label>Email</label>
+                  <div class="csf-row">
+                    <input class="csf-field" type="email" value="" placeholder="you@company.com" />
+                    <div class="csf-pop-wrap" data-csf-pop-wrap>
+                      <button type="button" class="csf-icon-btn" data-csf-pop-btn aria-expanded="true" aria-label="Why email">
+                        <i class="fas fa-info"></i>
+                      </button>
+                      <div class="csf-pop csf-pop--open" data-csf-pop>
+                        Used for the contract and status emails. We will not use it for marketing unless you opt in.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="csf-instance__cap">
+                <h4>Legal / consent snippet</h4>
+                <p>Tiny “why we need email” without navigating away.</p>
+              </div>
+            </article>
+            <article class="csf-instance">
+              <div class="csf-instance__stage">
+                <div class="csf-mini-cart">
+                  <div class="csf-pop-wrap" data-csf-pop-wrap>
+                    <button type="button" class="csf-icon-btn" data-csf-pop-btn aria-expanded="true" aria-label="Mini cart">
+                      <i class="fas fa-shopping-cart"></i>
+                    </button>
+                    <div class="csf-pop csf-pop--open" data-csf-pop>
+                      Oil filter kit × 2<br />Landing gear × 1<br /><strong>3 items · $654.00</strong>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="csf-instance__cap">
+                <h4>Mini-cart overflow</h4>
+                <p>Extra content next to an icon — same popover pattern as OOTB.</p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="csf-section" id="searchbox">
+          <div class="csf-pills">
+            <span class="csf-pill--reuse csf-pill">Reuse for parts catalog</span>
+            <span class="csf-pill--edit csf-pill">CMS: max products / suggestions</span>
+          </div>
+          <h2>Searchbox</h2>
+          <p class="csf-lede">
+            Typeahead over the <strong>product</strong> catalog. Returns products
+            and suggestions. Does not search categories, CMS pages, VINs, or
+            coverages. Commerce “redirect on search” is not implemented.
+          </p>
+          <div class="csf-demo">
+            <p class="csf-demo__label">Live stand-in — type “filter” or “turbo”</p>
+            <div class="csf-search">
+              <input
+                data-csf-search
+                data-csf-catalog="parts"
+                type="search"
+                placeholder="Search catalog — try filter or turbo"
+                aria-label="Search catalog"
+                autocomplete="off"
+              />
+              <i class="fas fa-search" aria-hidden="true"></i>
+              <ul class="csf-suggest" data-csf-suggest hidden></ul>
+            </div>
+          </div>
+          <p>
+            CMS fields: displayProducts, maxProducts (default 5),
+            displaySuggestions, maxSuggestions, displayProductImages. Header
+            placement is usually a page-template decision, not a one-off
+            SmartEdit drag.
+          </p>
+          <h3>Instances in use</h3>
+          <div class="csf-instances">
+            <article class="csf-instance">
+              <div class="csf-instance__stage">
+                <div class="csf-hdr">
+                  <div class="csf-chrome__bar csf-hdr-label">
+                    <img src="../../assets/images/excelerator-logo.png" alt="" />
+                    Header search
+                  </div>
+                  <div class="csf-search">
+                    <input
+                      data-csf-search
+                      data-csf-catalog="parts"
+                      type="search"
+                      value="filter"
+                      placeholder="Search by part name, number, VMRS…"
+                      aria-label="Search catalog"
+                      autocomplete="off"
+                    />
+                    <i class="fas fa-search" aria-hidden="true"></i>
+                    <ul class="csf-suggest" data-csf-suggest>
+                      <li><strong>Alliance oil filter</strong><br /><small>A04-16825-000</small></li>
+                      <li><strong>Fuel filter kit</strong><br /><small>Suggested</small></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="csf-instance__cap">
+                <h4>Global header search</h4>
+                <p>Typeahead over parts. Type “filter” or “turbo”. This is the one to reuse.</p>
+              </div>
+            </article>
+            <article class="csf-instance">
+              <div class="csf-instance__stage">
+                <div class="csf-cat-search">
+                  <p class="csf-cat-search__crumb">Home / Filters / Oil</p>
+                  <div class="csf-search">
+                    <input
+                      data-csf-search
+                      data-csf-catalog="parts"
+                      type="search"
+                      value="oil"
+                      placeholder="Search this category"
+                      aria-label="Search category"
+                      autocomplete="off"
+                    />
+                    <i class="fas fa-search" aria-hidden="true"></i>
+                    <ul class="csf-suggest" data-csf-suggest>
+                      <li><strong>Alliance oil filter</strong><br /><small>A04-16825-000</small></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="csf-instance__cap">
+                <h4>Category page search</h4>
+                <p>Same CMS type, different slot — still the product catalog.</p>
+              </div>
+            </article>
+            <article class="csf-instance csf-instance--wrong">
+              <div class="csf-instance__stage">
+                <span class="csf-ribbon">Not Searchbox</span>
+                <div class="csf-hdr">
+                  <div class="csf-chrome__bar csf-hdr-label">
+                    Shop Coverage
+                  </div>
+                  <div class="csf-vin">
+                    <input type="text" value="1FUJGHDV8NLBS1234" aria-label="Vehicle identification number" maxlength="17" readonly />
+                    <button type="button">Look up VIN</button>
+                  </div>
+                </div>
+              </div>
+              <div class="csf-instance__cap">
+                <h4>Not: VIN lookup</h4>
+                <p>Different control and API. Do not map SearchBoxComponent to this.</p>
+              </div>
+            </article>
+            <article class="csf-instance csf-instance--wrong">
+              <div class="csf-instance__stage">
+                <span class="csf-ribbon">Not Searchbox</span>
+                <div class="csf-form-stage">
+                  <div class="csf-search">
+                    <input
+                      data-csf-search
+                      data-csf-catalog="coverage"
+                      type="search"
+                      value="en"
+                      placeholder="Find a package"
+                      aria-label="Search packages"
+                      autocomplete="off"
+                    />
+                    <i class="fas fa-search" aria-hidden="true"></i>
+                    <ul class="csf-suggest" data-csf-suggest>
+                      <li><strong>EN4</strong><br /><small>Would need new code</small></li>
+                      <li><strong>ENTC4</strong><br /><small>Would need new code</small></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="csf-instance__cap">
+                <h4>Not: coverage names</h4>
+                <p>OOTB searchbox will not return EN4 / Towing. Typeahead here is custom.</p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="csf-section" id="split">
+          <div class="csf-pills">
+            <span class="csf-pill--reuse csf-pill">Reuse</span>
+            <span class="csf-pill--code csf-pill">Columns are CSS</span>
+          </div>
+          <h2>Split view</h2>
+          <p class="csf-lede">
+            Hierarchical multi-column UI (My Account pattern). First pane stays;
+            further panes open beside it. Max visible columns:
+            <code>--cx-max-views</code> (typically 1 on mobile, 2 on tablet+).
+            Can be route-driven so columns are bookmarkable.
+          </p>
+          <div class="csf-demo">
+            <p class="csf-demo__label">Live stand-in — open the customer pane</p>
+            <div class="csf-split is-single" data-csf-split>
+              <div class="csf-split__pane">
+                <h3>Dealer catalog</h3>
+                <p>EN4 and ENTC4 are shown after VIN.</p>
+                <button type="button" class="linkish" data-csf-open-pane>
+                  Preview customer listing
+                </button>
+              </div>
+              <div class="csf-split__pane" data-csf-pane-2 hidden>
+                <h3>After VIN</h3>
+                <p>Customer sees only those two packages.</p>
+                <button type="button" class="linkish" data-csf-close-pane>
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+          <p>
+            Option 3 of Dealers — Extended Coverages (checklist + live preview)
+            is this pattern. Reuse split view for the chrome; the catalog logic
+            is still custom.
+          </p>
+          <h3>Instances in use</h3>
+          <div class="csf-instances">
+            <article class="csf-instance">
+              <div class="csf-instance__stage">
+                <div class="csf-split-mini">
+                  <div class="csf-split-mini__pane">
+                    <h5>Org units</h5>
+                    <ul>
+                      <li class="is-on">West Region</li>
+                      <li>Portland dealer</li>
+                      <li>Seattle dealer</li>
+                    </ul>
+                  </div>
+                  <div class="csf-split-mini__pane">
+                    <h5>West Region</h5>
+                    <p>2 child units · 14 users · active</p>
+                  </div>
+                </div>
+              </div>
+              <div class="csf-instance__cap">
+                <h4>My Company / org units</h4>
+                <p>OOTB B2B: list stays, detail opens beside it.</p>
+              </div>
+            </article>
+            <article class="csf-instance">
+              <div class="csf-instance__stage">
+                <div class="csf-split-mini">
+                  <div class="csf-split-mini__pane">
+                    <h5>Cost centers</h5>
+                    <ul>
+                      <li>CC-100 Service</li>
+                      <li class="is-on">CC-240 Parts</li>
+                    </ul>
+                  </div>
+                  <div class="csf-split-mini__pane">
+                    <h5>CC-240 Parts</h5>
+                    <p>Budget $250,000 · $81,400 used</p>
+                  </div>
+                </div>
+              </div>
+              <div class="csf-instance__cap">
+                <h4>Budgets / cost centers</h4>
+                <p>Same chrome, different entity. Routes stay bookmarkable.</p>
+              </div>
+            </article>
+            <article class="csf-instance">
+              <div class="csf-instance__stage">
+                <div class="csf-split-mini">
+                  <div class="csf-split-mini__pane">
+                    <h5>Dealer catalog</h5>
+                    <ul>
+                      <li class="is-on">EN4 · Public</li>
+                      <li class="is-on">ENTC4 · Public</li>
+                      <li>EN2 · Hidden</li>
+                    </ul>
+                  </div>
+                  <div class="csf-split-mini__pane">
+                    <h5>After VIN</h5>
+                    <p>Customer sees EN4 and ENTC4 only.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="csf-instance__cap">
+                <h4>Dealer catalog + preview</h4>
+                <p>Option 3 chrome. Catalog visibility rules are custom.</p>
+              </div>
+            </article>
+            <article class="csf-instance">
+              <div class="csf-instance__stage">
+                <div class="csf-split-mini">
+                  <div class="csf-split-mini__pane">
+                    <h5>Orders</h5>
+                    <ul>
+                      <li class="is-on">00008412</li>
+                      <li>00008390</li>
+                    </ul>
+                  </div>
+                  <div class="csf-split-mini__pane">
+                    <h5>Shipment 1 of 2</h5>
+                    <p>FedEx · in transit · 2 lines</p>
+                  </div>
+                </div>
+              </div>
+              <div class="csf-instance__cap">
+                <h4>Order + shipment detail</h4>
+                <p>List stays visible while a shipment pane opens.</p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="csf-section" id="table">
+          <div class="csf-pills">
+            <span class="csf-pill--reuse csf-pill">Reuse</span>
+            <span class="csf-pill--code csf-pill">Cells are configurable</span>
+          </div>
+          <h2>Table</h2>
+          <p class="csf-lede">
+            Real HTML <code>&lt;table&gt;</code>. Generate from header config;
+            swap header/data cell components; outlets per cell. Not a
+            spreadsheet. Good for dealer catalog visibility (package, category,
+            Public/Hidden).
+          </p>
+          <div class="csf-demo">
+            <p class="csf-demo__label">Live stand-in</p>
+            <table class="csf-table">
+              <thead>
+                <tr>
+                  <th>Package</th>
+                  <th>Category</th>
+                  <th>After VIN</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>EN4</td>
+                  <td>Engine</td>
+                  <td>Public</td>
+                </tr>
+                <tr>
+                  <td>EN2</td>
+                  <td>Engine</td>
+                  <td>Hidden</td>
+                </tr>
+                <tr>
+                  <td>Towing</td>
+                  <td>Standalone</td>
+                  <td>Public</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h3>Instances in use</h3>
+          <div class="csf-instances">
+            <article class="csf-instance">
+              <div class="csf-instance__stage">
+                <div class="csf-table-wrap">
+                  <table class="csf-table">
+                    <thead>
+                      <tr>
+                        <th>Date</th>
+                        <th>Status</th>
+                        <th>Total</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Mar 12</td>
+                        <td><span class="csf-badge csf-badge--ok">Shipped</span></td>
+                        <td>$1,204.00</td>
+                      </tr>
+                      <tr>
+                        <td>Mar 4</td>
+                        <td><span class="csf-badge csf-badge--wait">Open</span></td>
+                        <td>$486.00</td>
+                      </tr>
+                      <tr>
+                        <td>Feb 21</td>
+                        <td><span class="csf-badge">Complete</span></td>
+                        <td>$2,184.00</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="csf-instance__cap">
+                <h4>Order history</h4>
+                <p>Date, status badge, total. Cells are outlet-customized.</p>
+              </div>
+            </article>
+            <article class="csf-instance">
+              <div class="csf-instance__stage">
+                <div class="csf-table-wrap">
+                  <table class="csf-table">
+                    <thead>
+                      <tr>
+                        <th>Name</th>
+                        <th>Role</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>A. Chen</td>
+                        <td>Admin</td>
+                        <td><a href="#table">Edit</a></td>
+                      </tr>
+                      <tr>
+                        <td>J. Ortiz</td>
+                        <td>Approver</td>
+                        <td><a href="#table">Edit</a></td>
+                      </tr>
+                      <tr>
+                        <td>M. Singh</td>
+                        <td>Buyer</td>
+                        <td><a href="#table">Edit</a></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="csf-instance__cap">
+                <h4>Org users / approvals</h4>
+                <p>B2B table with name, role, and action cells.</p>
+              </div>
+            </article>
+            <article class="csf-instance">
+              <div class="csf-instance__stage">
+                <div class="csf-table-wrap">
+                  <table class="csf-table">
+                    <thead>
+                      <tr>
+                        <th>Quote</th>
+                        <th>Expires</th>
+                        <th>Total</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Q-1044</td>
+                        <td>Apr 2</td>
+                        <td>$8,410</td>
+                      </tr>
+                      <tr>
+                        <td>Q-1031</td>
+                        <td>Mar 28</td>
+                        <td>$1,960</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="csf-instance__cap">
+                <h4>Quotes / saved carts</h4>
+                <p>Same table config pattern, different type key.</p>
+              </div>
+            </article>
+            <article class="csf-instance">
+              <div class="csf-instance__stage">
+                <div class="csf-table-wrap">
+                  <table class="csf-table">
+                    <thead>
+                      <tr>
+                        <th>Package</th>
+                        <th>Category</th>
+                        <th>After VIN</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>EN4</td>
+                        <td>Engine</td>
+                        <td><span class="csf-badge csf-badge--ok">Public</span></td>
+                      </tr>
+                      <tr>
+                        <td>EN2</td>
+                        <td>Engine</td>
+                        <td><span class="csf-badge csf-badge--off">Hidden</span></td>
+                      </tr>
+                      <tr>
+                        <td>Towing</td>
+                        <td>Standalone</td>
+                        <td><span class="csf-badge csf-badge--ok">Public</span></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="csf-instance__cap">
+                <h4>Dealer VIN catalog</h4>
+                <p>Reuse table. Visibility API is custom.</p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="csf-section" id="missed">
+          <h2>What else is easy to miss</h2>
+          <h3>i18n</h3>
+          <p>
+            Labels on OOTB components are translation keys, not SmartEdit
+            rich text. New strings need a locale file (and often a CMS
+            field if business must edit them without a deploy).
+          </p>
+          <h3>Guards</h3>
+          <p>
+            CMS mapping can attach Angular guards (logged-in only, consent
+            approved, etc.). That is code. SmartEdit cannot “require login”
+            on a component unless a guard already exists.
+          </p>
+          <h3>SSR</h3>
+          <p>
+            Some mappings set <code>disableSSR</code>. Personalization that
+            differs per dealer/VIN may need a client render so the cached
+            HTML is not wrong.
+          </p>
+          <h3>ImpEx vs SmartEdit</h3>
+          <p>
+            ImpEx seeds catalogs and sample banners in lower environments.
+            Day-two content changes belong in SmartEdit so they survive
+            builds.
+          </p>
+          <h3>OCC contract</h3>
+          <p>
+            The storefront only shows fields the CMS API returns. A “Show
+            after VIN” flag that lives only in a dealer back office must be
+            on an API the listing page can read — SmartEdit on the homepage
+            cannot see it.
+          </p>
+          <h3>Accessibility</h3>
+          <p>
+            Pagination, popover, and split view have keyboard behavior
+            already. Custom coverage cards should match that bar (focus,
+            names, not div-click-only).
+          </p>
+          <h3>Styling hook</h3>
+          <p>
+            Prefer placeholder selectors and CMS <code>styleClasses</code>
+            over a new component type when the only change is visual.
+          </p>
+        </section>
+
+        <section class="csf-section" id="excelerator">
+          <h2>Applying this to Dealers — Extended Coverages</h2>
+          <p class="csf-lede">
+            The VIN coverage listing is <strong>new code</strong>. These
+            library pieces are still the right building blocks.
+          </p>
+          <table class="csf-matrix">
+            <thead>
+              <tr>
+                <th>Need</th>
+                <th>Reuse</th>
+                <th>SmartEdit?</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Homepage promo into Shop Coverage</td>
+                <td>Banner + Media</td>
+                <td>Yes — image, copy, link</td>
+              </tr>
+              <tr>
+                <td>Hero rotator of trucks / offers</td>
+                <td>RotatingImages (banner carousel)</td>
+                <td>Yes — which banners rotate</td>
+              </tr>
+              <tr>
+                <td>Dealer catalog Public / Hidden grid</td>
+                <td>Table (+ maybe popover for help)</td>
+                <td>No — dealer admin data, not CMS</td>
+              </tr>
+              <tr>
+                <td>Admin + live customer preview</td>
+                <td>Split view chrome</td>
+                <td>No</td>
+              </tr>
+              <tr>
+                <td>Long list of packages after VIN</td>
+                <td>Pagination if you page it</td>
+                <td>No</td>
+              </tr>
+              <tr>
+                <td>Header typeahead for parts</td>
+                <td>Searchbox as-is</td>
+                <td>Placement / max results</td>
+              </tr>
+              <tr>
+                <td>Filter packages by dealer + VIN</td>
+                <td>None of the nine</td>
+                <td>No — new CMS type or app page + OCC</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="csf-note">
+            Official SAP index:
+            <a
+              href="https://help.sap.com/docs/SAP_COMMERCE_COMPOSABLE_STOREFRONT/eaef8c61b6d9477daf75bff9ac1b7eb4/c94120474ae241c9aaed5858bbdc16f5.html"
+              >Composable Storefront Components</a
+            >
+            in the Storefront Development Guide. Child articles match the
+            sections on this page.
+          </p>
+        </section>
+      </main>
+    </div>
+
+    <script src="../../js/composable-storefront.js"></script>
+  </body>
+</html>

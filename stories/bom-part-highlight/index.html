@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bill of Materials | Excelerator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../../css/excelerator.css" />
+    <link rel="stylesheet" href="../../css/product-header.css" />
+    <link rel="stylesheet" href="../../css/bom-part-highlight.css" />
+  </head>
+  <body class="bom-list-page" data-auth="logged-in">
+    <header class="product-header">
+      <div class="ph-logged-in-top">
+        <div class="ph-brand-col">
+          <a
+            class="ex-header__logo"
+            href="../../index.html"
+            aria-label="Excelerator home"
+          >
+            <img src="../../assets/images/excelerator-logo.png" alt="Excelerator" />
+          </a>
+          <div class="bom-vin">
+            <div class="bom-vin__id">VIN: 3AKJHHPDV5TSWC32819</div>
+            <div class="bom-vin__actions">
+              <a href="#">Change Vehicle <i class="fas fa-chevron-right" aria-hidden="true"></i></a>
+              <a href="#">Remove Vehicle</a>
+            </div>
+          </div>
+        </div>
+        <form class="ph-search" role="search" action="#" onsubmit="return false;">
+          <input
+            class="ph-search__input"
+            type="search"
+            placeholder="Search by part name, number, VMRS, or cross reference"
+            aria-label="Search"
+          />
+          <button type="submit" class="ph-search__submit" aria-label="Search">
+            <i class="fas fa-search" aria-hidden="true"></i>
+          </button>
+        </form>
+        <div class="ph-user-col">
+          <div class="ph-user-row">
+            <button type="button" class="bom-location-btn">Shop for a Location</button>
+            <div class="ex-account-menu">
+              <button
+                type="button"
+                class="ph-user-btn ex-account-menu__toggle"
+                aria-expanded="false"
+                aria-haspopup="true"
+                aria-controls="bom-account"
+              >
+                <i class="fas fa-user" aria-hidden="true"></i>
+                <span data-bom-profile-label>ADXCustomer6</span>
+                <i class="fas fa-chevron-down" aria-hidden="true"></i>
+              </button>
+              <ul id="bom-account" class="ex-account-menu__dropdown" role="menu" hidden>
+                <li role="none">
+                  <button type="button" role="menuitem" data-bom-profile="ADXCustomer6" aria-current="true">
+                    ADXCustomer6
+                  </button>
+                </li>
+                <li role="none">
+                  <button type="button" role="menuitem" data-bom-profile="ADXCustomer Purchase">
+                    ADXCustomer Purchase
+                  </button>
+                </li>
+                <li role="none">
+                  <button type="button" role="menuitem" data-bom-profile="ADXDealer">
+                    ADXDealer
+                  </button>
+                </li>
+              </ul>
+            </div>
+            <button type="button" class="ph-user-btn" aria-label="Region and language">
+              <img
+                class="ex-header__flag ex-header__flag--site"
+                src="../../assets/images/site-selector-icon-dtna.png"
+                alt="United States / Canada"
+              />
+            </button>
+          </div>
+          <div class="ph-dealer">
+            <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+            <div>
+              <div class="ph-dealer__name">HOUSTON FREIGHTLINER &amp; WESTERN STAR</div>
+              <div class="ph-dealer__meta">(713)672-4115 | $USD</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <nav class="ph-nav" aria-label="Primary">
+        <div class="ph-nav__lob-wrap ex-account-menu">
+          <button
+            type="button"
+            class="ph-nav__lob ex-account-menu__toggle"
+            aria-expanded="false"
+            aria-haspopup="true"
+            aria-controls="bom-lob-menu"
+          >
+            <i class="fas fa-cogs" aria-hidden="true"></i>
+            <span>Parts &amp; PartsProX</span>
+            <i class="fas fa-chevron-down" aria-hidden="true"></i>
+          </button>
+          <ul id="bom-lob-menu" class="ph-lob-dropdown ex-account-menu__dropdown" role="menu" hidden>
+            <li role="none"><a role="menuitem" href="../../parts.html">Parts &amp; PartsProX</a></li>
+            <li role="none"><a role="menuitem" href="../../coverage.html">Extended Coverage</a></li>
+            <li role="none"><a role="menuitem" href="../../connectivity.html">Connectivity Services</a></li>
+          </ul>
+        </div>
+        <div class="ph-nav__divider" aria-hidden="true"></div>
+        <ul class="ph-nav__links">
+          <li><a href="#">Dashboard</a></li>
+          <li><a href="#">My Garage</a></li>
+          <li><a href="#">Orders</a></li>
+        </ul>
+        <div class="ph-nav__utils">
+          <button type="button" aria-label="Quick actions"><i class="fas fa-bolt"></i></button>
+          <button type="button" aria-label="Favorites"><i class="far fa-star"></i></button>
+          <span class="ph-nav__cart"><i class="fas fa-shopping-cart"></i> (0 items) $0.00</span>
+        </div>
+      </nav>
+
+      <div class="ph-subnav">
+        <span class="ph-subnav__title">Parts &amp; PartsProX</span>
+        <span class="ph-subnav__divider" aria-hidden="true"></span>
+        <a href="#">Inner Circle Rewards&#8480;</a>
+        <a href="#">Product Categories</a>
+        <a href="#">Flyers</a>
+      </div>
+    </header>
+
+    <main class="bom-main">
+      <div class="bom-vinbar">
+        <div class="bom-vinbar__identity">
+          <span class="bom-vinbar__label">Parts with Vin/Serial</span>
+          <div class="bom-vinbar__row">
+            <span class="bom-vinchip">
+              3AKJHHPDV5TSWC32819
+              <button type="button" aria-label="Clear VIN">
+                <i class="fas fa-times" aria-hidden="true"></i>
+              </button>
+            </span>
+            <button type="button" class="bom-home" aria-label="Home">
+              <i class="fas fa-home" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+        <div class="bom-finder">
+          <div class="bom-tabs" role="tablist" aria-label="Search type">
+            <button type="button" class="bom-tab" role="tab" aria-selected="false">
+              Part Search
+            </button>
+            <button type="button" class="bom-tab is-active" role="tab" aria-selected="true">
+              BOM Search
+            </button>
+          </div>
+          <form class="bom-module-search" role="search" action="#" onsubmit="return false;">
+            <input
+              type="search"
+              placeholder="Enter module number or description"
+              aria-label="Enter module number or description"
+            />
+            <button type="submit" aria-label="Search modules">
+              <i class="fas fa-search" aria-hidden="true"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <nav class="bom-crumb" aria-label="Breadcrumb">
+        <a href="#">Home</a>
+        <span aria-hidden="true">/</span>
+        <a href="#">3AKJHHPDV5TSWC32819</a>
+        <span aria-hidden="true">/</span>
+        <a href="#">Bill of Materials</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">111 C07/54</span>
+      </nav>
+
+      <div class="bom-workspace">
+        <aside class="bom-groups-panel" aria-label="Design Groups">
+          <div class="bom-groups-panel__head">
+            <h2>Design Groups</h2>
+            <button type="button" class="bom-collapse" data-bom-collapse aria-expanded="true">
+              Collapse
+            </button>
+          </div>
+          <ul class="bom-groups" data-bom-groups>
+            <li>
+              <button type="button" class="is-current" aria-current="true">
+                <i class="fas fa-plus" aria-hidden="true"></i>
+                <span>01 - ENGINE</span>
+              </button>
+            </li>
+            <li>
+              <button type="button">
+                <i class="fas fa-plus" aria-hidden="true"></i>
+                <span>09 - AIR INTAKE</span>
+              </button>
+            </li>
+            <li>
+              <button type="button">
+                <i class="fas fa-plus" aria-hidden="true"></i>
+                <span>13 - AIR COMPRESSOR</span>
+              </button>
+            </li>
+            <li>
+              <button type="button">
+                <i class="fas fa-plus" aria-hidden="true"></i>
+                <span>15 - ALTERNATORS-STARTERS</span>
+              </button>
+            </li>
+            <li>
+              <button type="button">
+                <i class="fas fa-plus" aria-hidden="true"></i>
+                <span>20 - ENGINE COOLING-RADIATOR</span>
+              </button>
+            </li>
+            <li>
+              <button type="button">
+                <i class="fas fa-plus" aria-hidden="true"></i>
+                <span>25 - CLUTCH</span>
+              </button>
+            </li>
+            <li>
+              <button type="button">
+                <i class="fas fa-plus" aria-hidden="true"></i>
+                <span>26 - TRANSMISSION</span>
+              </button>
+            </li>
+            <li>
+              <button type="button">
+                <i class="fas fa-plus" aria-hidden="true"></i>
+                <span>30 - THROTTLE CONTROL</span>
+              </button>
+            </li>
+            <li>
+              <button type="button">
+                <i class="fas fa-plus" aria-hidden="true"></i>
+                <span>31 - FRAME AND FRAME COMPONENTS</span>
+              </button>
+            </li>
+            <li>
+              <button type="button">
+                <i class="fas fa-plus" aria-hidden="true"></i>
+                <span>32 - SUSPENSION</span>
+              </button>
+            </li>
+            <li>
+              <button type="button">
+                <i class="fas fa-plus" aria-hidden="true"></i>
+                <span>33 - FRONT AXLE</span>
+              </button>
+            </li>
+            <li>
+              <button type="button">
+                <i class="fas fa-plus" aria-hidden="true"></i>
+                <span>35 - REAR AXLE</span>
+              </button>
+            </li>
+            <li>
+              <button type="button">
+                <i class="fas fa-plus" aria-hidden="true"></i>
+                <span>40 - WHEELS-TIRES</span>
+              </button>
+            </li>
+          </ul>
+        </aside>
+
+        <section class="bom-results" aria-labelledby="bom-list-title">
+          <h2 id="bom-list-title">BOM List</h2>
+          <label class="bom-select">
+            <span class="visually-hidden">Filter modules</span>
+            <select data-bom-filter aria-label="Filter modules">
+              <option value="all">Select All</option>
+              <option value="101-A99955">101-A99955 - ENGINE</option>
+              <option value="103-C03409">103-C03409 - ENGINE COOLANT SYSTEM-WITH ENG</option>
+              <option value="104-C20402">104-C20402 - ENGINE OIL DRAIN/SAMPLE</option>
+              <option value="109-C20372">109-C20372 - ENGINE SUPPORTS</option>
+            </select>
+            <i class="fas fa-chevron-down" aria-hidden="true"></i>
+          </label>
+
+          <ul class="bom-modules">
+            <li data-bom-module="101-A99955">
+              <a href="#">
+                <span class="bom-thumb bom-thumb--framed" aria-hidden="true">
+                  <svg viewBox="0 0 120 150">
+                    <rect x="1" y="1" width="118" height="148" fill="#fff" stroke="none" />
+                    <text x="60" y="48" text-anchor="middle" font-size="8" fill="#414b4f">
+                      THIS IS AN ENGINEERING BOM
+                    </text>
+                    <text x="60" y="62" text-anchor="middle" font-size="7" fill="#414b4f">
+                      ESTA ES UNA LISTA DE
+                    </text>
+                    <text x="60" y="74" text-anchor="middle" font-size="7" fill="#414b4f">
+                      MATERIALES DE INGENIERIA
+                    </text>
+                  </svg>
+                </span>
+                <span class="bom-module__name">101-A99955 - ENGINE</span>
+                <i class="fas fa-chevron-right" aria-hidden="true"></i>
+              </a>
+            </li>
+            <li data-bom-module="103-C03409">
+              <a href="coolant.html" data-bom-profile-link="ADXCustomer6,ADXCustomer Purchase">
+                <span class="bom-thumb">
+                  <img
+                    src="../../assets/images/bom-coolant-system.png"
+                    alt="Exploded diagram for 103-C03409"
+                  />
+                </span>
+                <span class="bom-module__name">103-C03409 - ENGINE COOLANT SYSTEM-WITH ENG</span>
+                <i class="fas fa-chevron-right" aria-hidden="true"></i>
+              </a>
+            </li>
+            <li data-bom-module="104-C20402">
+              <a href="#">
+                <span class="bom-thumb">
+                  <img
+                    src="../../assets/images/bom-oil-drain.png"
+                    alt="Exploded diagram for 104-C20402"
+                  />
+                </span>
+                <span class="bom-module__name">104-C20402 - ENGINE OIL DRAIN/SAMPLE</span>
+                <i class="fas fa-chevron-right" aria-hidden="true"></i>
+              </a>
+            </li>
+            <li data-bom-module="109-C20372">
+              <a href="#">
+                <span class="bom-thumb">
+                  <img
+                    src="../../assets/images/bom-engine-supports.png"
+                    alt="Exploded diagram for 109-C20372"
+                  />
+                </span>
+                <span class="bom-module__name">109-C20372 - ENGINE SUPPORTS</span>
+                <i class="fas fa-chevron-right" aria-hidden="true"></i>
+              </a>
+            </li>
+          </ul>
+        </section>
+      </div>
+    </main>
+
+    <a href="#" class="bom-help" aria-label="Get Help">
+      <i class="fas fa-comment-alt" aria-hidden="true"></i>
+      <span>Get Help</span>
+    </a>
+
+    <script src="../../js/auth-toggle.js"></script>
+    <script src="../../js/bom-part-highlight.js"></script>
+  </body>
+</html>

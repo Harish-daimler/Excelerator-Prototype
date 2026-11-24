@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>You're all set</title>
+    <!--
+      Developer handoff: success page content only (no site header).
+      Visual spec — rebuild in composable storefront. Do not paste as-is.
+    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <style>
+      :root {
+        --text: #414b4f;
+        --white: #ffffff;
+        --page: #f4f4f4;
+        --success: #1ca878;
+        --panel: #eef7fc;
+        --font: "Rubik", Arial, Helvetica, sans-serif;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--page);
+        color: var(--text);
+        font-family: var(--font);
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 1.5;
+      }
+
+      .shell {
+        max-width: 820px;
+        margin: 28px auto 48px;
+        padding: 0 20px;
+      }
+
+      .card {
+        background: var(--white);
+        border-radius: 10px;
+        box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+        padding: 32px 28px;
+      }
+
+      .complete {
+        text-align: center;
+        padding: 16px 0 32px;
+      }
+
+      .complete__icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        margin: 0 0 20px;
+        border-radius: 50%;
+        background: var(--success);
+        color: var(--white);
+        font-size: 18px;
+      }
+
+      .complete__title {
+        margin: 0 auto 20px;
+        max-width: 36rem;
+        font-size: 28px;
+        font-weight: 500;
+        color: var(--text);
+        line-height: 1.25;
+      }
+
+      .complete__panel {
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+        box-sizing: border-box;
+        background: var(--panel);
+        border-radius: 10px;
+        padding: 24px;
+      }
+
+      .complete__status {
+        margin: 0 0 12px;
+        font-size: 20px;
+        font-weight: 500;
+        color: var(--text);
+        line-height: 1.25;
+      }
+
+      .complete__body {
+        margin: 0 0 20px;
+        font-size: 16px;
+        line-height: 1.55;
+        color: var(--text);
+      }
+
+      .complete__body:last-child {
+        margin-bottom: 0;
+      }
+
+      @media (max-width: 639.98px) {
+        .complete__panel {
+          width: 100%;
+        }
+
+        .card {
+          padding: 20px 16px 24px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="shell">
+      <div class="card">
+        <div class="complete">
+          <div class="complete__icon" aria-hidden="true">
+            <i class="fas fa-check"></i>
+          </div>
+          <h1 class="complete__title">You're all set</h1>
+          <div class="complete__panel">
+            <h2 class="complete__status">
+              Your online shopping profile is active!
+            </h2>
+            <p class="complete__body">
+              Fort Mill Freightliner can now start shopping on your behalf using
+              your Excelerator online shopping profile.
+            </p>
+            <p class="complete__body">
+              For instructions on setting up a password or signing in to your
+              Excelerator shopping profile, please check your email or contact
+              your dealer.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

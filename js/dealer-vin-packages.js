@@ -50,9 +50,17 @@
     },
   };
 
+  var DEFAULT_BUNDLE = {
+    id: "opt-bundle",
+    name: "OPTIMUM Bundle",
+    shown: false,
+    memberIds: ["opt-eng-ultimate", "opt-chs-basic"],
+  };
+
   var state = {
     packages: clone(DEFAULT_PACKAGES),
-    offering: "optimum",
+    bundle: clone(DEFAULT_BUNDLE),
+    offering: "next",
     filter: "all",
     selected: {},
     scenario: "ok",
@@ -111,13 +119,6 @@
     return order.map(function (family) {
       return { family: family, packages: map[family] };
     });
-  }
-
-  function counts() {
-    var shown = state.packages.filter(function (pkg) {
-      return pkg.shown;
-    }).length;
-    return { shown: shown, hidden: state.packages.length - shown, total: state.packages.length };
   }
 
   function shownPackages() {
@@ -313,31 +314,8 @@
     );
   }
 
-  var OPTION_NOTES = {
-    "toggle-cards":
-      "Select terms as chips under each family — no pricing table. Hidden terms stay off the customer listing unless the truck is not eligible for any of the ones you picked, in which case every package is shown.",
-    "catalog-table":
-      "A flat list of the 12 terms. Bulk Show/Hide. Term names sit in their own column instead of nested year/mile tables.",
-    "live-preview":
-      "Use the truck scenarios to see three outcomes: dealer’s selection, all packages (fallback), and no coverages after 7 years / 750,000 miles.",
-    "vin-results":
-      "Customer VIN lookup first. Sample VINs below the field trigger eligibility, fallback, or the age/mileage cap. Terms on listing cards are a dropdown, not a table.",
-  };
-
   function mount() {
-    var note =
-      '<p class="dvp-note">' + escapeHtml(OPTION_NOTES[option] || "") + "</p>";
     var toastEl = '<div class="dvp-toast" data-dvp-toast hidden></div>';
-
-    if (option === "vin-results") {
-      app.innerHTML =
-        customerHeader() +
-        '<main class="dvp-customer">' +
-        note +
-        '<div data-dvp-main></div></main>' +
-        toastEl;
-      return;
-    }
 
     app.innerHTML =
       dealerHeader() +
@@ -354,14 +332,12 @@
       '<button type="button" role="tab" aria-selected="false">Connectivity Services</button>' +
       "</div>" +
       '<section class="dl-panel is-active" role="tabpanel">' +
-      note +
       '<div data-dvp-main></div>' +
       "</section></div></main></div>" +
       toastEl;
   }
 
   function adminHeader(title, intro) {
-    var stats = counts();
     return (
       '<div class="ac-header"><div class="ac-header__copy">' +
       '<h3 class="ac-title">' +
@@ -374,16 +350,7 @@
       '<button type="button" class="dl-btn-secondary" data-dvp-reset>Reset</button>' +
       '<button type="button" class="dl-btn-primary" data-dvp-update>Update</button>' +
       "</div></div>" +
-      capBanner() +
-      '<div class="dvp-summary">' +
-      "<div><p class=\"dvp-summary__count\">This location will try to show " +
-      stats.shown +
-      " of " +
-      stats.total +
-      " packages</p>" +
-      '<p class="dvp-summary__meta">If none of those are eligible for the truck, the customer sees all ' +
-      stats.total +
-      " packages.</p></div></div>"
+      capBanner()
     );
   }
 
@@ -516,6 +483,35 @@
     );
   }
 
+  function renderBundleCard() {
+    var members = state.bundle.memberIds
+      .map(pkgById)
+      .filter(Boolean)
+      .map(function (pkg) {
+        return "<li>" + escapeHtml(pkg.family) + " " + escapeHtml(pkg.term) + "</li>";
+      })
+      .join("");
+
+    return (
+      '<article class="dvp-family dvp-family--bundle">' +
+      '<h5 class="dvp-family__title">OPTIMUM Bundle</h5>' +
+      '<p class="dvp-family__help">Check this to offer Engine Ultimate and Chassis Basic together as one package.</p>' +
+      '<div class="dvp-bundle-box' +
+      (state.bundle.shown ? " is-on" : "") +
+      '">' +
+      '<label class="dvp-pill">' +
+      '<input type="checkbox" data-dvp-bundle' +
+      (state.bundle.shown ? " checked" : "") +
+      " />" +
+      "Show OPTIMUM Bundle</label>" +
+      '<div class="dvp-bundle-includes">' +
+      '<p class="dvp-bundle-list-label">Includes</p>' +
+      '<ul class="dvp-bundle-list">' +
+      members +
+      "</ul></div></div></article>"
+    );
+  }
+
   function renderToggleCards() {
     var rows = packagesForOffering(state.offering);
     var cards = familiesFor(rows)
@@ -541,7 +537,7 @@
           '<h5 class="dvp-family__title">' +
           escapeHtml(group.family) +
           "</h5>" +
-          '<p class="dvp-family__help">Select the terms this location should show after VIN.</p>' +
+          '<p class="dvp-family__help">Select which packages to show after a customer enters a VIN.</p>' +
           '<div class="dvp-pills">' +
           pills +
           "</div></article>"
@@ -553,19 +549,21 @@
       '<div class="ac">' +
       adminHeader(
         "Available Coverages",
-        "Choose which packages this location shows after a customer enters a VIN. There is no discount or price setup on this screen."
+        "Choose which packages this location shows after a customer enters a VIN."
       ) +
+      '<div class="dvp-select-panel">' +
       '<div class="ac-offering-tabs" role="tablist" aria-label="Offering type">' +
-      '<button type="button" class="' +
-      (state.offering === "optimum" ? "is-active" : "") +
-      '" role="tab" data-dvp-offering="optimum">Extended OPTIMUM</button>' +
       '<button type="button" class="' +
       (state.offering === "next" ? "is-active" : "") +
       '" role="tab" data-dvp-offering="next">Extended NEXT</button>' +
+      '<button type="button" class="' +
+      (state.offering === "optimum" ? "is-active" : "") +
+      '" role="tab" data-dvp-offering="optimum">Extended OPTIMUM</button>' +
       "</div>" +
       '<div class="dvp-family-grid">' +
+      (state.offering === "optimum" ? renderBundleCard() : "") +
       cards +
-      "</div></div>"
+      "</div></div></div>"
     );
   }
 
@@ -838,9 +836,10 @@
     var resetBtn = event.target.closest("[data-dvp-reset]");
     if (resetBtn) {
       state.packages = clone(DEFAULT_PACKAGES);
+      state.bundle = clone(DEFAULT_BUNDLE);
       state.selected = {};
       state.filter = "all";
-      state.offering = "optimum";
+      state.offering = "next";
       state.scenario = "ok";
       state.vinValue = SCENARIOS.ok.vin;
       render();
@@ -850,14 +849,7 @@
 
     var updateBtn = event.target.closest("[data-dvp-update]");
     if (updateBtn) {
-      var stats = counts();
-      toast(
-        "Saved. This location will try to show " +
-          stats.shown +
-          " package" +
-          (stats.shown === 1 ? "" : "s") +
-          " after VIN."
-      );
+      toast("Catalog saved.");
       return;
     }
 
@@ -878,6 +870,12 @@
     var check = event.target.closest("[data-dvp-check]");
     if (check) {
       setShown(check.getAttribute("data-dvp-check"), check.checked);
+      render();
+      return;
+    }
+
+    if (event.target.hasAttribute("data-dvp-bundle")) {
+      state.bundle.shown = event.target.checked;
       render();
       return;
     }

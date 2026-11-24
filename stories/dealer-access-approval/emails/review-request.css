@@ -134,7 +134,7 @@ a {
   flex-wrap: wrap;
   gap: 12px 20px;
   font-size: 16px;
-  color: var(--email-text);
+  color: var(--email-text-secondary);
 }
 
 .da-requester span {
@@ -144,7 +144,7 @@ a {
 }
 
 .da-requester i {
-  color: var(--email-text);
+  color: var(--email-primary);
 }
 
 .da-field__label {

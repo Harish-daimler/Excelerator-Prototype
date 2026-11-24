@@ -654,7 +654,7 @@
   font-family: "Rubik", var(--ex-font), sans-serif;
   font-size: var(--ex-text-size);
   font-weight: 400;
-  color: var(--ex-body-text);
+  color: var(--ex-body-text-secondary);
 }
 
 .da-requester span {
@@ -664,7 +664,7 @@
 }
 
 .da-requester i {
-  color: var(--ex-body-text);
+  color: var(--ex-primary);
 }
 
 .da-verified {

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Design system gap | Excelerator Prototype</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../css/excelerator.css" />
+    <link rel="stylesheet" href="../../css/features-hub.css" />
+    <link rel="stylesheet" href="gap.css" />
+  </head>
+  <body class="opts-page">
+    <header class="opts-hero">
+      <div class="opts-hero__inner">
+        <p class="opts-hero__nav">
+          <a href="../../index.html">&larr; All features</a>
+        </p>
+        <img
+          class="opts-hero__brand"
+          src="../../assets/images/excelerator-logo.png"
+          alt="Excelerator"
+        />
+        <h1>Design system gap</h1>
+        <p>
+          Open a card to see the component. A missing piece shows the side that
+          has it. A discrepancy opens both sides, with the difference marked in red.
+        </p>
+      </div>
+    </header>
+
+    <main class="opts-grid-wrap">
+      <section class="opts-section">
+        <h2 class="opts-section__heading">Sources</h2>
+        <div class="opts-grid">
+          <a
+            class="opts-card"
+            href="https://www.figma.com/design/j4tmSq4xaMwBgkyx5PQOU5/Excelerator-Global-Design-System?node-id=7571-12454&amp;t=gLVnr9WCUyqKBoFO-1"
+            target="_blank"
+            rel="noopener"
+          >
+            <p class="opts-card__label">Figma</p>
+            <h3 class="opts-card__title">Excelerator Global Design System</h3>
+            <p class="opts-card__desc">Opens the Figma file on the Badges page.</p>
+          </a>
+          <a
+            class="opts-card"
+            href="https://qa1.excelerator.parts/en/showcase"
+            target="_blank"
+            rel="noopener"
+          >
+            <p class="opts-card__label">Developers</p>
+            <h3 class="opts-card__title">QA Style Showcase</h3>
+            <p class="opts-card__desc">Opens the developer showcase.</p>
+          </a>
+        </div>
+      </section>
+
+      <section class="opts-section">
+        <h2 class="opts-section__heading">Missing in Figma</h2>
+        <div class="opts-grid">
+          <a class="opts-card" href="detail.html?id=links">
+            <p class="opts-card__label">Showcase only</p>
+            <h3 class="opts-card__title">Links</h3>
+            <p class="opts-card__desc">Primary, secondary, and a link that looks like a button.</p>
+          </a>
+        </div>
+      </section>
+
+      <section class="opts-section">
+        <h2 class="opts-section__heading">Discrepancies</h2>
+        <p class="gap-lead">These exist on both sides and do not match. Each card opens them side by side.</p>
+        <div class="opts-grid">
+          <a class="opts-card" href="detail.html?id=toggle-switch">
+            <p class="opts-card__label">Discrepancy</p>
+            <h3 class="opts-card__title">Toggle and Switch</h3>
+            <p class="opts-card__desc">Coverage toggle in the showcase. Yes / No switch in Figma.</p>
+          </a>
+          <a class="opts-card" href="detail.html?id=navigation">
+            <p class="opts-card__label">Discrepancy</p>
+            <h3 class="opts-card__title">Navigation menu and navbar</h3>
+            <p class="opts-card__desc">Flyout menu in the showcase. Site header in Figma.</p>
+          </a>
+          <a class="opts-card" href="detail.html?id=icon-button">
+            <p class="opts-card__label">Discrepancy</p>
+            <h3 class="opts-card__title">Icon-only button</h3>
+            <p class="opts-card__desc">Showcase keeps a label with the icon. Figma has an icon-only button.</p>
+          </a>
+          <a class="opts-card" href="detail.html?id=spacing">
+            <p class="opts-card__label">Discrepancy</p>
+            <h3 class="opts-card__title">Spacing</h3>
+            <p class="opts-card__desc">Showcase scale goes past 32. Figma stops at 32 and is marked to be removed.</p>
+          </a>
+          <a class="opts-card" href="detail.html?id=progress">
+            <p class="opts-card__label">Discrepancy</p>
+            <h3 class="opts-card__title">Progress bars</h3>
+            <p class="opts-card__desc">Same bars. Figma has marked the page to be removed.</p>
+          </a>
+          <a class="opts-card" href="detail.html?id=popovers">
+            <p class="opts-card__label">Discrepancy</p>
+            <h3 class="opts-card__title">Popovers</h3>
+            <p class="opts-card__desc">Showcase shows triggers. Figma shows the open panel and is marked to be removed.</p>
+          </a>
+          <a class="opts-card" href="detail.html?id=offcanvas">
+            <p class="opts-card__label">Discrepancy</p>
+            <h3 class="opts-card__title">Offcanvas</h3>
+            <p class="opts-card__desc">Showcase shows a trigger. Figma shows the open drawer and is marked to be removed.</p>
+          </a>
+          <a class="opts-card" href="detail.html?id=listgroup">
+            <p class="opts-card__label">Discrepancy</p>
+            <h3 class="opts-card__title">List group</h3>
+            <p class="opts-card__desc">Showcase ships live lists. Figma’s page is marked to be removed.</p>
+          </a>
+        </div>
+      </section>
+
+      <section class="opts-section">
+        <h2 class="opts-section__heading">Missing in the developer showcase</h2>
+        <div class="opts-grid">
+          <a class="opts-card" href="detail.html?id=divider"><p class="opts-card__label">Figma only</p><h3 class="opts-card__title">Divider</h3><p class="opts-card__desc">Horizontal rule.</p></a>
+          <a class="opts-card" href="detail.html?id=filters"><p class="opts-card__label">Figma only</p><h3 class="opts-card__title">Filters</h3><p class="opts-card__desc">Status and coverage filters.</p></a>
+          <a class="opts-card" href="detail.html?id=scrollbar"><p class="opts-card__label">Figma only</p><h3 class="opts-card__title">Scrollbar</h3><p class="opts-card__desc">Scrollbar thumb.</p></a>
+          <a class="opts-card" href="detail.html?id=media"><p class="opts-card__label">Figma only</p><h3 class="opts-card__title">Media object</h3><p class="opts-card__desc">Image and text rows.</p></a>
+          <a class="opts-card" href="detail.html?id=swap"><p class="opts-card__label">Figma only</p><h3 class="opts-card__title">Swap block</h3><p class="opts-card__desc">Swap block variants.</p></a>
+          <a class="opts-card" href="detail.html?id=garage"><p class="opts-card__label">Figma only</p><h3 class="opts-card__title">Parts — My Garage</h3><p class="opts-card__desc">Garage components.</p></a>
+          <a class="opts-card" href="detail.html?id=listing"><p class="opts-card__label">Figma only</p><h3 class="opts-card__title">Parts — Listing page</h3><p class="opts-card__desc">Listing components.</p></a>
+          <a class="opts-card" href="detail.html?id=quotes"><p class="opts-card__label">Figma only</p><h3 class="opts-card__title">Parts — Quotes</h3><p class="opts-card__desc">Quotes components.</p></a>
+          <a class="opts-card" href="detail.html?id=cart"><p class="opts-card__label">Figma only</p><h3 class="opts-card__title">Services — Cart</h3><p class="opts-card__desc">Cart components.</p></a>
+          <a class="opts-card" href="detail.html?id=hero"><p class="opts-card__label">Figma only</p><h3 class="opts-card__title">Services — Hero</h3><p class="opts-card__desc">Hero sections.</p></a>
+          <a class="opts-card" href="detail.html?id=tabs"><p class="opts-card__label">Figma only</p><h3 class="opts-card__title">Services — Section with tabs</h3><p class="opts-card__desc">Tabbed section.</p></a>
+          <a class="opts-card" href="detail.html?id=empty"><p class="opts-card__label">Figma only</p><h3 class="opts-card__title">Services — Empty state</h3><p class="opts-card__desc">Empty state.</p></a>
+          <a class="opts-card" href="detail.html?id=user"><p class="opts-card__label">Figma only</p><h3 class="opts-card__title">Sitewide — User dropdown</h3><p class="opts-card__desc">User menu.</p></a>
+          <a class="opts-card" href="detail.html?id=footer"><p class="opts-card__label">Figma only</p><h3 class="opts-card__title">Sitewide — Footer</h3><p class="opts-card__desc">Footer.</p></a>
+          <a class="opts-card" href="detail.html?id=templates"><p class="opts-card__label">Figma only</p><h3 class="opts-card__title">Sitewide — Page templates</h3><p class="opts-card__desc">Page templates.</p></a>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

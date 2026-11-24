@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-label="Daimler Truck North America">
+  <rect width="96" height="96" fill="#f4f4f4"/>
+  <circle cx="48" cy="28" r="16" fill="none" stroke="#414b4f" stroke-width="2"/>
+  <path d="M40 28h16M48 20v16" stroke="#414b4f" stroke-width="2"/>
+  <text x="48" y="56" text-anchor="middle" font-family="Rubik, Arial, sans-serif" font-size="8" font-weight="700" fill="#414b4f">DAIMLER</text>
+  <text x="48" y="66" text-anchor="middle" font-family="Rubik, Arial, sans-serif" font-size="8" font-weight="700" fill="#414b4f">TRUCK</text>
+  <text x="48" y="78" text-anchor="middle" font-family="Rubik, Arial, sans-serif" font-size="6" fill="#6c757d">NORTH AMERICA</text>
+</svg>

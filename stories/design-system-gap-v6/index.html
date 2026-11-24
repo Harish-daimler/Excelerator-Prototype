@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Design System Gap | Excelerator Prototype</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../css/excelerator.css" />
+    <link rel="stylesheet" href="../../css/features-hub.css" />
+    <link rel="stylesheet" href="../design-system-gap/gap.css" />
+    <link rel="stylesheet" href="gap.css" />
+  </head>
+  <body class="opts-page">
+    <header class="opts-hero">
+      <div class="opts-hero__inner">
+        <p class="opts-hero__nav">
+          <a href="../../index.html">&larr; All features</a>
+        </p>
+        <img
+          class="opts-hero__brand"
+          src="../../assets/images/excelerator-logo.png"
+          alt="Excelerator"
+        />
+        <h1>Design System Gap</h1>
+        <p>
+          Bootstrap 6 alpha 1, from October 8, 2026, compared with the QA
+          toolbox and with the Figma Global Design System. The earlier studies
+          are still on the hub.
+        </p>
+      </div>
+    </header>
+
+    <main class="opts-grid-wrap">
+      <div class="gap-tabs" role="tablist" aria-label="Comparisons">
+        <button class="gap-tab" id="tab-toolbox" type="button" role="tab" aria-selected="true" aria-controls="panel-toolbox">Toolbox and Bootstrap 6</button>
+        <button class="gap-tab" id="tab-figma" type="button" role="tab" aria-selected="false" aria-controls="panel-figma" tabindex="-1">Figma and Bootstrap 6</button>
+      </div>
+
+      <div id="panel-toolbox" class="gap-panel" role="tabpanel" aria-labelledby="tab-toolbox">
+        <section class="opts-section">
+          <h2 class="opts-section__heading">Sources</h2>
+          <div class="opts-grid">
+            <a class="opts-card" href="https://qa1.excelerator.parts/en/showcase/toolbox" target="_blank" rel="noopener">
+              <p class="opts-card__label">Developers</p>
+              <h3 class="opts-card__title">QA toolbox</h3>
+              <p class="opts-card__desc">Angular components at /en/showcase/toolbox.</p>
+            </a>
+            <a class="opts-card" href="https://getbootstrap.com/docs/6.0/getting-started/introduction/" target="_blank" rel="noopener">
+              <p class="opts-card__label">Bootstrap 6 alpha</p>
+              <h3 class="opts-card__title">Bootstrap 6.0.0-alpha.1</h3>
+              <p class="opts-card__desc">Opens the v6 docs. This is not the stable release.</p>
+            </a>
+          </div>
+        </section>
+
+        <section class="opts-section">
+          <h2 class="opts-section__heading">What Lines Up</h2>
+          <div class="gap-map">
+            <ul>
+              <li>UiButton and Buttons, including an icon-only button. The class names differ.</li>
+              <li>UiBreadcrumb and Breadcrumb. v6 uses breadcrumb-link and a divider element.</li>
+              <li>UiInput, UiCheckbox, and UiForm and the form controls. v6 puts the check class on the input.</li>
+              <li>UiToggle and Switch.</li>
+              <li>UiSelect and UiMultiSelect and Combobox, the new searchable select with a multi-select mode.</li>
+              <li>UiDatePicker and Datepicker.</li>
+              <li>UiPagination, UiTable, UiAlert, UiBadge, UiCard, UiText, UiTabs, and UiSpinner.</li>
+              <li>UiDialog and Dialog. Both use a native dialog. Figma still calls this a modal.</li>
+              <li>UiDropdownMenu and Menu. v6 renamed Dropdown to Menu.</li>
+              <li>UiDrawer and Drawer share the name. The implementation does not.</li>
+              <li>Global Messages and Toast.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="opts-section">
+          <h2 class="opts-section__heading">Discrepancies</h2>
+          <div class="opts-grid">
+            <a class="opts-card" href="detail.html?id=tb-menu"><p class="opts-card__label">Discrepancy</p><h3 class="opts-card__title">Menu selected state</h3><p class="opts-card__desc">v6 draws a rounded primary row inside the menu.</p></a>
+            <a class="opts-card" href="detail.html?id=tb-buttons"><p class="opts-card__label">Discrepancy</p><h3 class="opts-card__title">Button classes</h3><p class="opts-card__desc">Toolbox uses variant names. v6 pairs a variant with a theme class.</p></a>
+            <a class="opts-card" href="detail.html?id=tb-drawer"><p class="opts-card__label">Discrepancy</p><h3 class="opts-card__title">Drawer</h3><p class="opts-card__desc">Toolbox is still an offcanvas. v6 Drawer is a native dialog.</p></a>
+            <a class="opts-card" href="detail.html?id=tb-accordion"><p class="opts-card__label">Discrepancy</p><h3 class="opts-card__title">Accordion</h3><p class="opts-card__desc">v6 uses the native details element.</p></a>
+            <a class="opts-card" href="detail.html?id=tb-messages"><p class="opts-card__label">Discrepancy</p><h3 class="opts-card__title">Global messages and toast</h3><p class="opts-card__desc">Same job. v6 still calls it a toast, and the fade is CSS.</p></a>
+          </div>
+        </section>
+
+        <section class="opts-section">
+          <h2 class="opts-section__heading">Missing in Bootstrap 6</h2>
+          <div class="opts-grid">
+            <a class="opts-card" href="detail.html?id=tb-paper"><p class="opts-card__label">Toolbox</p><h3 class="opts-card__title">Paper</h3><p class="opts-card__desc">Elevated surface. v6 has cards and shadows.</p></a>
+            <a class="opts-card" href="detail.html?id=tb-picker"><p class="opts-card__label">Toolbox</p><h3 class="opts-card__title">Picker dialog</h3><p class="opts-card__desc">Dialog with a custom selection template.</p></a>
+            <a class="opts-card" href="detail.html?id=tb-grid"><p class="opts-card__label">Toolbox</p><h3 class="opts-card__title">Grid component</h3><p class="opts-card__desc">Breakpoint maps. v6 has grid utilities.</p></a>
+            <a class="opts-card" href="detail.html?id=tb-upload"><p class="opts-card__label">Toolbox</p><h3 class="opts-card__title">Upload</h3><p class="opts-card__desc">Upload directive.</p></a>
+            <a class="opts-card" href="detail.html?id=tb-download"><p class="opts-card__label">Toolbox</p><h3 class="opts-card__title">Download</h3><p class="opts-card__desc">Download directive.</p></a>
+          </div>
+        </section>
+
+        <section class="opts-section">
+          <h2 class="opts-section__heading">Missing in the Toolbox</h2>
+          <div class="opts-grid">
+            <a class="opts-card" href="detail.html?id=tb-carousel"><p class="opts-card__label">Bootstrap 6</p><h3 class="opts-card__title">Carousel</h3><p class="opts-card__desc">Arrows under the slide, pill dots on the right.</p></a>
+            <a class="opts-card" href="detail.html?id=tb-foundations"><p class="opts-card__label">Bootstrap 6</p><h3 class="opts-card__title">Foundations and overlays</h3><p class="opts-card__desc">Colors, shadows, radius, tooltips, popovers, list group, progress, and the navbar.</p></a>
+            <a class="opts-card" href="detail.html?id=tb-new"><p class="opts-card__label">Bootstrap 6</p><h3 class="opts-card__title">New components</h3><p class="opts-card__desc">Stepper, avatar, chip, OTP, password strength, range, toggler, and prose.</p></a>
+          </div>
+        </section>
+      </div>
+
+      <div id="panel-figma" class="gap-panel" role="tabpanel" aria-labelledby="tab-figma" hidden>
+        <section class="opts-section">
+          <h2 class="opts-section__heading">Sources</h2>
+          <div class="opts-grid">
+            <a class="opts-card" href="https://www.figma.com/design/j4tmSq4xaMwBgkyx5PQOU5/Excelerator-Global-Design-System?node-id=7571-12454" target="_blank" rel="noopener">
+              <p class="opts-card__label">Figma</p>
+              <h3 class="opts-card__title">Excelerator Global Design System</h3>
+              <p class="opts-card__desc">Opens the Figma file on the Badges page.</p>
+            </a>
+            <a class="opts-card" href="https://getbootstrap.com/docs/6.0/getting-started/introduction/" target="_blank" rel="noopener">
+              <p class="opts-card__label">Bootstrap 6 alpha</p>
+              <h3 class="opts-card__title">Bootstrap 6.0.0-alpha.1</h3>
+              <p class="opts-card__desc">Opens the v6 docs. This is not the stable release.</p>
+            </a>
+          </div>
+        </section>
+
+        <section class="opts-section">
+          <h2 class="opts-section__heading">What Lines Up</h2>
+          <p class="gap-lead">These Figma pages still exist in Bootstrap 6. Several are renamed or restyled. Open a card when the two sides do not match.</p>
+          <div class="gap-map">
+            <ul>
+              <li>Accordion, alerts, badges, breadcrumbs, buttons, card, pagination, spinner, switch, tables, tabs, and tooltips.</li>
+              <li>Dropdown is now Menu. Modal is now Dialog. Offcanvas is now Drawer.</li>
+              <li>Toast, popover, list group, and progress are still in Bootstrap 6.</li>
+              <li>Colors, borders, radius, shadows, and typography are still documented, on new scales.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="opts-section">
+          <h2 class="opts-section__heading">Discrepancies</h2>
+          <div class="opts-grid">
+            <a class="opts-card" href="detail.html?id=fg-menu"><p class="opts-card__label">Discrepancy</p><h3 class="opts-card__title">Menu selected state</h3><p class="opts-card__desc">Figma’s dropdown active row is full width. v6 rounds it.</p></a>
+            <a class="opts-card" href="detail.html?id=fg-carousel"><p class="opts-card__label">Discrepancy</p><h3 class="opts-card__title">Carousel arrows and dots</h3><p class="opts-card__desc">Figma puts them on the slide. v6 puts them in a row underneath.</p></a>
+            <a class="opts-card" href="detail.html?id=fg-dialog"><p class="opts-card__label">Discrepancy</p><h3 class="opts-card__title">Modal and dialog</h3><p class="opts-card__desc">Figma documents Modal. v6 replaces it with Dialog.</p></a>
+            <a class="opts-card" href="detail.html?id=fg-drawer"><p class="opts-card__label">Discrepancy</p><h3 class="opts-card__title">Offcanvas and drawer</h3><p class="opts-card__desc">Figma marked offcanvas to be removed. v6 ships it as Drawer.</p></a>
+            <a class="opts-card" href="detail.html?id=fg-colors"><p class="opts-card__label">Discrepancy</p><h3 class="opts-card__title">Colors</h3><p class="opts-card__desc">Figma shows the current swatches. v6 uses oklch and theme classes.</p></a>
+            <a class="opts-card" href="detail.html?id=fg-spacing"><p class="opts-card__label">Discrepancy</p><h3 class="opts-card__title">Spacing</h3><p class="opts-card__desc">Figma stops at 32 and is marked to be removed. v6 remaps the scale.</p></a>
+            <a class="opts-card" href="detail.html?id=fg-removed"><p class="opts-card__label">Discrepancy</p><h3 class="opts-card__title">Pages marked to be removed</h3><p class="opts-card__desc">Progress, popovers, and list group are still in Bootstrap 6.</p></a>
+          </div>
+        </section>
+
+        <section class="opts-section">
+          <h2 class="opts-section__heading">Missing in Figma</h2>
+          <div class="opts-grid">
+            <a class="opts-card" href="detail.html?id=fg-new"><p class="opts-card__label">Bootstrap 6</p><h3 class="opts-card__title">New components</h3><p class="opts-card__desc">Combobox, datepicker, stepper, avatar, chip, OTP, and the other new alpha components.</p></a>
+          </div>
+        </section>
+
+        <section class="opts-section">
+          <h2 class="opts-section__heading">Missing in Bootstrap 6</h2>
+          <p class="gap-lead">These Figma pages are Excelerator product or kit pieces. Bootstrap 6 does not include them.</p>
+          <div class="opts-grid">
+            <a class="opts-card" href="detail.html?id=filters"><p class="opts-card__label">Figma only</p><h3 class="opts-card__title">Filters</h3><p class="opts-card__desc">Status and coverage filters.</p></a>
+            <a class="opts-card" href="detail.html?id=scrollbar"><p class="opts-card__label">Figma only</p><h3 class="opts-card__title">Scrollbar</h3><p class="opts-card__desc">Scrollbar thumb.</p></a>
+            <a class="opts-card" href="detail.html?id=media"><p class="opts-card__label">Figma only</p><h3 class="opts-card__title">Media object</h3><p class="opts-card__desc">Image and text rows.</p></a>
+            <a class="opts-card" href="detail.html?id=swap"><p class="opts-card__label">Figma only</p><h3 class="opts-card__title">Swap block</h3><p class="opts-card__desc">Swap block variants.</p></a>
+            <a class="opts-card" href="detail.html?id=navbar"><p class="opts-card__label">Figma only</p><h3 class="opts-card__title">Sitewide — navbar and header</h3><p class="opts-card__desc">Site header. v6 collapses a navbar with a drawer.</p></a>
+            <a class="opts-card" href="detail.html?id=garage"><p class="opts-card__label">Figma only</p><h3 class="opts-card__title">Parts — My Garage</h3><p class="opts-card__desc">Garage components.</p></a>
+            <a class="opts-card" href="detail.html?id=listing"><p class="opts-card__label">Figma only</p><h3 class="opts-card__title">Parts — listing page</h3><p class="opts-card__desc">Listing components.</p></a>
+            <a class="opts-card" href="detail.html?id=quotes"><p class="opts-card__label">Figma only</p><h3 class="opts-card__title">Parts — quotes</h3><p class="opts-card__desc">Quotes components.</p></a>
+            <a class="opts-card" href="detail.html?id=cart"><p class="opts-card__label">Figma only</p><h3 class="opts-card__title">Services — cart</h3><p class="opts-card__desc">Cart components.</p></a>
+            <a class="opts-card" href="detail.html?id=hero"><p class="opts-card__label">Figma only</p><h3 class="opts-card__title">Services — hero</h3><p class="opts-card__desc">Hero sections.</p></a>
+            <a class="opts-card" href="detail.html?id=tabs"><p class="opts-card__label">Figma only</p><h3 class="opts-card__title">Services — section with tabs</h3><p class="opts-card__desc">A tabbed page section, not the Tabs component.</p></a>
+            <a class="opts-card" href="detail.html?id=empty"><p class="opts-card__label">Figma only</p><h3 class="opts-card__title">Services — empty state</h3><p class="opts-card__desc">Empty state.</p></a>
+            <a class="opts-card" href="detail.html?id=user"><p class="opts-card__label">Figma only</p><h3 class="opts-card__title">Sitewide — user dropdown</h3><p class="opts-card__desc">User menu.</p></a>
+            <a class="opts-card" href="detail.html?id=footer"><p class="opts-card__label">Figma only</p><h3 class="opts-card__title">Sitewide — footer</h3><p class="opts-card__desc">Footer.</p></a>
+            <a class="opts-card" href="detail.html?id=templates"><p class="opts-card__label">Figma only</p><h3 class="opts-card__title">Sitewide — page templates</h3><p class="opts-card__desc">Page templates.</p></a>
+            <a class="opts-card" href="detail.html?id=designers"><p class="opts-card__label">Figma only</p><h3 class="opts-card__title">Sitewide — for designers</h3><p class="opts-card__desc">A placeholder frame and an open question.</p></a>
+          </div>
+        </section>
+      </div>
+    </main>
+    <script>
+      (function () {
+        var tabs = [].slice.call(document.querySelectorAll('[role="tab"]'));
+        function show(id) {
+          tabs.forEach(function (tab) {
+            var on = tab.id === "tab-" + id;
+            tab.setAttribute("aria-selected", on ? "true" : "false");
+            tab.tabIndex = on ? 0 : -1;
+            document.getElementById(tab.getAttribute("aria-controls")).hidden = !on;
+          });
+        }
+        tabs.forEach(function (tab) {
+          tab.addEventListener("click", function () {
+            var id = tab.id.replace("tab-", "");
+            show(id);
+            if (history.replaceState) history.replaceState(null, "", "#" + id);
+          });
+        });
+        var start = (location.hash || "").replace("#", "");
+        if (start === "figma" || start === "toolbox") show(start);
+      })();
+    </script>
+  </body>
+</html>

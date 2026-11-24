@@ -41,7 +41,9 @@
         "</p>" +
         (hasLinks
           ? ""
-          : '<span class="hub-card__cta">Review options <i class="fas fa-arrow-right" aria-hidden="true"></i></span>');
+          : '<span class="hub-card__cta">' +
+            escapeHtml(story.cta || "Review options") +
+            ' <i class="fas fa-arrow-right" aria-hidden="true"></i></span>');
 
       if (hasLinks) {
         var links = document.createElement("div");

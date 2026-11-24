@@ -1,0 +1,48 @@
+.gap-lead {
+  margin: 0 0 1rem;
+  max-width: 46rem;
+  color: #6c757d;
+}
+
+.gap-compare {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.gap-compare--pair {
+  grid-template-columns: 1fr 1fr;
+}
+
+.gap-compare--trio {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.gap-map {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  max-width: 46rem;
+}
+
+.gap-map h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.05rem;
+}
+
+.gap-map ul {
+  margin: 0;
+  padding-left: 1.15rem;
+}
+
+.gap-map li {
+  margin: 0.35rem 0;
+}
+
+@media (max-width: 1100px) {
+  .gap-compare--pair,
+  .gap-compare--trio,
+  .gap-map {
+    grid-template-columns: 1fr;
+  }
+}

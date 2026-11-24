@@ -1,0 +1,39 @@
+.gap-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin: 0 0 1.5rem;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.gap-tab {
+  margin: 0;
+  padding: 0.65rem 1rem;
+  border: 0;
+  border-bottom: 3px solid transparent;
+  background: transparent;
+  color: #212529;
+  font: inherit;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.gap-tab[aria-selected="true"] {
+  border-bottom-color: #e10600;
+}
+
+.gap-panel[hidden] {
+  display: none;
+}
+
+.gap-map {
+  max-width: 46rem;
+}
+
+.gap-map ul {
+  margin: 0;
+  padding-left: 1.15rem;
+}
+
+.gap-map li {
+  margin: 0.35rem 0;
+}
